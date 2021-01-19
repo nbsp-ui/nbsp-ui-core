@@ -1,0 +1,19 @@
+@import "../colors";
+
+.nbsp-ui-desktop-header {
+  background-color: $accent-color;
+  border-radius: 4px 4px 0 0;
+
+  & .title {
+    color: $dark-text-color;
+  }
+
+  & .subtitle {
+    color: $dark-secondary-text-color;
+  }
+
+  & .nbsp-ui-icon {
+    color: $dark-text-color !important;
+    font-size: 18px !important;
+  }
+}

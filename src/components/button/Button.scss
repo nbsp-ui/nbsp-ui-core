@@ -1,0 +1,125 @@
+@import "../colors";
+
+.nbsp-ui-button {
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  transition: background-color .2s;
+
+  & > *:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  & > p {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+  }
+
+  & > .nbsp-ui-icon {
+    padding: 0;
+  }
+
+  &-disabled {
+    background-color: $disabled-background-color;
+    pointer-events: none;
+
+    & > p {
+      color: $disabled-color-0;
+    }
+  }
+
+  &-primary {
+    padding: 0 14px;
+    background-color: $accent-color;
+
+    &:hover {
+      background-color: $accent-color-dark-0;
+    }
+
+    &:active {
+      background-color: $accent-color-dark-1;
+    }
+
+    & > p {
+      color: $dark-text-color;
+    }
+
+    & > .nbsp-ui-icon {
+      font-size: 14px;
+      color: $dark-text-color;
+    }
+  }
+
+  &-outline {
+    padding: 0 14px;
+    border: 1px solid $border-color;
+
+    &:hover {
+      background-color: $default-hover-color;
+    }
+
+    &:active {
+      background-color: $default-active-color;
+    }
+
+    & > p {
+      color: $light-text-color;
+    }
+
+    & > .nbsp-ui-icon {
+      font-size: 14px;
+      color: $light-text-color;
+    }
+  }
+
+  &-ghost {
+    padding: 0 14px;
+
+    &:hover {
+      background-color: $default-hover-color;
+    }
+
+    &:active {
+      background-color: $default-active-color;
+    }
+
+    & > p {
+      color: #757575;
+    }
+
+    & > .nbsp-ui-icon {
+      font-size: 14px;
+      color: #757575;
+    }
+  }
+
+  &-icon {
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: $default-hover-color;
+    }
+
+    &:active {
+      background-color: $default-active-color;
+    }
+
+    & > p {
+      color: #757575;
+    }
+
+    & > .nbsp-ui-icon {
+      font-size: 16px;
+      color: #757575;
+    }
+  }
+}

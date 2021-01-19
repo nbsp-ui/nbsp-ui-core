@@ -1,0 +1,12 @@
+@import "../colors";
+
+.nbsp-ui-popup {
+  position: absolute;
+  box-shadow: 0 4px 16px 0 #0000001A;
+  border-radius: 4px;
+  background-color: $light-background-color;
+
+  & > .content {
+    padding: 16px;
+  }
+}

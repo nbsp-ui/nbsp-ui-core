@@ -1,0 +1,71 @@
+@import '../colors';
+
+.nbsp-ui-calendar {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+
+  & p {
+    margin: 0;
+    color: $light-text-color
+  }
+
+  & > .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    & > .month {
+      margin-right: 4px;
+    }
+
+    & > .year {
+      margin-left: 4px;
+    }
+
+    & > .spacer {
+      flex-grow: 1;
+    }
+
+    & > .prev, & > .next {
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      border-radius: 50%;
+    }
+  }
+
+  & > .container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 40px);
+
+    & > p {
+      text-align: center;
+      line-height: 40px;
+    }
+
+    & > .day {
+      color: $light-contrast-text-color;
+    }
+
+    & > .date {
+      border: 1px solid transparent;
+
+      &-out {
+        color: $light-secondary-text-color;
+      }
+
+      &-selected {
+        background-color: $accent-color;
+        border-color: $accent-color;
+        color: $dark-text-color;
+      }
+
+      &-current {
+        border-color: $accent-color;
+        color: $accent-color;
+      }
+    }
+  }
+}

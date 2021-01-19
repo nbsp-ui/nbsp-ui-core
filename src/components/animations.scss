@@ -1,0 +1,14 @@
+.a-once-opacity {
+  animation-name: once-opacity;
+  animation-duration: .4s;
+}
+
+@keyframes once-opacity {
+  from {
+    opacity: .5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
