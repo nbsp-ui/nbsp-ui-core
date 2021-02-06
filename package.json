@@ -1,14 +1,25 @@
 {
-  "name": "react-ui-library",
-  "version": "0.1.0",
-  "main": "src/index.js",
+  "name": "@alexander-welshtein/react-ui-library",
+  "version": "0.1.12",
+  "main": "lib/index.js",
+  "license": "ISC",
+  "repository": {
+    "url": "git://github.com/alexander-welshtein/react-ui-library.git"
+  },
   "scripts": {
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production",
-    "watch-dev": "webpack --watch --mode development"
+    "watch-dev": "webpack --watch --mode development",
+    "build-lib": "npx babel src --out-dir lib --copy-files",
+    "prepublishOnly": "npm run build-lib"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/cli": "^7.12.13",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@svgr/webpack": "^5.5.0",
@@ -23,8 +34,6 @@
     "file-loader": "^6.2.0"
   },
   "dependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
     "date-fns": "^2.16.1",
     "@fortawesome/fontawesome-free": "^5.15.2"
   }

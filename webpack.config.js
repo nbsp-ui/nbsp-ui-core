@@ -9,8 +9,8 @@ const baseConfig = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
+        use: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -18,13 +18,13 @@ const baseConfig = {
       },
       {
         test: /\.scss$/,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        exclude: /node_modules/
       },
       {
         test: /\.svg$/,
-        exclude: /node_modules/,
-        use: '@svgr/webpack'
+        use: '@svgr/webpack',
+        exclude: /node_modules/
       },
       {
         test: /\.(woff|woff2|ttf|eot|svg)$/,
@@ -34,6 +34,7 @@ const baseConfig = {
   }
 }
 
+// noinspection JSUnusedLocalSymbols
 const indexConfig = {
   ...baseConfig,
   entry: './src/index.js',
