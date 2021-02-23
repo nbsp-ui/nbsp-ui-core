@@ -4,12 +4,7 @@ import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import './Label.scss'
 
 /**
- * @param props
- * @param {string} props.className
- * @param {string} props.value
- * @param {string} props.color
- * @param {CompatIndent} props.padding
- * @param {CompatIndent} props.margin
+ * @param {LabelProps} props
  * @return {JSX.Element}
  * @constructor
  */

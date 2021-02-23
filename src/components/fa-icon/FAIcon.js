@@ -4,12 +4,7 @@ import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import './FAIcon.scss'
 
 /**
- * @param {string} props.icon
- * @param {string} props.className
- * @param {string} props.color
- * @param {CompatIndent} props.padding
- * @param {CompatIndent} props.margin
- * @param {Function} props.onClick
+ * @param {FAIconProps} props
  * @return {JSX.Element}
  * @constructor
  */

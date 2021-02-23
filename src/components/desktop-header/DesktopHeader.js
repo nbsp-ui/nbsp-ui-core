@@ -7,8 +7,7 @@ import { Label } from '../label/Label'
 import './DesktopHeader.scss'
 
 /**
- * @param {string} title
- * @param {string} subtitle
+ * @param {DesktopHeaderProps} props
  * @return {JSX.Element}
  * @constructor
  */

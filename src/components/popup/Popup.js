@@ -4,13 +4,7 @@ import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import './Popup.scss'
 
 /**
- * @param props
- * @param {React.ReactNode | React.ReactNode[]} props.children
- * @param {number} props.width
- * @param {number} props.height
- * @param {HTMLElement} props.to
- * @param {boolean} props.show
- * @param {function} props.onHide
+ * @param {PopupProps} props
  * @return {JSX.Element}
  * @constructor
  */

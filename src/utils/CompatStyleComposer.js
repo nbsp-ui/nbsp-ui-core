@@ -1,15 +1,5 @@
 import { CompatAlign } from './CompatAlign'
 
-/**
- * @typedef CompatIndent
- * @property {number} [top]
- * @property {number} [bottom]
- * @property {number} [left]
- * @property {number} [right]
- * @property {number} [x]
- * @property {number} [y]
- */
-
 export const CompatStyleComposer = {
   /**
    * @param {{}} props

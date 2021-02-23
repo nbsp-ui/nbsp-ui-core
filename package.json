@@ -1,6 +1,6 @@
 {
   "name": "@alexander-welshtein/react-ui-library",
-  "version": "0.1.12",
+  "version": "0.1.16",
   "main": "lib/index.js",
   "license": "ISC",
   "repository": {

@@ -4,24 +4,7 @@ import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import './Input.scss'
 
 /**
- * @param props
- * @param {string} props.id
- * @param {string} props.value
- * @param {string} props.label
- * @param {string} props.labelWidth
- * @param {string} props.placeholder
- * @param {number} props.width
- * @param {number} props.height
- * @param {boolean} props.fit
- * @param {CompatIndent} props.padding
- * @param {CompatIndent} props.margin
- * @param {boolean} props.disabled
- * @param {boolean} props.readOnly
- * @param {React.ReactNode} props.before
- * @param {React.ReactNode} props.after
- * @param {function(event: MouseEvent): void} props.beforeOnClick
- * @param {function(event: MouseEvent): void} props.afterOnClick
- * @param {function(ref: RefObject): void} props.onEffect
+ * @param {InputProps} props
  * @return {JSX.Element}
  * @constructor
  */

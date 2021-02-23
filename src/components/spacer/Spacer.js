@@ -1,9 +1,7 @@
 import React from 'react'
 
 /**
- * @param props
- *  @param {boolean} props.vertical
- * @param {number} props.size
+ * @param {SpacerProps} props
  * @return {JSX.Element}
  * @constructor
  */

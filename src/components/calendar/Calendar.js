@@ -7,11 +7,8 @@ import '../behavior.scss'
 import './Calendar.scss'
 
 /**
- * @param props
- * @param {Date} props.value
- * @param {number} props.width
- * @param {number} props.height
- * @param {function(date: Date): void} props.onChange
+ * @param {CalendarProps} props
+ * @return {JSX.Element}
  * @constructor
  */
 export const Calendar = props => {

@@ -14,14 +14,7 @@ const ids = {
 }
 
 /**
- * @param props
- * @param {Date} props.value
- * @param {number} props.width
- * @param {number} props.height
- * @param {boolean} props.fit
- * @param {string} props.label
- * @param {number} props.labelWidth
- * @param {string} props.placeholder
+ * @param {DatePickerProps} props
  * @return {JSX.Element}
  * @constructor
  */

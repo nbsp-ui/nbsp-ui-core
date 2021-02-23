@@ -11,14 +11,7 @@ export const CompatButtonType = {
 }
 
 /**
- * @param props
- * @param {string} props.className
- * @param {number} props.type
- * @param {boolean} props.disabled
- * @param {string} props.label
- * @param {React.ReactNode} props.icon
- * @param {CompatIndent} props.padding
- * @param {CompatIndent} props.margin
+ * @param {ButtonProps} props
  * @return {JSX.Element}
  * @constructor
  */

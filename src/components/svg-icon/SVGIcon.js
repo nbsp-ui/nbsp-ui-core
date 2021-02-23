@@ -3,10 +3,7 @@ import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import './SVGIcon.scss'
 
 /**
- * @param props
- * @param {React.ReactNode} props.icon
- * @param {CompatIndent} props.padding
- * @param {CompatIndent} props.margin
+ * @param {SVGIconProps} props
  * @return {JSX.Element}
  * @constructor
  */
