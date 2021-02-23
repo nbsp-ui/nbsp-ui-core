@@ -39,7 +39,7 @@ export const CompatUtils = {
    * @param {number} to
    * @returns {number[]}
    */
-  range: (from, to) => Array(to - from + 1).fill(0).map((value, index) => value + index)
+  range: (from, to) => Array(to - from + 1).fill(0).map((value, index) => value + from + index)
 }
 
 /**
