@@ -15,6 +15,18 @@ export const CompatUtils = {
     append: (string, substring, separator = ' ') => string.concat(separator).concat(substring)
   },
 
+  math: {
+    /**
+     * Получить признак принадлежности позиции к ограничевающей форме элемента
+     * @param {number} x
+     * @param {number} y
+     * @param {DOMRect} rect
+     * @param {number} indent
+     * @return {boolean}
+     */
+    is_belong_to_element_rect_with_indent: (x, y, rect, indent) => x >= rect.x - indent && x <= rect.x + rect.width + indent && y >= rect.y - indent && y <= rect.y + rect.height + indent
+  },
+
   /**
    * @param {HTMLElement} element
    * @param {string} names
@@ -50,7 +62,7 @@ export const CompatUtils = {
  * @param {{}} contracts - Контракты сопоставления
  * @returns {*}
  */
-window.match = (value, contracts) => {
+window['match'] = (value, contracts) => {
   value = String(value)
 
   // Исключение неопрделенного порядка свойств

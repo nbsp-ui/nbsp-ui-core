@@ -21,8 +21,8 @@ const ids = {
 export const DatePicker = props => {
   const { value, fit, label, labelWidth, placeholder } = props
 
-  const [picker_displayed, display_picker] = React.useState(false)
-  const [selected_date, select_date] = React.useState(new Date())
+  const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
+  const [selectedDate, setSelectedDate] = React.useState(new Date())
 
   const className = CompatClassComposer.append('nbsp-ui-date-picker')
   const style = CompatStyleComposer.compose(props)
@@ -31,22 +31,26 @@ export const DatePicker = props => {
     <div className={className} style={style}>
       <Input
         id={ids.input}
-        value={format(selected_date, 'dd.MM.yyyy')}
+        value={format(selectedDate, 'dd.MM.yyyy')}
         label={label}
         labelWidth={labelWidth}
         fit={fit}
         placeholder={placeholder}
         readOnly
         after={<FAIcon icon='far fa-calendar'/>}
-        afterOnClick={() => display_picker(!picker_displayed)}
+        afterOnClick={() => setPickerDisplayed(!pickerDisplayed)}
       />
-      <Popup to={CompatUtils.$$(ids.input)} show={picker_displayed} onHide={() => display_picker(undefined)}>
+      <Popup
+        to={CompatUtils.$$(ids.input)}
+        showRequested={pickerDisplayed}
+        onLeave={() => setPickerDisplayed(false)}
+      >
         <Calendar
           value={value}
           width={300}
           onChange={date => {
-            select_date(date)
-            display_picker(false)
+            setSelectedDate(date)
+            setPickerDisplayed(false)
           }}
         />
       </Popup>

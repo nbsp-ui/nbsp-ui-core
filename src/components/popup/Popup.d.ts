@@ -6,8 +6,10 @@ export interface PopupProps {
     width?: number
     height?: number
     to?: HTMLElement
-    show?: boolean
+    showRequested?: boolean
     onHide?: () => void
+    onBlur?: () => void
+    onLeave?: () => void
 }
 
 export const Popup: React.FunctionComponent<PopupProps>
