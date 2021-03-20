@@ -1,5 +1,6 @@
 import React from 'react'
-import { Box, Button, CompatButtonType, DatePicker, DesktopHeader , Input, FAIcon } from '../src/index'
+import { Box, Button, CompatButtonType, DatePicker, DesktopHeader, FAIcon, Input, Label, Table } from '../src/index'
+import { CompatAlign } from '../src/utils/CompatAlign'
 
 export const Application = () =>
   <Box vertical>
@@ -18,5 +19,45 @@ export const Application = () =>
       <Input label='Phone' labelWidth={100} placeholder='Phone' width={400} margin={{ bottom: 8 }} before={'+7'}/>
       <Input label='Website' labelWidth={100} placeholder='Website' width={400} margin={{ bottom: 8 }} after={'.com'}/>
       <DatePicker label='Date' labelWidth={100} placeholder='Date' width={400} margin={{ bottom: 8 }}/>
+      <Table
+        headerHeight={32}
+        footerHeight={32}
+        columns={[
+          {
+            width: 40,
+            header: () => <Box hAlign={CompatAlign.Center}><Label value='ID'/></Box>,
+            cell: item => <Box hAlign={CompatAlign.Center}><Label value={item['id']}/></Box>,
+            sort: (a, b) => a['id'] - b['id']
+          },
+          {
+            header: () => <Box padding={{ left: 8 }}><Label value='Person'/></Box>,
+            cell: item => <Box padding={{ left: 8 }}><Label value={item['person']}/></Box>,
+            sort: (a, b) => a['person'].localeCompare(b['person'])
+          },
+          {
+            width: 120,
+            header: () => <Box padding={{ left: 8 }}><Label value='Account'/></Box>,
+            cell: item => <Box padding={{ left: 8 }}><Label value={item['account']}/></Box>,
+            sort: (a, b) => a['account'] - b['account'],
+            footer: items => <Box padding={{ left: 8 }}><Label value={items.reduce((result, item) => result + item['account'], 0)}/></Box>
+          },
+          {
+            width: 80,
+            header: () => <Box hAlign={CompatAlign.Center}><Label value='Remove'/></Box>,
+            cell: () =>
+              <Box hAlign={CompatAlign.Center}>
+                <Button type={CompatButtonType.Icon} icon={<FAIcon icon='far fa-trash-alt'/>}/>
+              </Box>
+          }
+        ]}
+        data={[
+          { id: '1', person: 'Mary Beth Brianna', account: 125 },
+          { id: '2', person: 'Rhys Lyndsea', account: 132 },
+          { id: '3', person: 'Bennie Cam', account: 754 },
+          { id: '4', person: 'Victor Lana', account: 904 },
+          { id: '5', person: 'Jacklyn Marlena', account: 623 },
+          { id: '6', person: 'Haleigh Kaylee', account: 396 }
+        ]}
+      />
     </Box>
   </Box>

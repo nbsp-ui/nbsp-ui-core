@@ -8,6 +8,7 @@ export { Label } from './components/label/Label'
 export { Popup } from './components/popup/Popup'
 export { Spacer } from './components/spacer/Spacer'
 export { SVGIcon } from './components/svg-icon/SVGIcon'
+export { Table } from './components/table/Table'
 export { DesktopHeader } from './components/desktop-header/DesktopHeader'
 
 export { CompatAlign } from './utils/CompatAlign'

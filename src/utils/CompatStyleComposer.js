@@ -21,29 +21,23 @@ export const CompatStyleComposer = {
       flexDirection: vertical ? (reverse ? 'column-reverse' : 'column') : (reverse ? 'row-reverse' : 'row')
     }),
 
-    width: (style, { width }) => ({
+    width: (style, { width, height }) => ({
       ...style,
       width: `${width}px`,
-      flexShrink: 0,
-      flexGrow: 0
+      maxWidth: `${width}px`,
+      flexBasis: width || height ? 'auto' : 0
     }),
 
-    height: (style, { height }) => ({
+    height: (style, { width, height }) => ({
       ...style,
       height: `${height}px`,
-      flexShrink: 0,
-      flexGrow: 0
+      maxHeight: `${height}px`,
+      flexBasis: width || height ? 'auto' : 0
     }),
 
     fit: (style, { fit }) => ({
       ...style,
-      ...(fit ? {
-        flexShrink: 0,
-        flexGrow: 0
-      } : {
-        flexShrink: 1,
-        flexGrow: 1
-      })
+      ...(fit ? { flexShrink: 0, flexGrow: 0 } : { flexShrink: 1, flexGrow: 1 })
     }),
 
     padding: (style, { padding }) => CompatStyleComposer.reducers._indent(style, 'padding', padding),

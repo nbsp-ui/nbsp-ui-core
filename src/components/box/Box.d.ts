@@ -1,5 +1,5 @@
 // @ts-ignore
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 import { CompatAlign } from "../../utils/CompatAlign";
 import { CompatIndent } from "../../utils/CompatIndent";
 
@@ -15,6 +15,8 @@ export interface BoxProps {
     hAlign?: CompatAlign
     padding?: CompatIndent
     margin?: CompatIndent
+
+    onClick: React.MouseEventHandler
 }
 
 export const Box: React.FunctionComponent<BoxProps>

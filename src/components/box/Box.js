@@ -10,19 +10,18 @@ import './Box.scss'
  * @constructor
  */
 export const Box = props => {
-  const { children } = props
+  const { children, onClick } = props
 
   const className = CompatClassComposer.append('nbsp-ui-box', props.className)
   const style = CompatStyleComposer.compose(props)
 
   return (
-    <div className={className} style={style}>
+    <div className={className} style={style} onClick={onClick}>
       {children}
     </div>
   )
 }
 
 Box.defaultProps = {
-  fit: false,
-  vAlign: CompatAlign.Left
+  fit: false
 }

@@ -1,0 +1,64 @@
+@import "../colors";
+
+.nbsp-ui-table {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  border-bottom: 1px solid $border-color;
+
+  & > .header {
+    & > div {
+      border-top: 1px solid $border-color;
+      border-bottom: 1px solid $border-color;
+      transition: background-color .2s, border-color .2s;
+    }
+
+    & > div:first-child {
+      border-left: 1px solid $border-color;
+      border-top-left-radius: 4px;
+    }
+
+    & > div:last-child {
+      border-right: 1px solid $border-color;
+      border-top-right-radius: 4px;
+    }
+
+    & > div:not(:last-child) {
+      border-right: 1px solid #EEEEEE;
+    }
+
+    & > .sorted-by-asc {
+      border-bottom-color: $accent-color;
+    }
+
+    & > .sorted-by-desc {
+      border-top-color: $accent-color;
+    }
+  }
+
+  & > .rows {
+    & > div {
+      border-left: 1px solid $border-color;
+      border-right: 1px solid $border-color;
+    }
+
+    & > div:not(:last-child) {
+      border-bottom: 1px solid #EEEEEE;
+    }
+
+    & > div > div:not(:last-child) {
+      border-right: 1px solid #EEEEEE;
+    }
+  }
+
+  & > .footer {
+    border-top: 1px solid $border-color;
+    border-left: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+
+    & > div:not(:last-child) {
+      border-right: 1px solid #EEEEEE;
+    }
+  }
+}
