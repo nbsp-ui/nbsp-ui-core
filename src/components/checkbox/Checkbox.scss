@@ -1,0 +1,64 @@
+@import "../colors";
+
+.nbsp-ui-checkbox {
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+
+  .control {
+    width: 20px;
+    height: 20px;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    transition: background-color .2s, border-color .2s, color .2s;
+
+    .shape {
+      transform: translate(15%, 10%) rotate(-45deg);
+
+      div {
+        background-color: transparent;
+        transition: background-color .2s;
+      }
+
+      div:nth-child(1) {
+        width: 2px;
+        height: 6px;
+      }
+
+      div:nth-child(2) {
+        width: 12px;
+        height: 2px;
+      }
+    }
+  }
+
+  .label {
+    margin: 0;
+    color: $light-text-color;
+    font-size: 14px;
+  }
+
+  .spacer {
+    width: 8px;
+  }
+
+  &:hover {
+    .control {
+      border-color: $accent-color;
+    }
+  }
+
+  &-checked {
+    .control {
+      border-color: $accent-color;
+      background-color: $accent-color;
+
+      .shape {
+        div {
+          background-color: #FFFFFF;
+        }
+      }
+    }
+  }
+}

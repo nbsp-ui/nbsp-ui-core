@@ -16,9 +16,9 @@ export const CompatStyleComposer = {
       flexDirection: vertical ? 'column' : 'row'
     }),
 
-    reverse: (style, { vertical, reverse }) => ({
+    reversed: (style, { vertical, reversed }) => ({
       ...style,
-      flexDirection: vertical ? (reverse ? 'column-reverse' : 'column') : (reverse ? 'row-reverse' : 'row')
+      flexDirection: vertical ? (reversed ? 'column-reverse' : 'column') : (reversed ? 'row-reverse' : 'row')
     }),
 
     width: (style, { width, height }) => ({
@@ -53,6 +53,16 @@ export const CompatStyleComposer = {
             : `${indent.top || indent.y || 0}px ${indent.right || indent.x || 0}px ${indent.bottom || indent.y || 0}px ${indent.left || indent.x || 0}px`
         }
         : {})
+    }),
+
+    align: (style, { align, reversed }) => ({
+      ...style,
+      justifyContent: match(align, {
+        [CompatAlign.Left]: reversed ? 'flex-end' : 'flex-start',
+        [CompatAlign.Right]: reversed ? 'flex-start' : 'flex-end',
+        [CompatAlign.Center]: 'center',
+        [CompatAlign.Justify]: 'space-between'
+      })
     }),
 
     vAlign: (style, { vertical, vAlign }) => ({

@@ -7,7 +7,7 @@ export interface BoxProps {
     children?: React.ReactElement | React.ReactElement[]
     vertical?: boolean
     className?: string
-    reverse?: boolean
+    reversed?: boolean
     width?: number
     height?: number
     fit?: boolean

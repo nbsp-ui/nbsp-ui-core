@@ -1,5 +1,6 @@
 export enum CompatAlign {
     Left,
     Right,
-    Center
+    Center,
+    Justify
 }

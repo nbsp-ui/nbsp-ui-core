@@ -1,4 +1,5 @@
 import React from 'react'
+import { Checkbox } from '../src/components/checkbox/Checkbox'
 import { Box, Button, CompatButtonType, DatePicker, DesktopHeader, FAIcon, Input, Label, Table } from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
 
@@ -14,11 +15,18 @@ export const Application = () =>
       <Button type={CompatButtonType.Icon} icon={<FAIcon icon='fas fa-sync-alt'/>}/>
     </Box>
     <Box vertical padding={{ left: 8, right: 8 }}>
-      <Input label='Login' labelWidth={100} placeholder='Login' width={400} margin={{ bottom: 8 }} before={'Private'}/>
-      <Input label='Password' labelWidth={100} placeholder='Password' width={400} margin={{ bottom: 8 }}/>
-      <Input label='Phone' labelWidth={100} placeholder='Phone' width={400} margin={{ bottom: 8 }} before={'+7'}/>
-      <Input label='Website' labelWidth={100} placeholder='Website' width={400} margin={{ bottom: 8 }} after={'.com'}/>
-      <DatePicker label='Date' labelWidth={100} placeholder='Date' width={400} margin={{ bottom: 8 }}/>
+      <Input label='Login' labelWidth={140} placeholder='Login' width={400} margin={{ bottom: 8 }} before={'Private'}/>
+      <Input label='Password' labelWidth={140} placeholder='Password' width={400} margin={{ bottom: 8 }}/>
+      <Input label='Phone' labelWidth={140} placeholder='Phone' width={400} margin={{ bottom: 8 }} before={'+7'}/>
+      <Input label='Website' labelWidth={140} placeholder='Website' width={400} margin={{ bottom: 8 }} after={'.com'}/>
+      <DatePicker label='Date' labelWidth={140} placeholder='Date' width={400} margin={{ bottom: 8 }}/>
+      <Checkbox
+        value={false}
+        width={400}
+        label='Use default settings'
+        margin={{ bottom: 8 }}
+        align={CompatAlign.Justify}
+      />
       <Table
         headerHeight={32}
         footerHeight={32}

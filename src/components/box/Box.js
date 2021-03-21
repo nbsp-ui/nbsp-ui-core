@@ -1,5 +1,4 @@
 import React from 'react'
-import { CompatAlign } from '../../utils/CompatAlign'
 import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import './Box.scss'
