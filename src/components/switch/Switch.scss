@@ -6,28 +6,20 @@
   align-items: center;
 
   .control {
-    position: relative;
-    min-width: 36px;
+    width: 32px;
     height: 18px;
+    padding-left: 2px;
+    padding-right: 2px;
     border: 1px solid $border-color;
     border-radius: 9px;
+    display: flex;
+    align-items: center;
     transition: background-color .2s, border-color .2s;
   }
 
-  .cap {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    padding-left: 2px;
-    padding-right: 2px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-
-    > .spacer {
-      flex-grow: 0;
-      transition: flex-grow .2s;
-    }
+  .offset {
+    flex-grow: 0;
+    transition: flex-grow .2s;
   }
 
   .thumb {
@@ -45,7 +37,7 @@
     color: $light-text-color;
   }
 
-  > .spacer {
+  .spacer {
     width: 8px;
   }
 
@@ -65,10 +57,8 @@
       border-color: $accent-color;
     }
 
-    .cap {
-      > .spacer {
-        flex-grow: 1;
-      }
+    .offset {
+      flex-grow: 1;
     }
 
     .thumb {

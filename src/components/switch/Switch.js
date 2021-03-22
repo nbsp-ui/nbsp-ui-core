@@ -13,7 +13,7 @@ export const Switch = props => {
 
   const className = CompatClassComposer.append(
     'nbsp-ui-switch',
-    { use: 'nbsp-ui-switch-checked', if: checked}
+    { use: 'nbsp-ui-switch-checked', if: checked }
   )
   const style = CompatStyleComposer.compose(props)
 
@@ -29,10 +29,8 @@ export const Switch = props => {
       {props.label && <div className='label'>{props.label}</div>}
       {props.label && <div className='spacer'/>}
       <div className='control'>
-        <div className='cap'>
-          <div className='spacer'/>
-          <div className='thumb'/>
-        </div>
+        <div className='offset'/>
+        <div className='thumb'/>
       </div>
     </div>
   )
