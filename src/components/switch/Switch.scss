@@ -11,7 +11,7 @@
     height: 18px;
     border: 1px solid $border-color;
     border-radius: 9px;
-    transition: background-color .4s, border-color .4s;
+    transition: background-color .2s, border-color .2s;
   }
 
   .cap {
@@ -26,7 +26,7 @@
 
     > .spacer {
       flex-grow: 0;
-      transition: flex-grow .4s;
+      transition: flex-grow .2s;
     }
   }
 
@@ -35,7 +35,7 @@
     height: 14px;
     border-radius: 50%;
     background-color: $border-color;
-    transition: background-color .4s;
+    transition: background-color .2s;
   }
 
   .label {
@@ -47,6 +47,16 @@
 
   > .spacer {
     width: 8px;
+  }
+
+  &:hover {
+    .control {
+      border-color: $accent-color;
+    }
+
+    .thumb {
+      background-color: darken($border-color, 10%);
+    }
   }
 
   &-checked {
@@ -63,6 +73,12 @@
 
     .thumb {
       background-color: #FFFFFF;
+    }
+
+    &:hover {
+      .thumb {
+        background-color: #FFFFFF;
+      }
     }
   }
 }
