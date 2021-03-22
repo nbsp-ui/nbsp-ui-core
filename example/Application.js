@@ -1,6 +1,16 @@
 import React from 'react'
-import { Checkbox } from '../src/components/checkbox/Checkbox'
-import { Box, Button, CompatButtonType, DatePicker, DesktopHeader, FAIcon, Input, Label, Table } from '../src/index'
+import {
+  Box,
+  Button, Checkbox,
+  CompatButtonType,
+  DatePicker,
+  DesktopHeader,
+  FAIcon,
+  Input,
+  Label,
+  Switch,
+  Table
+} from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
 
 export const Application = () =>
@@ -26,6 +36,9 @@ export const Application = () =>
         label='Use default settings'
         margin={{ bottom: 8 }}
         align={CompatAlign.Justify}
+      />
+      <Switch
+        value={false}
       />
       <Table
         headerHeight={32}

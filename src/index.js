@@ -9,6 +9,8 @@ export { Popup } from './components/popup/Popup'
 export { Spacer } from './components/spacer/Spacer'
 export { SVGIcon } from './components/svg-icon/SVGIcon'
 export { Table } from './components/table/Table'
+export { Checkbox } from './components/checkbox/Checkbox'
+export { Switch } from './components/switch/Switch'
 export { DesktopHeader } from './components/desktop-header/DesktopHeader'
 
 export { CompatAlign } from './utils/CompatAlign'
