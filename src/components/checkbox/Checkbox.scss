@@ -2,7 +2,6 @@
 
 .nbsp-ui-checkbox {
   cursor: pointer;
-  font-family: 'Roboto', sans-serif;
   display: flex;
   align-items: center;
 
@@ -35,8 +34,9 @@
 
   .label {
     margin: 0;
-    color: $light-text-color;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
+    color: $light-text-color;
   }
 
   .spacer {

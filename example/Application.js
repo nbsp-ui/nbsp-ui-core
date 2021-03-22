@@ -24,23 +24,26 @@ export const Application = () =>
       <Button type={CompatButtonType.Ghost} label='Ghost' margin={{ right: 8 }}/>
       <Button type={CompatButtonType.Icon} icon={<FAIcon icon='fas fa-sync-alt'/>}/>
     </Box>
-    <Box vertical padding={{ left: 8, right: 8 }}>
+    <Box vertical padding={{ left: 8, right: 8 }} hAlign={CompatAlign.Left}>
       <Input label='Login' labelWidth={140} placeholder='Login' width={400} margin={{ bottom: 8 }} before={'Private'}/>
       <Input label='Password' labelWidth={140} placeholder='Password' width={400} margin={{ bottom: 8 }}/>
       <Input label='Phone' labelWidth={140} placeholder='Phone' width={400} margin={{ bottom: 8 }} before={'+7'}/>
       <Input label='Website' labelWidth={140} placeholder='Website' width={400} margin={{ bottom: 8 }} after={'.com'}/>
       <DatePicker label='Date' labelWidth={140} placeholder='Date' width={400} margin={{ bottom: 8 }}/>
       <Checkbox
-        value={false}
         width={400}
         label='Use default settings'
-        margin={{ bottom: 8 }}
         align={CompatAlign.Justify}
+        margin={{ bottom: 8 }}
       />
       <Switch
-        value={false}
+        width={400}
+        label='Enable forced update'
+        align={CompatAlign.Justify}
+        margin={{ bottom: 8 }}
       />
       <Table
+        width={400}
         headerHeight={32}
         footerHeight={32}
         columns={[
@@ -51,14 +54,14 @@ export const Application = () =>
             sort: (a, b) => a['id'] - b['id']
           },
           {
-            header: () => <Box padding={{ left: 8 }}><Label value='Person'/></Box>,
-            cell: item => <Box padding={{ left: 8 }}><Label value={item['person']}/></Box>,
+            header: () => <Box padding={{ x: 8 }}><Label value='Person'/></Box>,
+            cell: item => <Box padding={{ x: 8 }}><Label value={item['person']}/></Box>,
             sort: (a, b) => a['person'].localeCompare(b['person'])
           },
           {
             width: 120,
-            header: () => <Box padding={{ left: 8 }}><Label value='Account'/></Box>,
-            cell: item => <Box padding={{ left: 8 }}><Label value={item['account']}/></Box>,
+            header: () => <Box padding={{ x: 8 }}><Label value='Account'/></Box>,
+            cell: item => <Box padding={{ x: 8 }}><Label value={item['account']}/></Box>,
             sort: (a, b) => a['account'] - b['account'],
             footer: items => <Box padding={{ left: 8 }}><Label value={items.reduce((result, item) => result + item['account'], 0)}/></Box>
           },

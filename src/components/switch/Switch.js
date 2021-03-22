@@ -22,11 +22,17 @@ export const Switch = props => {
       className={className}
       style={style}
       onClick={() => {
+        props.onChange && props.onChange(!checked)
         setChecked(!checked)
       }}
     >
+      {props.label && <div className='label'>{props.label}</div>}
+      {props.label && <div className='spacer'/>}
       <div className='control'>
-        <div className='shape'/>
+        <div className='cap'>
+          <div className='spacer'/>
+          <div className='thumb'/>
+        </div>
       </div>
     </div>
   )

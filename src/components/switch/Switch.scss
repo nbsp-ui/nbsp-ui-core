@@ -1,41 +1,68 @@
 @import "../colors";
 
 .nbsp-ui-switch {
-  display: flex;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   .control {
     position: relative;
-
     min-width: 36px;
     height: 18px;
     border: 1px solid $border-color;
     border-radius: 9px;
-
     transition: background-color .4s, border-color .4s;
+  }
 
-    .shape {
-      position: absolute;
+  .cap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-left: 2px;
+    padding-right: 2px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
 
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-
-      transition: margin-left .4s;
-
-      background-color: $border-color;
+    > .spacer {
+      flex-grow: 0;
+      transition: flex-grow .4s;
     }
+  }
+
+  .thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: $border-color;
+    transition: background-color .4s;
+  }
+
+  .label {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: $light-text-color;
+  }
+
+  > .spacer {
+    width: 8px;
   }
 
   &-checked {
     .control {
       background-color: $accent-color;
       border-color: $accent-color;
+    }
 
-      .shape {
-        background-color: #FFFFFF;
-        transform: translateX(100%);
+    .cap {
+      > .spacer {
+        flex-grow: 1;
       }
+    }
+
+    .thumb {
+      background-color: #FFFFFF;
     }
   }
 }
