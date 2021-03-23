@@ -31,16 +31,17 @@ export const List = props => {
     <div className={className} style={style}>
       {
         items.map(item =>
-          <Box
+          <div
             className={CompatClassComposer.append(
               'item',
               { use: 'item-selected', if: item.selected }
             )}
+            style={CompatStyleComposer.compose(item.style || {})}
             key={item.id}
             onClick={() => selectItem(item)}
           >
             <span>{item.value}</span>
-          </Box>
+          </div>
         )
       }
     </div>
