@@ -1,3 +1,5 @@
+@import "../colors";
+
 .nbsp-ui-tag {
   & {
     margin: 1px;
@@ -14,32 +16,32 @@
   }
 
   &-default {
-    color: rgba(0, 0, 0, .85);
-    background-color: #fafafa;
-    border-color: #d9d9d9;
+    color: $grey-600;
+    background-color: $grey-50;
+    border-color: $grey-300;
   }
 
   &-warning {
-    color: #fa8c16;
-    background: #fff7e6;
-    border-color: #ffd591;
+    color: $orange-600;
+    background: $orange-50;
+    border-color: $orange-200;
   }
 
   &-error {
-    color: #f5222d;
-    background: #fff1f0;
-    border-color: #ffa39e;
+    color: $red-600;
+    background: $red-50;
+    border-color: $red-200;
   }
 
   &-success {
-    color: #52c41a;
-    background: #f6ffed;
-    border-color: #b7eb8f;
+    color: $green-600;
+    background: $green-50;
+    border-color: $green-200;
   }
 
   &-processing {
-    color: #1890ff;
-    background: #e6f7ff;
-    border-color: #91d5ff;
+    color: $blue-600;
+    background: $blue-50;
+    border-color: $blue-200;
   }
 }
