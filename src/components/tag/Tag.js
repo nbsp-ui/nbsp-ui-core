@@ -9,20 +9,20 @@ import './Tag.scss'
  * @constructor
  */
 export const Tag = props => {
-    const { value, closeButton, onCloseClick } = props
+  const { value, onClick, onClose } = props
 
-    const className = CompatClassComposer.append('nbsp-ui-tag', props.className)
-    const style = CompatStyleComposer.compose(props)
+  const className = CompatClassComposer.append(
+    'nbsp-ui-tag',
+    { use: 'nbsp-ui-tag-clickable', if: onClick },
+    props.className
+  )
+  const style = CompatStyleComposer.compose(props)
 
-    return (
-      <div className={className} style={style}>
-        <span style={{display: 'inline-block'}}>{ value }</span>
-        {
-          closeButton &&
-          <div style={{display: 'inline-block', margin: '0 0 0 4px'}} onClick={onCloseClick}>
-            <i className="fas fa-times"/>
-          </div>
-        }
-      </div>
-    )
+  return (
+    <div className={className} style={style} onClick={() => onClick && onClick()}>
+      <span>{value}</span>
+      {onClose && <div className='spacer'/>}
+      {onClose && <div className='close' onClick={() => onClose()}><i className="fas fa-times"/></div>}
+    </div>
+  )
 }

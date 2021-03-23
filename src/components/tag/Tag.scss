@@ -1,18 +1,32 @@
 @import "../colors";
 
 .nbsp-ui-tag {
-  margin: 2px;
+  padding: 2px 4px;
   font-family: "Roboto", sans-serif;
   font-size: 12px;
-  padding: 0 5px 0 5px;
   border: 1px solid;
   border-radius: 2px;
-  height: fit-content;
-  transition: 0.2s ease-in-out;
 
-  &:hover {
+  display: flex;
+  align-items: center;
+
+  .spacer {
+    width: 4px;
+  }
+
+  .close {
+    padding: 2px;
     cursor: pointer;
-    text-indent: 2px;
-    box-shadow: 0 0 5px 1px $grey-300;
+  }
+
+  &-clickable {
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform .2s, box-shadow .2s;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);;
+      transform: scale(1.05);
+    }
   }
 }
