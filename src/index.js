@@ -12,6 +12,7 @@ export { Table } from './components/table/Table'
 export { Checkbox } from './components/checkbox/Checkbox'
 export { Switch } from './components/switch/Switch'
 export { DesktopHeader } from './components/desktop-header/DesktopHeader'
+export { Tag, CompatTagType } from './components/tag/Tag'
 
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'

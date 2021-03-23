@@ -9,7 +9,9 @@ import {
   Input,
   Label,
   Switch,
-  Table
+  Table,
+  Tag,
+  CompatTagType
 } from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
 
@@ -23,6 +25,16 @@ export const Application = () =>
               margin={{ right: 8 }}/>
       <Button type={CompatButtonType.Ghost} label='Ghost' margin={{ right: 8 }}/>
       <Button type={CompatButtonType.Icon} icon={<FAIcon icon='fas fa-sync-alt'/>}/>
+    </Box>
+    <Box padding={8}>
+      <Tag type={CompatTagType.DEFAULT} value={'default'}/>
+      <Tag type={CompatTagType.WARNING} value={'warning'}/>
+      <Tag type={CompatTagType.ERROR} value={'error'}/>
+      <Tag type={CompatTagType.SUCCESS} value={'success'}/>
+      <Tag type={CompatTagType.PROCESSING} value={'processing'}/>
+      <Tag value={'removable'} color={'#26a69a'} closeButton={true} onCloseClick={() => alert('close')}/>
+      <Tag value={'#1E88E5'} color={'#1E88E5'} />
+      <Tag value={'#1E88E5'} color={'#FFFFFF'} borderColor={'#1E88E5'} backgroundColor={'#1E88E5'} />
     </Box>
     <Box vertical padding={{ left: 8, right: 8 }} hAlign={CompatAlign.Left}>
       <Input label='Login' labelWidth={140} placeholder='Login' width={400} margin={{ bottom: 8 }} before={'Private'}/>

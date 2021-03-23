@@ -1,0 +1,45 @@
+.nbsp-ui-tag {
+  & {
+    margin: 1px;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    padding: 0 5px 0 5px;
+    border: 1px solid;
+    border-radius: 2px;
+    height: fit-content;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &-default {
+    color: rgba(0, 0, 0, .85);
+    background-color: #fafafa;
+    border-color: #d9d9d9;
+  }
+
+  &-warning {
+    color: #fa8c16;
+    background: #fff7e6;
+    border-color: #ffd591;
+  }
+
+  &-error {
+    color: #f5222d;
+    background: #fff1f0;
+    border-color: #ffa39e;
+  }
+
+  &-success {
+    color: #52c41a;
+    background: #f6ffed;
+    border-color: #b7eb8f;
+  }
+
+  &-processing {
+    color: #1890ff;
+    background: #e6f7ff;
+    border-color: #91d5ff;
+  }
+}
