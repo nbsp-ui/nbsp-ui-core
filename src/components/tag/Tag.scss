@@ -1,47 +1,18 @@
 @import "../colors";
 
 .nbsp-ui-tag {
-  & {
-    margin: 1px;
-    font-family: "Roboto", sans-serif;
-    font-size: 12px;
-    padding: 0 5px 0 5px;
-    border: 1px solid;
-    border-radius: 2px;
-    height: fit-content;
-  }
+  margin: 2px;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  padding: 0 5px 0 5px;
+  border: 1px solid;
+  border-radius: 2px;
+  height: fit-content;
+  transition: 0.2s ease-in-out;
 
   &:hover {
     cursor: pointer;
-  }
-
-  &-default {
-    color: $grey-600;
-    background-color: $grey-50;
-    border-color: $grey-300;
-  }
-
-  &-warning {
-    color: $orange-600;
-    background: $orange-50;
-    border-color: $orange-200;
-  }
-
-  &-error {
-    color: $red-600;
-    background: $red-50;
-    border-color: $red-200;
-  }
-
-  &-success {
-    color: $green-600;
-    background: $green-50;
-    border-color: $green-200;
-  }
-
-  &-processing {
-    color: $blue-600;
-    background: $blue-50;
-    border-color: $blue-200;
+    text-indent: 2px;
+    box-shadow: 0 0 5px 1px $grey-300;
   }
 }
