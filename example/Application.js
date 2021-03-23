@@ -98,6 +98,7 @@ export const Application = () =>
       <Box padding={8}>
         <List
           width={400}
+          height={200}
           data={[
             { id: 1, value: 'Albania', selected: false },
             { id: 2, value: 'Algeria', selected: false },

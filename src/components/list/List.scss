@@ -3,6 +3,11 @@
 .nbsp-ui-list {
   margin: 2px;
   font-family: "Roboto", sans-serif;
+  overflow-y: hidden;
+
+  &:hover {
+    overflow-y: auto;
+  }
 
   & > .item:hover {
     cursor: pointer;
