@@ -3,49 +3,47 @@ import { CompatAlign } from './CompatAlign'
 export const CompatStyleComposer = {
   /**
    * @param {{}} props
-   * @return {CSSProperties}
+   * @param {{}} [mappers]
+   * @return {React.CSSProperties}
    */
-  compose: props => Object.keys(props)
-    .filter(key => CompatStyleComposer.reducers[key])
-    .map(key => CompatStyleComposer.reducers[key])
-    .reduce((style, reducer) => reducer(style, props), {}),
+  compose: function(props, mappers) {
+    const combination = {
+      ...this.mappers,
+      ...mappers
+    }
 
-  reducers: {
-    vertical: (style, { vertical }) => ({
-      ...style,
-      flexDirection: vertical ? 'column' : 'row'
-    }),
+    return Object.keys(props)
+      .filter(key => combination[key])
+      .map(key => combination[key])
+      .reduce((style, mapper) => ({ ...style, ...mapper(props) }), {})
+  },
 
-    reversed: (style, { vertical, reversed }) => ({
-      ...style,
+  mappers: {
+    vertical: ({ vertical }) => ({ flexDirection: vertical ? 'column' : 'row' }),
+
+    reversed: ({ vertical, reversed }) => ({
       flexDirection: vertical ? (reversed ? 'column-reverse' : 'column') : (reversed ? 'row-reverse' : 'row')
     }),
 
-    width: (style, { width, height }) => ({
-      ...style,
+    width: ({ width, height }) => ({
       width: `${width}px`,
       maxWidth: `${width}px`,
       flexBasis: width || height ? 'auto' : 0
     }),
 
-    height: (style, { width, height }) => ({
-      ...style,
+    height: ({ width, height }) => ({
       height: `${height}px`,
       maxHeight: `${height}px`,
       flexBasis: width || height ? 'auto' : 0
     }),
 
-    fit: (style, { fit }) => ({
-      ...style,
-      ...(fit ? { flexShrink: 0, flexGrow: 0 } : { flexShrink: 1, flexGrow: 1 })
-    }),
+    fit: ({ fit }) => ({ ...(fit ? { flexShrink: 0, flexGrow: 0 } : { flexShrink: 1, flexGrow: 1 }) }),
 
-    padding: (style, { padding }) => CompatStyleComposer.reducers._indent(style, 'padding', padding),
+    padding: ({ padding }) => CompatStyleComposer.mappers._indent('padding', padding),
 
-    margin: (style, { margin }) => CompatStyleComposer.reducers._indent(style, 'margin', margin),
+    margin: ({ margin }) => CompatStyleComposer.mappers._indent('margin', margin),
 
-    _indent: (style, property, indent) => ({
-      ...style,
+    _indent: (property, indent) => ({
       ...(indent
         ? {
           [property]: typeof indent === 'string' || typeof indent === 'number'
@@ -55,8 +53,7 @@ export const CompatStyleComposer = {
         : {})
     }),
 
-    align: (style, { align, reversed }) => ({
-      ...style,
+    align: ({ align, reversed }) => ({
       justifyContent: match(align, {
         [CompatAlign.Left]: reversed ? 'flex-end' : 'flex-start',
         [CompatAlign.Right]: reversed ? 'flex-start' : 'flex-end',
@@ -65,8 +62,7 @@ export const CompatStyleComposer = {
       })
     }),
 
-    vAlign: (style, { vertical, vAlign }) => ({
-      ...style,
+    vAlign: ({ vertical, vAlign }) => ({
       [vertical ? 'justifyContent' : 'alignItems']: match(vAlign, {
         [CompatAlign.Left]: 'flex-start',
         [CompatAlign.Right]: 'flex-end',
@@ -74,8 +70,7 @@ export const CompatStyleComposer = {
       })
     }),
 
-    hAlign: (style, { vertical, hAlign }) => ({
-      ...style,
+    hAlign: ({ vertical, hAlign }) => ({
       [vertical ? 'alignItems' : 'justifyContent']: match(hAlign, {
         [CompatAlign.Left]: 'flex-start',
         [CompatAlign.Right]: 'flex-end',
@@ -83,19 +78,10 @@ export const CompatStyleComposer = {
       })
     }),
 
-    color: (style, { color }) => ({
-      ...style,
-      ...(color ? { color } : {})
-    }),
+    color: ({ color }) => ({ ...(color ? { color } : {}) }),
 
-    backgroundColor: (style, { backgroundColor }) => ({
-      ...style,
-      ...(backgroundColor ? { backgroundColor } : {})
-    }),
+    backgroundColor: ({ backgroundColor }) => ({ ...(backgroundColor ? { backgroundColor } : {}) }),
 
-    borderColor: (style, { borderColor }) => ({
-      ...style,
-      ...(borderColor ? { borderColor } : {})
-    })
+    borderColor: ({ borderColor }) => ({ ...(borderColor ? { borderColor } : {}) })
   }
 }
