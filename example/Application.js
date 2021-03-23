@@ -10,7 +10,8 @@ import {
   Label,
   Switch,
   Table,
-  Tag
+  Tag,
+  List
 } from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
 
@@ -94,5 +95,21 @@ export const Application = () =>
           { id: '6', person: 'Haleigh Kaylee', account: 396 }
         ]}
       />
+      <Box padding={8}>
+        <List
+          width={400}
+          data={[
+            { id: 1, value: 'Albania', selected: false },
+            { id: 2, value: 'Algeria', selected: false },
+            { id: 3, value: 'Andorra', selected: false },
+            { id: 4, value: 'Angola', selected: false },
+            { id: 5, value: 'Antigua and Barbuda', selected: false },
+            { id: 6, value: 'Argentina', selected: false },
+            { id: 7, value: 'Armenia', selected: false },
+            { id: 8, value: 'Australia', selected: false },
+          ]}
+          onChange={(oldValue, newValue) => console.log(oldValue, newValue)}
+        />
+      </Box>
     </Box>
   </Box>

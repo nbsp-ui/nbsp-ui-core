@@ -13,6 +13,7 @@ export { Checkbox } from './components/checkbox/Checkbox'
 export { Switch } from './components/switch/Switch'
 export { DesktopHeader } from './components/desktop-header/DesktopHeader'
 export { Tag } from './components/tag/Tag'
+export { List } from './components/list/List'
 
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'

@@ -1,0 +1,22 @@
+@import "../colors";
+
+.nbsp-ui-list {
+  margin: 2px;
+  font-family: "Roboto", sans-serif;
+
+  & > .item:hover {
+    cursor: pointer;
+    text-indent: 5px;
+    background-color: $grey-100;
+    box-shadow: 0 0 5px 1px $grey-50;
+  }
+
+  & > .item {
+    padding: 12px 48px 12px 1.5rem;
+    transition: 0.2s linear;
+
+    &-selected {
+      color: $accent-color-dark-1;
+    }
+  }
+}
