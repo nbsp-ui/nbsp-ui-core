@@ -86,6 +86,16 @@ export const CompatStyleComposer = {
     color: (style, { color }) => ({
       ...style,
       ...(color ? { color } : {})
+    }),
+
+    backgroundColor: (style, { backgroundColor }) => ({
+      ...style,
+      ...(backgroundColor ? { 'background-color': backgroundColor } : {})
+    }),
+
+    borderColor: (style, { borderColor }) => ({
+      ...style,
+      ...(borderColor ? { 'border-color': borderColor } : {})
     })
   }
 }
