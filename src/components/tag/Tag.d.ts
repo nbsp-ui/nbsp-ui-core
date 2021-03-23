@@ -2,17 +2,8 @@
 import React from "react"
 import { CompatIndent } from "../../utils/CompatIndent"
 
-export enum CompatTagType {
-    DEFAULT,
-    WARNING,
-    ERROR,
-    SUCCESS,
-    PROCESSING
-}
-
 export interface TagProps {
     className?: string
-    type?: CompatTagType
     value?: string
     color?: string
     backgroundColor?: string

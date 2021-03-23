@@ -10,8 +10,7 @@ import {
   Label,
   Switch,
   Table,
-  Tag,
-  CompatTagType
+  Tag
 } from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
 
@@ -27,11 +26,11 @@ export const Application = () =>
       <Button type={CompatButtonType.Icon} icon={<FAIcon icon='fas fa-sync-alt'/>}/>
     </Box>
     <Box padding={8}>
-      <Tag type={CompatTagType.DEFAULT} value={'default'}/>
-      <Tag type={CompatTagType.WARNING} value={'warning'}/>
-      <Tag type={CompatTagType.ERROR} value={'error'}/>
-      <Tag type={CompatTagType.SUCCESS} value={'success'}/>
-      <Tag type={CompatTagType.PROCESSING} value={'processing'}/>
+      <Tag value={'#757575'} color={'#757575'} borderColor={'#E0E0E0'} backgroundColor={'#FAFAFA'} />
+      <Tag value={'#FB8C00'} color={'#FB8C00'} borderColor={'#FFCC80'} backgroundColor={'#FFF3E0'}/>
+      <Tag value={'#E53935'} color={'#E53935'} borderColor={'#ef9a9a'} backgroundColor={'#ffebee'}/>
+      <Tag value={'#43A047'} color={'#43A047'} borderColor={'#A5D6A7'} backgroundColor={'#E8F5E9'}/>
+      <Tag value={'#1E88E5'} color={'#1E88E5'} borderColor={'#90CAF9'} backgroundColor={'#E3F2FD'}/>
       <Tag value={'removable'} color={'#26a69a'} closeButton={true} onCloseClick={() => alert('close')}/>
       <Tag value={'#1E88E5'} color={'#1E88E5'} />
       <Tag value={'#1E88E5'} color={'#FFFFFF'} borderColor={'#1E88E5'} backgroundColor={'#1E88E5'} />
