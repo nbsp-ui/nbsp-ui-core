@@ -14,6 +14,8 @@ export { Switch } from './components/switch/Switch'
 export { DesktopHeader } from './components/desktop-header/DesktopHeader'
 export { Tag } from './components/tag/Tag'
 export { List } from './components/list/List'
+export { HDivider } from './components/divider-h/HDivider'
+export { VDivider } from './components/divider-v/VDivider'
 
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'
