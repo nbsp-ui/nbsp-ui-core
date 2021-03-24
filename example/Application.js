@@ -102,18 +102,34 @@ export const Application = () =>
       <Box padding={8}>
         <List
           width={400}
-          height={200}
+          height={250}
+          row={
+            (item) =>
+            <Box>
+              {
+                (item.value.length > 7 || item.value.length < 7)
+                ?
+                <Box width={30} margin={{ top: -4, left: -10 }}>
+                  <FAIcon icon='far fa-star'/>
+                </Box>
+                :
+                <Box width={30} margin={{ top: -4, left: -10 }}>
+                </Box>
+              }
+              <span>{item.value}</span>
+            </Box>
+          }
           data={[
-            { id: 1, value: 'Albania', selected: false },
-            { id: 2, value: 'Algeria', selected: false },
-            { id: 3, value: 'Andorra', selected: false },
-            { id: 4, value: 'Angola', selected: false },
-            { id: 5, value: 'Antigua and Barbuda', selected: false },
-            { id: 6, value: 'Argentina', selected: false },
-            { id: 7, value: 'Armenia', selected: false },
-            { id: 8, value: 'Australia', selected: false }
+            { id: 1, value: 'Albania' },
+            { id: 2, value: 'Algeria' },
+            { id: 3, value: 'Andorra' },
+            { id: 4, value: 'Angola' },
+            { id: 5, value: 'Antigua and Barbuda' },
+            { id: 6, value: 'Argentina' },
+            { id: 7, value: 'Armenia' },
+            { id: 8, value: 'Australia' }
           ]}
-          onChange={(oldValue, newValue) => console.log(oldValue, newValue)}
+          onChange={(updatedItem, oldItem) => console.log(updatedItem, oldItem)}
         />
       </Box>
     </Box>

@@ -3,8 +3,9 @@ import React from "react"
 import { CompatIndent } from "../../utils/CompatIndent"
 
 export interface ListItem {
-    selected?: boolean
-    style?: {}
+    id: number | string
+
+    _selected: boolean
 }
 
 export interface ListProps {
@@ -15,7 +16,7 @@ export interface ListProps {
     margin?: CompatIndent
     data?: ListItem[] | {}[]
 
-    onChange?: (newValue: {}, oldValue: {}) => void
+    onChange?: (updatedItem: {}, oldItem: {}) => void
 }
 
 export const List: React.FunctionComponent<ListProps>
