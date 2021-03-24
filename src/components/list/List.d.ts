@@ -16,6 +16,9 @@ export interface ListProps {
     margin?: CompatIndent
     data?: ListItem[] | {}[]
 
+    // @ts-ignore
+    row: (item?: ListItem | {}) => JSX.Element
+
     onChange?: (updatedItem: {}, oldItem: {}) => void
 }
 
