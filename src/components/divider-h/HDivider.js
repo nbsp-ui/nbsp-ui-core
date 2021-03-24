@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './HDivider.scss'
 
 /**
@@ -9,4 +9,4 @@ import './HDivider.scss'
  * @constructor
  */
 export const HDivider = props =>
-  <div className={CompatClassComposer.append('nbsp-ui-h-divider')} style={CompatStyleComposer.compose(props)}/>
+  <div className={ComponentHelper.composeClass('nbsp-ui-h-divider')} style={CompatStyleComposer.compose(props)}/>

@@ -1,6 +1,6 @@
 import React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './FAIcon.scss'
 
 /**
@@ -11,7 +11,7 @@ import './FAIcon.scss'
 export const FAIcon = props => {
   const { icon, onClick } = props
 
-  const className = CompatClassComposer.append('nbsp-ui-icon', 'nbsp-ui-fa-icon', props.className)
+  const className = ComponentHelper.composeClass('nbsp-ui-icon', 'nbsp-ui-fa-icon', props.className)
   const style = CompatStyleComposer.compose(props)
 
   return (

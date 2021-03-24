@@ -1,8 +1,8 @@
 import React from 'react'
 import { CompatAlign } from '../../utils/CompatAlign'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { CompatUtils } from '../../utils/CompatUtils'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import { Box } from '../box/Box'
 import './Table.scss'
 
@@ -33,7 +33,7 @@ export const Table = props => {
         {
           columns.map((column, index) =>
             <Box
-              className={CompatClassComposer.append(
+              className={ComponentHelper.composeClass(
                 { use: 'clickable sorted', if: column.sort },
                 { use: 'sorted-by-asc', if: column._sortedByAsc },
                 { use: 'sorted-by-desc', if: column._sortedByDesc }

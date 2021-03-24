@@ -19,7 +19,6 @@ export { VDivider } from './components/divider-v/VDivider'
 
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'
-export { CompatClassComposer } from './utils/CompatClassComposer'
 export { CompatStyleComposer } from './utils/CompatStyleComposer'
 export { CompatLocalization } from './utils/CompatLocalization'
 export { CompatUtils } from './utils/CompatUtils'

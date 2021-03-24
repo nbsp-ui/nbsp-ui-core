@@ -1,8 +1,8 @@
 import React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatLocalization } from '../../utils/CompatLocalization'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { CompatUtils } from '../../utils/CompatUtils'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import '../behavior.scss'
 import './Calendar.scss'
 
@@ -17,9 +17,7 @@ export const Calendar = props => {
   const [viewed_date, view_date] = React.useState(new Date(value.getFullYear(), value.getMonth()))
   const [selected_date, select_date] = React.useState(new Date(value.getFullYear(), value.getMonth(), value.getDate()))
 
-  const className = CompatClassComposer.append(
-    'nbsp-ui-calendar'
-  )
+  const className = ComponentHelper.composeClass('nbsp-ui-calendar')
   const style = CompatStyleComposer.compose(props)
 
   const current_date = new Date()
@@ -92,7 +90,7 @@ export const Calendar = props => {
         {
           CompatUtils.range(1, days_in_month).map(date =>
             <p
-              className={CompatClassComposer.append(
+              className={ComponentHelper.composeClass(
                 'date clickable clickable-no-animated t-background-color-0-2 t-color-0-2',
                 {
                   use: 'date-selected',

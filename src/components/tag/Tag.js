@@ -1,6 +1,6 @@
 import React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Tag.scss'
 
 /**
@@ -11,7 +11,7 @@ import './Tag.scss'
 export const Tag = props => {
   const { value, onClick, onClose } = props
 
-  const className = CompatClassComposer.append(
+  const className = ComponentHelper.composeClass(
     'nbsp-ui-tag',
     { use: 'nbsp-ui-tag-clickable', if: onClick },
     props.className

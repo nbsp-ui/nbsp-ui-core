@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Switch.scss'
 
 /**
@@ -11,7 +11,7 @@ import './Switch.scss'
 export const Switch = props => {
   const [checked, setChecked] = React.useState(props.value || false)
 
-  const className = CompatClassComposer.append(
+  const className = ComponentHelper.composeClass(
     'nbsp-ui-switch',
     { use: 'nbsp-ui-switch-checked', if: checked }
   )

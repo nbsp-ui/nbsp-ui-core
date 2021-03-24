@@ -1,6 +1,6 @@
 import React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Button.scss'
 
 export const CompatButtonType = {
@@ -18,7 +18,7 @@ export const CompatButtonType = {
 export const Button = props => {
   const { type = CompatButtonType.Ghost, disabled, label } = props
 
-  const className = CompatClassComposer.append(
+  const className = ComponentHelper.composeClass(
     'nbsp-ui-button',
     { use: 'nbsp-ui-button-disabled', if: disabled },
     { use: 'nbsp-ui-button-ghost', if: type === CompatButtonType.Ghost },

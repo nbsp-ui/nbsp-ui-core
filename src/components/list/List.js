@@ -1,9 +1,9 @@
 import React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
-import { CompatUtils } from "../../utils/CompatUtils"
+import { CompatUtils } from '../../utils/CompatUtils'
+import { ComponentHelper } from '../../utils/ComponentHelper'
+import { Box } from '../box/Box'
 import './List.scss'
-import { Box } from "../box/Box"
 
 /**
  * @param {ListProps} props
@@ -29,7 +29,7 @@ export const List = props => {
     setItems([...items])
   }
 
-  const className = CompatClassComposer.append('nbsp-ui-list', props.className)
+  const className = ComponentHelper.composeClass('nbsp-ui-list', props.className)
   const style = CompatStyleComposer.compose(props)
 
   return (
@@ -37,7 +37,7 @@ export const List = props => {
       {
         items.map(item =>
           <Box
-            className={CompatClassComposer.append('item', { use: 'item-selected', if: item._selected })}
+            className={ComponentHelper.composeClass('item', { use: 'item-selected', if: item._selected })}
             key={item.id}
             onClick={() => selectItem(item)}
           >

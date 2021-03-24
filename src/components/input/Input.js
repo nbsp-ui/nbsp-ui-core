@@ -1,6 +1,6 @@
 import React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Input.scss'
 
 /**
@@ -11,7 +11,7 @@ import './Input.scss'
 export const Input = props => {
   const { id, value, label, readOnly, before, after } = props
 
-  const className = CompatClassComposer.append(
+  const className = ComponentHelper.composeClass(
     'nbsp-ui-input',
     { use: 'nbsp-ui-input-disabled', if: props.disabled },
     { use: 'nbsp-ui-input-before', if: props.before },
@@ -23,14 +23,14 @@ export const Input = props => {
     <div id={id} className={className} style={style}>
       {label && <p className='label' style={{ width: props.labelWidth || 'auto' }}>{label}</p>}
 
-      {before && <div className={CompatClassComposer.append(
+      {before && <div className={ComponentHelper.composeClass(
         'before',
         { use: 'before-clickable', if: props.beforeOnClick }
       )} onClick={props.beforeOnClick}>{before}</div>}
 
       <input type='text' placeholder={props.placeholder} readOnly={readOnly} value={value}/>
 
-      {after && <div className={CompatClassComposer.append(
+      {after && <div className={ComponentHelper.composeClass(
         'after',
         { use: 'after-clickable', if: props.afterOnClick }
       )} onClick={props.afterOnClick}>{after}</div>}

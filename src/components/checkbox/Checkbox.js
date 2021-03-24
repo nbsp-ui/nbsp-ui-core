@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Checkbox.scss'
 
 /**
@@ -13,7 +13,7 @@ export const Checkbox = props => {
 
   const [checked, setChecked] = React.useState(props.value || false)
 
-  const className = CompatClassComposer.append(
+  const className = ComponentHelper.composeClass(
     'nbsp-ui-checkbox',
     { use: 'nbsp-ui-checkbox-checked', if: checked }
   )

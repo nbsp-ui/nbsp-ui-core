@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './VDivider.scss'
 
 /**
@@ -9,4 +9,4 @@ import './VDivider.scss'
  * @constructor
  */
 export const VDivider = props =>
-  <div className={CompatClassComposer.append('nbsp-ui-v-divider')} style={CompatStyleComposer.compose(props)}/>
+  <div className={ComponentHelper.composeClass('nbsp-ui-v-divider')} style={CompatStyleComposer.compose(props)}/>

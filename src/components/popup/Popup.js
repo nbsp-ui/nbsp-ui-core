@@ -1,7 +1,7 @@
 import React from 'react'
-import { CompatClassComposer } from '../../utils/CompatClassComposer'
 import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { CompatUtils } from '../../utils/CompatUtils'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Popup.scss'
 
 /**
@@ -18,7 +18,7 @@ export const Popup = props => {
 
   const rect = to?.getBoundingClientRect()
 
-  const className = CompatClassComposer.append('nbsp-ui-popup')
+  const className = ComponentHelper.composeClass('nbsp-ui-popup')
 
   refForShowRequested.current = showRequested
   React.useEffect(() => refForShowed.current = showRequested, [showRequested])
