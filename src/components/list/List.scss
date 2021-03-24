@@ -11,18 +11,19 @@
 
   & > .item:hover {
     cursor: pointer;
-    text-indent: 5px;
     background-color: $grey-100;
     box-shadow: 0 0 5px 1px $grey-50;
   }
 
   & > .item {
+    border-left: 1px solid transparent;
     color: $light-text-color;
     padding: 12px 48px 12px 1.5rem;
     transition: 0.2s linear;
 
     &-selected {
-      color: $accent-color-dark-1;
+      border-left: 1px solid $accent-color;
+      background-color: $blue-50;
     }
   }
 }
