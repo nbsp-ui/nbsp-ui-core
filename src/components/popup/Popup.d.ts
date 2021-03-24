@@ -7,6 +7,7 @@ export interface PopupProps {
     height?: number
     to?: HTMLElement
     showRequested?: boolean
+
     onHide?: () => void
     onBlur?: () => void
     onLeave?: () => void

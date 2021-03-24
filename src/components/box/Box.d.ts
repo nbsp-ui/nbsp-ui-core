@@ -1,20 +1,13 @@
 // @ts-ignore
 import React, { MouseEventHandler } from 'react'
 import { CompatAlign } from "../../utils/CompatAlign";
-import { CompatIndent } from "../../utils/CompatIndent";
+import { BaseProps, Containable } from '../types'
 
-export interface BoxProps {
-    children?: React.ReactElement | React.ReactElement[]
+export interface BoxProps extends BaseProps, Containable {
     vertical?: boolean
-    className?: string
     reversed?: boolean
-    width?: number
-    height?: number
-    fit?: boolean
     vAlign?: CompatAlign
     hAlign?: CompatAlign
-    padding?: CompatIndent
-    margin?: CompatIndent
 
     onClick: React.MouseEventHandler
 }

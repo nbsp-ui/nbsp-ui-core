@@ -17,6 +17,8 @@ import {
 } from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
 
+window['testHook'] = {}
+
 export const Application = () =>
   <Box vertical>
     <DesktopHeader title='Прототип модуля' subtitle='React & Custom components'/>
@@ -57,6 +59,10 @@ export const Application = () =>
         label='Enable forced update'
         align={CompatAlign.Justify}
         margin={{ bottom: 8 }}
+      />
+      <Label
+        value='Invalid request'
+        hook={window['testHook']}
       />
       <Table
         width={400}
