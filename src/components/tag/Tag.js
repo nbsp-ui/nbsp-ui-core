@@ -1,5 +1,4 @@
 import React from 'react'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Tag.scss'
 
@@ -16,7 +15,7 @@ export const Tag = props => {
     { use: 'nbsp-ui-tag-clickable', if: onClick },
     props.className
   )
-  const style = CompatStyleComposer.compose(props)
+  const style = ComponentHelper.composeStyle(props)
 
   return (
     <div className={className} style={style} onClick={() => onClick && onClick()}>

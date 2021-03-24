@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Switch.scss'
 
@@ -15,7 +14,7 @@ export const Switch = props => {
     'nbsp-ui-switch',
     { use: 'nbsp-ui-switch-checked', if: checked }
   )
-  const style = CompatStyleComposer.compose(props)
+  const style = ComponentHelper.composeStyle(props)
 
   return (
     <div

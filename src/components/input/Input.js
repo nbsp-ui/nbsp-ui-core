@@ -1,5 +1,4 @@
 import React from 'react'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Input.scss'
 
@@ -17,7 +16,7 @@ export const Input = props => {
     { use: 'nbsp-ui-input-before', if: props.before },
     { use: 'nbsp-ui-input-after', if: props.after }
   )
-  const style = CompatStyleComposer.compose(props)
+  const style = ComponentHelper.composeStyle(props)
 
   return (
     <div id={id} className={className} style={style}>

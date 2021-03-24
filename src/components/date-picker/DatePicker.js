@@ -1,6 +1,5 @@
 import { format } from 'date-fns'
 import React from 'react'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { Calendar } from '../calendar/Calendar'
@@ -25,7 +24,7 @@ export const DatePicker = props => {
   const [selectedDate, setSelectedDate] = React.useState(new Date())
 
   const className = ComponentHelper.composeClass('nbsp-ui-date-picker')
-  const style = CompatStyleComposer.compose(props)
+  const style = ComponentHelper.composeStyle(props)
 
   return (
     <div className={className} style={style}>

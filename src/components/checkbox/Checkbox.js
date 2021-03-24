@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Checkbox.scss'
 
@@ -17,7 +16,7 @@ export const Checkbox = props => {
     'nbsp-ui-checkbox',
     { use: 'nbsp-ui-checkbox-checked', if: checked }
   )
-  const style = CompatStyleComposer.compose(props)
+  const style = ComponentHelper.composeStyle(props)
 
   return (
     <div

@@ -1,5 +1,4 @@
 import React from 'react'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Label.scss'
 
@@ -26,7 +25,7 @@ export const Label = props => {
   const [state, setState] = React.useState(props)
 
   const className = ComponentHelper.composeClass('nbsp-ui-label', props.className)
-  const style = CompatStyleComposer.compose(state)
+  const style = ComponentHelper.composeStyle(state)
 
   React.useEffect(() => ComponentHelper.generateHook(props.hook, toLever(state, setState)), [])
 

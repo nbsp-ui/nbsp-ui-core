@@ -1,5 +1,5 @@
 import React from 'react'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './SVGIcon.scss'
 
 /**
@@ -10,11 +10,8 @@ import './SVGIcon.scss'
 export const SVGIcon = props => {
   const { icon } = props
 
-  const style = CompatStyleComposer.compose(props)
+  const className = ComponentHelper.composeClass('nbsp-ui-svg-icon')
+  const style = ComponentHelper.composeStyle(props)
 
-  return (
-    <div className="nbsp-ui-svg-icon" style={style}>
-      {icon}
-    </div>
-  )
+  return <div className={className} style={style}>{icon}</div>
 }

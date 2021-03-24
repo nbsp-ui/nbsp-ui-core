@@ -1,5 +1,4 @@
 import React from 'react'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Button.scss'
 
@@ -27,7 +26,7 @@ export const Button = props => {
     { use: 'nbsp-ui-button-icon', if: type === CompatButtonType.Icon },
     props.className
   )
-  const style = CompatStyleComposer.compose(props)
+  const style = ComponentHelper.composeStyle(props)
 
   return (
     <div className={className} style={style}>

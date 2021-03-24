@@ -1,6 +1,5 @@
 import React from 'react'
 import { CompatLocalization } from '../../utils/CompatLocalization'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import '../behavior.scss'
@@ -18,7 +17,7 @@ export const Calendar = props => {
   const [selected_date, select_date] = React.useState(new Date(value.getFullYear(), value.getMonth(), value.getDate()))
 
   const className = ComponentHelper.composeClass('nbsp-ui-calendar')
-  const style = CompatStyleComposer.compose(props)
+  const style = ComponentHelper.composeStyle(props)
 
   const current_date = new Date()
 

@@ -1,7 +1,6 @@
 import React from 'react'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
-import './Box.scss'
 import { ComponentHelper } from '../../utils/ComponentHelper'
+import './Box.scss'
 
 /**
  * @param {BoxProps} props
@@ -12,7 +11,7 @@ export const Box = props => {
   const { children, onClick } = props
 
   const className = ComponentHelper.composeClass('nbsp-ui-box', props.className)
-  const style = CompatStyleComposer.compose(props)
+  const style = ComponentHelper.composeStyle(props)
 
   return (
     <div className={className} style={style} onClick={onClick}>

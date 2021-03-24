@@ -1,6 +1,5 @@
 import React from 'react'
 import { CompatAlign } from '../../utils/CompatAlign'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { Box } from '../box/Box'
@@ -20,7 +19,7 @@ export const Table = props => {
   }))])
   const [items, setItems] = React.useState([...props.data])
 
-  const style = CompatStyleComposer.compose(props)
+  const style = ComponentHelper.composeStyle(props)
 
   const sort = () => {
     const column = columns.find(column => column._sortedByAsc || column._sortedByDesc)

@@ -1,5 +1,4 @@
 import React from 'react'
-import { CompatStyleComposer } from '../../utils/CompatStyleComposer'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Popup.scss'
@@ -39,7 +38,7 @@ export const Popup = props => {
       left: `${rect.width}px`,
       transform: 'translateX(-50%)'
     } : {}),
-    ...CompatStyleComposer.compose(props)
+    ...ComponentHelper.composeStyle(props)
   }
 
   return (
