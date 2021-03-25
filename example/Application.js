@@ -51,7 +51,7 @@ export const Application = () =>
       <DatePicker label='Date' labelWidth={140} placeholder='Date' width={400} margin={{ bottom: 8 }}/>
       <Select
         width={400}
-        margin={{ bottom: 1008 }}
+        margin={{ bottom: 8 }}
         label={'Country'}
         labelWidth={140}
         placeholder={'Country'}
