@@ -8,6 +8,11 @@ const ids = {
   input: CompatUtils.uid()
 }
 
+const openIcons = {
+  UP: 'fas fa-chevron-up',
+  DOWN: 'fas fa-chevron-down'
+}
+
 /**
  * @param {SelectProps} props
  * @return {JSX.Element}
@@ -24,6 +29,7 @@ export const Select = props => {
   } = props
 
   const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
+  const [openIcon, setOpenIcon] = React.useState(pickerDisplayed ? openIcons.UP : openIcons.DOWN)
 
   const className = ComponentHelper.composeClass('nbsp-ui-select', props.className)
   const style = ComponentHelper.composeStyle(props)
@@ -36,13 +42,19 @@ export const Select = props => {
         labelWidth={labelWidth}
         fit={fit}
         placeholder={placeholder}
-        after={<FAIcon margin={{ top: 3 }} icon='fas fa-chevron-down'/>}
-        afterOnClick={() => setPickerDisplayed(!pickerDisplayed)}
+        after={<FAIcon margin={{ top: 3 }} icon={openIcon}/>}
+        afterOnClick={() => {
+          setOpenIcon(!pickerDisplayed ? openIcons.UP : openIcons.DOWN)
+          setPickerDisplayed(!pickerDisplayed)
+        }}
       />
       <Popup
         to={CompatUtils.$$(ids.input)}
         showRequested={pickerDisplayed}
-        onBlur={() => setPickerDisplayed(false)}
+        onBlur={() => {
+          setOpenIcon(openIcons.DOWN)
+          setPickerDisplayed(false)
+        }}
       >
         {props.listHeader && <div className='header' onClick={props.listHeaderOnClick}>{ props.listHeader() }</div>}
         <List
