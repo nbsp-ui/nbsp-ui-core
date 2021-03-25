@@ -96,6 +96,8 @@ export const ComponentHelper = {
 
     'backgroundColor': ({ backgroundColor }) => ({ ...(backgroundColor ? { backgroundColor } : {}) }),
 
-    'borderColor': ({ borderColor }) => ({ ...(borderColor ? { borderColor } : {}) })
+    'borderColor': ({ borderColor }) => ({ ...(borderColor ? { borderColor } : {}) }),
+
+    'fontSize': ({ fontSize }) => ({ ...(fontSize ? { fontSize } : {}) })
   }
 }
