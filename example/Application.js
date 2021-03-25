@@ -176,7 +176,7 @@ export const Application = () =>
         fontSize={14}
         row={
           (item) =>
-            <Box vAlign={CompatAlign.Center}>
+            <Box vAlign={CompatAlign.Center} height={20}>
               {
                 (item.value.length > 7 || item.value.length < 7)
                   ?
