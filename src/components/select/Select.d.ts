@@ -6,22 +6,24 @@ import { ListItem } from "../list/List";
 export interface SelectProps extends BaseProps {
     label?: string
     labelWidth?: number
+    value?: any
     placeholder?: string
     fontSize?: number
+    searchable?: boolean
     multiselect?: boolean
 
     data?: ListItem[] | {}[]
 
     // @ts-ignore
-    listHeader?: () => JSX.Element
+    header?: () => JSX.Element
     // @ts-ignore
-    listRow?: () => JSX.Element
+    row?: () => JSX.Element
     // @ts-ignore
-    listFooter?: () => JSX.Element
+    footer?: () => JSX.Element
 
-    listHeaderOnClick?: (event: MouseEvent) => void
-    listFooterOnClick?: (event: MouseEvent) => void
-    onSelectChange?: (updatedItem: {}, oldItem: {}) => void
+    headerOnClick?: (event: MouseEvent) => void
+    footerOnClick?: (event: MouseEvent) => void
+    onSelectChange?: (updatedItem: ListItem | {}, oldItem: ListItem | {}, allSelectedItems: ListItem[] | {}[]) => void
 }
 
 export const Select: React.FunctionComponent<SelectProps>

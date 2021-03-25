@@ -28,8 +28,13 @@ export const Select = props => {
     onSelectChange
   } = props
 
+  const [value, setValue] = React.useState(props.value || '')
   const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
   const [openIcon, setOpenIcon] = React.useState(pickerDisplayed ? openIcons.UP : openIcons.DOWN)
+
+  const updateInputContent = (items) => {
+    items.length === 1 && setValue(items[0].value)
+  }
 
   const className = ComponentHelper.composeClass('nbsp-ui-select', props.className)
   const style = ComponentHelper.composeStyle(props)
@@ -40,6 +45,7 @@ export const Select = props => {
         id={ids.input}
         label={label}
         labelWidth={labelWidth}
+        value={value}
         fit={fit}
         placeholder={placeholder}
         after={<FAIcon margin={{ top: 3 }} icon={openIcon}/>}
@@ -51,21 +57,25 @@ export const Select = props => {
       <Popup
         to={CompatUtils.$$(ids.input)}
         showRequested={pickerDisplayed}
-        onBlur={() => {
+        onLeave={() => {
           setOpenIcon(openIcons.DOWN)
           setPickerDisplayed(false)
         }}
       >
-        {props.listHeader && <div className='header' onClick={props.listHeaderOnClick}>{ props.listHeader() }</div>}
+        { props.header && <div className='header' onClick={props.headerOnClick}>{ props.header() }</div> }
+        { props.searchable && <div className='search'>Search</div>}
         <List
           width={300}
           height={300}
-          onChange={(updatedItem, oldItem) => onSelectChange(updatedItem, oldItem)}
+          onChange={(updatedItem, oldItem, allSelectedItems) => {
+            updateInputContent(allSelectedItems)
+            onSelectChange(updatedItem, oldItem, allSelectedItems)
+          }}
           multiselect={props.multiselect}
           data={props.data}
-          row={props.listRow}
+          row={props.row}
         />
-        {props.listFooter && <div className='footer' onClick={props.listFooterOnClick}>{ props.listFooter() }</div>}
+        { props.footer && <div className='footer' onClick={props.footerOnClick}>{ props.footer() }</div> }
       </Popup>
     </div>
   )
