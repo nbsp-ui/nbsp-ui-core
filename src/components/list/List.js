@@ -10,7 +10,7 @@ import './List.scss'
  * @constructor
  */
 export const List = props => {
-  const { onChange } = props
+  const { multiselect, onChange } = props
 
   const [items, setItems] = React.useState([...props.data].map(item => ({
     ...item,
@@ -19,11 +19,12 @@ export const List = props => {
   })))
 
   const selectItem = (item) => {
-    const updatedItem = {...item}, condition = !item._selected
+    const updatedItem = { ...item }, condition = !item._selected
 
     updatedItem._selected = condition
     onChange && onChange(item, updatedItem)
 
+    multiselect || items.map(item => item._selected = false)
     items.find(i => i.id === item.id)._selected = condition
     setItems([...items])
   }
