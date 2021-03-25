@@ -1,6 +1,6 @@
 // @ts-ignore
 import React from "react"
-import { CompatIndent } from "../../utils/CompatIndent"
+import { BaseProps } from "../types"
 
 export interface ListItem {
     id: number | string
@@ -8,12 +8,9 @@ export interface ListItem {
     _selected: boolean
 }
 
-export interface ListProps {
-    className?: string
-    value?: string
+export interface ListProps extends BaseProps {
     color?: string
-    padding?: CompatIndent
-    margin?: CompatIndent
+    fontSize?: number
     data?: ListItem[] | {}[]
 
     // @ts-ignore
