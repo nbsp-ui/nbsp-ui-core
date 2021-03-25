@@ -29,11 +29,13 @@ export const Select = props => {
   } = props
 
   const [value, setValue] = React.useState(props.value || '')
+  const [selectedItems, setSelectedItems] = React.useState([])
   const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
   const [openIcon, setOpenIcon] = React.useState(pickerDisplayed ? openIcons.UP : openIcons.DOWN)
 
   const updateInputContent = (items) => {
-    items.length === 1 && setValue(items[0].value)
+    setValue(items.length > 1 ? `${items.length} items selected` : items[0]?.value || '')
+    setSelectedItems(items)
   }
 
   const className = ComponentHelper.composeClass('nbsp-ui-select', props.className)
@@ -67,9 +69,9 @@ export const Select = props => {
         <List
           width={300}
           height={300}
-          onChange={(updatedItem, oldItem, allSelectedItems) => {
-            updateInputContent(allSelectedItems)
-            onSelectChange(updatedItem, oldItem, allSelectedItems)
+          onChange={(updatedItem, oldItem, selectedItems) => {
+            updateInputContent(selectedItems)
+            onSelectChange(updatedItem, oldItem, selectedItems)
           }}
           multiselect={props.multiselect}
           data={props.data}

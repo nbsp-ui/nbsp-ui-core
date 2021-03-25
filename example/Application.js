@@ -75,6 +75,7 @@ export const Application = () =>
         }
         footerOnClick={ () => console.log('footer click') }
         onSelectChange={(updatedItem, oldItem) => console.log(updatedItem, oldItem)}
+        multiselect
         data={[
           { id: 1, value: 'Albania' },
           { id: 2, value: 'Algeria' },

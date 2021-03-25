@@ -23,7 +23,7 @@ export interface SelectProps extends BaseProps {
 
     headerOnClick?: (event: MouseEvent) => void
     footerOnClick?: (event: MouseEvent) => void
-    onSelectChange?: (updatedItem: ListItem | {}, oldItem: ListItem | {}, allSelectedItems: ListItem[] | {}[]) => void
+    onSelectChange?: (updatedItem: ListItem | {}, oldItem: ListItem | {}, selectedItems: ListItem[] | {}[]) => void
 }
 
 export const Select: React.FunctionComponent<SelectProps>

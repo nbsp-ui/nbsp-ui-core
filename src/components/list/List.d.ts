@@ -17,7 +17,7 @@ export interface ListProps extends BaseProps {
     // @ts-ignore
     row: (item?: ListItem | {}) => JSX.Element
 
-    onChange?: (updatedItem: ListItem | {}, oldItem: ListItem | {}, allSelectedItems: ListItem[] | {}[]) => void
+    onChange?: (updatedItem: ListItem | {}, oldItem: ListItem | {}, selectedItems: ListItem[] | {}[]) => void
 }
 
 export const List: React.FunctionComponent<ListProps>
