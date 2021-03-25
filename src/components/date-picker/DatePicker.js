@@ -47,6 +47,7 @@ export const DatePicker = props => {
         <Calendar
           value={value}
           width={300}
+          padding={16}
           onChange={date => {
             setSelectedDate(date)
             setPickerDisplayed(false)
