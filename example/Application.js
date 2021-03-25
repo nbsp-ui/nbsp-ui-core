@@ -56,28 +56,25 @@ export const Application = () =>
         labelWidth={140}
         placeholder={'Country'}
         fontSize={14}
-        listHeader={ () => <Label value='Header'/> }
-        listHeaderOnClick={ () => console.log('header click') }
-        listRow={
+        headerOnClick={ () => console.log('header click') }
+        row={
           (item) =>
-            <Box>
+            <Box vAlign={CompatAlign.Center} height={20}>
               {
                 (item.value.length > 7 || item.value.length < 7)
                   ?
-                  <Box width={30} margin={{ top: -4, left: -10 }}>
+                  <Box width={30}>
                     <FAIcon icon='far fa-star'/>
                   </Box>
                   :
-                  <Box width={30} margin={{ top: -4, left: -10 }}>
+                  <Box width={30}>
                   </Box>
               }
               <span>{item.value}</span>
             </Box>
         }
-        listFooter={ () => <Label value='Footer'/> }
-        listFooterOnClick={ () => console.log('footer click') }
+        footerOnClick={ () => console.log('footer click') }
         onSelectChange={(updatedItem, oldItem) => console.log(updatedItem, oldItem)}
-        multiselect
         data={[
           { id: 1, value: 'Albania' },
           { id: 2, value: 'Algeria' },
@@ -178,15 +175,15 @@ export const Application = () =>
         fontSize={14}
         row={
           (item) =>
-            <Box>
+            <Box vAlign={CompatAlign.Center}>
               {
                 (item.value.length > 7 || item.value.length < 7)
                   ?
-                  <Box width={30} margin={{ top: -4, left: -10 }}>
+                  <Box width={30}>
                     <FAIcon icon='far fa-star'/>
                   </Box>
                   :
-                  <Box width={30} margin={{ top: -4, left: -10 }}>
+                  <Box width={30}>
                   </Box>
               }
               <span>{item.value}</span>

@@ -1,13 +1,8 @@
 @import "../colors";
 
 .nbsp-ui-list {
-  margin: 2px;
   font-family: "Roboto", sans-serif;
-  overflow-y: hidden;
-
-  &:hover {
-    overflow-y: auto;
-  }
+  overflow-y: auto;
 
   & > .item:hover {
     cursor: pointer;
@@ -18,7 +13,7 @@
   & > .item {
     border-left: 1px solid transparent;
     color: $light-text-color;
-    padding: 12px 48px 12px 1.5rem;
+    padding: 7px 0 7px 0;
     transition: 0.2s linear;
 
     &-selected {
