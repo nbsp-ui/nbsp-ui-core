@@ -20,14 +20,18 @@ export const List = props => {
 
   const selectItem = (item) => {
     const updatedItem = { ...item }, condition = !item._selected
-
     updatedItem._selected = condition
-    onChange && onChange(item, updatedItem)
 
     multiselect || items.map(item => item._selected = false)
     items.find(i => i.id === item.id)._selected = condition
     setItems([...items])
+    onChange && onChange(item, updatedItem, getAllSelectedItems())
   }
+
+  /**
+   * @return {ListItem[] | {}[]}
+   */
+  const getAllSelectedItems = () => items.filter(item => item._selected)
 
   const className = ComponentHelper.composeClass('nbsp-ui-list', props.className)
   const style = ComponentHelper.composeStyle(props)
