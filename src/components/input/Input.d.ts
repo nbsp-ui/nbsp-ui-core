@@ -19,6 +19,7 @@ export interface InputProps {
     after?: React.ReactElement
     beforeOnClick?: (event: MouseEvent) => void
     afterOnClick?: (event: MouseEvent) => void
+    onChange?: (event: React.BaseSyntheticEvent) => void
 }
 
 export const Input: React.FunctionComponent<InputProps>
