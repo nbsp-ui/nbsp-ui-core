@@ -11,6 +11,7 @@ export interface SelectProps extends BaseProps {
     fontSize?: number
     searchable?: boolean
     multiselect?: boolean
+    allSelectable?: boolean
 
     data?: ListItem[] | {}[]
 

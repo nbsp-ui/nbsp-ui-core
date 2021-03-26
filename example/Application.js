@@ -76,6 +76,8 @@ export const Application = () =>
         footerOnClick={ () => console.log('footer click') }
         onSelectChange={(updatedItem, oldItem) => console.log(updatedItem, oldItem)}
         multiselect
+        searchable
+        allSelectable
         data={[
           { id: 1, value: 'Albania' },
           { id: 2, value: 'Algeria' },
