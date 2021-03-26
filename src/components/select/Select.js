@@ -2,15 +2,16 @@ import React from 'react'
 import { ComponentHelper } from "../../utils/ComponentHelper"
 import { CompatUtils } from "../../utils/CompatUtils"
 import './Select.scss'
-import {FAIcon, Input, List, Popup} from "../.."
+import { Box } from "../box/Box"
+import { Button, CompatButtonType } from "../button/Button"
+import { FAIcon } from "../fa-icon/FAIcon"
+import { Input } from "../input/Input"
+import { List } from "../list/List"
+import { Popup } from "../popup/Popup"
+import { CompatAlign } from "../../utils/CompatAlign";
 
 const ids = {
   input: CompatUtils.uid()
-}
-
-const openIcons = {
-  UP: 'fas fa-chevron-up',
-  DOWN: 'fas fa-chevron-down'
 }
 
 /**
@@ -28,14 +29,16 @@ export const Select = props => {
     onSelectChange
   } = props
 
+  const openIcons = {
+    UP: 'fas fa-chevron-up',
+    DOWN: 'fas fa-chevron-down'
+  }
+
   const [value, setValue] = React.useState(props.value || '')
-  const [selectedItems, setSelectedItems] = React.useState([])
   const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
-  const [openIcon, setOpenIcon] = React.useState(pickerDisplayed ? openIcons.UP : openIcons.DOWN)
 
   const updateInputContent = (items) => {
     setValue(items.length > 1 ? `${items.length} items selected` : items[0]?.value || '')
-    setSelectedItems(items)
   }
 
   const className = ComponentHelper.composeClass('nbsp-ui-select', props.className)
@@ -50,22 +53,20 @@ export const Select = props => {
         value={value}
         fit={fit}
         placeholder={placeholder}
-        after={<FAIcon margin={{ top: 3 }} icon={openIcon}/>}
-        afterOnClick={() => {
-          setOpenIcon(!pickerDisplayed ? openIcons.UP : openIcons.DOWN)
-          setPickerDisplayed(!pickerDisplayed)
-        }}
+        after={<FAIcon margin={{ top: 3 }} icon={pickerDisplayed ? openIcons.UP : openIcons.DOWN}/>}
+        afterOnClick={() => setPickerDisplayed(!pickerDisplayed)}
       />
       <Popup
         to={CompatUtils.$$(ids.input)}
         showRequested={pickerDisplayed}
-        onLeave={() => {
-          setOpenIcon(openIcons.DOWN)
-          setPickerDisplayed(false)
-        }}
+        onLeave={() => setPickerDisplayed(false)}
       >
         { props.header && <div className='header' onClick={props.headerOnClick}>{ props.header() }</div> }
-        { props.searchable && <div className='search'>Search</div>}
+        {
+          props.searchable
+          &&
+          <Input className='search' padding={8} placeholder='Search...' />
+        }
         <List
           width={300}
           height={300}
@@ -77,6 +78,13 @@ export const Select = props => {
           data={props.data}
           row={props.row}
         />
+        {
+          props.allSelectable
+          &&
+          <Box padding={8} hAlign={CompatAlign.Center} onClick={() => {}}>
+            <Button type={CompatButtonType.Primary} label='Select all' margin={{ right: 8 }} />
+          </Box>
+        }
         { props.footer && <div className='footer' onClick={props.footerOnClick}>{ props.footer() }</div> }
       </Popup>
     </div>
