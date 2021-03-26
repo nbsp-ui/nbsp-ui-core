@@ -3,7 +3,7 @@ import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Label.scss'
 
 /**
- * @param {LabelProps} state
+ * @param {{}} state
  * @param {function} setState
  * @return {LabelLever}
  */
@@ -22,17 +22,13 @@ const toLever = (state, setState) => ({
  * @constructor
  */
 export const Label = props => {
-  const [state, setState] = React.useState(props)
-
   const className = ComponentHelper.composeClass('nbsp-ui-label', props.className)
-  const style = ComponentHelper.composeStyle(state)
-
-  React.useEffect(() => ComponentHelper.generateHook(props.hook, toLever(state, setState)), [])
+  const style = ComponentHelper.composeStyle(props)
 
   return (
     <div className={className}>
       <span style={style}>
-        {state.value}
+        {props.value}
       </span>
     </div>
   )
