@@ -24,7 +24,7 @@ export const List = props => {
 
     updatedItem._selected = condition
 
-    multiselect || unSelectAll()
+    multiselect || unselectAll()
     items.find(i => i._id === item._id)._selected = condition
     setItems([...items])
     onChange && onChange(oldItem, updatedItem, getSelectedItems())
@@ -41,7 +41,7 @@ export const List = props => {
     onChange && onChange(null, null, getSelectedItems())
   }
 
-  const unSelectAll = () => {
+  const unselectAll = () => {
     items.map(item => item._selected = false)
     setItems([...items])
     onChange && onChange(null, null, getSelectedItems())
@@ -67,6 +67,10 @@ export const List = props => {
       ? items.forEach((item) => showItem(item))
       : items.forEach((item) => item.value.includes(props.searchValue) ? showItem(item) : hideItem(item))
   }, [props.searchValue])
+
+  React.useEffect(() => {
+    props.selectAll && (isAllSelected() ? unselectAll() : selectAll())
+  }, [props.selectAll])
 
   return (
     <div className={className} style={style}>

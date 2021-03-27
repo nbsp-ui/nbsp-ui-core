@@ -46,6 +46,8 @@ export const Select = props => {
 
   const [searchValue, setSearchValue] = React.useState('')
 
+  const [selectAll, setSelectAll] = React.useState('')
+
   return (
     <div id={id} className={className} style={style}>
       <Input
@@ -88,12 +90,12 @@ export const Select = props => {
           data={props.data}
           row={props.row}
           searchValue={searchValue}
+          selectAll={selectAll}
         />
         <div className='footer'>
           {
             props.allSelectable
-            &&
-            <Box padding={8} hAlign={CompatAlign.Center}>
+            && <Box padding={8} hAlign={CompatAlign.Center} onClick={(e) => setSelectAll(e)}>
               <Button type={CompatButtonType.Primary} label='Select all' margin={{ right: 8 }} />
             </Box>
           }

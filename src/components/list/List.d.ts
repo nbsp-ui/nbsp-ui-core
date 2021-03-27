@@ -16,6 +16,7 @@ export interface ListProps extends BaseProps {
     multiselect?: boolean
     data?: ListItem[] | {}[]
     searchValue?: string
+    selectAll?: MouseEvent
 
     // @ts-ignore
     row: (item?: ListItem | {}) => JSX.Element
