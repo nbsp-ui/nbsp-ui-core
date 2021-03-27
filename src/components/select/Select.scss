@@ -4,11 +4,12 @@
   font-family: "Roboto", sans-serif;
   position: relative;
 
-  &-header {
-
+  & > .nbsp-ui-popup > .content > .header {
+    border-bottom: 1px solid #EEEEEE;
   }
 
-  &-footer {
-
+  & > .nbsp-ui-popup > .content > .footer {
+    border-top: 1px solid #EEEEEE;
   }
+
 }

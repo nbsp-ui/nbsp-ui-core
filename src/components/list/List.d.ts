@@ -3,9 +3,11 @@ import React from "react"
 import { BaseProps } from "../types"
 
 export interface ListItem {
-    id: number | string
-
+    _id: number
     _selected: boolean
+    _hidden: boolean
+
+    value: any
 }
 
 export interface ListProps extends BaseProps {
@@ -13,6 +15,7 @@ export interface ListProps extends BaseProps {
     fontSize?: number
     multiselect?: boolean
     data?: ListItem[] | {}[]
+    searchValue?: string
 
     // @ts-ignore
     row: (item?: ListItem | {}) => JSX.Element

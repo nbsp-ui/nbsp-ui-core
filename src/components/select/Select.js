@@ -44,6 +44,8 @@ export const Select = props => {
   const className = ComponentHelper.composeClass('nbsp-ui-select', props.className)
   const style = ComponentHelper.composeStyle(props)
 
+  const [searchValue, setSearchValue] = React.useState('')
+
   return (
     <div id={id} className={className} style={style}>
       <Input
@@ -61,12 +63,20 @@ export const Select = props => {
         showRequested={pickerDisplayed}
         onLeave={() => setPickerDisplayed(false)}
       >
-        { props.header && <div className='header' onClick={props.headerOnClick}>{ props.header() }</div> }
-        {
-          props.searchable
-          &&
-          <Input className='search' padding={8} placeholder='Search...' />
-        }
+        <div className='header'>
+          { props.header && <div onClick={props.headerOnClick}>{ props.header() }</div> }
+          {
+            props.searchable
+            &&
+            <Input
+              className='search'
+              padding={8}
+              placeholder='Search...'
+              value={searchValue}
+              onChange ={(e) => setSearchValue(e.target.value)}
+            />
+          }
+        </div>
         <List
           width={300}
           height={300}
@@ -77,15 +87,18 @@ export const Select = props => {
           multiselect={props.multiselect}
           data={props.data}
           row={props.row}
+          searchValue={searchValue}
         />
-        {
-          props.allSelectable
-          &&
-          <Box padding={8} hAlign={CompatAlign.Center} onClick={() => {}}>
-            <Button type={CompatButtonType.Primary} label='Select all' margin={{ right: 8 }} />
-          </Box>
-        }
-        { props.footer && <div className='footer' onClick={props.footerOnClick}>{ props.footer() }</div> }
+        <div className='footer'>
+          {
+            props.allSelectable
+            &&
+            <Box padding={8} hAlign={CompatAlign.Center}>
+              <Button type={CompatButtonType.Primary} label='Select all' margin={{ right: 8 }} />
+            </Box>
+          }
+          { props.footer && <div onClick={props.footerOnClick}>{ props.footer() }</div> }
+        </div>
       </Popup>
     </div>
   )
