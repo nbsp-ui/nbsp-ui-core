@@ -15,13 +15,17 @@ import {
   Tag,
   VDivider,
   Select,
-  Loader
+  Loader,
+  Progress
 } from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
 
 window['testHook'] = {}
 
 export const Application = () => {
+
+  const [progressValue, setProgressValue] = React.useState(50)
+
   return (
     <Box vertical>
       <DesktopHeader title='Прототип модуля' subtitle='React & Custom components'/>
@@ -119,6 +123,23 @@ export const Application = () => {
           <Label width={140} value={'Loader'} color={'#757575'} />
           <Box width={430} hAlign={CompatAlign.Center}>
             <Loader />
+          </Box>
+        </Box>
+        <Box vertical>
+          <Input
+            label='Percentage'
+            labelWidth={140}
+            width={400}
+            margin={{ bottom: 8 }}
+            value={progressValue}
+            onChange={(e) => setProgressValue(e.target.value)}
+          />
+          <Box margin={{ bottom: 8 }}>
+            <Button type={CompatButtonType.Outline} label='25%' margin={{ right: 8 }} onClick={() => setProgressValue(25)}/>
+            <Button type={CompatButtonType.Outline} label='50%' margin={{ right: 8 }} onClick={() => setProgressValue(50)}/>
+            <Button type={CompatButtonType.Outline} label='75%' margin={{ right: 8 }} onClick={() => setProgressValue(75)}/>
+            <Button type={CompatButtonType.Outline} label='100%' margin={{ right: 8 }} onClick={() => setProgressValue(100)}/>
+            <Progress progress={progressValue} radius={50} padding={{ left: 16 }} valueDisplay/>
           </Box>
         </Box>
         <Checkbox
