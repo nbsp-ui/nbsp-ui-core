@@ -29,7 +29,7 @@ export const Button = props => {
   const style = ComponentHelper.composeStyle(props)
 
   return (
-    <div className={className} style={style}>
+    <div className={className} style={style} onClick={props.onClick}>
       {label && <p>{label}</p>}
       {props.icon}
     </div>
