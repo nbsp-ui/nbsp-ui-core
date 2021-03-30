@@ -15,7 +15,7 @@ export const Loader = props => {
 
   return (
     <div id={id} className={className} style={style}>
-      <div className="profile-main-loader" style={{ width: props.width, height: props.height }}>
+      <div className="profile-main-loader" style={{ width: props.width, height: props.width, justifyContent: 'center' }}>
         <div className="loader">
           <svg className="circular-loader" viewBox={`${50/2} ${50/2} ${50} ${50}`}>
             <circle
@@ -37,7 +37,6 @@ export const Loader = props => {
 
 Loader.defaultProps = {
   width: 100,
-  height: 100,
   stroke: '#1E88E5',
   strokeWidth: 2,
   strokeLinecap: 'round'
