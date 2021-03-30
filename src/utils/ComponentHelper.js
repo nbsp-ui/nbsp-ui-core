@@ -11,9 +11,30 @@ export const ComponentHelper = {
 
   /**
    * @param {string | ClassContract | (string | ClassContract)[]} properties
+   * @return {string}
    */
   composeClass: (...properties) => properties.map(property => !property || typeof property === 'string' ? property : property.if && property.use).filter(value => value).join(' '),
 
+  /**
+   * @param {{}} hook
+   * @param {{}} lever
+   */
+  generateHook: (hook, lever) => hook && Object.assign(hook, lever),
+
+  /**
+   * @param {{}} props
+   * @returns {{}}
+   */
+  extractListeners: props => Object.keys(props).filter(key => key.startsWith('on')).reduce((result, key) => ({
+    ...result,
+    [key]: props[key]
+  }), {}),
+
+  /**
+   * @param {{}} props
+   * @param {{}} [mappers]
+   * @return {React.CSSProperties}
+   */
   composeStyle: function(props, mappers) {
     const combination = {
       ...this.mappers,
@@ -26,12 +47,6 @@ export const ComponentHelper = {
       .reduce((style, mapper) => ({ ...style, ...mapper(props) }), {})
   },
 
-  /**
-   * @param {{}} hook
-   * @param {{}} lever
-   */
-  generateHook: (hook, lever) => hook && Object.assign(hook, lever),
-
   mappers: {
     'vertical': ({ vertical }) => ({ flexDirection: vertical ? 'column' : 'row' }),
 
@@ -40,14 +55,18 @@ export const ComponentHelper = {
     }),
 
     'width': ({ width, height }) => ({
-      width: `${width}px`,
-      maxWidth: `${width}px`,
+      ...width && {
+        width: `${width}px`,
+        maxWidth: `${width}px`
+      },
       flexBasis: width || height ? 'auto' : 0
     }),
 
     'height': ({ width, height }) => ({
-      height: `${height}px`,
-      maxHeight: `${height}px`,
+      ...height && {
+        height: `${height}px`,
+        maxHeight: `${height}px`
+      },
       flexBasis: width || height ? 'auto' : 0
     }),
 

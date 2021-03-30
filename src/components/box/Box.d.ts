@@ -8,8 +8,6 @@ export interface BoxProps extends BaseProps, Containable {
     reversed?: boolean
     vAlign?: CompatAlign
     hAlign?: CompatAlign
-
-    onClick: React.MouseEventHandler
 }
 
 export const Box: React.FunctionComponent<BoxProps>

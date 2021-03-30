@@ -8,14 +8,17 @@ import './Box.scss'
  * @constructor
  */
 export const Box = props => {
-  const { children, onClick } = props
-
   const className = ComponentHelper.composeClass('nbsp-ui-box', props.className)
   const style = ComponentHelper.composeStyle(props)
 
   return (
-    <div className={className} style={style} onClick={onClick}>
-      {children}
+    <div
+      className={className}
+      style={style}
+      ref={props.reference}
+      {...ComponentHelper.extractListeners(props)}
+    >
+      {props.children}
     </div>
   )
 }
