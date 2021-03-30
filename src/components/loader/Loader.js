@@ -15,31 +15,30 @@ export const Loader = props => {
 
   return (
     <div id={id} className={className} style={style}>
-      <svg
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        x="0px"
-        y="0px"
-        width={100}
-        height={100}
-        viewBox={`0 0 100px 100px`}
-        enableBackground="new 0 0 0 0"
-      >
-        <path
-          fill="#9E9E9E"
-          d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50"
-        >
-          <animateTransform
-            attributeName="transform"
-            attributeType="XML"
-            type="rotate"
-            dur="1s"
-            from="0 50 50"
-            to="360 50 50"
-            repeatCount="indefinite"
-          />
-        </path>
-      </svg>
+      <div className="profile-main-loader" style={{ width: props.width, height: props.height }}>
+        <div className="loader">
+          <svg className="circular-loader" viewBox={`${50/2} ${50/2} ${50} ${50}`}>
+            <circle
+              className="loader-path"
+              cx={50}
+              cy={50}
+              r="20"
+              fill="none"
+              stroke={props.stroke}
+              strokeWidth={props.strokeWidth}
+              strokeLinecap={props.strokeLinecap}
+            />
+          </svg>
+        </div>
+      </div>
     </div>
   )
+}
+
+Loader.defaultProps = {
+  width: 100,
+  height: 100,
+  stroke: '#1E88E5',
+  strokeWidth: 2,
+  strokeLinecap: 'round'
 }
