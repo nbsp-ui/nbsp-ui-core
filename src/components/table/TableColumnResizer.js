@@ -11,7 +11,7 @@ import { ReactHelper } from '../../utils/ReactHelper'
  * @constructor
  */
 export const TableColumnResizer = ({ reference, parent, onDragStart, onDragEnd }) => {
-  const [_, setDragged, draggedRef] = ReactHelper.useReferredState(false)
+  const [, setDragged, draggedRef] = ReactHelper.useReferredState(false)
   const [offset, setOffset] = React.useState(0)
 
   /**
@@ -69,8 +69,8 @@ export const TableColumnResizer = ({ reference, parent, onDragStart, onDragEnd }
           const parentRect = parent.getBoundingClientRect()
 
           return {
-            left: `${parentRect.x + parentRect.width - 2 + offset}px`,
-            top: `${parentRect.y}px`,
+            left: `${parentRect.left + parentRect.width - 2 + offset}px`,
+            top: `${parentRect.top + window.scrollY}px`,
             height: `${parentRect.height}px`
           }
         })() : {})
