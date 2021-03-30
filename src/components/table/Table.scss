@@ -1,16 +1,24 @@
 @import "../colors";
 
 .nbsp-ui-table {
+  border-bottom: 1px solid $border-color;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 
-  border-bottom: 1px solid $border-color;
+  & > .resizer {
+    position: absolute;
+    width: 3px;
+    background-color: $accent-color;
+    cursor: col-resize;
+    user-select: none;
+  }
 
   & > .header {
     & > div {
       border-top: 1px solid $border-color;
       border-bottom: 1px solid $border-color;
+      user-select: none;
       transition: background-color .2s, border-color .2s;
     }
 
@@ -28,23 +36,26 @@
       border-right: 1px solid #EEEEEE;
     }
 
-    & > .sorted-by-asc {
+    .sorted-by-asc {
       border-bottom-color: $accent-color;
     }
 
-    & > .sorted-by-desc {
+    .sorted-by-desc {
       border-top-color: $accent-color;
     }
   }
 
   & > .rows {
-    & > div {
-      border-left: 1px solid $border-color;
-      border-right: 1px solid $border-color;
+    & > div:not(:last-child) > div {
+      border-bottom: 1px solid #EEEEEE;
     }
 
-    & > div:not(:last-child) {
-      border-bottom: 1px solid #EEEEEE;
+    & > div > div:first-child {
+      border-left: 1px solid $border-color;
+    }
+
+    & > div > div:last-child {
+      border-right: 1px solid $border-color;
     }
 
     & > div > div:not(:last-child) {
@@ -54,8 +65,14 @@
 
   & > .footer {
     border-top: 1px solid $border-color;
-    border-left: 1px solid $border-color;
-    border-right: 1px solid $border-color;
+
+     & > div:first-child {
+       border-left: 1px solid $border-color;
+     }
+
+    & > div:last-child {
+      border-right: 1px solid $border-color;
+    }
 
     & > div:not(:last-child) {
       border-right: 1px solid #EEEEEE;
