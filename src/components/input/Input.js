@@ -27,7 +27,14 @@ export const Input = props => {
         { use: 'before-clickable', if: props.beforeOnClick }
       )} onClick={props.beforeOnClick}>{before}</div>}
 
-      <input type='text' placeholder={props.placeholder} readOnly={readOnly} value={value} onChange={props.onChange}/>
+      <input
+        type='text'
+        placeholder={props.placeholder}
+        readOnly={readOnly}
+        value={value}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+      />
 
       {after && <div className={ComponentHelper.composeClass(
         'after',

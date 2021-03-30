@@ -20,6 +20,7 @@ export interface InputProps {
     beforeOnClick?: (event: MouseEvent) => void
     afterOnClick?: (event: MouseEvent) => void
     onChange?: (event: React.BaseSyntheticEvent) => void
+    onBlur?: (event: React.BaseSyntheticEvent) => void
 }
 
 export const Input: React.FunctionComponent<InputProps>
