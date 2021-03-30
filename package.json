@@ -18,24 +18,24 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
     "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@svgr/webpack": "^5.5.0",
-    "webpack": "^5.15.0",
-    "webpack-cli": "^4.3.1",
     "babel-loader": "^8.2.2",
-    "style-loader": "^2.0.0",
     "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
-    "file-loader": "^6.2.0"
+    "webpack": "^5.15.0",
+    "webpack-cli": "^4.3.1"
   },
   "dependencies": {
-    "date-fns": "^2.16.1",
     "@fortawesome/fontawesome-free": "^5.15.2",
+    "date-fns": "^2.16.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
