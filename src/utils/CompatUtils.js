@@ -21,10 +21,30 @@ export const CompatUtils = {
      * @param {number} x
      * @param {number} y
      * @param {DOMRect} rect
+     * @returns {boolean}
+     */
+    isBelongToElementRect: (x, y, rect) => x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height,
+
+    /**
+     * Получить признак принадлежности позиции к ограничевающей форме элемента с учётом указанного отступа
+     * @param {number} x
+     * @param {number} y
+     * @param {DOMRect} rect
      * @param {number} indent
      * @return {boolean}
      */
-    is_belong_to_element_rect_with_indent: (x, y, rect, indent) => x >= rect.x - indent && x <= rect.x + rect.width + indent && y >= rect.y - indent && y <= rect.y + rect.height + indent
+    isBelongToElementRectWithIndent: (x, y, rect, indent) => x >= rect.x - indent && x <= rect.x + rect.width + indent && y >= rect.y - indent && y <= rect.y + rect.height + indent,
+
+    /**
+     * Получить признак соответствия принадлежности позиции к окружности на плоскости
+     * @param {number} x
+     * @param {number} y
+     * @param {number} areaX
+     * @param {number} areaY
+     * @param {number} radius
+     * @returns {boolean}
+     */
+    isBelongToCircle: (x, y, areaX, areaY, radius) => Math.hypot(x - areaX, y - areaY) <= radius
   },
 
   /**

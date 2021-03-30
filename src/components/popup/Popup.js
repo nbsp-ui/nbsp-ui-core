@@ -22,8 +22,8 @@ export const Popup = props => {
   refForShowRequested.current = showRequested
   React.useEffect(() => refForShowed.current = showRequested, [showRequested])
 
-  const handleClick = e => refForShowRequested.current && refForShowed.current && !CompatUtils.math.is_belong_to_element_rect_with_indent(e.x, e.y, refForElement.current['getBoundingClientRect'](), 0) && onBlur()
-  const handleMouseMove = e => refForShowRequested.current && refForShowed.current && !CompatUtils.math.is_belong_to_element_rect_with_indent(e.x, e.y, refForElement.current['getBoundingClientRect'](), 40) && onLeave()
+  const handleClick = e => refForShowRequested.current && refForShowed.current && !CompatUtils.math.isBelongToElementRectWithIndent(e.x, e.y, refForElement.current['getBoundingClientRect'](), 0) && onBlur()
+  const handleMouseMove = e => refForShowRequested.current && refForShowed.current && !CompatUtils.math.isBelongToElementRectWithIndent(e.x, e.y, refForElement.current['getBoundingClientRect'](), 40) && onLeave()
 
   React.useEffect(() => onBlur && (document.addEventListener('click', handleClick) || true) && (() => document.removeEventListener('click', handleClick)), [onBlur])
   React.useEffect(() => onLeave && (document.addEventListener('mousemove', handleMouseMove) || true) && (() => document.removeEventListener('mousemove', handleMouseMove)), [onLeave])
