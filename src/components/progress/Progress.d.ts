@@ -25,6 +25,8 @@ export interface ProgressProps extends BaseProps {
 
     initialAnimation: boolean
     initialAnimationDelay: number
+
+    valueSize: number | string
 }
 
 export const Progress: React.FunctionComponent<ProgressProps>

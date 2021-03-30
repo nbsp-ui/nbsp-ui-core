@@ -145,7 +145,7 @@ export const Application = () => {
                 <Button type={CompatButtonType.Outline} label='100%' margin={{ top: -1, right: 8 }} onClick={() => setProgressValue(100)}/>
               </Box>
             </Box>
-            <Progress margin={{ right: -100 }} progress={progressValue} radius={40} valueDisplay/>
+            <Progress margin={{ right: -100 }} progress={progressValue} radius={40} valueDisplay />
           </Box>
         </Box>
         <Checkbox

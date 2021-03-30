@@ -112,8 +112,8 @@ export const Progress = props => {
       {
         props.valueDisplay
         &&
-        <Box className="indicator" hAlign={CompatAlign.Center}>
-          <span style={{ marginTop: -(width/2 + width/10) }}>{progress}%</span>
+        <Box className="indicator" hAlign={CompatAlign.Center} vAlign={CompatAlign.Center}>
+          <span style={{ marginTop: -(props.radius * 2 + getExtendedWidth()), fontSize: props.valueSize }}>{progress}</span>
         </Box>
       }
     </div>
@@ -133,7 +133,7 @@ Progress.defaultProps = {
   strokeLinecap: 'round',
   transition: '.3s ease',
 
-  trackStrokeColor: '#e6e6e6',
+  trackStrokeColor: '#E3F2FD',
   trackStrokeWidth: 10,
   trackStrokeLinecap: 'round',
   trackTransition: '.3s ease',
@@ -142,5 +142,7 @@ Progress.defaultProps = {
   inverse: false,
 
   initialAnimation: false,
-  initialAnimationDelay: 0
+  initialAnimationDelay: 0,
+
+  valueSize: '12pt'
 }
