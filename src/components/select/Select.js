@@ -75,8 +75,6 @@ export const Select = props => {
               padding={8}
               placeholder='Search...'
               value={searchValue}
-              after={<FAIcon margin={{ top: 1 }} icon={"fas fa-search"}/>}
-              afterOnClick={() => setSearchValue(searchValue)}
               onChange={(e) => setSearchValue(e.target.value)}
             />
           }
