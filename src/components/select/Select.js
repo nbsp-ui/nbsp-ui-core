@@ -77,7 +77,7 @@ export const Select = props => {
               value={searchValue}
               after={<FAIcon margin={{ top: 1 }} icon={"fas fa-search"}/>}
               afterOnClick={() => setSearchValue(searchValue)}
-              onChange ={(e) => setSearchValue(e.target.value)}
+              onChange={(e) => setSearchValue(e.target.value)}
             />
           }
         </div>
@@ -87,6 +87,7 @@ export const Select = props => {
           onChange={(updatedItem, oldItem, selectedItems) => {
             updateInputContent(selectedItems)
             onSelectChange(updatedItem, oldItem, selectedItems)
+            props.multiselect || setPickerDisplayed(false)
           }}
           multiselect={props.multiselect}
           data={props.data}
