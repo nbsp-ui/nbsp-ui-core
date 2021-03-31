@@ -5,6 +5,7 @@ export interface PopupProps {
     children?: React.ReactElement | React.ReactElement[]
     width?: number
     height?: number
+    translateX?: string
     to?: HTMLElement
     showRequested?: boolean
 

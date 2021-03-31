@@ -36,7 +36,7 @@ export const Popup = props => {
     ...(to ? {
       top: `${rect.height}px`,
       left: `${rect.width}px`,
-      transform: 'translateX(-50%)'
+      transform: `translateX(${props.translateX || '-50%'})`
     } : {}),
     ...ComponentHelper.composeStyle(props)
   }

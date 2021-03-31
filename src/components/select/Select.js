@@ -54,6 +54,7 @@ export const Select = props => {
         id={ids.input}
         label={label}
         labelWidth={labelWidth}
+        width={props.width || 300}
         value={value}
         fit={fit}
         placeholder={placeholder}
@@ -62,6 +63,7 @@ export const Select = props => {
       />
       <Popup
         to={CompatUtils.$$(ids.input)}
+        translateX={'-100%'}
         showRequested={pickerDisplayed}
         onLeave={() => setPickerDisplayed(false)}
       >
@@ -80,7 +82,7 @@ export const Select = props => {
           }
         </div>
         <List
-          width={300}
+          width={(props.width - (props.labelWidth || 0) - 7) || 300}
           height={300}
           onChange={(updatedItem, oldItem, selectedItems) => {
             updateInputContent(selectedItems)
