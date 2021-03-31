@@ -41,6 +41,27 @@
     }
   }
 
+  &-validation-error {
+
+    & > p {
+      color: $validation-error-color;
+    }
+
+    & > input {
+      border-color: $validation-error-color;
+    }
+
+    &:focus-within {
+      & > p {
+        color: $validation-error-color;
+      }
+
+      & > input {
+        border-color: $validation-error-color;
+      }
+    }
+  }
+
   &-disabled {
     pointer-events: none;
 

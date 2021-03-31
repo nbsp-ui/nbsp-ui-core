@@ -15,12 +15,13 @@ export interface InputProps {
     margin?: CompatIndent
     disabled?: boolean
     readOnly?: boolean
+    rule?: (value: any) => boolean
     before?: React.ReactElement
     after?: React.ReactElement
     beforeOnClick?: (event: MouseEvent) => void
     afterOnClick?: (event: MouseEvent) => void
-    onChange?: (event: React.BaseSyntheticEvent) => void
-    onBlur?: (event: React.BaseSyntheticEvent) => void
+    onChange?: (event: MouseEvent) => void
+    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
 }
 
 export const Input: React.FunctionComponent<InputProps>

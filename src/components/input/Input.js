@@ -10,9 +10,13 @@ import './Input.scss'
 export const Input = props => {
   const { id, value, label, readOnly, before, after } = props
 
+  const [valid, setValid] = React.useState(true)
+  React.useEffect(() => props.rule && setValid(props.rule(value)), [value])
+
   const className = ComponentHelper.composeClass(
     'nbsp-ui-input',
     { use: 'nbsp-ui-input-disabled', if: props.disabled },
+    { use: 'nbsp-ui-input-validation-error', if: !valid },
     { use: 'nbsp-ui-input-before', if: props.before },
     { use: 'nbsp-ui-input-after', if: props.after }
   )

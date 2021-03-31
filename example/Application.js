@@ -122,7 +122,7 @@ export const Application = () => {
         <Box margin={{ bottom: 8 }} vAlign={CompatAlign.Center}>
           <Label width={140} value={'Loader'} color={'#757575'} />
           <Box width={430} hAlign={CompatAlign.Center} vAlign={CompatAlign.Center}>
-            <Loader width={25} />
+            <Loader width={25} strokeWidth={5} />
           </Box>
         </Box>
         <Box vertical>
@@ -132,20 +132,23 @@ export const Application = () => {
             width={400}
             margin={{ bottom: 8, right: 8 }}
             value={progressValue}
+            rule={(value) => Number(value) <= 100}
             onChange={(e) => setProgressValue(e.target.value)}
           />
-          <Box width={300} hAlign={CompatAlign.Center}>
-            <Box vertical>
+          <Box width={400}>
+            <Box width={300} vertical>
               <Box vAlign={CompatAlign.Center}>
-                <Button type={CompatButtonType.Outline} label='25%' margin={{ top: -1, right: 8 }} onClick={() => setProgressValue(25)}/>
-                <Button type={CompatButtonType.Outline} label='50%' margin={{ top: -1, right: 8 }} onClick={() => setProgressValue(50)}/>
+                <Button type={CompatButtonType.Outline} label='20%' margin={{ top: -1, right: 8 }} onClick={() => setProgressValue(20)}/>
+                <Button type={CompatButtonType.Outline} label='40%' margin={{ top: -1, right: 8 }} onClick={() => setProgressValue(40)}/>
+                <Button type={CompatButtonType.Outline} label='60%' margin={{ top: -1, right: 8 }} onClick={() => setProgressValue(60)}/>
               </Box>
               <Box vAlign={CompatAlign.Center}>
-                <Button type={CompatButtonType.Outline} label='75%' margin={{ top: -1, right: 8 }} onClick={() => setProgressValue(75)}/>
+                <Button type={CompatButtonType.Outline} label='80%' margin={{ top: -1, right: 8 }} onClick={() => setProgressValue(80)}/>
                 <Button type={CompatButtonType.Outline} label='100%' margin={{ top: -1, right: 8 }} onClick={() => setProgressValue(100)}/>
+                <Button type={CompatButtonType.Outline} label='120%' margin={{ top: -1, right: 8 }} onClick={() => setProgressValue(120)}/>
               </Box>
             </Box>
-            <Progress margin={{ right: -100 }} progress={progressValue} radius={40} valueDisplay />
+            <Progress progress={progressValue} radius={40} valueDisplay />
           </Box>
         </Box>
         <Checkbox
