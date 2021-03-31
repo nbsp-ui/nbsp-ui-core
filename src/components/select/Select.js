@@ -68,18 +68,37 @@ export const Select = props => {
         onLeave={() => setPickerDisplayed(false)}
       >
         <div className='header'>
-          { props.header && <div onClick={props.headerOnClick}>{ props.header() }</div> }
           {
-            props.searchable
-            &&
-            <Input
-              className='search'
-              padding={8}
-              placeholder='Search...'
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-            />
+            <Box vAlign={CompatAlign.Center} hAlign={CompatAlign.Center}>
+              {
+                props.searchable
+                &&
+                <Input
+                  className='search'
+                  padding={8}
+                  placeholder='Search...'
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
+                />
+              }
+              {
+                props.allSelectable
+                &&
+                <Button
+                  type={CompatButtonType.Icon}
+                  icon={
+                    <FAIcon
+                      icon={'far fa-check-circle'}
+                      className='selectAllIcon'
+                      color={'#616161'}
+                      onClick={(e) => setSelectAll(e)}
+                    />
+                  }
+                />
+              }
+            </Box>
           }
+          { props.header && <div onClick={props.headerOnClick}>{ props.header() }</div> }
         </div>
         <List
           width={(props.width - (props.labelWidth || 0) - 7) || 300}
@@ -96,12 +115,6 @@ export const Select = props => {
           selectAll={selectAll}
         />
         <div className='footer'>
-          {
-            props.allSelectable
-            && <Box padding={8} hAlign={CompatAlign.Center} onClick={(e) => setSelectAll(e)}>
-              <Button type={CompatButtonType.Primary} label='Select all' margin={{ right: 8 }} />
-            </Box>
-          }
           { props.footer && <div onClick={props.footerOnClick}>{ props.footer() }</div> }
         </div>
       </Popup>

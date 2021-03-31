@@ -12,4 +12,16 @@
     border-top: 1px solid #EEEEEE;
   }
 
+  & > .nbsp-ui-popup > .content > .header {
+
+    & > .nbsp-ui-box > .nbsp-ui-button {
+      padding-top: 2px;
+      padding-left: 2px;
+
+      & > .selectAllIcon {
+        font-size: 16pt;
+      }
+    }
+  }
+
 }
