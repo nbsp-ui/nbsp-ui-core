@@ -71,12 +71,12 @@ export const Progress = props => {
   const strokeLength = (circumference / 360) * (360 - cut)
 
   return (
-    <div id={id} className={className} style={style}>
+    <div id={id} className={className} style={{ width, height: width, ...style }} data-progress={ props.valueDisplay ? progress : ''}>
       <svg
         width={width}
         height={width}
         viewBox={`0 0 ${width} ${width}`}
-        style={{ transform: `rotate(${props.rotate}deg)` }}
+        style={{ transform: `rotate(${props.rotate}deg)`, position: 'absolute' }}
       >
         {
           props.trackStrokeWidth > 0 && (
@@ -109,13 +109,6 @@ export const Progress = props => {
             />)
         }
       </svg>
-      {
-        props.valueDisplay
-        &&
-        <Box className="indicator" hAlign={CompatAlign.Center} vAlign={CompatAlign.Center}>
-          <span style={{ marginTop: -(props.radius * 2 + getExtendedWidth()), fontSize: props.valueSize }}>{progress}</span>
-        </Box>
-      }
     </div>
   )
 }

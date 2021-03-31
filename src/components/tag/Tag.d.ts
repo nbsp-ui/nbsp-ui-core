@@ -8,8 +8,8 @@ export interface TagProps extends BaseProps {
     backgroundColor?: string
     borderColor?: string
 
-    onClick: (event: MouseEvent) => void
-    onClose: (event: MouseEvent) => void
+    onClick?: (event: MouseEvent) => void
+    onClose?: (event: MouseEvent) => void
 }
 
 export const Tag: React.FunctionComponent<TagProps>

@@ -1,7 +1,14 @@
 .nbsp-ui-progress {
+  position: relative;
 
-  & > .indicator {
+  &:after {
+    content: attr(data-progress);
     font-family: "Roboto", sans-serif;
-    color: #757575
+    color: #757575;
+    display: block;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    margin-top: calc(50% - 0.5em)
   }
 }
