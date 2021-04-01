@@ -18,6 +18,7 @@ export { HDivider } from './components/divider-h/HDivider'
 export { VDivider } from './components/divider-v/VDivider'
 export { Select } from './components/select/Select'
 export { Loader } from './components/loader/Loader'
+export { OuterLoader } from './components/outer-loader/OuterLoader'
 export { Progress } from './components/progress/Progress'
 
 export { CompatAlign } from './utils/CompatAlign'

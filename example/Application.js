@@ -16,6 +16,7 @@ import {
   VDivider,
   Select,
   Loader,
+  OuterLoader,
   Progress
 } from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
@@ -25,6 +26,7 @@ window['testHook'] = {}
 export const Application = () => {
 
   const [progressValue, setProgressValue] = React.useState(50)
+  const [listLoading, setListLoading] = React.useState(false)
 
   return (
     <Box vertical>
@@ -36,6 +38,9 @@ export const Application = () => {
                 margin={{ right: 8 }}/>
         <Button type={CompatButtonType.Ghost} label='Ghost' margin={{ right: 8 }}/>
         <Button type={CompatButtonType.Icon} icon={<FAIcon icon='fas fa-sync-alt'/>}/>
+        <OuterLoader turn={true} loaderWidth={15}>
+          <Button type={CompatButtonType.Outline} label='Processing' margin={{ right: 8 }}/>
+        </OuterLoader>
       </Box>
       <VDivider/>
       <Box padding={8}>
@@ -209,39 +214,92 @@ export const Application = () => {
             { id: '6', person: 'Haleigh Kaylee', account: 396 }
           ]}
         />
-        <List
+        <Switch
           width={400}
-          height={250}
+          label='Turn loading'
+          align={CompatAlign.Justify}
           margin={{ bottom: 8 }}
-          fontSize={14}
-          row={
-            (item) =>
-              <Box vAlign={CompatAlign.Center} height={20}>
-                {
-                  (item.value.length > 7 || item.value.length < 7)
-                    ?
-                    <Box width={30}>
-                      <FAIcon icon='far fa-star'/>
-                    </Box>
-                    :
-                    <Box width={30}>
-                    </Box>
-                }
-                <span>{item.value}</span>
-              </Box>
-          }
-          data={[
-            { id: 1, value: 'Albania' },
-            { id: 2, value: 'Algeria' },
-            { id: 3, value: 'Andorra' },
-            { id: 4, value: 'Angola' },
-            { id: 5, value: 'Antigua and Barbuda' },
-            { id: 6, value: 'Argentina' },
-            { id: 7, value: 'Armenia' },
-            { id: 8, value: 'Australia' }
-          ]}
-          onChange={(updatedItem, oldItem) => console.log(updatedItem, oldItem)}
+          onChange={(checked) => setListLoading(checked)}
         />
+        <OuterLoader turn={listLoading}>
+          <List
+            width={400}
+            height={250}
+            margin={{ bottom: 8 }}
+            fontSize={14}
+            row={
+              (item) =>
+                <Box vAlign={CompatAlign.Center} height={20}>
+                  {
+                    (item.value.length > 7 || item.value.length < 7)
+                      ?
+                      <Box width={30}>
+                        <FAIcon icon='far fa-star'/>
+                      </Box>
+                      :
+                      <Box width={30}>
+                      </Box>
+                  }
+                  <span>{item.value}</span>
+                </Box>
+            }
+            data={[
+              { id: 1, value: 'Albania' },
+              { id: 2, value: 'Algeria' },
+              { id: 3, value: 'Andorra' },
+              { id: 4, value: 'Angola' },
+              { id: 5, value: 'Antigua and Barbuda' },
+              { id: 6, value: 'Argentina' },
+              { id: 7, value: 'Armenia' },
+              { id: 8, value: 'Australia' }
+            ]}
+            onChange={(updatedItem, oldItem) => console.log(updatedItem, oldItem)}
+          />
+        </OuterLoader>
+        <OuterLoader turn={listLoading}>
+          <Table
+            width={400}
+            headerHeight={32}
+            footerHeight={32}
+            margin={{ bottom: 8 }}
+            columns={[
+              {
+                width: 40,
+                header: () => <Box hAlign={CompatAlign.Center}><Label value='ID'/></Box>,
+                cell: item => <Box hAlign={CompatAlign.Center}><Label value={item['id']}/></Box>,
+                sort: (a, b) => a['id'] - b['id']
+              },
+              {
+                header: () => <Box padding={{ x: 8 }}><Label value='Person'/></Box>,
+                cell: item => <Box padding={{ x: 8 }}><Label value={item['person']}/></Box>,
+                sort: (a, b) => a['person'].localeCompare(b['person'])
+              },
+              {
+                width: 120,
+                header: () => <Box padding={{ x: 8 }}><Label value='Account'/></Box>,
+                cell: item => <Box padding={{ x: 8 }}><Label value={item['account']}/></Box>,
+                sort: (a, b) => a['account'] - b['account'],
+                footer: items => <Box padding={{ left: 8 }}><Label value={items.reduce((result, item) => result + item['account'], 0)}/></Box>
+              },
+              {
+                width: 80,
+                header: () => <Box hAlign={CompatAlign.Center}><Label value='Remove'/></Box>,
+                cell: () =>
+                  <Box hAlign={CompatAlign.Center}>
+                    <Button type={CompatButtonType.Icon} icon={<FAIcon icon='far fa-trash-alt'/>}/>
+                  </Box>
+              }
+            ]}
+            data={[
+              { id: '1', person: 'Mary Beth Brianna', account: 125 },
+              { id: '2', person: 'Rhys Lyndsea', account: 132 },
+              { id: '3', person: 'Bennie Cam', account: 754 },
+              { id: '4', person: 'Victor Lana', account: 904 },
+              { id: '5', person: 'Jacklyn Marlena', account: 623 },
+              { id: '6', person: 'Haleigh Kaylee', account: 396 }
+            ]}
+          />
+        </OuterLoader>
       </Box>
     </Box>
   )
