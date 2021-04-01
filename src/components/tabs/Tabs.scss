@@ -1,0 +1,51 @@
+@import "../colors";
+
+.nbsp-ui-tabs {
+
+  .header {
+    overflow: hidden;
+
+    .item {
+      display: inline-block;
+      font-family: "Roboto", sans-serif;
+      border-bottom: 1px solid transparent;
+      padding: 2px 2px 2px 4px;
+      margin-right: 8px;
+      min-width: 50px;
+      text-align: center;
+      color: $light-text-color;
+      transition: .2s linear;
+
+      &:hover {
+        cursor: pointer;
+        border-bottom: 1px solid rgba($light-text-color, 0.5);
+      }
+
+      &-selected {
+        color: $accent-color;
+        border-bottom: 1px solid $accent-color;
+
+        &:hover {
+          border-bottom: 1px solid $accent-color;
+        }
+      }
+
+      .icon {
+        display: inline;
+        font-size: 1em;
+        transition: .2s linear;
+      }
+
+      .close {
+        display: inline;
+        font-size: 0;
+        transition: .2s linear;
+      }
+
+      &:hover > .close {
+        font-size: 1em;
+      }
+    }
+
+  }
+}

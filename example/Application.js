@@ -17,7 +17,8 @@ import {
   Select,
   Loader,
   OuterLoader,
-  Progress
+  Progress,
+  Tabs
 } from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
 
@@ -212,6 +213,16 @@ export const Application = () => {
             { id: '4', person: 'Victor Lana', account: 904 },
             { id: '5', person: 'Jacklyn Marlena', account: 623 },
             { id: '6', person: 'Haleigh Kaylee', account: 396 }
+          ]}
+        />
+        <Tabs width={400} margin={{ bottom: 500 }}
+          onChange={(updatedItem, oldItem) => console.log({ updatedItem, oldItem })}
+          onClose={(item) => console.log({ item })}
+          tabs={[
+            { header: 'Main', icon: 'fas fa-home' },
+            { header: 'Second', icon: 'fab fa-ethereum', closable: true },
+            { header: 'Optional', closable: true },
+            { header: 'Extra' }
           ]}
         />
         <Switch

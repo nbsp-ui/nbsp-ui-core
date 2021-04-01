@@ -20,6 +20,7 @@ export { Select } from './components/select/Select'
 export { Loader } from './components/loader/Loader'
 export { OuterLoader } from './components/outer-loader/OuterLoader'
 export { Progress } from './components/progress/Progress'
+export { Tabs } from './components/tabs/Tabs'
 
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'
