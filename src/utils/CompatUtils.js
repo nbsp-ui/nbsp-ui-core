@@ -44,7 +44,17 @@ export const CompatUtils = {
      * @param {number} radius
      * @returns {boolean}
      */
-    isBelongToCircle: (x, y, areaX, areaY, radius) => Math.hypot(x - areaX, y - areaY) <= radius
+    isBelongToCircle: (x, y, areaX, areaY, radius) => CompatUtils.math.pointsDistance(x, y, areaX, areaY) <= radius,
+
+    /**
+     * Определить расстояние между точками
+     * @param {number} ax
+     * @param {number} ay
+     * @param {number} bx
+     * @param {number} by
+     * @returns {number}
+     */
+    pointsDistance: (ax, ay, bx, by) => Math.hypot(ax - bx, ay - by)
   },
 
   /**
