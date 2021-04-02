@@ -19,12 +19,17 @@ export const Tabs = props => {
   const [tabs, setTabs] = React.useState([...props.tabs].map(tab => ({ _id: CompatUtils.uid(), ...tab })))
   const [selectedTab, setSelectedTab] = React.useState(props.tabs[0])
 
+  const hideItem = (item) => {
+    tabs.find(i => i._id === item._id)._hidden = true
+    setTabs([...tabs])
+  }
+
   return (
     <div id={id} className={className} style={style}>
       <Box vertical={props.vertical} className={'header'} margin={8}>
         {
           tabs.map(tab =>
-            <div
+            tab._hidden || <div
               className={ComponentHelper.composeClass('item', { use: 'item-selected', if: selectedTab._id === tab._id })}
               key={tab._id}
               onClick={() => {
@@ -42,7 +47,10 @@ export const Tabs = props => {
               {
                 tab.closable
                 &&
-                <div className={'close'} onClick={() => props.onClose && props.onClose(tab)}> <i className='fas fa-times' /> </div>
+                <div className={'close'} onClick={() => {
+                  props.onClose && props.onClose(tab)
+                  hideItem(tab)
+                }}> <i className='fas fa-times' /> </div>
               }
             </div>
           )
