@@ -1,6 +1,7 @@
 import React from 'react'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
+import { ReactHelper } from '../../utils/ReactHelper'
 import './Popup.scss'
 
 /**
@@ -9,41 +10,45 @@ import './Popup.scss'
  * @constructor
  */
 export const Popup = props => {
-  const { to, showRequested, onBlur, onLeave } = props
+  const { to, showed, onBlur } = props
 
-  const refForShowRequested = React.useRef(false)
-  const refForShowed = React.useRef(false)
-  const refForElement = React.useRef()
+  const showCompleted = React.useRef(false)
+
+  /**
+   * @type {React.MutableRefObject<HTMLElement>}
+   */
+  const element = React.useRef()
+
+  onBlur && ReactHelper.registerGlobalMouseEventListener('click', event =>
+    showed
+    && showCompleted.current
+    && !CompatUtils.math.isBelongToElementRectWithIndent(event.x, event.y, element.current.getBoundingClientRect(), 0)
+    && onBlur())
+
+  onBlur && ReactHelper.registerGlobalMouseEventListener('mousemove', event =>
+    showed
+    && showCompleted.current
+    && !CompatUtils.math.isBelongToElementRectWithIndent(event.x, event.y, element.current.getBoundingClientRect(), 40)
+    && onBlur())
+
+  React.useEffect(() => showCompleted.current = showed, [showed])
 
   const rect = to?.getBoundingClientRect()
 
-  const className = ComponentHelper.composeClass('nbsp-ui-popup')
-
-  refForShowRequested.current = showRequested
-  React.useEffect(() => refForShowed.current = showRequested, [showRequested])
-
-  const handleClick = e => refForShowRequested.current && refForShowed.current && !CompatUtils.math.isBelongToElementRectWithIndent(e.x, e.y, refForElement.current['getBoundingClientRect'](), 0) && onBlur()
-  const handleMouseMove = e => refForShowRequested.current && refForShowed.current && !CompatUtils.math.isBelongToElementRectWithIndent(e.x, e.y, refForElement.current['getBoundingClientRect'](), 40) && onLeave()
-
-  React.useEffect(() => onBlur && (document.addEventListener('click', handleClick) || true) && (() => document.removeEventListener('click', handleClick)), [onBlur])
-  React.useEffect(() => onLeave && (document.addEventListener('mousemove', handleMouseMove) || true) && (() => document.removeEventListener('mousemove', handleMouseMove)), [onLeave])
-
-  /**
-   * @type {CSSProperties}
-   */
-  const style = {
-    display: showRequested ? 'block' : 'none',
-    ...(to ? {
-      top: `${rect.height}px`,
-      left: `${rect.width}px`,
-      transform: `translateX(${props.translateX || '-50%'})`,
-      zIndex: CompatUtils.zIndex()
-    } : {}),
-    ...ComponentHelper.composeStyle(props)
-  }
-
   return (
-    <div className={className} style={style} ref={refForElement}>
+    <div
+      className={ComponentHelper.composeClass('nbsp-ui-popup')}
+      style={{
+        display: showed ? 'block' : 'none',
+        ...(to ? {
+          top: `${rect.height}px`,
+          left: `${rect.width}px`,
+          transform: `translateX(${props.translateX || '-50%'})`,
+          zIndex: CompatUtils.zIndex()
+        } : {}),
+        ...ComponentHelper.composeStyle(props)
+      }}
+      ref={element}>
       <div className='content'>
         {props.children}
       </div>

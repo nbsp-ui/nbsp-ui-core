@@ -1,17 +1,13 @@
 // @ts-ignore
 import * as React from "react";
+import { BaseProps, Containable } from '../types'
 
-export interface PopupProps {
-    children?: React.ReactElement | React.ReactElement[]
-    width?: number
-    height?: number
+export interface PopupProps extends BaseProps, Containable {
     translateX?: string
     to?: HTMLElement
-    showRequested?: boolean
+    showed?: boolean
 
-    onHide?: () => void
     onBlur?: () => void
-    onLeave?: () => void
 }
 
 export const Popup: React.FunctionComponent<PopupProps>

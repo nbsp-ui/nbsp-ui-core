@@ -41,8 +41,8 @@ export const DatePicker = props => {
       />
       <Popup
         to={CompatUtils.$$(ids.input)}
-        showRequested={pickerDisplayed}
-        onLeave={() => setPickerDisplayed(false)}
+        showed={pickerDisplayed}
+        onBlur={() => setPickerDisplayed(false)}
       >
         <Calendar
           value={value}

@@ -64,8 +64,8 @@ export const Select = props => {
       <Popup
         to={CompatUtils.$$(ids.input)}
         translateX={'-100%'}
-        showRequested={pickerDisplayed}
-        onLeave={() => setPickerDisplayed(false)}
+        showed={pickerDisplayed}
+        onBlur={() => setPickerDisplayed(false)}
       >
         <div className='header'>
           {
