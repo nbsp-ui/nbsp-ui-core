@@ -14,7 +14,7 @@ export const Box = props => {
   return (
     <div
       className={className}
-      style={style}
+      style={{ ...style, ...props.style }}
       ref={props.reference}
       {...ComponentHelper.extractListeners(props)}
     >
