@@ -3,8 +3,9 @@ import { CompatAlign } from '../../utils/CompatAlign'
 import { Box } from '../box/Box'
 
 /**
- * @param {TableColumn} column
- * @param {{}[]} items
+ * @param props
+ * @param {TableColumn} props.column
+ * @param {{}[]} props.items
  * @returns {JSX.Element}
  * @constructor
  */

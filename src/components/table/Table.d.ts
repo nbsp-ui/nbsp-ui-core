@@ -24,8 +24,10 @@ export interface TableColumn {
     sort: (a: {}, b: {}) => number
 
     _id: string
+    _position: number
     _sortedByAsc: boolean
     _sortedByDesc: boolean
+    _headerElement: HTMLElement
 }
 
 export const Table: React.FunctionComponent<TableProps>

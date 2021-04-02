@@ -3,84 +3,70 @@ import { CompatUtils } from '../../utils/CompatUtils'
 import { ReactHelper } from '../../utils/ReactHelper'
 
 /**
- * @param {React.Ref} reference
- * @param {HTMLElement} parent
- * @param {function(): void} onDragStart
- * @param {function(width: number): void} onDragEnd
+ * @param props
+ * @param {TableColumn} props.column
+ * @param {boolean} props.active
+ * @param {function(): void} props.onDragStart
+ * @param {function(width: number): void} props.onDragEnd
  * @returns {JSX.Element}
  * @constructor
  */
-export const TableColumnResizer = ({ reference, parent, onDragStart, onDragEnd }) => {
-  const [, setDragged, draggedRef] = ReactHelper.useReferredState(false)
-  const [offset, setOffset] = React.useState(0)
+export const TableColumnResizer = ({ column, active, onDragStart, onDragEnd }) => {
+  const refresh = ReactHelper.useRefresh()
 
-  /**
-   *
-   * @type {React.MutableRefObject<HTMLElement>}
-   */
-  const elementRef = React.useRef()
+  const dragged = React.useRef(false)
+  const offset = React.useRef(0)
 
   /**
    * @type {React.MutableRefObject<HTMLElement>}
    */
-  const parentRef = React.useRef()
+  const element = React.useRef()
 
-  parentRef.current = parent
-
-  const startDrag = () => {
-    setDragged(true)
-    onDragStart()
-  }
-
-  const endDrag = (size) => {
-    setDragged(false)
-    onDragEnd(size)
-  }
-
-  const handleMouseMove = ({ clientX, clientY }) => {
-    if (elementRef.current && parentRef.current) {
-      const elementRect = elementRef.current.getBoundingClientRect()
-      const parentRect = parentRef.current.getBoundingClientRect()
-      draggedRef.current
-      && CompatUtils.math.isBelongToElementRectWithIndent(clientX, clientY, elementRect, 20)
-      && setOffset(clientX - parentRect.x - parentRect.width)
+  ReactHelper.registerGlobalMouseEventListener('mousemove', ({ clientX, clientY }) => {
+    if (active) {
+      const elementRect = element.current.getBoundingClientRect()
+      const parentRect = column._headerElement.getBoundingClientRect()
+      if (dragged.current && CompatUtils.math.isBelongToElementRectWithIndent(clientX, clientY, elementRect, 20)) {
+        offset.current = clientX - parentRect.x - parentRect.width
+        refresh()
+      }
     }
-  }
+  })
 
-  const handleMouseUp = () => {
-    if (elementRef.current && parentRef.current) {
-      const elementRect = elementRef.current.getBoundingClientRect()
-      const parentRect = parentRef.current.getBoundingClientRect()
-      draggedRef.current && setOffset(0)
-      draggedRef.current && endDrag(Math.abs(elementRect.x - parentRect.x))
+  ReactHelper.registerGlobalMouseEventListener('mouseup', () => {
+    if (active) {
+      const elementRect = element.current.getBoundingClientRect()
+      const parentRect = column._headerElement.getBoundingClientRect()
+
+      if (dragged.current) {
+        offset.current = 0
+        dragged.current = false
+        onDragEnd(Math.abs(elementRect.x - parentRect.x))
+      }
     }
-  }
+  })
 
-  React.useEffect(() => (document.addEventListener('mousemove', handleMouseMove) || true) && (() => document.removeEventListener('mousemove', handleMouseMove)), [])
-  React.useEffect(() => (document.addEventListener('mouseup', handleMouseUp) || true) && (() => document.removeEventListener('mouseup', handleMouseUp)), [])
-  React.useEffect(() => setOffset(0), [parent])
+  React.useEffect(() => offset.current = 0, [active])
+
+  const parentRect = active && column._headerElement.getBoundingClientRect()
 
   return (
     <div
       className='resizer'
       style={{
-        display: parent ? 'block' : 'none',
-        ...(parent ? (() => {
-          const parentRect = parent.getBoundingClientRect()
-
-          return {
-            left: `${parentRect.left + parentRect.width - 2 + offset}px`,
-            top: `${parentRect.top + window.scrollY}px`,
-            height: `${parentRect.height}px`
-          }
-        })() : {})
+        display: active ? 'block' : 'none',
+        ...active && {
+          left: `${parentRect.left + parentRect.width - 2 + offset.current}px`,
+          top: `${parentRect.top + window.scrollY}px`,
+          height: `${parentRect.height}px`
+        }
       }}
-      ref={e => {
-        elementRef.current = e
-        reference(e)
-      }}
+      ref={element}
       draggable={false}
-      onMouseDown={() => startDrag()}
+      onMouseDown={() => {
+        dragged.current = true
+        onDragStart()
+      }}
     />
   )
 }

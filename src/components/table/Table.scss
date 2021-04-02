@@ -1,4 +1,5 @@
 @import "../colors";
+@import "../values";
 
 .nbsp-ui-table {
   border-bottom: 1px solid $border-color;
@@ -6,42 +7,63 @@
   display: flex;
   flex-direction: column;
 
-  & > .resizer {
-    position: absolute;
-    width: 3px;
-    background-color: $accent-color;
-    cursor: col-resize;
-    user-select: none;
-  }
-
   & > .header {
-    & > div {
-      border-top: 1px solid $border-color;
-      border-bottom: 1px solid $border-color;
-      user-select: none;
-      transition: background-color .2s, border-color .2s;
+    & > .container {
+      & > div {
+        border-top: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        user-select: none;
+        transition: background-color .2s, border-color .2s;
+
+        & > .resizer {
+          position: absolute;
+          width: 3px;
+          background-color: $accent-color;
+          cursor: col-resize;
+          user-select: none;
+        }
+      }
+
+      & > div:first-child {
+        border-left: 1px solid $border-color;
+        border-top-left-radius: $default-border-radius;
+      }
+
+      & > div:last-child {
+        border-right: 1px solid $border-color;
+        border-top-right-radius: $default-border-radius;
+      }
+
+      & > div:not(:last-child) {
+        border-right: 1px solid #EEEEEE;
+      }
+
+      .clickable {
+        cursor: pointer;
+
+        &:active {
+          background-color: $default-active-color;
+        }
+      }
+
+      .hovered {
+        background-color: $default-hover-color;
+      }
+
+      .sorted-by-asc {
+        border-bottom-color: $accent-color;
+      }
+
+      .sorted-by-desc {
+        border-top-color: $accent-color;
+      }
     }
 
-    & > div:first-child {
-      border-left: 1px solid $border-color;
-      border-top-left-radius: 4px;
-    }
-
-    & > div:last-child {
-      border-right: 1px solid $border-color;
-      border-top-right-radius: 4px;
-    }
-
-    & > div:not(:last-child) {
-      border-right: 1px solid #EEEEEE;
-    }
-
-    .sorted-by-asc {
-      border-bottom-color: $accent-color;
-    }
-
-    .sorted-by-desc {
-      border-top-color: $accent-color;
+    & > .shadow {
+      position: absolute;
+      background-color: #FFFFFF;
+      border: 1px solid $accent-color;
+      cursor: grabbing;
     }
   }
 

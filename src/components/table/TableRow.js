@@ -8,7 +8,7 @@ import { Box } from '../box/Box'
  * @returns {JSX.Element}
  * @constructor
  */
-export const TableColumnRow = ({ columns, item }) =>
+export const TableRow = ({ columns, item }) =>
   <Box>
     {
       columns.map(({ cell, width }, index) =>
