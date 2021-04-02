@@ -70,6 +70,13 @@ export const CompatUtils = {
    */
   uid: () => String(CompatUtils._uid++),
 
+  _zIndex: 1,
+
+  /**
+   * @returns {number}
+   */
+  zIndex: () => CompatUtils._zIndex++,
+
   /**
    * @param {string} id
    * @return {HTMLElement}
