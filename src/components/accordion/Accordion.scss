@@ -1,0 +1,39 @@
+@import "../colors";
+
+.nbsp-ui-accordion {
+  font-family: "Roboto", sans-serif;
+  border-bottom: 1px solid #E0E0E0;
+  overflow: hidden;
+
+  .header {
+    color: $light-text-color;
+    margin-bottom: 4px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .icon {
+      margin-right: 8px;
+      transform: rotate(90deg);
+      transition: .2s linear;
+    }
+
+    &-collapsed {
+
+      .icon {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  .content {
+    transition: .2s linear;
+    opacity: 1;
+
+    &-collapsed {
+      opacity: 0;
+    }
+  }
+
+}
