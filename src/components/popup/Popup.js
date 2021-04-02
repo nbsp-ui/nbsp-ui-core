@@ -33,21 +33,25 @@ export const Popup = props => {
 
   React.useEffect(() => showCompleted.current = showed, [showed])
 
-  const rect = to?.getBoundingClientRect()
+  const className = ComponentHelper.composeClass('nbsp-ui-popup')
+
+  const rect = to.current?.getBoundingClientRect()
+
+  const style = {
+    display: showed ? 'block' : 'none',
+    ...(showed ? {
+      top: `${rect.height}px`,
+      left: `${rect.width}px`,
+      transform: `translateX(${props.translateX || '-50%'})`,
+      zIndex: CompatUtils.zIndex()
+    } : {}),
+    ...ComponentHelper.composeStyle(props)
+  }
 
   return (
     <div
-      className={ComponentHelper.composeClass('nbsp-ui-popup')}
-      style={{
-        display: showed ? 'block' : 'none',
-        ...(to ? {
-          top: `${rect.height}px`,
-          left: `${rect.width}px`,
-          transform: `translateX(${props.translateX || '-50%'})`,
-          zIndex: CompatUtils.zIndex()
-        } : {}),
-        ...ComponentHelper.composeStyle(props)
-      }}
+      className={className}
+      style={style}
       ref={element}>
       <div className='content'>
         {props.children}

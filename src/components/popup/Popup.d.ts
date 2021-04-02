@@ -4,7 +4,7 @@ import { BaseProps, Containable } from '../types'
 
 export interface PopupProps extends BaseProps, Containable {
     translateX?: string
-    to?: HTMLElement
+    to?: React.MutableRefObject<HTMLElement>
     showed?: boolean
 
     onBlur?: () => void

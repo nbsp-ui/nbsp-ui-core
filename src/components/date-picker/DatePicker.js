@@ -23,13 +23,15 @@ export const DatePicker = props => {
   const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
   const [selectedDate, setSelectedDate] = React.useState(new Date())
 
+  const element = React.useRef()
+
   const className = ComponentHelper.composeClass('nbsp-ui-date-picker')
   const style = ComponentHelper.composeStyle(props)
 
   return (
     <div className={className} style={style}>
       <Input
-        id={ids.input}
+        reference={element}
         value={format(selectedDate, 'dd.MM.yyyy')}
         label={label}
         labelWidth={labelWidth}
@@ -40,7 +42,7 @@ export const DatePicker = props => {
         afterOnClick={() => setPickerDisplayed(!pickerDisplayed)}
       />
       <Popup
-        to={CompatUtils.$$(ids.input)}
+        to={element}
         showed={pickerDisplayed}
         onBlur={() => setPickerDisplayed(false)}
       >

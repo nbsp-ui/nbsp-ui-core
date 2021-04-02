@@ -1,17 +1,17 @@
 import React from 'react'
-import { ComponentHelper } from "../../utils/ComponentHelper"
-import { CompatUtils } from "../../utils/CompatUtils"
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Select.scss'
-import { Box } from "../box/Box"
-import { Button, CompatButtonType } from "../button/Button"
-import { FAIcon } from "../fa-icon/FAIcon"
-import { Input } from "../input/Input"
-import { List } from "../list/List"
-import { Popup } from "../popup/Popup"
-import { CompatAlign } from "../../utils/CompatAlign";
+import { Box } from '../box/Box'
+import { Button, CompatButtonType } from '../button/Button'
+import { FAIcon } from '../fa-icon/FAIcon'
+import { Input } from '../input/Input'
+import { List } from '../list/List'
+import { Popup } from '../popup/Popup'
+import { CompatAlign } from '../../utils/CompatAlign'
 
-const ids = {
-  input: CompatUtils.uid()
+const openIcons = {
+  UP: 'fas fa-chevron-up',
+  DOWN: 'fas fa-chevron-down'
 }
 
 /**
@@ -20,38 +20,24 @@ const ids = {
  * @constructor
  */
 export const Select = props => {
-  const {
-    id,
-    label,
-    labelWidth,
-    fit,
-    placeholder,
-    onSelectChange
-  } = props
-
-  const openIcons = {
-    UP: 'fas fa-chevron-up',
-    DOWN: 'fas fa-chevron-down'
-  }
+  const { id, label, labelWidth, fit, placeholder, onSelectChange } = props
 
   const [value, setValue] = React.useState(props.value || '')
+  const [searchValue, setSearchValue] = React.useState('')
+  const [selectAll, setSelectAll] = React.useState('')
   const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
 
-  const updateInputContent = (items) => {
-    setValue(items.length > 1 ? `${items.length} items selected` : items[0]?.value || '')
-  }
+  const element = React.useRef()
+
+  const updateInputContent = items => setValue(items.length > 1 ? `${items.length} items selected` : items[0]?.value || '')
 
   const className = ComponentHelper.composeClass('nbsp-ui-select', props.className)
   const style = ComponentHelper.composeStyle(props)
 
-  const [searchValue, setSearchValue] = React.useState('')
-
-  const [selectAll, setSelectAll] = React.useState('')
-
   return (
     <div id={id} className={className} style={style}>
       <Input
-        id={ids.input}
+        reference={element}
         label={label}
         labelWidth={labelWidth}
         width={props.width || 300}
@@ -62,7 +48,7 @@ export const Select = props => {
         afterOnClick={() => setPickerDisplayed(!pickerDisplayed)}
       />
       <Popup
-        to={CompatUtils.$$(ids.input)}
+        to={element}
         translateX={'-100%'}
         showed={pickerDisplayed}
         onBlur={() => setPickerDisplayed(false)}

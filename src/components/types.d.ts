@@ -2,6 +2,7 @@ import * as React from 'react'
 import { CompatIndent } from '../utils/CompatIndent'
 
 export interface BaseProps {
+    id?: string
     className?: string
     style?: React.CSSProperties
     reference?: React.Ref

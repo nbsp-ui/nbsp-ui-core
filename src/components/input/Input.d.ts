@@ -1,18 +1,12 @@
 // @ts-ignore
 import * as React from "react";
-import { CompatIndent } from "../../utils/CompatIndent";
+import { BaseProps } from '../types'
 
-export interface InputProps {
-    id?: string
+export interface InputProps extends BaseProps {
     value?: string
     label?: string
     labelWidth?: number
     placeholder?: string
-    width?: number
-    height?: number
-    fit?: boolean
-    padding?: CompatIndent
-    margin?: CompatIndent
     disabled?: boolean
     readOnly?: boolean
     rule?: (value: any) => boolean

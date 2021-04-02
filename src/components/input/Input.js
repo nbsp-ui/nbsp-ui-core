@@ -8,7 +8,7 @@ import './Input.scss'
  * @constructor
  */
 export const Input = props => {
-  const { id, value, label, readOnly, before, after } = props
+  const { id, reference, value, label, readOnly, before, after } = props
 
   const [valid, setValid] = React.useState(true)
   React.useEffect(() => props.rule && setValid(props.rule(value)), [value])
@@ -23,7 +23,12 @@ export const Input = props => {
   const style = ComponentHelper.composeStyle(props)
 
   return (
-    <div id={id} className={className} style={style}>
+    <div
+      id={id}
+      className={className}
+      style={style}
+      ref={reference}
+    >
       {label && <p className='label' style={{ width: props.labelWidth || 'auto' }}>{label}</p>}
 
       {before && <div className={ComponentHelper.composeClass(
