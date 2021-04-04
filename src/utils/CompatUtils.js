@@ -88,7 +88,19 @@ export const CompatUtils = {
    * @param {number} to
    * @returns {number[]}
    */
-  range: (from, to) => Array(to - from + 1).fill(0).map((value, index) => value + from + index)
+  range: (from, to) => Array(to - from + 1).fill(0).map((value, index) => value + from + index),
+
+  /**
+   * Получить размер файла по числу байтов
+   * @param {number} a
+   * @param {number} b
+   * @return {string}
+   */
+  getSizeFromBytes: (a, b = 2) => {
+    if (0 === a) return "0 Bytes"
+    const c = 0 > b ? 0 : b, d = Math.floor(Math.log(a) / Math.log(1024))
+    return parseFloat((a / Math.pow(1024,d)).toFixed(c)) + " " + ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"][d]
+  }
 }
 
 /**
