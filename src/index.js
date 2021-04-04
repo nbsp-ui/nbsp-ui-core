@@ -23,6 +23,7 @@ export { Progress } from './components/progress/Progress'
 export { Tabs } from './components/tabs/Tabs'
 export { Accordion } from './components/accordion/Accordion'
 export { Image } from './components/image/Image'
+export { Upload } from './components/upload/Upload'
 
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'

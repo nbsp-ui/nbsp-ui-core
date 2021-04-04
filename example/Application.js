@@ -21,7 +21,8 @@ import {
   Spacer,
   Tabs,
   Accordion,
-  Image
+  Image,
+  Upload
 } from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
 
@@ -259,6 +260,16 @@ export const Application = () => {
             afterOnClick={() => setImageSource(imageInput)}
           />
           { imageSource && <Image src={imageSource} margin={{ top: 8 }} width={400} height={400}/> }
+        </Box>
+        <Box margin={{ bottom: 8 }}>
+          <Upload
+            margin={{ bottom: 8 }}
+            width={400}
+            onClick={(e) => console.log(e)}
+            onSelectedFiles={(files) => console.log({files})}
+            onItemRemoved={(file) => console.log({file})}
+            multiple
+          />
         </Box>
         <Switch
           width={400}
