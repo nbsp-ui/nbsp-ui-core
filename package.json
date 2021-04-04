@@ -20,6 +20,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.13",
     "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-pipeline-operator": "^7.12.13",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@svgr/webpack": "^5.5.0",
