@@ -45,8 +45,6 @@ export const Select = props => {
 
   const refresh = ReactHelper.useRefresh()
 
-  const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
-
   /**
    * @type {React.MutableRefObject<ListItem[]>}
    */
@@ -61,6 +59,8 @@ export const Select = props => {
    * @type {React.MutableRefObject<ListItem[]>}
    */
   const appliedItems = React.useRef(items.current)
+
+  const pickerDisplayed = React.useRef(false)
 
   const searchValue = React.useRef('')
 
@@ -85,13 +85,19 @@ export const Select = props => {
         fit={fit}
         placeholder={placeholder}
         after={<FAIcon margin={{ top: 3 }} icon={pickerDisplayed ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}/>}
-        afterOnClick={() => setPickerDisplayed(!pickerDisplayed)}
+        afterOnClick={() => {
+          pickerDisplayed.current = true
+          refresh()
+        }}
       />
       <Popup
         to={element}
         translateX={'-100%'}
-        showed={pickerDisplayed}
-        onBlur={() => setPickerDisplayed(false)}
+        showed={pickerDisplayed.current}
+        onBlur={() => {
+          pickerDisplayed.current = false
+          refresh()
+        }}
       >
         <Box className='toolbar' vAlign={CompatAlign.Center} padding={8}>
           {
@@ -144,6 +150,7 @@ export const Select = props => {
           onSelectItems={(selected, all) => {
             applyItems(all)
             props.onItemsSelected && props.onItemsSelected(selected, all)
+            !props.multiselect && (pickerDisplayed.current = false)
             refresh()
           }}
           multiselect={props.multiselect}
