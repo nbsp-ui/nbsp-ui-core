@@ -22,6 +22,7 @@ export { OuterLoader } from './components/outer-loader/OuterLoader'
 export { Progress } from './components/progress/Progress'
 export { Tabs } from './components/tabs/Tabs'
 export { Accordion } from './components/accordion/Accordion'
+export { Image } from './components/image/Image'
 
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'

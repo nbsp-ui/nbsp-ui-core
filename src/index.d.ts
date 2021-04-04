@@ -22,3 +22,4 @@ export { OuterLoader, OuterLoaderProps } from './components/outer-loader/OuterLo
 export { Progress, ProgressProps } from './components/progress/Progress'
 export { Tabs, TabsProps } from './components/tabs/Tabs'
 export { Accordion, AccordionProps } from './components/accordion/Accordion'
+export { Image, ImageProps } from './components/image/Image'

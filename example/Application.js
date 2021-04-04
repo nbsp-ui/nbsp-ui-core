@@ -20,7 +20,8 @@ import {
   Progress,
   Spacer,
   Tabs,
-  Accordion
+  Accordion,
+  Image
 } from '../src/index'
 import { CompatAlign } from '../src/utils/CompatAlign'
 
@@ -30,6 +31,8 @@ export const Application = () => {
 
   const [progressValue, setProgressValue] = React.useState(50)
   const [listLoading, setListLoading] = React.useState(false)
+  const [imageInput, setImageInput] = React.useState('https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736400_1280.png')
+  const [imageSource, setImageSource] = React.useState('')
 
   return (
     <Box vertical>
@@ -244,6 +247,19 @@ export const Application = () => {
           />
           <Tag value='Third tag' color='#1E88E5' width={50} />
         </Accordion>
+        <Box vertical width={400} margin={{ bottom: 8 }}>
+          <Input
+            label='Image source'
+            labelWidth={140}
+            width={400}
+            placeholder='https://...'
+            value={imageInput}
+            onChange={(e) => setImageInput(e.target.value)}
+            after={<FAIcon icon={'far fa-image'} fontSize={'1.5em'} />}
+            afterOnClick={() => setImageSource(imageInput)}
+          />
+          { imageSource && <Image src={imageSource} margin={{ top: 8 }} width={400} height={400}/> }
+        </Box>
         <Switch
           width={400}
           label='Turn loading'
