@@ -4,24 +4,9 @@
   font-family: "Roboto", sans-serif;
   position: relative;
 
-  & > .nbsp-ui-popup > .content > .header {
-    border-bottom: 1px solid #EEEEEE;
-  }
-
-  & > .nbsp-ui-popup > .content > .footer {
-    border-top: 1px solid #EEEEEE;
-  }
-
-  & > .nbsp-ui-popup > .content > .header {
-
-    & > .nbsp-ui-box > .nbsp-ui-button {
-      padding-top: 2px;
-      padding-left: 2px;
-
-      & > .selectAllIcon {
-        font-size: 16pt;
-      }
+  & > .nbsp-ui-popup > .content > .toolbar {
+    .selectAllIcon {
+      font-size: 16pt;
     }
   }
-
 }

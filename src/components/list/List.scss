@@ -19,21 +19,20 @@
 
   }
 
-  & > .item:hover {
-    cursor: pointer;
-    background-color: $grey-100;
-    box-shadow: 0 0 5px 1px $grey-50;
-  }
-
-  & > .item {
-    border-left: 1px solid transparent;
+  & > div {
+    border-left: 2px solid transparent;
     border-bottom: 1px solid #EEEEEE;
     color: $light-text-color;
     padding: 7px 0 7px 0;
+    cursor: pointer;
 
-    &-selected {
-      border-left: 1px solid $accent-color;
-      background-color: $blue-50;
+    &:hover {
+      background-color: $default-hover-color;
     }
+  }
+
+  .selected {
+    border-left-color: $accent-color;
+    background-color: #F5F5F5;
   }
 }

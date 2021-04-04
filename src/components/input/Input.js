@@ -31,10 +31,19 @@ export const Input = props => {
     >
       {label && <p className='label' style={{ width: props.labelWidth || 'auto' }}>{label}</p>}
 
-      {before && <div className={ComponentHelper.composeClass(
-        'before',
-        { use: 'before-clickable', if: props.beforeOnClick }
-      )} onClick={props.beforeOnClick}>{before}</div>}
+      {
+        before
+        &&
+        <div
+          className={
+            ComponentHelper.composeClass(
+              'before',
+              { use: 'before-clickable', if: props.beforeOnClick }
+            )
+          }
+          onClick={props.beforeOnClick}>{before}
+        </div>
+      }
 
       <input
         type='text'
@@ -45,14 +54,22 @@ export const Input = props => {
         onBlur={props.onBlur}
       />
 
-      {after && <div className={ComponentHelper.composeClass(
-        'after',
-        { use: 'after-clickable', if: props.afterOnClick }
-      )} onClick={props.afterOnClick}>{after}</div>}
+      {
+        after
+        &&
+        <div
+          className={
+            ComponentHelper.composeClass(
+              'after',
+              { use: 'after-clickable', if: props.afterOnClick }
+            )
+          }
+          onClick={props.afterOnClick}>{after}</div>
+      }
     </div>
   )
 }
 
 Input.defaultProps = {
-  fit: true
+  fit: false
 }

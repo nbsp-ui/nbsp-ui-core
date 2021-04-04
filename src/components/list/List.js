@@ -1,6 +1,6 @@
 import React from 'react'
-import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
+import { ReactHelper } from '../../utils/ReactHelper'
 import { Box } from '../box/Box'
 import './List.scss'
 
@@ -10,79 +10,46 @@ import './List.scss'
  * @constructor
  */
 export const List = props => {
-  const { multiselect, onChange } = props
+  const { multiselect } = props
 
-  const [items, setItems] = React.useState([...props.data].map(item => ({
-    ...item,
-    _id: CompatUtils.uid(),
-    _selected: item._selected || false,
-    _hidden: item._hidden || false
-  })))
-
-  const selectItem = (item) => {
-    const oldItem = { ...item }, updatedItem = { ...item }, condition = !item._selected
-
-    updatedItem._selected = condition
-
-    multiselect || unselectAll()
-    items.find(i => i._id === item._id)._selected = condition
-    setItems([...items])
-    onChange && onChange(oldItem, updatedItem, getSelectedItems())
-  }
+  const refresh = ReactHelper.useRefresh()
 
   /**
-   * @return {ListItem[] | {}[]}
+   * @type {React.MutableRefObject<ListItem[]>}
    */
-  const getSelectedItems = () => items.filter(item => item._selected)
+  const items = React.useRef(props.data)
 
-  const selectAll = () => {
-    items.map(item => item._selected = true)
-    setItems([...items])
-    onChange && onChange(null, null, getSelectedItems())
+  /**
+   * @param {ListItem | {}} item
+   */
+  const selectItem = item => {
+    !multiselect && items.current.forEach(item => item._selected = false)
+    item._selected = !item._selected
+    props.onSelectItems && props.onSelectItems(items.current.filter(item => item._selected), items.current)
+    refresh()
   }
 
-  const unselectAll = () => {
-    items.map(item => item._selected = false)
-    setItems([...items])
-    onChange && onChange(null, null, getSelectedItems())
-  }
-
-  const isAllSelected = () => items.filter(item => !item._selected).length === 0
-
-  const hideItem = (item) =>  {
-    items.find(i => i._id === item._id)._hidden = true
-    setItems([...items])
-  }
-
-  const showItem = (item) => {
-    items.find(i => i._id === item._id)._hidden = false
-    setItems([...items])
-  }
+  // TODO: Excessive refresh
+  React.useEffect(() => {
+    items.current = props.data
+    refresh()
+  }, [props.data])
 
   const className = ComponentHelper.composeClass('nbsp-ui-list', props.className)
   const style = ComponentHelper.composeStyle(props)
 
-  React.useEffect(() => {
-    !props.searchValue
-      ? items.forEach((item) => showItem(item))
-      : items.forEach((item) => item.value.includes(props.searchValue) ? showItem(item) : hideItem(item))
-  }, [props.searchValue])
-
-  React.useEffect(() => {
-    props.selectAll && (isAllSelected() ? unselectAll() : selectAll())
-  }, [props.selectAll])
-
   return (
     <div className={className} style={style}>
       {
-        items.map(item =>
-          item._hidden ||
+        items.current.map((item, index) =>
+          !item._hidden
+          &&
           <Box
-            className={ComponentHelper.composeClass('item', { use: 'item-selected', if: item._selected })}
-            key={item._id}
+            key={index}
+            className={ComponentHelper.composeClass({ use: 'selected', if: item._selected })}
             onClick={() => selectItem(item)}
           >
-            { props.row(item) }
+            {props.row(item)}
           </Box>
         )
       }

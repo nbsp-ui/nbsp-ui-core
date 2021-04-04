@@ -1,17 +1,38 @@
 import React from 'react'
+import { CompatAlign } from '../../utils/CompatAlign'
+import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
-import './Select.scss'
+import { ReactHelper } from '../../utils/ReactHelper'
 import { Box } from '../box/Box'
 import { Button, CompatButtonType } from '../button/Button'
+import { VDivider } from '../divider-v/VDivider'
 import { FAIcon } from '../fa-icon/FAIcon'
 import { Input } from '../input/Input'
 import { List } from '../list/List'
 import { Popup } from '../popup/Popup'
-import { CompatAlign } from '../../utils/CompatAlign'
+import { Spacer } from '../spacer/Spacer'
+import './Select.scss'
 
-const openIcons = {
-  UP: 'fas fa-chevron-up',
-  DOWN: 'fas fa-chevron-down'
+/**
+ * @param {ListItem[]} items
+ * @return {string}
+ */
+const buildValue = items => {
+  const selectedItems = items.filter(item => item._selected)
+  return selectedItems.length === 1 ? selectedItems[0]?.value : `${selectedItems.length} items selected`
+}
+
+/**
+ * @param {ListItem[]} items
+ * @return {string}
+ */
+const buildIcon = items => {
+  const selectedItems = items.filter(item => item._selected)
+  return match(true, {
+    [selectedItems.length === items.length]: 'far fa-check-square',
+    [selectedItems.length < items.length]: 'far fa-minus-square',
+    [selectedItems.length === 0]: 'far fa-square'
+  })
 }
 
 /**
@@ -20,16 +41,35 @@ const openIcons = {
  * @constructor
  */
 export const Select = props => {
-  const { id, label, labelWidth, fit, placeholder, onSelectChange } = props
+  const { id, label, labelWidth, fit, placeholder } = props
 
-  const [value, setValue] = React.useState(props.value || '')
-  const [searchValue, setSearchValue] = React.useState('')
-  const [selectAll, setSelectAll] = React.useState('')
+  const refresh = ReactHelper.useRefresh()
+
   const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
 
-  const element = React.useRef()
+  /**
+   * @type {React.MutableRefObject<ListItem[]>}
+   */
+  const items = React.useRef(props.data.map(item => ({
+    ...item,
+    _id: CompatUtils.uid(),
+    _selected: item._selected || false,
+    _hidden: item._hidden || false
+  })))
 
-  const updateInputContent = items => setValue(items.length > 1 ? `${items.length} items selected` : items[0]?.value || '')
+  /**
+   * @type {React.MutableRefObject<ListItem[]>}
+   */
+  const appliedItems = React.useRef(items.current)
+
+  const searchValue = React.useRef('')
+
+  const filter = items => props.filter ? items.filter(props.filter) : items
+  const search = items => props.search && searchValue.current.length ? items.filter(item => props.search(item, searchValue.current)) : items
+
+  const applyItems = items => appliedItems.current = items |> filter |> search
+
+  const element = React.useRef()
 
   const className = ComponentHelper.composeClass('nbsp-ui-select', props.className)
   const style = ComponentHelper.composeStyle(props)
@@ -41,10 +81,10 @@ export const Select = props => {
         label={label}
         labelWidth={labelWidth}
         width={props.width || 300}
-        value={value}
+        value={buildValue(items.current)}
         fit={fit}
         placeholder={placeholder}
-        after={<FAIcon margin={{ top: 3 }} icon={pickerDisplayed ? openIcons.UP : openIcons.DOWN}/>}
+        after={<FAIcon margin={{ top: 3 }} icon={pickerDisplayed ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}/>}
         afterOnClick={() => setPickerDisplayed(!pickerDisplayed)}
       />
       <Popup
@@ -53,56 +93,65 @@ export const Select = props => {
         showed={pickerDisplayed}
         onBlur={() => setPickerDisplayed(false)}
       >
-        <div className='header'>
+        <Box className='toolbar' vAlign={CompatAlign.Center} padding={8}>
           {
-            <Box vAlign={CompatAlign.Center} hAlign={CompatAlign.Center}>
-              {
-                props.searchable
-                &&
-                <Input
-                  className='search'
-                  padding={8}
-                  placeholder='Search...'
-                  value={searchValue}
-                  onChange={(e) => setSearchValue(e.target.value)}
-                />
-              }
-              {
-                props.allSelectable
-                &&
-                <Button
-                  type={CompatButtonType.Icon}
-                  icon={
-                    <FAIcon
-                      icon={'far fa-check-circle'}
-                      className='selectAllIcon'
-                      color={'#616161'}
-                      onClick={(e) => setSelectAll(e)}
-                    />
-                  }
-                />
-              }
-            </Box>
+            props.search
+            &&
+            <Input
+              className='search'
+              placeholder='Search...'
+              value={searchValue.current}
+              onChange={event => {
+                searchValue.current = event.currentTarget.value
+                applyItems(items.current)
+                refresh()
+              }}
+            />
           }
-          { props.header && <div onClick={props.headerOnClick}>{ props.header() }</div> }
-        </div>
+          {props.search && props.allSelectable && <Spacer size={8}/>}
+          {
+            props.allSelectable
+            &&
+            <Button
+              type={CompatButtonType.Icon}
+              icon={
+                <FAIcon
+                  icon={buildIcon(items.current)}
+                  className='selectAllIcon'
+                  color='#616161'
+                />
+              }
+              onClick={() => {
+                const count = appliedItems.current.length
+                const selectedCount = appliedItems.current.reduce((count, item) => item._selected ? ++count : 1, 0)
+
+                match(true, {
+                  [selectedCount < count || selectedCount === 0]: () => appliedItems.current.forEach(item => item._selected = true),
+                  [selectedCount === count]: () => appliedItems.current.forEach(item => item._selected = false),
+                })()
+
+                refresh()
+              }}
+            />
+          }
+        </Box>
+        {(props.search || props.allSelectable) && <VDivider/>}
+        {props.header && props.header(appliedItems.current)}
+        {props.header && <VDivider/>}
         <List
           width={(props.width - (props.labelWidth || 0) - 7) || 300}
           height={300}
-          onChange={(updatedItem, oldItem, selectedItems) => {
-            updateInputContent(selectedItems)
-            onSelectChange(updatedItem, oldItem, selectedItems)
-            props.multiselect || setPickerDisplayed(false)
+          onSelectItems={(selected, all) => {
+            applyItems(all)
+            props.onItemsSelected && props.onItemsSelected(selected, all)
+            refresh()
           }}
           multiselect={props.multiselect}
-          data={props.data}
+          data={appliedItems.current}
           row={props.row}
-          searchValue={searchValue}
-          selectAll={selectAll}
         />
-        <div className='footer'>
-          { props.footer && <div onClick={props.footerOnClick}>{ props.footer() }</div> }
-        </div>
+        {props.footer && <VDivider/>}
+        {props.footer && props.footer(appliedItems.current)}
       </Popup>
     </div>
   )

@@ -15,13 +15,11 @@ export interface ListProps extends BaseProps {
     fontSize?: number
     multiselect?: boolean
     data?: ListItem[] | {}[]
-    searchValue?: string
-    selectAll?: MouseEvent
 
     // @ts-ignore
     row: (item?: ListItem | {}) => JSX.Element
 
-    onChange?: (updatedItem: ListItem | {}, oldItem: ListItem | {}, selectedItems: ListItem[] | {}[]) => void
+    onSelectItems?: (selected: ListItem[], all: ListItem[]) => void
 }
 
 export const List: React.FunctionComponent<ListProps>

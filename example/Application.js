@@ -18,6 +18,7 @@ import {
   Loader,
   OuterLoader,
   Progress,
+  Spacer,
   Tabs,
   Accordion
 } from '../src/index'
@@ -69,28 +70,25 @@ export const Application = () => {
           labelWidth={140}
           placeholder={'Country'}
           fontSize={14}
-          headerOnClick={ () => console.log('header click') }
           row={
-            (item) =>
+            item =>
               <Box vAlign={CompatAlign.Center} height={20}>
                 {
                   (item.value.length > 7 || item.value.length < 7)
                     ?
-                    <Box width={30}>
-                      <FAIcon icon='fas fa-star'/>
+                    <Box width={40} hAlign={CompatAlign.Center}>
+                      <FAIcon icon='far fa-star'/>
                     </Box>
                     :
-                    <Box width={30}>
-                    </Box>
+                    <Spacer size={40}/>
                 }
                 <span>{item.value}</span>
               </Box>
           }
-          footerOnClick={ () => console.log('footer click') }
-          onSelectChange={(updatedItem, oldItem) => console.log(updatedItem, oldItem)}
+          onItemsSelected={items => console.log(items)}
           multiselect
-          searchable
           allSelectable
+          search={(item, value) => item.value.toLowerCase().includes(value.toLowerCase())}
           data={[
             { id: 1, value: 'Albania' },
             { id: 2, value: 'Algeria' },
@@ -285,7 +283,6 @@ export const Application = () => {
               { id: 7, value: 'Armenia' },
               { id: 8, value: 'Australia' }
             ]}
-            onChange={(updatedItem, oldItem) => console.log(updatedItem, oldItem)}
           />
         </OuterLoader>
         <OuterLoader turn={listLoading}>
