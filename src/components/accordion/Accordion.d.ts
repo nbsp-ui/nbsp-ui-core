@@ -1,11 +1,10 @@
 // @ts-ignore
 import React from "react"
-import { BaseProps } from "../types"
+import { BaseProps, Containable } from "../types"
 
-export interface AccordionProps extends BaseProps {
+export interface AccordionProps extends BaseProps, Containable {
     collapsed?: boolean
     contentHeight?: number
-    children?: React.ReactNode | React.ReactNode[]
 
     onChange?: (collapsed: boolean) => void
 }

@@ -1,9 +1,9 @@
 import React from 'react'
-import './Accordion.scss'
 import { ComponentHelper } from '../../utils/ComponentHelper'
-import { Box } from "../box/Box";
-import { FAIcon } from "../fa-icon/FAIcon";
-import {CompatAlign} from "../../utils/CompatAlign";
+import { Box } from "../box/Box"
+import { FAIcon } from "../fa-icon/FAIcon"
+import { CompatAlign } from "../../utils/CompatAlign"
+import './Accordion.scss'
 
 /**
  * @param {AccordionProps} props
