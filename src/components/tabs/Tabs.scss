@@ -8,26 +8,38 @@
     .item {
       display: inline-block;
       font-family: "Roboto", sans-serif;
-      border-bottom: 1px solid transparent;
-      padding: 2px 2px 2px 4px;
-      margin-right: 8px;
-      min-width: 50px;
+      padding: 10px;
       text-align: center;
       color: $light-text-color;
-      transition: .2s linear;
+      border: 1px solid rgba($light-text-color, 0.5);
+      border-right: none;
+      transition: .2s linear color;
+
+      &:first-child {
+        border-radius: 10px 0 0 10px;
+      }
+
+      &:last-child {
+        border-radius: 0 10px 10px 0;
+        border-right: 1px solid rgba($light-text-color, 0.5);
+      }
 
       &:hover {
         cursor: pointer;
-        border-bottom: 1px solid rgba($light-text-color, 0.5);
       }
 
       &-selected {
         color: $accent-color;
-        border-bottom: 1px solid $accent-color;
+        border: 1px solid $accent-color;
+        background-color: $blue-50;
+      }
 
-        &:hover {
-          border-bottom: 1px solid $accent-color;
-        }
+      &-selected + .item {
+        border-left: none;
+      }
+
+      &-selected:last-child {
+        border-right: 1px solid $accent-color;
       }
 
       .icon {
@@ -37,13 +49,12 @@
       }
 
       .close {
+        position: absolute;
         display: inline;
-        font-size: 0;
+        font-size: 0.5em;
+        transform: translate(2px, -10px);
         transition: .2s linear;
-      }
 
-      &:hover > .close {
-        font-size: 1em;
       }
     }
 

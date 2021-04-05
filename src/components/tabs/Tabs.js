@@ -26,23 +26,22 @@ export const Tabs = props => {
 
   return (
     <div id={id} className={className} style={style}>
-      <Box vertical={props.vertical} className={'header'} margin={8}>
+      <Box vertical={props.vertical} className={'header'}>
         {
           tabs.map(tab =>
-            tab._hidden || <div
-              className={ComponentHelper.composeClass('item', { use: 'item-selected', if: selectedTab._id === tab._id })}
-              key={tab._id}
-              onClick={() => {
-                const oldItem = { ...selectedTab }
-                setSelectedTab(tab)
-                props.onChange && props.onChange(tab, oldItem)
-              }}
+            !tab._hidden
+            &&
+            <div
+               className={ComponentHelper.composeClass('item', { use: 'item-selected', if: selectedTab._id === tab._id })}
+               key={tab._id}
+               id={tab._id}
+               onClick={(e) => {
+                 const oldItem = { ...selectedTab }
+                 setSelectedTab(tab)
+                 props.onChange && props.onChange(tab, oldItem)
+               }}
             >
-              {
-                tab.icon
-                &&
-                <div className={'icon'}> <i className={`${tab.icon}`} /> </div>
-              }
+              { tab.icon && <div className={'icon'}> <i className={`${tab.icon}`} /> </div> }
               { tab.header }
               {
                 tab.closable
