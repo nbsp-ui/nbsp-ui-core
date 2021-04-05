@@ -9,12 +9,7 @@
   .item {
     font-family: "Roboto", sans-serif;
     font-size: 10pt;
-    color: $light-text-color;
     cursor: pointer;
-
-    &:hover {
-      background-color: $default-hover-color;
-    }
   }
 
 }

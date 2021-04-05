@@ -5,7 +5,8 @@ import { CompatUtils } from "../../utils/CompatUtils"
 import { Button, CompatButtonType } from "../button/Button"
 import { FAIcon } from "../fa-icon/FAIcon"
 import { Box } from "../box/Box"
-import { Spacer } from "../spacer/Spacer";
+import { Spacer } from "../spacer/Spacer"
+import { List } from "../list/List"
 import './Upload.scss'
 
 /**
@@ -44,27 +45,30 @@ export const Upload = props => {
           />
         </Box>
       </label>
-        <Box vertical margin={{ top: 8 }}>
-          {
-            files && files.map(file =>
-              <Box key={CompatUtils.uid()} className={'item'} style={{ justifyContent: 'space-between' }}>
-                <Box vAlign={CompatAlign.Center}>
-                  <FAIcon icon={'fas fa-paperclip'} fontSize={14} />
-                  <span>{file.name}</span>
-                  <Spacer size={20} />
-                  <span>{CompatUtils.getSizeFromBytes(file.size)}</span>
-                </Box>
-                <FAIcon
-                  icon={'fas fa-trash'}
-                  onClick={() => {
-                    setFiles([...files].filter(f => f.name !== file.name))
-                    props.onItemRemoved && props.onItemRemoved(file)
-                  }}
-                />
+      <List
+        width={400}
+        margin={{ top: 8 }}
+        fontSize={14}
+        row={
+          (item) =>
+            <Box key={CompatUtils.uid()} className={'item'} style={{ justifyContent: 'space-between' }}>
+              <Box vAlign={CompatAlign.Center} fontSize={'10pt'}>
+                <FAIcon icon={'fas fa-paperclip'} fontSize={14} />
+                <span>{item.name}</span>
+                <Spacer size={20} />
+                <span>{CompatUtils.getSizeFromBytes(item.size)}</span>
               </Box>
-            )
-          }
-        </Box>
+              <FAIcon
+                icon={'fas fa-trash'}
+                onClick={() => {
+                  setFiles([...files].filter(f => f.name !== item.name))
+                  props.onItemRemoved && props.onItemRemoved(item)
+                }}
+              />
+            </Box>
+        }
+        data={files}
+      />
     </div>
   )
 }

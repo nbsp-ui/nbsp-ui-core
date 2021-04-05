@@ -71,9 +71,10 @@ export const ProgressPanel = () => {
           width={400}
           margin={{ bottom: 8 }}
           fontSize={14}
+          divider
           row={
             (item) =>
-              <Box vAlign={CompatAlign.Center} height={20}>
+              <Box vAlign={CompatAlign.Center} margin={{ top: 7, bottom: 7 }} height={20}>
                 {
                   (item.value.length > 7 || item.value.length < 7)
                     ?
