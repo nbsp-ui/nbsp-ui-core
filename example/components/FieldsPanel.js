@@ -21,7 +21,7 @@ export const FieldsPanel = () =>
       fontSize={14}
       row={
         item =>
-          <Box vAlign={CompatAlign.Center} height={20}>
+          <Box vAlign={CompatAlign.Center} height={36}>
             {
               (item.value.length > 7 || item.value.length < 7)
                 ?
