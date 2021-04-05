@@ -8,7 +8,7 @@ import {
   Label,
   List,
   Loader,
-  OuterLoader,
+  LoaderWrapper,
   Progress,
   Switch, Table
 } from '../../src'
@@ -66,7 +66,7 @@ export const ProgressPanel = () => {
         margin={{ y: 8 }}
         onChange={(checked) => setListLoading(checked)}
       />
-      <OuterLoader turn={listLoading}>
+      <LoaderWrapper active={listLoading}>
         <List
           width={400}
           margin={{ bottom: 8 }}
@@ -90,8 +90,8 @@ export const ProgressPanel = () => {
           }
           data={MainStorage.getCountries().splice(0, 6)}
         />
-      </OuterLoader>
-      <OuterLoader turn={listLoading}>
+      </LoaderWrapper>
+      <LoaderWrapper active={listLoading}>
         <Table
           width={400}
           headerHeight={32}
@@ -127,7 +127,7 @@ export const ProgressPanel = () => {
           ]}
           data={MainStorage.getPersons()}
         />
-      </OuterLoader>
+      </LoaderWrapper>
     </Box>
   )
 }

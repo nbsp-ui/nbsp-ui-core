@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComponentHelper } from "../../utils/ComponentHelper"
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Loader.scss'
 
 /**
@@ -15,21 +15,19 @@ export const Loader = props => {
 
   return (
     <div id={id} className={className} style={style}>
-      <div className="profile-main-loader" style={{ width: props.width, height: props.width, justifyContent: 'center' }}>
-        <div className="loader">
-          <svg className="circular-loader" viewBox={`${50/2} ${50/2} ${50} ${50}`}>
-            <circle
-              className="loader-path"
-              cx={50}
-              cy={50}
-              r="20"
-              fill="none"
-              stroke={props.stroke}
-              strokeWidth={props.strokeWidth}
-              strokeLinecap={props.strokeLinecap}
-            />
-          </svg>
-        </div>
+      <div className="loader">
+        <svg className="circular-loader" viewBox={`${50 / 2} ${50 / 2} ${50} ${50}`}>
+          <circle
+            className="loader-path"
+            cx={50}
+            cy={50}
+            r="20"
+            fill="none"
+            stroke={props.color}
+            strokeWidth={props.strokeWidth}
+            strokeLinecap={props.strokeLinecap}
+          />
+        </svg>
       </div>
     </div>
   )
@@ -37,7 +35,7 @@ export const Loader = props => {
 
 Loader.defaultProps = {
   width: 100,
-  stroke: '#1E88E5',
+  color: '#1E88E5',
   strokeWidth: 2,
   strokeLinecap: 'round'
 }

@@ -1,40 +1,33 @@
 .nbsp-ui-loader {
-
-  & > .profile-main-loader > .loader {
+  > .loader {
     position: relative;
     margin: 0 auto;
-  }
 
-  & > .profile-main-loader > .loader:before {
-    content: '';
-    display: block;
-  }
+    :before {
+      content: '';
+      display: block;
+    }
 
-  & > .profile-main-loader > .loader > .circular-loader {
-    -webkit-animation: rotate 2s linear infinite;
-    animation: rotate 2s linear infinite;
-    -webkit-transform-origin: center center;
-    -ms-transform-origin: center center;
-    transform-origin: center center;
-  }
+    > .circular-loader {
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
 
-  & > .profile-main-loader > .loader > .circular-loader > .loader-path {
-    stroke-dasharray: 150,200;
-    stroke-dashoffset: -10;
-    -webkit-animation: dash 1.5s ease-in-out infinite;
-    animation: dash 1.5s ease-in-out infinite;
+      > .loader-path {
+        stroke-dasharray: 150,200;
+        stroke-dashoffset: -10;
+        animation: dash 1.5s ease-in-out infinite;
+      }
+    }
   }
 
   @-webkit-keyframes rotate {
     100% {
-      -webkit-transform: rotate(360deg);
       transform: rotate(360deg);
     }
   }
 
   @keyframes rotate {
     100% {
-      -webkit-transform: rotate(360deg);
       transform: rotate(360deg);
     }
   }
@@ -68,5 +61,4 @@
       stroke-dashoffset: -124;
     }
   }
-
 }
