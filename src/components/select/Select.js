@@ -84,7 +84,7 @@ export const Select = props => {
         value={buildValue(items.current)}
         fit={fit}
         placeholder={placeholder}
-        after={<FAIcon margin={{ top: 3 }} icon={pickerDisplayed ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}/>}
+        after={<FAIcon margin={{ top: 3 }} icon={pickerDisplayed.current ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}/>}
         afterOnClick={() => {
           pickerDisplayed.current = true
           refresh()
