@@ -47,7 +47,7 @@ export const List = props => {
           <Box
             key={index}
             className={ComponentHelper.composeClass({ use: 'selected', if: item._selected })}
-            style={{ borderBottom: props.divider ? '1px solid #EEEEEE' : '' }}
+            style={{ borderBottom: props.divided ? '1px solid #EEEEEE' : '' }}
             onClick={() => selectItem(item)}
           >
             {props.row(item)}

@@ -71,7 +71,7 @@ export const ProgressPanel = () => {
           width={400}
           margin={{ bottom: 8 }}
           fontSize={14}
-          divider
+          divided
           row={
             (item) =>
               <Box vAlign={CompatAlign.Center} margin={{ top: 7, bottom: 7 }} height={20}>
