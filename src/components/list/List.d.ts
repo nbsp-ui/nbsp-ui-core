@@ -14,6 +14,7 @@ export interface ListProps extends BaseProps {
     color?: string
     fontSize?: number
     multiselect?: boolean
+    divider?: boolean
     data?: ListItem[] | {}[]
 
     // @ts-ignore
