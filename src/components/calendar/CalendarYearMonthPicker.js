@@ -5,7 +5,7 @@ import { ComponentHelper } from '../../utils/ComponentHelper'
 
 /**
  * @param props
- * @param {boolean} displayed
+ * @param {boolean} visible
  * @param {Date} currentDate
  * @param {Date} viewedDate
  * @param {Date} selectedDate
@@ -14,7 +14,7 @@ import { ComponentHelper } from '../../utils/ComponentHelper'
  * @returns {JSX.Element}
  * @constructor
  */
-export const CalendarYearMonthPicker = ({ displayed, currentDate, viewedDate, selectedDate, onMonthClick, onYearClick }) => {
+export const CalendarYearMonthPicker = ({ visible, currentDate, viewedDate, selectedDate, onMonthClick, onYearClick }) => {
   const years = CompatUtils.range(1980, 2080)
 
   const renderMonth = (month, index) =>
@@ -25,7 +25,7 @@ export const CalendarYearMonthPicker = ({ displayed, currentDate, viewedDate, se
           use: 'current',
           if: month === currentDate.getMonth() && viewedDate.getFullYear() === currentDate.getFullYear()
         },
-        { use: 'selected', if: month === viewedDate.getMonth() }
+        { use: 'viewed', if: month === viewedDate.getMonth() }
       )}
       key={index}
       onClick={() => onMonthClick(month)}
@@ -34,7 +34,7 @@ export const CalendarYearMonthPicker = ({ displayed, currentDate, viewedDate, se
     </p>
 
   return (
-    <div className='years-months' style={{ display: displayed ? 'block' : 'none' }}>
+    <div className='years-months' style={{ display: visible ? 'block' : 'none' }}>
       <div className='months months-up'>
         {CompatUtils.range(0, 5).map(renderMonth)}
       </div>

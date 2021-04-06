@@ -17,7 +17,7 @@ export const Calendar = props => {
 
   const [viewedDate, setViewedDate] = React.useState(new Date(value.getFullYear(), value.getMonth()))
   const [selectedDate, setSelectedDate] = React.useState(new Date(value.getFullYear(), value.getMonth(), value.getDate()))
-  const [yearMonthPickerDisplayed, setYearMonthPickerDisplayed] = React.useState(false)
+  const [yearMonthPickerVisible, setYearMonthPickerVisible] = React.useState(false)
 
   const className = ComponentHelper.composeClass('nbsp-ui-calendar')
   const style = ComponentHelper.composeStyle(props)
@@ -47,10 +47,10 @@ export const Calendar = props => {
         viewedDate={viewedDate}
         onPrevMonthClick={displayPrevMonth}
         onNextMonthClick={displayNextMonth}
-        onTitleClick={() => setYearMonthPickerDisplayed(!yearMonthPickerDisplayed)}
+        onTitleClick={() => setYearMonthPickerVisible(!yearMonthPickerVisible)}
       />
       <CalendarYearMonthPicker
-        displayed={yearMonthPickerDisplayed}
+        visible={yearMonthPickerVisible}
         currentDate={currentDate}
         viewedDate={viewedDate}
         selectedDate={selectedDate}
