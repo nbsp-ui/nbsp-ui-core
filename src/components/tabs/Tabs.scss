@@ -17,11 +17,11 @@
       transition: .2s linear color;
 
       &:first-child {
-        border-radius: 7px 0 0 0;
+        border-radius: 4px 0 0 0;
       }
 
       &:last-child {
-        border-radius: 0 7px 0 0;
+        border-radius: 0 4px 0 0;
         border-right: 1px solid rgba($light-text-color, 0.5);
       }
 
