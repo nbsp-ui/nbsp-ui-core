@@ -1,8 +1,8 @@
 import React from 'react'
 import { ComponentHelper } from "../../utils/ComponentHelper"
-import './Tabs.scss'
 import { Box } from "../box/Box"
 import { CompatUtils } from "../../utils/CompatUtils"
+import './Tabs.scss'
 
 /**
  * @param {TabsProps} props

@@ -8,6 +8,7 @@
     .item {
       display: inline-block;
       font-family: "Roboto", sans-serif;
+      font-size: 10pt;
       padding: 10px;
       text-align: center;
       color: $light-text-color;
@@ -16,11 +17,11 @@
       transition: .2s linear color;
 
       &:first-child {
-        border-radius: 10px 0 0 10px;
+        border-radius: 7px 0 0 0;
       }
 
       &:last-child {
-        border-radius: 0 10px 10px 0;
+        border-radius: 0 7px 0 0;
         border-right: 1px solid rgba($light-text-color, 0.5);
       }
 
