@@ -18,7 +18,7 @@ export const LoaderWrapper = props => {
       <div className={className} style={style}>
         {props.children}
         <div className='overlay'/>
-        <Loader width={props.size || 32}/>
+        <Loader size={props.size}/>
       </div>
       :
       <div>{props.children}</div>

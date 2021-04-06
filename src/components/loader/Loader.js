@@ -2,6 +2,18 @@ import React from 'react'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Loader.scss'
 
+const mappers = {
+  'size': ({ size }) => ({
+    ...size && {
+      width: `${size}px`,
+      maxWidth: `${size}px`,
+      height: `${size}px`,
+      maxHeight: `${size}px`
+    },
+    flexBasis: size ? 'auto' : 0
+  })
+}
+
 /**
  * @param {LoaderProps} props
  * @return {JSX.Element}
@@ -11,7 +23,7 @@ export const Loader = props => {
   const { id } = props
 
   const className = ComponentHelper.composeClass('nbsp-ui-loader', props.className)
-  const style = ComponentHelper.composeStyle(props)
+  const style = ComponentHelper.composeStyle(props, mappers)
 
   return (
     <div id={id} className={className} style={style}>
@@ -34,7 +46,7 @@ export const Loader = props => {
 }
 
 Loader.defaultProps = {
-  width: 100,
+  size: 24,
   color: '#1E88E5',
   strokeWidth: 2,
   strokeLinecap: 'round'

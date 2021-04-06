@@ -22,9 +22,9 @@ export const ProgressPanel = () => {
   return (
     <Box vertical padding={{ x: 8 }} hAlign={CompatAlign.Left}>
       <Box margin={{ bottom: 8 }} vAlign={CompatAlign.Center}>
-        <Label width={140} value={'Loader'} color={'#757575'}/>
+        <Label width={140} value='Loader' color='#757575'/>
         <Box width={430} hAlign={CompatAlign.Center} vAlign={CompatAlign.Center}>
-          <Loader width={25} strokeWidth={5}/>
+          <Loader size={25} strokeWidth={5}/>
         </Box>
       </Box>
       <Box vertical>
