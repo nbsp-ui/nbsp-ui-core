@@ -62,20 +62,6 @@
     }
   }
 
-  &-disabled {
-    pointer-events: none;
-
-    & > p {
-      color: $disabled-color-0;
-    }
-
-    & > input {
-      background-color: $disabled-background-color;
-      color: $disabled-color-0;
-      border-color: $disabled-background-color;
-    }
-  }
-
   &-before {
     & > input {
       border-top-left-radius: 0;
@@ -125,6 +111,24 @@
 
     &:active {
       background-color: #00000026;
+    }
+  }
+
+  &-disabled {
+    pointer-events: none;
+
+    & > p {
+      color: $disabled-color-0;
+    }
+
+    & > input {
+      background-color: $disabled-background-color;
+      color: $disabled-color-0;
+    }
+
+    & .before, & .after {
+      color: $disabled-color-0;
+      background-color: $disabled-background-color;
     }
   }
 }
