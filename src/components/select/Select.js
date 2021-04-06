@@ -147,15 +147,16 @@ export const Select = props => {
         <List
           width={(props.width - (props.labelWidth || 0) - 7) || 300}
           height={300}
+          divided
+          multiselect={props.multiselect}
+          data={appliedItems.current}
+          row={props.row}
           onSelectItems={(selected, all) => {
             applyItems(all)
             props.onItemsSelected && props.onItemsSelected(selected, all)
             !props.multiselect && (pickerDisplayed.current = false)
             refresh()
           }}
-          multiselect={props.multiselect}
-          data={appliedItems.current}
-          row={props.row}
         />
         {props.footer && <VDivider/>}
         {props.footer && props.footer(appliedItems.current)}
