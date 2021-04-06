@@ -18,7 +18,7 @@ const ids = {
  * @constructor
  */
 export const DatePicker = props => {
-  const { value, fit, label, labelWidth, placeholder } = props
+  const { value, fit, disabled, label, labelWidth, placeholder } = props
 
   const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
   const [selectedDate, setSelectedDate] = React.useState(new Date())
@@ -38,6 +38,7 @@ export const DatePicker = props => {
         fit={fit}
         placeholder={placeholder}
         readOnly
+        disabled={disabled}
         after={<FAIcon icon='far fa-calendar'/>}
         afterOnClick={() => setPickerDisplayed(!pickerDisplayed)}
       />

@@ -11,6 +11,7 @@ export interface BaseProps {
     padding?: CompatIndent
     margin?: CompatIndent
     fit?: boolean
+    disabled?: boolean
 }
 
 export interface Containable {

@@ -7,7 +7,6 @@ export interface InputProps extends BaseProps {
     label?: string
     labelWidth?: number
     placeholder?: string
-    disabled?: boolean
     readOnly?: boolean
     rule?: (value: any) => boolean
     before?: React.ReactElement

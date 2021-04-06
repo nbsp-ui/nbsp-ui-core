@@ -1,11 +1,9 @@
 // @ts-ignore
 import * as React from "react";
+import { BaseProps } from '../types'
 
-export interface DatePickerProps {
+export interface DatePickerProps extends BaseProps {
     value?: Date
-    width?: number
-    height?: number
-    fit?: boolean
     label?: string
     labelWidth?: string
     labelHeight?: string
