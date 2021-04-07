@@ -1,7 +1,9 @@
 import React from 'react'
 import { ComponentHelper } from "../../utils/ComponentHelper"
+import { CompatAlign } from "../../utils/CompatAlign"
+import { FAIcon } from "../fa-icon/FAIcon"
+import { Box } from "../box/Box"
 import './Menu.scss'
-import { FAIcon } from "../fa-icon/FAIcon";
 
 /**
  * @param {MenuProps} props
@@ -103,9 +105,18 @@ export const SubMenu = props => {
         id={id}
         className={ComponentHelper.composeClass({ use: 'nbsp-ui-menu-item-expanded', if: props.expanded })}
         expandItem={props.expandItem}
-        paddingLeft={`${(props.subMenuLevel - 1) * 20 || 10}px`}
+        paddingLeft={`${(props.subMenuLevel - 1) * 10 || 5}px`}
       >
-        <span>{props.title}</span>
+        <Box vAlign={CompatAlign.Center}>
+          {
+            props.icon
+            &&
+            <div style={{width: '40px', textAlign: 'center'}}>
+              <FAIcon icon={props.icon}/>
+            </div>
+          }
+          <span>{props.title}</span>
+        </Box>
         <FAIcon className={'expand-icon'} icon={'fas fa-chevron-right'} />
       </MenuItem>
       <div
@@ -118,7 +129,7 @@ export const SubMenu = props => {
       >
         {
           React.Children.map(props.children, child => React.cloneElement(child, {
-            paddingLeft: `${props.subMenuLevel * 20}px`
+            paddingLeft: `${props.subMenuLevel * 10}px`
           }))
         }
       </div>

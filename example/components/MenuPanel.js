@@ -10,7 +10,7 @@ export const MenuPanel = () => {
       <Menu width={400}>
         <MenuItem id={CompatUtils.uid()}>
           <Box vAlign={CompatAlign.Center}>
-            <div style={{width: '30px'}}>
+            <div style={{width: '40px', textAlign: 'center'}}>
               <FAIcon icon='fa fa-home'/>
             </div>
             <span>Home</span>
@@ -18,13 +18,13 @@ export const MenuPanel = () => {
         </MenuItem>
         <MenuItem id={CompatUtils.uid()}>
           <Box vAlign={CompatAlign.Center}>
-            <div style={{width: '30px'}}>
-              <FAIcon icon='fa fa-user'/>
+            <div style={{width: '40px', textAlign: 'center'}}>
+              <FAIcon icon="fa fa-user"/>
             </div>
             <span>User</span>
           </Box>
         </MenuItem>
-        <SubMenu id={CompatUtils.uid()} title="CEO">
+        <SubMenu id={CompatUtils.uid()} title="CEO" icon="fas fa-sitemap">
           <SubMenu id={CompatUtils.uid()} title="CTO">
             <SubMenu id={CompatUtils.uid()} title="Software engineer">
               <SubMenu id={CompatUtils.uid()} title="Level 1">
