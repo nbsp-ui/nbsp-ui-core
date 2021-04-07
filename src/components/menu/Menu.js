@@ -81,15 +81,8 @@ export const SubMenu = props => {
   const className = ComponentHelper.composeClass('nbsp-ui-submenu', props.className)
   const style = ComponentHelper.composeStyle(props)
 
-  // TODO: simplify
-  const getBackgroundColor = () => match(props._subMenuLevel, {
-    1: '#FAFAFA',
-    2: '#F5F5F5',
-    3: '#EEEEEE',
-    4: '#E0E0E0',
-    5: '#BDBDBD',
-    6: '#9E9E9E'
-  })
+  const subMenuContentColors = ['#FAFAFA', '#F5F5F5', '#EEEEEE', '#E0E0E0', '#BDBDBD', '#ECEFF1', '#CFD8DC', '#B0BEC5', '#90A4AE', '#78909C']
+  const getSubMenuContentColor = () => subMenuContentColors[String(props._subMenuLevel).charAt(String(props._subMenuLevel).length - 1)]
 
   return (
     <div
@@ -124,7 +117,7 @@ export const SubMenu = props => {
         style={{
           maxHeight: props.expanded ? '500px' : '0px',
           opacity: props.expanded ? 1 : 0,
-          backgroundColor: getBackgroundColor()
+          backgroundColor: getSubMenuContentColor()
         }}
       >
         {
