@@ -11,6 +11,7 @@ import { SwitchesPanel } from './components/SwitchesPanel'
 import { TablePanel } from './components/TablePanel'
 import { TabsPanel } from './components/TabsPanel'
 import { TagsPanel } from './components/TagsPanel'
+import { MenuPanel } from './components/MenuPanel'
 
 export const Application = () =>
   <Box vertical>
@@ -25,4 +26,5 @@ export const Application = () =>
     <AccordionPanel/>
     <MediaPanel/>
     <ProgressPanel/>
+    <MenuPanel/>
   </Box>

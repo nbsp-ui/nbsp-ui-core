@@ -1,0 +1,44 @@
+@import "../colors";
+
+.nbsp-ui-menu {
+
+  &-item {
+    display: flex;
+    font-family: "Roboto", sans-serif;
+    padding: 10px;
+    color: $light-text-color;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: .2s linear border-right-color, .2s linear background-color;
+
+    &:hover {
+      background-color: $default-hover-color;
+    }
+
+    &-selected {
+      color: $accent-color;
+      background-color: $blue-50;
+    }
+
+    .expand-icon {
+      transition: .2s linear;
+      transform: rotate(0deg);
+    }
+
+    &-expanded {
+
+      .expand-icon {
+        transform: rotate(90deg);
+      }
+
+    }
+
+  }
+
+  .submenu-content {
+    overflow: hidden;
+    transition: .2s linear max-height, .2s linear opacity;
+  }
+
+}

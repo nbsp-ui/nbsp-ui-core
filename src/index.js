@@ -24,6 +24,7 @@ export { Tabs } from './components/tabs/Tabs'
 export { Accordion } from './components/accordion/Accordion'
 export { Image } from './components/image/Image'
 export { Upload } from './components/upload/Upload'
+export { Menu, SubMenu, MenuItem } from './components/menu/Menu'
 
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'
