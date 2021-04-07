@@ -7,7 +7,7 @@ export const MenuPanel = () => {
 
   return (
     <Box vertical padding={8}>
-      <Menu width={400}>
+      <Menu vertical width={400}>
         <MenuItem id={CompatUtils.uid()}>
           <Box vAlign={CompatAlign.Center}>
             <div style={{width: '40px', textAlign: 'center'}}>

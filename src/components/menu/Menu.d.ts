@@ -3,15 +3,16 @@ import React from "react"
 import { BaseProps, Containable } from "../types"
 
 export interface MenuProps extends BaseProps, Containable {
-
+    vertical?: boolean
 }
 
 export const Menu: React.FunctionComponent<MenuProps>
 
 export interface SubMenuProps extends BaseProps, Containable {
+    _subMenuLevel: number
     expanded?: boolean
 
-    selectItem?: (id: number | string) => void
+    expandItem?: (id: number | string) => void
 
     onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
 }

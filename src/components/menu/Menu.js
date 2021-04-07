@@ -47,7 +47,7 @@ export const Menu = props => {
   }
 
   // TODO: simplify
-  const childrenMap = (children, subMenuLevel = 1) => React.Children.map(children, child => match(child.type.name, {
+  const childrenMap = (children, _subMenuLevel = 1) => React.Children.map(children, child => match(child.type.name, {
     [MenuItem.name]: () => React.cloneElement(child, {
       selected: childrenSelected.find(c => c.id === child.props.id).selected,
       selectItem
@@ -55,8 +55,8 @@ export const Menu = props => {
     [SubMenu.name]: () => React.cloneElement(child, {
       expanded: childrenSelected.find(c => c.id === child.props.id).expanded,
       expandItem,
-      subMenuLevel,
-      children: childrenMap(child.props.children, subMenuLevel + 1)
+      _subMenuLevel,
+      children: childrenMap(child.props.children, _subMenuLevel + 1)
     })
   })())
 
@@ -64,9 +64,9 @@ export const Menu = props => {
 
   console.log({childrenSelected})
   return (
-    <div id={id} className={className} style={style}>
+    <Box vertical={props.vertical} id={id} className={className} style={style}>
       {childrenMap(props.children)}
-    </div>
+    </Box>
   )
 }
 
@@ -82,7 +82,7 @@ export const SubMenu = props => {
   const style = ComponentHelper.composeStyle(props)
 
   // TODO: simplify
-  const getBackgroundColor = () => match(props.subMenuLevel, {
+  const getBackgroundColor = () => match(props._subMenuLevel, {
     1: '#FAFAFA',
     2: '#F5F5F5',
     3: '#EEEEEE',
@@ -105,7 +105,7 @@ export const SubMenu = props => {
         id={id}
         className={ComponentHelper.composeClass({ use: 'nbsp-ui-menu-item-expanded', if: props.expanded })}
         expandItem={props.expandItem}
-        paddingLeft={`${(props.subMenuLevel - 1) * 10 || 5}px`}
+        paddingLeft={`${(props._subMenuLevel - 1) * 10 || 5}px`}
       >
         <Box vAlign={CompatAlign.Center}>
           {
@@ -129,7 +129,7 @@ export const SubMenu = props => {
       >
         {
           React.Children.map(props.children, child => React.cloneElement(child, {
-            paddingLeft: `${props.subMenuLevel * 10}px`
+            paddingLeft: `${props._subMenuLevel * 10}px`
           }))
         }
       </div>
