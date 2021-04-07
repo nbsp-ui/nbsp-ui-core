@@ -1,14 +1,29 @@
 import React from 'react'
-import { Box, Menu, SubMenu, MenuItem } from '../../src'
+import { Box, Menu, SubMenu, MenuItem, FAIcon } from '../../src'
 import { CompatUtils } from "../../src/utils/CompatUtils"
+import { CompatAlign } from "../../src/utils/CompatAlign";
 
 export const MenuPanel = () => {
 
   return (
     <Box vertical padding={8}>
       <Menu width={400}>
-        <MenuItem id={CompatUtils.uid()}>Portal</MenuItem>
-        <MenuItem id={CompatUtils.uid()}>Users</MenuItem>
+        <MenuItem id={CompatUtils.uid()}>
+          <Box vAlign={CompatAlign.Center}>
+            <div style={{width: '30px'}}>
+              <FAIcon icon='fa fa-home'/>
+            </div>
+            <span>Home</span>
+          </Box>
+        </MenuItem>
+        <MenuItem id={CompatUtils.uid()}>
+          <Box vAlign={CompatAlign.Center}>
+            <div style={{width: '30px'}}>
+              <FAIcon icon='fa fa-user'/>
+            </div>
+            <span>User</span>
+          </Box>
+        </MenuItem>
         <SubMenu id={CompatUtils.uid()} title="CEO">
           <SubMenu id={CompatUtils.uid()} title="CTO">
             <SubMenu id={CompatUtils.uid()} title="Software engineer">

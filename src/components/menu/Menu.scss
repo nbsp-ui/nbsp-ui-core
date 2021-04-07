@@ -8,6 +8,7 @@
     padding: 10px;
     color: $light-text-color;
     align-items: center;
+    border-radius: 4px;
     justify-content: space-between;
     cursor: pointer;
     transition: .2s linear border-right-color, .2s linear background-color;
@@ -19,6 +20,7 @@
     &-selected {
       color: $accent-color;
       background-color: $blue-50;
+      box-shadow: 0 0 2px #90CAF9 inset;
     }
 
     .expand-icon {
