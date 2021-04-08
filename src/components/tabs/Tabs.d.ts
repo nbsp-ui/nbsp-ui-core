@@ -3,18 +3,22 @@ import React from "react"
 import { BaseProps } from "../types"
 
 export interface TabsItem {
-    _id: number | string
-    header: string
-    icon: string
-    closable: boolean
+    label?: string
+    // @ts-ignore
+    icon?: JSX.Element
+    closable?: boolean
+
+    _id?: number | string
+    _hidden?: boolean
 }
 
 export interface TabsProps extends BaseProps {
     vertical?: boolean
-    tabs: TabsItem[] | {}[]
+    tabs?: TabsItem[] | {}[]
+    closable?: boolean
 
-    onChange?: (updatedItem: TabsItem, oldItem: TabsItem) => void
-    onClose?: (item: TabsItem) => void
+    onTabSelect?: (tab: TabsItem) => void
+    onClose?: (tab: TabsItem) => void
 }
 
 export const Tabs: React.FunctionComponent<TabsProps>
