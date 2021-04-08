@@ -88,7 +88,7 @@ export const ProgressPanel = () => {
                 <span>{item.value}</span>
               </Box>
           }
-          data={MainStorage.getCountries().splice(0, 6)}
+          data={MainStorage.getCountries().slice(0, 6)}
         />
       </LoaderWrapper>
       <LoaderWrapper active={listLoading}>
