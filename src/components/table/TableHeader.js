@@ -1,7 +1,9 @@
 import React from 'react'
+import { CompatUtils } from '../../utils/CompatUtils'
 import { ReactHelper } from '../../utils/ReactHelper'
 import { Box } from '../box/Box'
 import { TableColumnHeader } from './TableColumnHeader'
+import { TableColumnResizer } from './TableColumnResizer'
 import { TableColumnShadow } from './TableColumnShadow'
 
 /**
@@ -27,10 +29,44 @@ export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, on
    */
   const movingColumn = React.useRef()
 
-  const resizing = React.useRef(false)
+  /**
+   * @type {React.MutableRefObject<TableColumn>}
+   */
+  const resizableColumn = React.useRef()
+
+  /**
+   * @type {React.MutableRefObject<TableColumn>}
+   */
+  const resizingColumn = React.useRef()
+
+  /**
+   * @param {MouseEvent} event
+   */
+  const handleMouseMove = event => {
+    if (!movingColumn.current) {
+      const resizable = columns.find((column, index, columns) => {
+        const rect = column._headerElement.getBoundingClientRect()
+        return index !== columns.length - 1 && CompatUtils.math.isBelongToCircle(event.clientX, event.clientY, rect.x + rect.width, rect.y + rect.height / 2, 24)
+      })
+
+      if (resizable?._id !== resizableColumn.current?._id) {
+        resizableColumn.current = resizable
+        refresh()
+      }
+    }
+  }
+
+  const handleMouseLeave = () => {
+    resizableColumn.current = null
+    refresh()
+  }
 
   return (
-    <div className='header'>
+    <div
+      className='header'
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <Box className='container' height={headerHeight}>
         {
           columns.map((column, index) =>
@@ -39,43 +75,42 @@ export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, on
               reference={element => column._headerElement = element}
               column={column}
               items={items}
-              resizable={!resizing.current}
+              prevented={resizableColumn.current || movingColumn.current}
               onClick={() => {
                 column.sort && onSortRequest(column)
               }}
-              onEnter={() => {
-                focusedColumn.current = column
-              }}
-              onLeave={() => {
-                column._id === focusedColumn.current?._id && (focusedColumn.current = null)
-              }}
+              onEnter={() => focusedColumn.current = column}
+              onLeave={() => column._id === focusedColumn.current?._id && (focusedColumn.current = null)}
               onDragStart={() => {
                 movingColumn.current = column
                 refresh()
-              }}
-              onResizeStart={() => {
-                resizing.current = true
-                refresh()
-              }}
-              onResizeEnd={size => {
-                const { resizedColumn, adjacentColumn, flexible } = columns.reduce((result, each, index, columns) => {
-                  each._id === column._id && (result.resizedColumn = each)
-                  each._id === column._id && (result.index = index)
-                  index === result.index + 1 && each.width && (result.adjacentColumn = each)
-                  index === result.index + 1 && [0, columns.length - 1].includes(index) && (result.flexible = true)
-                  return result
-                }, {})
-
-                adjacentColumn && (adjacentColumn.width = flexible ? false : adjacentColumn.width + resizedColumn.width - size)
-                resizedColumn && (resizedColumn.width = size)
-
-                resizing.current = false
-                onRefreshRequest()
               }}
             />
           )
         }
       </Box>
+      <TableColumnResizer
+        column={resizableColumn.current || resizingColumn.current}
+        onDragStart={() => resizingColumn.current = resizableColumn.current}
+        onDragEnd={size => {
+          const { resizedColumn, adjacentColumn, flexible } = columns.reduce((result, each, index, columns) => {
+            each._id === resizingColumn.current._id && (result.resizedColumn = each)
+            each._id === resizingColumn.current._id && (result.index = index)
+            index === result.index + 1 && each.width && (result.adjacentColumn = each)
+            index === result.index + 1 && [0, columns.length - 1].includes(index) && (result.flexible = true)
+            return result
+          }, {})
+
+          adjacentColumn && (adjacentColumn.width = flexible ? undefined : adjacentColumn.width + resizedColumn.width - size)
+          resizedColumn && (resizedColumn.width = size)
+
+          resizableColumn.current = null
+          resizingColumn.current = null
+          refresh()
+
+          onRefreshRequest()
+        }}
+      />
       <TableColumnShadow
         column={movingColumn.current}
         onDragEnd={() => {

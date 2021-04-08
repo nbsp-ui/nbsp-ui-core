@@ -14,14 +14,6 @@
         border-bottom: 1px solid $border-color;
         user-select: none;
         transition: background-color .2s, border-color .2s;
-
-        & > .resizer {
-          position: absolute;
-          width: 3px;
-          background-color: $accent-color;
-          cursor: col-resize;
-          user-select: none;
-        }
       }
 
       & > div:first-child {
@@ -59,11 +51,20 @@
       }
     }
 
+    & > .resizer {
+      position: absolute;
+      width: 3px;
+      background-color: $accent-color;
+      cursor: col-resize;
+      user-select: none;
+    }
+
     & > .shadow {
       position: absolute;
       background-color: #FFFFFF;
       border: 1px solid $accent-color;
       cursor: grabbing;
+      pointer-events: none;
     }
   }
 

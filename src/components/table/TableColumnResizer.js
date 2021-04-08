@@ -5,13 +5,12 @@ import { ReactHelper } from '../../utils/ReactHelper'
 /**
  * @param props
  * @param {TableColumn} props.column
- * @param {boolean} props.active
  * @param {function(): void} props.onDragStart
  * @param {function(width: number): void} props.onDragEnd
  * @returns {JSX.Element}
  * @constructor
  */
-export const TableColumnResizer = ({ column, active, onDragStart, onDragEnd }) => {
+export const TableColumnResizer = ({ column, onDragStart, onDragEnd }) => {
   const refresh = ReactHelper.useRefresh()
 
   const dragged = React.useRef(false)
@@ -23,7 +22,7 @@ export const TableColumnResizer = ({ column, active, onDragStart, onDragEnd }) =
   const element = React.useRef()
 
   ReactHelper.registerGlobalMouseEventListener('mousemove', ({ clientX, clientY }) => {
-    if (active) {
+    if (column) {
       const elementRect = element.current.getBoundingClientRect()
       const parentRect = column._headerElement.getBoundingClientRect()
       if (dragged.current && CompatUtils.math.isBelongToElementRectWithIndent(clientX, clientY, elementRect, 20)) {
@@ -34,7 +33,7 @@ export const TableColumnResizer = ({ column, active, onDragStart, onDragEnd }) =
   })
 
   ReactHelper.registerGlobalMouseEventListener('mouseup', () => {
-    if (active) {
+    if (column) {
       const elementRect = element.current.getBoundingClientRect()
       const parentRect = column._headerElement.getBoundingClientRect()
 
@@ -46,16 +45,16 @@ export const TableColumnResizer = ({ column, active, onDragStart, onDragEnd }) =
     }
   })
 
-  React.useEffect(() => offset.current = 0, [active])
+  React.useEffect(() => offset.current = 0, [column])
 
-  const parentRect = active && column._headerElement.getBoundingClientRect()
+  const parentRect = column && column._headerElement.getBoundingClientRect()
 
   return (
     <div
       className='resizer'
       style={{
-        display: active ? 'block' : 'none',
-        ...active && {
+        display: column ? 'block' : 'none',
+        ...column && {
           left: `${parentRect.left + parentRect.width - 2 + offset.current}px`,
           top: `${parentRect.top + window.scrollY}px`,
           height: `${parentRect.height}px`
