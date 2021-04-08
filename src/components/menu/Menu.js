@@ -49,25 +49,45 @@ export const Menu = props => {
   // TODO: simplify
   const childrenMap = (children, _subMenuLevel = 1) => React.Children.map(children, child => match(child.type.name, {
     [MenuItem.name]: () => React.cloneElement(child, {
+      _menuCollapsed: props.collapsed,
+      _collapsedShow: props.collapsedShow,
       selected: childrenSelected.find(c => c.id === child.props.id).selected,
       selectItem
     }),
     [SubMenu.name]: () => React.cloneElement(child, {
+      _subMenuLevel,
+      _menuCollapsed: props.collapsed,
+      _collapsedShow: props.collapsedShow,
       expanded: childrenSelected.find(c => c.id === child.props.id).expanded,
       expandItem,
-      _subMenuLevel,
       children: childrenMap(child.props.children, _subMenuLevel + 1)
     })
   })())
 
   const [childrenSelected, setChildrenSelected] = React.useState(collectChildren(props.children))
 
-  console.log({childrenSelected})
   return (
-    <Box vertical={props.vertical} id={id} className={className} style={style}>
+    <Box
+      vertical={props.vertical}
+      id={id}
+      className={className}
+      style={{
+        ...style,
+        width: props.collapsed ? props.collapsedWidth : props.width,
+        height: props.collapsed ? props.collapsedHeight : props.height,
+      }}
+    >
       {childrenMap(props.children)}
     </Box>
   )
+}
+
+Menu.defaultProps = {
+  width: '400px',
+  height: '400px',
+  collapsed: false,
+  collapsedWidth: '40px',
+  collapsedHeight: '100px'
 }
 
 /**
@@ -81,7 +101,7 @@ export const SubMenu = props => {
   const className = ComponentHelper.composeClass('nbsp-ui-submenu', props.className)
   const style = ComponentHelper.composeStyle(props)
 
-  const subMenuContentColors = ['#FAFAFA', '#F5F5F5', '#EEEEEE', '#E0E0E0', '#BDBDBD', '#ECEFF1', '#CFD8DC', '#B0BEC5', '#90A4AE', '#78909C']
+  const subMenuContentColors = ['#FAFAFA', '#F5F5F5', '#EEEEEE', '#E0E0E0', '#ECEFF1', '#CFD8DC', '#B0BEC5', '#90A4AE', '#78909C', '#EFEBE9']
   const getSubMenuContentColor = () => subMenuContentColors[String(props._subMenuLevel).charAt(String(props._subMenuLevel).length - 1)]
 
   return (
@@ -89,7 +109,7 @@ export const SubMenu = props => {
       id={id}
       key={id}
       className={className}
-      style={style}
+      style={{...style, display: props._menuCollapsed ? (props._collapsedShow.includes(id) ? 'block' : 'none') : 'block'}}
       onClick={(e) => {
         props.onClick && props.onClick(e)
       }}
@@ -98,7 +118,7 @@ export const SubMenu = props => {
         id={id}
         className={ComponentHelper.composeClass({ use: 'nbsp-ui-menu-item-expanded', if: props.expanded })}
         expandItem={props.expandItem}
-        paddingLeft={`${(props._subMenuLevel - 1) * 10 || 5}px`}
+        paddingLeft={props._menuCollapsed ? 0 : `${(props._subMenuLevel - 1) * 10 || 5}px`}
       >
         <Box vAlign={CompatAlign.Center}>
           {
@@ -152,7 +172,11 @@ export const MenuItem = props => {
       id={id}
       key={id}
       className={className}
-      style={{paddingLeft: props.paddingLeft, ...style}}
+      style={{
+        paddingLeft: props._menuCollapsed ? 0 : props.paddingLeft,
+        display: props._menuCollapsed ? (props._collapsedShow.includes(id) ? 'flex' : 'none') : 'flex',
+        ...style
+      }}
       onClick={(e) => {
         props.selectItem && props.selectItem(id)
         props.expandItem && props.expandItem(id)
