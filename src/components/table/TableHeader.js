@@ -93,15 +93,14 @@ export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, on
         column={resizableColumn.current || resizingColumn.current}
         onDragStart={() => resizingColumn.current = resizableColumn.current}
         onDragEnd={size => {
-          const { resizedColumn, adjacentColumn, flexible } = columns.reduce((result, each, index, columns) => {
+          const { resizedColumn, adjacentColumn } = columns.reduce((result, each, index, columns) => {
             each._id === resizingColumn.current._id && (result.resizedColumn = each)
             each._id === resizingColumn.current._id && (result.index = index)
             index === result.index + 1 && each.width && (result.adjacentColumn = each)
-            index === result.index + 1 && [0, columns.length - 1].includes(index) && (result.flexible = true)
             return result
           }, {})
 
-          adjacentColumn && (adjacentColumn.width = flexible ? undefined : adjacentColumn.width + resizedColumn.width - size)
+          adjacentColumn && (adjacentColumn.width = adjacentColumn.width + resizedColumn.width - size)
           resizedColumn && (resizedColumn.width = size)
 
           resizableColumn.current = null

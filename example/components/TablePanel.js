@@ -6,7 +6,6 @@ import { MainStorage } from '../storage/MainStorage'
 export const TablePanel = () =>
   <Box padding={8}>
     <Table
-      width={400}
       headerHeight={32}
       footerHeight={32}
       margin={{ bottom: 8 }}

@@ -67,3 +67,7 @@ export const Table = props => {
     </div>
   )
 }
+
+Table.defaultProps = {
+  fit: false
+}
