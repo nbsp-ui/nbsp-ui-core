@@ -2,6 +2,8 @@ import React from 'react'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { CompatUtils } from '../../utils/CompatUtils'
 import './Tabs.scss'
+import { SVGIcon } from '../svg-icon/SVGIcon'
+import { ReactComponent as CrossIcon } from '../../icons/cross.svg'
 
 /**
  * @param {TabsProps} props
@@ -52,8 +54,9 @@ export const Tabs = props => {
                 {
                   (props.closable || tab.closable)
                   &&
-                  <i
-                    className="close fas fa-times"
+                  <SVGIcon
+                    icon={<CrossIcon/>}
+                    size={16}
                     onClick={() => {
                       props.onTabClose && props.onTabClose(tab)
                       hideItem(tab)

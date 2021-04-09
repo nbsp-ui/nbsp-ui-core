@@ -1,11 +1,10 @@
 // @ts-ignore
 import * as React from "react";
-import { CompatIndent } from "../../utils/CompatIndent";
+import { BaseProps } from '../types'
 
-export interface SVGIconProps {
+export interface SVGIconProps extends BaseProps {
     icon?: React.ReactElement
-    padding?: CompatIndent
-    margin?: CompatIndent
+    size?: number
 }
 
 export const SVGIcon: React.FunctionComponent<SVGIconProps>
