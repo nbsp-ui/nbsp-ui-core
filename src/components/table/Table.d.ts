@@ -1,4 +1,4 @@
-import { FunctionComponent, h } from 'preact'
+import { FunctionComponent, h, JSX } from 'preact'
 import { BaseProps } from '../types'
 
 export interface TableProps extends BaseProps {
@@ -10,11 +10,8 @@ export interface TableProps extends BaseProps {
 }
 
 export interface TableColumn {
-    // @ts-ignore
     header?: (items?: {}[]) => JSX.Element
-    // @ts-ignore
     cell?: (item?: {}) => JSX.Element
-    // @ts-ignore
     footer?: (item?: {}) => JSX.Element
 
     width: number

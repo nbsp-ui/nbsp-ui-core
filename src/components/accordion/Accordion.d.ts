@@ -1,4 +1,3 @@
-// @ts-ignore
 import { FunctionComponent } from 'preact'
 import { BaseProps, Containable } from "../types"
 

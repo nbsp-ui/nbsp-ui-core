@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'preact'
+import { FunctionComponent, JSX } from 'preact'
 import { BaseProps } from "../types"
 import { ListItem } from "../list/List";
 
@@ -16,11 +16,8 @@ export interface SelectProps extends BaseProps {
 
     data?: ListItem[] | {}[]
 
-    // @ts-ignore
     header?: (items?: ListItem[]) => JSX.Element
-    // @ts-ignore
     row?: () => JSX.Element
-    // @ts-ignore
     footer?: (items?: ListItem[]) => JSX.Element
 
     onItemsSelected?: (selected: ListItem[], all: ListItem[]) => void

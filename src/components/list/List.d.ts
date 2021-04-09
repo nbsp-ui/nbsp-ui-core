@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'preact'
+import { FunctionComponent, JSX } from 'preact'
 import { BaseProps } from '../types'
 
 export interface ListItem {
@@ -16,7 +16,6 @@ export interface ListProps extends BaseProps {
     divided?: boolean
     data?: ListItem[] | {}[]
 
-    // @ts-ignore
     row: (item?: ListItem | {}) => JSX.Element
 
     onSelectItems?: (selected: ListItem[], all: ListItem[]) => void

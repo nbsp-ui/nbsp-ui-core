@@ -1,5 +1,4 @@
-// @ts-ignore
-import { h } from 'preact'
+import { FunctionComponent, h } from 'preact'
 
 export interface DesktopHeaderProps {
     title?: string
