@@ -47,16 +47,16 @@ export const Tabs = props => {
               {tab.label && <p>{tab.label}</p>}
             </div>
             {
-              props.closable || tab.closable
+              (props.closable || tab.closable)
               &&
               <div className='after'>
                 {
-                  props.closable || tab.closable
+                  (props.closable || tab.closable)
                   &&
                   <i
                     className="close fas fa-times"
                     onClick={() => {
-                      props.onClose && props.onClose(tab)
+                      props.onTabClose && props.onTabClose(tab)
                       hideItem(tab)
                     }}
                   />

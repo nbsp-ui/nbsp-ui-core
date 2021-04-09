@@ -17,8 +17,8 @@ export interface TabsProps extends BaseProps {
     tabs?: TabsItem[] | {}[]
     closable?: boolean
 
-    onTabSelect?: (tab: TabsItem) => void
-    onClose?: (tab: TabsItem) => void
+    onTabSelect?: (item: TabsItem) => void
+    onTabClose?: (item: TabsItem) => void
 }
 
 export const Tabs: React.FunctionComponent<TabsProps>
