@@ -8,7 +8,6 @@
   & > div {
     height: 100%;
     margin-right: 2px;
-    color: $light-text-color;
 
     .content {
       display: flex;
@@ -17,6 +16,7 @@
       padding: 0 8px;
       border: 1px solid lighten($border-color, 1%);
       box-sizing: border-box;
+      color: $light-text-color;
 
       p {
         margin: 0;
@@ -39,6 +39,10 @@
       border-left: none;
       box-sizing: border-box;
       font-size: 16px;
+
+      path {
+        stroke: $light-text-color;
+      }
     }
 
     &:first-child {
@@ -59,15 +63,18 @@
   }
 
   .selected {
-    color: $accent-color;
-
     .content {
+      color: $accent-color;
       border-color: $accent-color;
       background-color: lighten($accent-color, 40%);
     }
 
     .after {
       border-color: lighten($accent-color, 10%);
+
+      path {
+        stroke: $accent-color;
+      }
     }
   }
 }
