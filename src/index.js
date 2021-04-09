@@ -25,6 +25,7 @@ export { Accordion } from './components/accordion/Accordion'
 export { Image } from './components/image/Image'
 export { Upload } from './components/upload/Upload'
 export { Menu, SubMenu, MenuItem } from './components/menu/Menu'
+export { Lollipop, LollipopContainer } from './components/lollipop/Lollipop'
 
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'

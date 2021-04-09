@@ -1,0 +1,21 @@
+@import "../colors", "../animations";
+
+.nbsp-ui-lollipop {
+  font-family: "Roboto", sans-serif;
+  box-shadow: $grey-400 0 0 10px 2px;
+  border-radius: 4px;
+  margin: 8px;
+
+  & > div:first-child {
+  }
+
+  & > div:last-child {
+  }
+}
+
+.nbsp-ui-lollipop-container {
+  right: 0;
+  position: absolute;
+  max-width: 25vw;
+  min-width: 300px;
+}
