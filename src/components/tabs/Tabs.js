@@ -1,6 +1,5 @@
 import React from 'react'
 import { ComponentHelper } from '../../utils/ComponentHelper'
-import { Box } from '../box/Box'
 import { CompatUtils } from '../../utils/CompatUtils'
 import './Tabs.scss'
 
@@ -26,7 +25,7 @@ export const Tabs = props => {
   return (
     <div id={id} className={className} style={style}>
       {
-        tabs.map((tab, index) =>
+        tabs.filter(tab => !tab._hidden).map((tab, index) =>
           <div
             className={
               ComponentHelper.composeClass(
@@ -42,14 +41,14 @@ export const Tabs = props => {
               props.onTabSelect && props.onTabSelect(tab)
             }}
           >
-            <div className='content'>
+            <div className="content">
               {tab.icon}
               {tab.label && <p>{tab.label}</p>}
             </div>
             {
               (props.closable || tab.closable)
               &&
-              <div className='after'>
+              <div className="after">
                 {
                   (props.closable || tab.closable)
                   &&
