@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { Box, VDivider } from '../src/index'
 import './Application.scss'
 import { AccordionPanel } from './components/AccordionPanel'

@@ -1,5 +1,4 @@
-// @ts-ignore
-import * as React from "react";
+import { FunctionComponent } from 'preact'
 import { BaseProps } from "../types";
 
 export enum LollipopType {
@@ -15,10 +14,10 @@ export interface LollipopProps extends BaseProps {
     duration?: string
 }
 
-export const Lollipop: React.FunctionComponent<LollipopProps>
+export const Lollipop: FunctionComponent<LollipopProps>
 
 export interface LollipopContainerProps extends BaseProps {
 
 }
 
-export const LollipopContainer: React.FunctionComponent<LollipopContainerProps>
+export const LollipopContainer: FunctionComponent<LollipopContainerProps>

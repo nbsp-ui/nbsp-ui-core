@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { Box, Checkbox, Switch } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 

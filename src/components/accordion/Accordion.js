@@ -1,8 +1,9 @@
-import React from 'react'
+import { h } from 'preact'
+import { useState } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
-import { Box } from "../box/Box"
-import { FAIcon } from "../fa-icon/FAIcon"
-import { CompatAlign } from "../../utils/CompatAlign"
+import { Box } from '../box/Box'
+import { FAIcon } from '../fa-icon/FAIcon'
+import { CompatAlign } from '../../utils/CompatAlign'
 import './Accordion.scss'
 
 /**
@@ -13,7 +14,7 @@ import './Accordion.scss'
 export const Accordion = props => {
   const { id, header } = props
 
-  const [collapsed, setCollapsed] = React.useState(props.collapsed)
+  const [collapsed, setCollapsed] = useState(props.collapsed)
   const headerClick = () => {
     setCollapsed(!collapsed)
     props.onChange && props.onChange(collapsed)
@@ -29,7 +30,7 @@ export const Accordion = props => {
         vAlign={CompatAlign.Center}
         onClick={() => headerClick()}
       >
-        <FAIcon className={'icon'} icon={'fas fa-chevron-right'} />
+        <FAIcon className={'icon'} icon={'fas fa-chevron-right'}/>
         <span>{header}</span>
       </Box>
       <div

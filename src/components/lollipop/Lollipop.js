@@ -1,9 +1,9 @@
-import React from 'react'
+import { h } from 'preact'
 import { ComponentHelper } from '../../utils/ComponentHelper'
-import { CompatAlign } from "../../utils/CompatAlign"
-import {Box} from "../box/Box"
+import { CompatAlign } from '../../utils/CompatAlign'
+import { Box } from '../box/Box'
 import './Lollipop.scss'
-import {CompatUtils} from "../..";
+import { CompatUtils } from '../..'
 
 export const LollipopType = {
   Default: 0,
@@ -31,7 +31,7 @@ export const Lollipop = props => {
   const style = ComponentHelper.composeStyle(props)
 
   return (
-    <div className={className} style={{...style, animationDuration: props.duration}} onClick={() => {
+    <div className={className} style={{ ...style, animationDuration: props.duration }} onClick={() => {
       lollipops.splice(lollipops.indexOf(lollipops.find(l => l.id === id)))
       setLollipops([])
     }}>
@@ -63,8 +63,9 @@ export const LollipopContainer = props => {
   const style = ComponentHelper.composeStyle(props)
 
   return (
-    <Box vertical className={className} style={{...style}} onClick={() => {}}>
-      { props.lollipops.map(lollipop => <Lollipop {...lollipop}/>) }
+    <Box vertical className={className} style={{ ...style }} onClick={() => {
+    }}>
+      {props.lollipops.map(lollipop => <Lollipop {...lollipop}/>)}
     </Box>
   )
 }
@@ -77,16 +78,16 @@ export const LollipopContainer = props => {
 export const LollipopManager = props => {
 
   const lollipops = [
-    { id: '5437', title: 'Test 1', description: 'Desc 1', duration: '5s'},
-    { id: '5438', title: 'Test 2', description: 'Desc 2', duration: '5s'},
-    { id: '5439', title: 'Test 3', description: 'Desc 3', duration: '5s'},
-    { id: '5440', title: 'Test 4', description: 'Desc 4', duration: '5s'},
-    { id: '5441', title: 'Test 5', description: 'Desc 5', duration: '5s'},
+    { id: '5437', title: 'Test 1', description: 'Desc 1', duration: '5s' },
+    { id: '5438', title: 'Test 2', description: 'Desc 2', duration: '5s' },
+    { id: '5439', title: 'Test 3', description: 'Desc 3', duration: '5s' },
+    { id: '5440', title: 'Test 4', description: 'Desc 4', duration: '5s' },
+    { id: '5441', title: 'Test 5', description: 'Desc 5', duration: '5s' }
   ]
 
   return (
-    <Box className={className} style={{...style}} onClick={props.onClick}>
-      { lollipops.map(item => <Lollipop {...item}/>) }
+    <Box className={className} style={{ ...style }} onClick={props.onClick}>
+      {lollipops.map(item => <Lollipop {...item}/>)}
     </Box>
   )
 }

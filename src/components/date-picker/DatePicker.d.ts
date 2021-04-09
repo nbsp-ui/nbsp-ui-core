@@ -1,5 +1,4 @@
-// @ts-ignore
-import * as React from "react";
+import { FunctionComponent } from 'preact'
 import { BaseProps } from '../types'
 
 export interface DatePickerProps extends BaseProps {
@@ -9,4 +8,4 @@ export interface DatePickerProps extends BaseProps {
     labelHeight?: string
 }
 
-export const DatePicker: React.FunctionComponent<DatePickerProps>
+export const DatePicker: FunctionComponent<DatePickerProps>

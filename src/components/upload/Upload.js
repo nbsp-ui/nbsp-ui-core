@@ -1,12 +1,13 @@
-import React from 'react'
-import { ComponentHelper } from "../../utils/ComponentHelper"
-import { CompatAlign } from "../../utils/CompatAlign"
-import { CompatUtils } from "../../utils/CompatUtils"
-import { Button, CompatButtonType } from "../button/Button"
-import { FAIcon } from "../fa-icon/FAIcon"
-import { Box } from "../box/Box"
-import { Spacer } from "../spacer/Spacer"
-import { List } from "../list/List"
+import { h } from 'preact'
+import { useRef, useState } from 'preact/hooks'
+import { ComponentHelper } from '../../utils/ComponentHelper'
+import { CompatAlign } from '../../utils/CompatAlign'
+import { CompatUtils } from '../../utils/CompatUtils'
+import { Button, CompatButtonType } from '../button/Button'
+import { FAIcon } from '../fa-icon/FAIcon'
+import { Box } from '../box/Box'
+import { Spacer } from '../spacer/Spacer'
+import { List } from '../list/List'
 import './Upload.scss'
 
 /**
@@ -17,8 +18,8 @@ import './Upload.scss'
 export const Upload = props => {
   const { id } = props
 
-  const element = React.useRef()
-  const [files, setFiles] = React.useState([])
+  const element = useRef()
+  const [files, setFiles] = useState([])
 
   const className = ComponentHelper.composeClass('nbsp-ui-upload', props.className)
   const style = ComponentHelper.composeStyle(props)
@@ -39,8 +40,8 @@ export const Upload = props => {
         <Box>
           <Button
             type={CompatButtonType.Outline}
-            label='Upload'
-            icon={<FAIcon icon='fas fa-upload'/>}
+            label="Upload"
+            icon={<FAIcon icon="fas fa-upload"/>}
             onClick={props.onClick}
           />
         </Box>
@@ -53,9 +54,9 @@ export const Upload = props => {
           (item) =>
             <Box key={CompatUtils.uid()} className={'item'} style={{ justifyContent: 'space-between' }}>
               <Box vAlign={CompatAlign.Center} fontSize={'10pt'}>
-                <FAIcon icon={'fas fa-paperclip'} fontSize={14} />
+                <FAIcon icon={'fas fa-paperclip'} fontSize={14}/>
                 <span>{item.name}</span>
-                <Spacer size={20} />
+                <Spacer size={20}/>
                 <span>{CompatUtils.getSizeFromBytes(item.size)}</span>
               </Box>
               <FAIcon

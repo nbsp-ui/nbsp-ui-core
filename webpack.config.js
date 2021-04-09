@@ -23,12 +23,13 @@ const baseConfig = {
       },
       {
         test: /\.svg$/,
-        use: '@svgr/webpack',
+        use: 'preact-svg-loader',
         exclude: /node_modules/
       },
       {
         test: /\.(woff|woff2|ttf|eot|svg)$/,
-        use: 'url-loader'
+        use: 'url-loader',
+        exclude: /src/
       }
     ]
   }

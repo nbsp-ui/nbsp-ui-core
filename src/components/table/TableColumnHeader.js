@@ -1,13 +1,13 @@
-import React from 'react'
+import { h } from 'preact'
+import { useRef, useState } from 'preact/hooks'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
-import { ReactHelper } from '../../utils/ReactHelper'
 import { Box } from '../box/Box'
 
 /**
  * @param props
- * @param {React.Ref<HTMLElement>} props.reference
+ * @param {Ref<HTMLElement>} props.reference
  * @param {TableColumn} props.column
  * @param {{}[]} props.items
  * @param {boolean} props.prevented
@@ -29,14 +29,14 @@ export const TableColumnHeader = ({
                                     onDragStart,
                                     onEnterResizeArea
                                   }) => {
-  const [hovered, setHovered] = React.useState(false)
-  const mouseDownX = React.useRef(0)
-  const mouseDownY = React.useRef(0)
+  const [hovered, setHovered] = useState(false)
+  const mouseDownX = useRef(0)
+  const mouseDownY = useRef(0)
 
   /**
-   * @type {React.MutableRefObject<HTMLElement>}
+   * @type {RefObject<HTMLElement>}
    */
-  const elementRef = React.useRef()
+  const elementRef = useRef()
 
   return (
     <Box

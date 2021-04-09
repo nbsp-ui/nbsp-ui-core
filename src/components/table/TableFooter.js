@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { Box } from '../box/Box'
 import { TableColumnFooter } from './TableColumnFooter'
 

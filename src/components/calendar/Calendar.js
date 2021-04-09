@@ -1,4 +1,5 @@
-import React from 'react'
+import { h } from 'preact'
+import { useEffect, useState } from 'preact/hooks'
 import { CompatLocalization } from '../../utils/CompatLocalization'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import '../behavior.scss'
@@ -15,9 +16,9 @@ import { CalendarYearMonthPicker } from './CalendarYearMonthPicker'
 export const Calendar = props => {
   const { value = new Date } = props
 
-  const [viewedDate, setViewedDate] = React.useState(new Date(value.getFullYear(), value.getMonth()))
-  const [selectedDate, setSelectedDate] = React.useState(new Date(value.getFullYear(), value.getMonth(), value.getDate()))
-  const [yearMonthPickerVisible, setYearMonthPickerVisible] = React.useState(false)
+  const [viewedDate, setViewedDate] = useState(new Date(value.getFullYear(), value.getMonth()))
+  const [selectedDate, setSelectedDate] = useState(new Date(value.getFullYear(), value.getMonth(), value.getDate()))
+  const [yearMonthPickerVisible, setYearMonthPickerVisible] = useState(false)
 
   const className = ComponentHelper.composeClass('nbsp-ui-calendar')
   const style = ComponentHelper.composeStyle(props)
@@ -39,7 +40,7 @@ export const Calendar = props => {
 
   const displayNextMonth = () => displayMonth(nextMonthYear, nextMonth)
 
-  React.useEffect(() => props.onChange && props.onChange(selectedDate), [selectedDate])
+  useEffect(() => props.onChange && props.onChange(selectedDate), [selectedDate])
 
   return (
     <div className={className} style={style}>

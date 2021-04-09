@@ -1,6 +1,6 @@
-import * as React from 'react'
+import { FunctionComponent, h } from 'preact'
 import { DividerProps } from '../divider/Divider'
 
 export interface VDividerProps extends DividerProps {}
 
-export const VDivider: React.FunctionComponent<VDividerProps>
+export const VDivider: FunctionComponent<VDividerProps>

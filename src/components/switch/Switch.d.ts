@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { FunctionComponent } from 'preact'
 import { CompatAlign } from '../../utils/CompatAlign'
 
 export interface SwitchProps {
@@ -13,4 +13,4 @@ export interface SwitchProps {
     onChange: (value: boolean) => void
 }
 
-export const Switch: React.FunctionComponent<SwitchProps>
+export const Switch: FunctionComponent<SwitchProps>

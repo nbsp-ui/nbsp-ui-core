@@ -1,6 +1,5 @@
-// @ts-ignore
-import React from "react"
-import { BaseProps } from "../types"
+import { FunctionComponent } from 'preact'
+import { BaseProps } from '../types'
 
 export interface ListItem {
     _id: number
@@ -23,4 +22,4 @@ export interface ListProps extends BaseProps {
     onSelectItems?: (selected: ListItem[], all: ListItem[]) => void
 }
 
-export const List: React.FunctionComponent<ListProps>
+export const List: FunctionComponent<ListProps>

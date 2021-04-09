@@ -1,9 +1,8 @@
-// @ts-ignore
-import React from "react"
+import { FunctionComponent, h } from 'preact'
 import { BaseProps } from "../types"
 
 export interface ImageProps extends BaseProps {
-    src: string
+    src?: string
     srcSet?: string
     sizes?: string
     alt?: string
@@ -12,4 +11,4 @@ export interface ImageProps extends BaseProps {
     onError?: (error: ErrorEvent) => void
 }
 
-export const Image: React.FunctionComponent<ImageProps>
+export const Image: FunctionComponent<ImageProps>

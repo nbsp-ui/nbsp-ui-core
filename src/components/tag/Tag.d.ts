@@ -1,5 +1,4 @@
-// @ts-ignore
-import React from 'react'
+import { FunctionComponent } from 'preact'
 import { BaseProps } from "../types";
 
 export interface TagProps extends BaseProps {
@@ -12,4 +11,4 @@ export interface TagProps extends BaseProps {
     onClose?: (event: MouseEvent) => void
 }
 
-export const Tag: React.FunctionComponent<TagProps>
+export const Tag: FunctionComponent<TagProps>

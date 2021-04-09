@@ -1,5 +1,4 @@
-// @ts-ignore
-import * as React from "react";
+import { FunctionComponent, JSX } from 'preact'
 import { BaseProps } from '../types'
 
 export interface InputProps extends BaseProps {
@@ -9,12 +8,12 @@ export interface InputProps extends BaseProps {
     placeholder?: string
     readOnly?: boolean
     rule?: (value: any) => boolean
-    before?: React.ReactElement
-    after?: React.ReactElement
+    before?: JSX.Element
+    after?: JSX.Element
     beforeOnClick?: (event: MouseEvent) => void
     afterOnClick?: (event: MouseEvent) => void
     onChange?: (event: MouseEvent) => void
-    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
+    onBlur?: (event: FocusEvent) => void
 }
 
-export const Input: React.FunctionComponent<InputProps>
+export const Input: FunctionComponent<InputProps>

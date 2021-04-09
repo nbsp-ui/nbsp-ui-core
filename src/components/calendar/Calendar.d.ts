@@ -1,5 +1,4 @@
-// @ts-ignore
-import * as React from "react";
+import { FunctionComponent } from 'preact'
 
 export interface CalendarProps {
     value?: Date
@@ -8,4 +7,4 @@ export interface CalendarProps {
     onChange?: (date: Date) => void
 }
 
-export const Calendar: React.FunctionComponent<CalendarProps>
+export const Calendar: FunctionComponent<CalendarProps>

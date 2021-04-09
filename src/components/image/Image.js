@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { ComponentHelper } from "../../utils/ComponentHelper"
 import './Image.scss'
 
@@ -14,7 +14,12 @@ export const Image = props => {
   const style = ComponentHelper.composeStyle(props)
 
   return (
-    <div id={id} className={className} style={style} onClick={props.onClick}>
+    <div
+      id={id}
+      className={className}
+      style={style}
+      onClick={props.onClick}
+    >
       <img
         src={props.src}
         srcSet={props.srcSet}

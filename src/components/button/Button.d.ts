@@ -1,5 +1,4 @@
-// @ts-ignore
-import * as React from "react";
+import { FunctionComponent, JSX } from 'preact'
 import { CompatIndent } from "../../utils/CompatIndent";
 
 export enum CompatButtonType {
@@ -14,9 +13,9 @@ export interface ButtonProps {
     type?: CompatButtonType
     disabled?: boolean
     label?: string
-    icon?: React.ReactElement,
+    icon?: JSX.Element,
     padding?: CompatIndent,
     margin?: CompatIndent
 }
 
-export const Button: React.FunctionComponent<ButtonProps>
+export const Button: FunctionComponent<ButtonProps>

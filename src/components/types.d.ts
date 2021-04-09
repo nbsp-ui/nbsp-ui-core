@@ -1,19 +1,21 @@
-import * as React from 'react'
+import { JSX, Ref } from 'preact'
+import { CompatAlign } from '../utils/CompatAlign'
 import { CompatIndent } from '../utils/CompatIndent'
 
 export interface BaseProps {
     id?: string
     className?: string
-    style?: React.CSSProperties
-    reference?: React.Ref
+    style?: JSX.CSSProperties
+    reference?: Ref<HTMLElement>
     width?: number
     height?: number
     padding?: CompatIndent
     margin?: CompatIndent
+    align?: CompatAlign
     fit?: boolean
     disabled?: boolean
 }
 
 export interface Containable {
-    children?: React.ReactElement | React.ReactElement[]
+    children?: JSX.Element | JSX.Element[]
 }

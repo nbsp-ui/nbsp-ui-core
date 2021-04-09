@@ -1,4 +1,5 @@
-import React from 'react'
+import { h } from 'preact'
+import { useRef } from 'preact/hooks'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { ReactHelper } from '../../utils/ReactHelper'
 import { Box } from '../box/Box'
@@ -13,8 +14,8 @@ import { Box } from '../box/Box'
 export const TableColumnShadow = ({ column, items, onDragEnd }) => {
   const refresh = ReactHelper.useRefresh()
 
-  const x = React.useRef(0)
-  const y = React.useRef(0)
+  const x = useRef(0)
+  const y = useRef(0)
 
   ReactHelper.registerGlobalMouseEventListener('mousemove', event => {
     x.current = event.clientX

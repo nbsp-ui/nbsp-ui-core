@@ -1,4 +1,5 @@
-import * as React from 'react'
+import { h } from 'preact'
+import { useState } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Switch.scss'
 
@@ -8,7 +9,7 @@ import './Switch.scss'
  * @constructor
  */
 export const Switch = props => {
-  const [checked, setChecked] = React.useState(props.value || false)
+  const [checked, setChecked] = useState(props.value || false)
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-switch',

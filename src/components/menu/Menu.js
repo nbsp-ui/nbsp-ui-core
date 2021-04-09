@@ -1,4 +1,6 @@
-import React from 'react'
+import { cloneElement, h } from 'preact'
+import { Children } from 'preact/compat'
+import { useState } from 'preact/hooks'
 import { ComponentHelper } from "../../utils/ComponentHelper"
 import { CompatAlign } from "../../utils/CompatAlign"
 import { FAIcon } from "../fa-icon/FAIcon"
@@ -34,7 +36,7 @@ export const Menu = props => {
 
   // TODO: Hmmm... toArray.reduce?
   const collectChildren = (children, childrenParams = []) => {
-    React.Children.map(children, child => {
+    Children.map(children, child => {
       const { id, selected = false, expanded = false } = child.props
 
       return match(child.type.name, {
@@ -46,14 +48,14 @@ export const Menu = props => {
   }
 
   // TODO: Hmmmmmmm...
-  const childrenMap = (children, _subMenuLevel = 1) => React.Children.map(children, child => match(child.type.name, {
-    [MenuItem.name]: () => React.cloneElement(child, {
+  const childrenMap = (children, _subMenuLevel = 1) => Children.map(children, child => match(child.type.name, {
+    [MenuItem.name]: () => cloneElement(child, {
       _menuCollapsed: props.collapsed,
       _collapsedShow: props.collapsedShow,
       selected: findItem(child.props.id).selected,
       selectItem
     }),
-    [SubMenu.name]: () => React.cloneElement(child, {
+    [SubMenu.name]: () => cloneElement(child, {
       _subMenuLevel,
       _menuCollapsed: props.collapsed,
       _collapsedShow: props.collapsedShow,
@@ -63,7 +65,7 @@ export const Menu = props => {
     })
   })())
 
-  const [childrenProperties, setChildrenProperties] = React.useState(collectChildren(props.children))
+  const [childrenProperties, setChildrenProperties] = useState(collectChildren(props.children))
 
   return (
     <Box
@@ -137,7 +139,7 @@ export const SubMenu = props => {
         }}
       >
         {
-          React.Children.map(props.children, child => React.cloneElement(child, {
+          Children.map(props.children, child => cloneElement(child, {
             paddingLeft: `${props._subMenuLevel * 10}px`
           }))
         }

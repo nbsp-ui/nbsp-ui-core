@@ -1,10 +1,8 @@
-// @ts-ignore
-import React from "react"
+import { FunctionComponent, JSX } from 'preact'
 import { BaseProps } from "../types"
 
 export interface TabsItem {
     label?: string
-    // @ts-ignore
     icon?: JSX.Element
     closable?: boolean
 
@@ -21,4 +19,4 @@ export interface TabsProps extends BaseProps {
     onTabClose?: (item: TabsItem) => void
 }
 
-export const Tabs: React.FunctionComponent<TabsProps>
+export const Tabs: FunctionComponent<TabsProps>

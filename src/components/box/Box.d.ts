@@ -1,5 +1,4 @@
-// @ts-ignore
-import React, { MouseEventHandler } from 'react'
+import { FunctionComponent } from 'preact'
 import { CompatAlign } from "../../utils/CompatAlign";
 import { BaseProps, Containable } from '../types'
 
@@ -10,4 +9,4 @@ export interface BoxProps extends BaseProps, Containable {
     hAlign?: CompatAlign
 }
 
-export const Box: React.FunctionComponent<BoxProps>
+export const Box: FunctionComponent<BoxProps>

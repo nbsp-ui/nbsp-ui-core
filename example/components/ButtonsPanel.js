@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { Box, Button, CompatButtonType, FAIcon, LoaderWrapper } from '../../src'
 
 export const ButtonsPanel = () =>

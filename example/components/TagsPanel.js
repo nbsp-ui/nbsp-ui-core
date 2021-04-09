@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { Box, Tag } from '../../src'
 
 export const TagsPanel = () =>

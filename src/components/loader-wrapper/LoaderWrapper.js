@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { Loader } from '../loader/Loader'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './LoaderWrapper.scss'

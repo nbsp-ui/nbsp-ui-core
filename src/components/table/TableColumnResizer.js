@@ -1,4 +1,5 @@
-import React from 'react'
+import { h } from 'preact'
+import { useEffect, useRef } from 'preact/hooks'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ReactHelper } from '../../utils/ReactHelper'
 
@@ -13,13 +14,13 @@ import { ReactHelper } from '../../utils/ReactHelper'
 export const TableColumnResizer = ({ column, onDragStart, onDragEnd }) => {
   const refresh = ReactHelper.useRefresh()
 
-  const dragged = React.useRef(false)
-  const offset = React.useRef(0)
+  const dragged = useRef(false)
+  const offset = useRef(0)
 
   /**
-   * @type {React.MutableRefObject<HTMLElement>}
+   * @type {RefObject<HTMLElement>}
    */
-  const element = React.useRef()
+  const element = useRef()
 
   ReactHelper.registerGlobalMouseEventListener('mousemove', ({ clientX, clientY }) => {
     if (column) {
@@ -45,7 +46,7 @@ export const TableColumnResizer = ({ column, onDragStart, onDragEnd }) => {
     }
   })
 
-  React.useEffect(() => offset.current = 0, [column])
+  useEffect(() => offset.current = 0, [column])
 
   const parentRect = column && column._headerElement.getBoundingClientRect()
 

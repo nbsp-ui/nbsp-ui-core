@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { CompatLocalization } from '../../utils/CompatLocalization'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'

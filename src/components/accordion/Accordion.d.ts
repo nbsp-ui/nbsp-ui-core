@@ -1,5 +1,5 @@
 // @ts-ignore
-import React from "react"
+import { FunctionComponent } from 'preact'
 import { BaseProps, Containable } from "../types"
 
 export interface AccordionProps extends BaseProps, Containable {
@@ -9,4 +9,4 @@ export interface AccordionProps extends BaseProps, Containable {
     onChange?: (collapsed: boolean) => void
 }
 
-export const Accordion: React.FunctionComponent<AccordionProps>
+export const Accordion: FunctionComponent<AccordionProps>

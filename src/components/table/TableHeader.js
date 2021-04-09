@@ -1,4 +1,5 @@
-import React from 'react'
+import { h } from 'preact'
+import { useRef } from 'preact/hooks'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ReactHelper } from '../../utils/ReactHelper'
 import { Box } from '../box/Box'
@@ -20,24 +21,24 @@ export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, on
   const refresh = ReactHelper.useRefresh()
 
   /**
-   * @type {React.MutableRefObject<TableColumn>}
+   * @type {RefObject<TableColumn>}
    */
-  const focusedColumn = React.useRef()
+  const focusedColumn = useRef()
 
   /**
-   * @type {React.MutableRefObject<TableColumn>}
+   * @type {RefObject<TableColumn>}
    */
-  const movingColumn = React.useRef()
+  const movingColumn = useRef()
 
   /**
-   * @type {React.MutableRefObject<TableColumn>}
+   * @type {RefObject<TableColumn>}
    */
-  const resizableColumn = React.useRef()
+  const resizableColumn = useRef()
 
   /**
-   * @type {React.MutableRefObject<TableColumn>}
+   * @type {RefObject<TableColumn>}
    */
-  const resizingColumn = React.useRef()
+  const resizingColumn = useRef()
 
   /**
    * @param {MouseEvent} event

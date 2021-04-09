@@ -1,5 +1,5 @@
 // @ts-ignore
-import React from "react"
+import { h } from 'preact'
 import { BaseProps } from "../types"
 
 export interface ProgressProps extends BaseProps {
@@ -29,4 +29,4 @@ export interface ProgressProps extends BaseProps {
     valueSize?: number | string
 }
 
-export const Progress: React.FunctionComponent<ProgressProps>
+export const Progress: FunctionComponent<ProgressProps>

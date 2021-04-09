@@ -1,6 +1,4 @@
-import { CompatIndent } from '../../utils/CompatIndent'
+import { BaseProps } from '../types'
 
-export interface DividerProps {
-    padding?: CompatIndent
-    margin?: CompatIndent
+export interface DividerProps extends BaseProps {
 }

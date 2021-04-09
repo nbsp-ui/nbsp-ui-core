@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { Accordion, Box, Switch, Tag } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 

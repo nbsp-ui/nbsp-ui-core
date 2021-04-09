@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Box.scss'
 

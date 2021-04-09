@@ -1,5 +1,4 @@
-// @ts-ignore
-import React from "react"
+import { FunctionComponent, h } from 'preact'
 import { BaseProps, Containable } from "../types"
 
 export interface MenuProps extends BaseProps, Containable {
@@ -10,21 +9,21 @@ export interface MenuProps extends BaseProps, Containable {
     collapsedShow?: Array<number|string>
 }
 
-export const Menu: React.FunctionComponent<MenuProps>
+export const Menu: FunctionComponent<MenuProps>
 
 export interface SubMenuProps extends BaseProps, Containable {
     _menuCollapsed?: boolean
     _collapsedShow?: Array<number|string>
-    _subMenuLevel: number
+    _subMenuLevel?: number
 
     expanded?: boolean
 
     expandItem?: (id: number | string) => void
 
-    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
+    onClick?: (event: MouseEvent) => void
 }
 
-export const SubMenu: React.FunctionComponent<SubMenuProps>
+export const SubMenu: FunctionComponent<SubMenuProps>
 
 export interface MenuItemProps extends BaseProps, Containable {
     _menuCollapsed?: boolean
@@ -34,7 +33,7 @@ export interface MenuItemProps extends BaseProps, Containable {
 
     selectItem?: (id: number | string) => void
 
-    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
+    onClick?: (event: MouseEvent) => void
 }
 
-export const MenuItem: React.FunctionComponent<MenuItemProps>
+export const MenuItem: FunctionComponent<MenuItemProps>

@@ -1,4 +1,5 @@
-import React from 'react'
+import { h } from 'preact'
+import { useEffect, useRef } from 'preact/hooks'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
@@ -12,12 +13,12 @@ import './Popup.scss'
 export const Popup = props => {
   const { to, showed, onBlur } = props
 
-  const showCompleted = React.useRef(false)
+  const showCompleted = useRef(false)
 
   /**
-   * @type {React.MutableRefObject<HTMLElement>}
+   * @type {MutableRefObject<HTMLElement>}
    */
-  const element = React.useRef()
+  const element = useRef()
 
   onBlur && ReactHelper.registerGlobalMouseEventListener('click', event =>
     showed
@@ -31,7 +32,7 @@ export const Popup = props => {
     && !CompatUtils.math.isBelongToElementRectWithIndent(event.x, event.y, element.current.getBoundingClientRect(), 40)
     && onBlur())
 
-  React.useEffect(() => showCompleted.current = showed, [showed])
+  useEffect(() => showCompleted.current = showed, [showed])
 
   const className = ComponentHelper.composeClass('nbsp-ui-popup')
 

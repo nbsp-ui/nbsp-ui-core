@@ -1,9 +1,10 @@
-import React from 'react'
+import { h } from 'preact'
+import { useState } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { CompatUtils } from '../../utils/CompatUtils'
 import './Tabs.scss'
 import { SVGIcon } from '../svg-icon/SVGIcon'
-import { ReactComponent as CrossIcon } from '../../icons/cross.svg'
+import CrossIcon from '../../icons/cross.svg'
 
 /**
  * @param {TabsProps} props
@@ -16,8 +17,8 @@ export const Tabs = props => {
   const className = ComponentHelper.composeClass('nbsp-ui-tabs', props.className)
   const style = ComponentHelper.composeStyle(props)
 
-  const [tabs, setTabs] = React.useState(props.tabs.map(tab => ({ _id: CompatUtils.uid(), ...tab })))
-  const [selectedTab, setSelectedTab] = React.useState(props.tabs[0])
+  const [tabs, setTabs] = useState(props.tabs.map(tab => ({ _id: CompatUtils.uid(), ...tab })))
+  const [selectedTab, setSelectedTab] = useState(props.tabs[0])
 
   const hideItem = item => {
     tabs.find(each => each._id === item._id)._hidden = true

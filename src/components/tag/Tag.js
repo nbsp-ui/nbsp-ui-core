@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Tag.scss'
 
@@ -18,7 +18,11 @@ export const Tag = props => {
   const style = ComponentHelper.composeStyle(props)
 
   return (
-    <div className={className} style={style} onClick={() => onClick && onClick()}>
+    <div
+      className={className}
+      style={style}
+      onClick={() => onClick && onClick()}
+    >
       <span>{value}</span>
       {onClose && <div className='spacer'/>}
       {onClose && <div className='close' onClick={() => onClose()}><i className="fas fa-times"/></div>}

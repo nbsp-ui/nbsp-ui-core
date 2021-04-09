@@ -14,20 +14,19 @@
     "prepublishOnly": "npm run build-lib"
   },
   "peerDependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "preact": "^10.5.13"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.13",
     "@babel/core": "^7.12.10",
     "@babel/plugin-proposal-pipeline-operator": "^7.12.13",
+    "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.12.10",
-    "@svgr/webpack": "^5.5.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
     "file-loader": "^6.2.0",
     "node-sass": "^5.0.0",
+    "preact-svg-loader": "^0.2.1",
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
@@ -37,7 +36,6 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
     "date-fns": "^2.16.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "preact": "^10.5.13"
   }
 }

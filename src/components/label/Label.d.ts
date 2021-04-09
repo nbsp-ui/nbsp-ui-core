@@ -1,5 +1,4 @@
-// @ts-ignore
-import * as React from "react";
+import { FunctionComponent } from 'preact'
 import { BaseProps } from '../types'
 
 export interface LabelProps extends BaseProps {
@@ -20,4 +19,4 @@ export interface LabelLever extends BaseLever {
     getColor: () => string
 }
 
-export const Label: React.FunctionComponent<LabelProps>
+export const Label: FunctionComponent<LabelProps>

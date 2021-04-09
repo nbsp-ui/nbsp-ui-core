@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { Box, DatePicker, FAIcon, Input, Label, Select, Spacer } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 import { MainStorage } from '../storage/MainStorage'

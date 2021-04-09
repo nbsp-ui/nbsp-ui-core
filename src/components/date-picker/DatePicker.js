@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
-import React from 'react'
+import { h } from 'preact'
+import { useRef, useState } from 'preact/hooks'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { Calendar } from '../calendar/Calendar'
@@ -20,10 +21,10 @@ const ids = {
 export const DatePicker = props => {
   const { value, fit, disabled, label, labelWidth, placeholder } = props
 
-  const [pickerDisplayed, setPickerDisplayed] = React.useState(false)
-  const [selectedDate, setSelectedDate] = React.useState(new Date())
+  const [pickerDisplayed, setPickerDisplayed] = useState(false)
+  const [selectedDate, setSelectedDate] = useState(new Date())
 
-  const element = React.useRef()
+  const element = useRef()
 
   const className = ComponentHelper.composeClass('nbsp-ui-date-picker')
   const style = ComponentHelper.composeStyle(props)
@@ -39,7 +40,7 @@ export const DatePicker = props => {
         placeholder={placeholder}
         readOnly
         disabled={disabled}
-        after={<FAIcon icon='far fa-calendar'/>}
+        after={<FAIcon icon="far fa-calendar"/>}
         afterOnClick={() => setPickerDisplayed(!pickerDisplayed)}
       />
       <Popup

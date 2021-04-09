@@ -1,10 +1,9 @@
-// @ts-ignore
-import * as React from "react";
+import { FunctionComponent, JSX } from 'preact'
 import { BaseProps } from '../types'
 
 export interface SVGIconProps extends BaseProps {
-    icon?: React.ReactElement
+    icon?: JSX.Element
     size?: number
 }
 
-export const SVGIcon: React.FunctionComponent<SVGIconProps>
+export const SVGIcon: FunctionComponent<SVGIconProps>

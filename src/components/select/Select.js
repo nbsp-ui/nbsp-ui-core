@@ -1,4 +1,5 @@
-import React from 'react'
+import { h } from 'preact'
+import { useRef } from 'preact/hooks'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
@@ -45,31 +46,25 @@ export const Select = props => {
 
   const refresh = ReactHelper.useRefresh()
 
-  /**
-   * @type {React.MutableRefObject<ListItem[]>}
-   */
-  const items = React.useRef(props.data.map(item => ({
+  const items = useRef(props.data.map(item => ({
     ...item,
     _id: CompatUtils.uid(),
     _selected: item._selected || false,
     _hidden: item._hidden || false
   })))
 
-  /**
-   * @type {React.MutableRefObject<ListItem[]>}
-   */
-  const appliedItems = React.useRef(items.current)
+  const appliedItems = useRef(items.current)
 
-  const pickerDisplayed = React.useRef(false)
+  const pickerDisplayed = useRef(false)
 
-  const searchValue = React.useRef('')
+  const searchValue = useRef('')
 
   const filter = items => props.filter ? items.filter(props.filter) : items
   const search = items => props.search && searchValue.current.length ? items.filter(item => props.search(item, searchValue.current)) : items
 
   const applyItems = items => appliedItems.current = items |> filter |> search
 
-  const element = React.useRef()
+  const element = useRef()
 
   const className = ComponentHelper.composeClass('nbsp-ui-select', props.className)
   const style = ComponentHelper.composeStyle(props)

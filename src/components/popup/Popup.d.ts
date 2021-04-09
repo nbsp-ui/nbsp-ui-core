@@ -1,13 +1,12 @@
-// @ts-ignore
-import * as React from "react";
+import { FunctionComponent, RefObject } from 'preact'
 import { BaseProps, Containable } from '../types'
 
 export interface PopupProps extends BaseProps, Containable {
     translateX?: string
-    to?: React.MutableRefObject<HTMLElement>
+    to?: RefObject<HTMLElement>
     showed?: boolean
 
     onBlur?: () => void
 }
 
-export const Popup: React.FunctionComponent<PopupProps>
+export const Popup: FunctionComponent<PopupProps>

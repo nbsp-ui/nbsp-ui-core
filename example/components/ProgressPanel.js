@@ -1,4 +1,5 @@
-import React from 'react'
+import { h } from 'preact'
+import { useState } from 'preact/hooks'
 import {
   Box,
   Button,
@@ -16,8 +17,8 @@ import { CompatAlign } from '../../src/utils/CompatAlign'
 import { MainStorage } from '../storage/MainStorage'
 
 export const ProgressPanel = () => {
-  const [progressValue, setProgressValue] = React.useState(50)
-  const [listLoading, setListLoading] = React.useState(false)
+  const [progressValue, setProgressValue] = useState(50)
+  const [listLoading, setListLoading] = useState(false)
 
   return (
     <Box vertical padding={{ x: 8 }} hAlign={CompatAlign.Left}>

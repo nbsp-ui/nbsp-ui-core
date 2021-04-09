@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { h } from 'preact'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './HDivider.scss'
 
@@ -8,4 +8,7 @@ import './HDivider.scss'
  * @constructor
  */
 export const HDivider = props =>
-  <div className={ComponentHelper.composeClass('nbsp-ui-h-divider')} style={ComponentHelper.composeStyle(props)}/>
+  <div
+    className={ComponentHelper.composeClass('nbsp-ui-h-divider')}
+    style={ComponentHelper.composeStyle(props)}
+  />

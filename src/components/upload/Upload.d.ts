@@ -1,6 +1,5 @@
-// @ts-ignore
-import React from "react"
-import { BaseProps } from "../types"
+import { FunctionComponent } from 'preact'
+import { BaseProps } from '../types'
 
 export interface UploadProps extends BaseProps {
     multiple?: boolean
@@ -11,4 +10,4 @@ export interface UploadProps extends BaseProps {
     onItemRemoved?: (file: File) => void
 }
 
-export const Upload: React.FunctionComponent<UploadProps>
+export const Upload: FunctionComponent<UploadProps>

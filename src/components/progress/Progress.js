@@ -1,8 +1,7 @@
-import React from 'react'
+import { h } from 'preact'
+import { useEffect, useState } from 'preact/hooks'
 import { ComponentHelper } from "../../utils/ComponentHelper"
-import { CompatAlign } from "../../utils/CompatAlign"
 import './Progress.scss'
-import { Box } from "../box/Box"
 
 /**
  * @param {ProgressProps} props
@@ -21,9 +20,9 @@ export const Progress = props => {
   const className = ComponentHelper.composeClass('nbsp-ui-progress', props.className)
   const style = ComponentHelper.composeStyle(props)
 
-  const [animationInited, setAnimationInited] = React.useState(false)
+  const [animationInited, setAnimationInited] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     props.initialAnimation && setTimeout(() => setAnimationInited(true), props.initialAnimationDelay)
   }, [])
 

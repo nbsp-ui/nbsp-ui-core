@@ -1,4 +1,5 @@
-import * as React from 'react'
+import { h } from 'preact'
+import { useState } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Checkbox.scss'
 
@@ -10,7 +11,7 @@ import './Checkbox.scss'
 export const Checkbox = props => {
   const { label, onChange } = props
 
-  const [checked, setChecked] = React.useState(props.value || false)
+  const [checked, setChecked] = useState(props.value || false)
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-checkbox',

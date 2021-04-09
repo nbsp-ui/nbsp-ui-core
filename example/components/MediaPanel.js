@@ -1,9 +1,10 @@
-import React from 'react'
+import { h } from 'preact'
+import { useState } from 'preact/hooks'
 import { Box, FAIcon, Image, Input, Upload } from '../../src'
 
 export const MediaPanel = () => {
-  const [imageInput, setImageInput] = React.useState('https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736400_1280.png')
-  const [imageSource, setImageSource] = React.useState('')
+  const [imageInput, setImageInput] = useState('https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736400_1280.png')
+  const [imageSource, setImageSource] = useState('')
 
   return (
     <Box vertical padding={8}>

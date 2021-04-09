@@ -1,5 +1,4 @@
-// @ts-ignore
-import React from "react"
+import { FunctionComponent } from 'preact'
 import { BaseProps } from "../types"
 
 export interface LoaderProps extends BaseProps {
@@ -9,4 +8,4 @@ export interface LoaderProps extends BaseProps {
     strokeLinecap?: 'butt' | 'round' | 'square'
 }
 
-export const Loader: React.FunctionComponent<LoaderProps>
+export const Loader: FunctionComponent<LoaderProps>

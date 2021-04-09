@@ -1,4 +1,5 @@
-import React from 'react'
+import { h } from 'preact'
+import { useEffect, useRef } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
 import { Box } from '../box/Box'
@@ -15,9 +16,9 @@ export const List = props => {
   const refresh = ReactHelper.useRefresh()
 
   /**
-   * @type {React.MutableRefObject<ListItem[]>}
+   * @type {MutableRefObject<ListItem[]>}
    */
-  const items = React.useRef(props.data)
+  const items = useRef(props.data)
 
   /**
    * @param {ListItem | {}} item
@@ -30,7 +31,7 @@ export const List = props => {
   }
 
   // TODO: Excessive refresh
-  React.useEffect(() => {
+  useEffect(() => {
     items.current = props.data
     refresh()
   }, [props.data])

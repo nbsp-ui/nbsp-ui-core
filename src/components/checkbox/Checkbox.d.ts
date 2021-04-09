@@ -1,17 +1,13 @@
-// @ts-ignore
-import * as React from "react";
+import { FunctionComponent } from 'preact'
 import { CompatAlign } from "../../utils/CompatAlign";
+import { BaseProps } from '../types'
 
-export interface CheckboxProps {
+export interface CheckboxProps extends BaseProps {
     value?: boolean
-    width?: number
-    height?: number
-    fit?: boolean
     label?: string
-    align?: CompatAlign
     reversed?: boolean
 
     onChange: (value: boolean) => void
 }
 
-export const Checkbox: React.FunctionComponent<CheckboxProps>
+export const Checkbox: FunctionComponent<CheckboxProps>

@@ -1,4 +1,5 @@
-import React from 'react'
+import { h } from 'preact'
+import { useEffect, useState } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Input.scss'
 
@@ -10,8 +11,8 @@ import './Input.scss'
 export const Input = props => {
   const { id, reference, value, label, readOnly, before, after } = props
 
-  const [valid, setValid] = React.useState(true)
-  React.useEffect(() => props.rule && setValid(props.rule(value)), [value])
+  const [valid, setValid] = useState(true)
+  useEffect(() => props.rule && setValid(props.rule(value)), [value])
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-input',

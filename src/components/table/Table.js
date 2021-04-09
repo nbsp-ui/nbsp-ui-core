@@ -1,4 +1,5 @@
-import React from 'react'
+import { h } from 'preact'
+import { useRef } from 'preact/hooks'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
@@ -15,19 +16,19 @@ import { TableHeader } from './TableHeader'
 export const Table = props => {
   const refresh = ReactHelper.useRefresh()
 
-  const columns = React.useRef(props.columns.map((column, index) => ({
+  const columns = useRef(props.columns.map((column, index) => ({
     ...column,
     _id: CompatUtils.uid(),
     _position: index
   })))
 
-  const items = React.useRef(props.data)
+  const items = useRef(props.data)
 
   const style = ComponentHelper.composeStyle(props)
 
   return (
     <div
-      className='nbsp-ui-table'
+      className="nbsp-ui-table"
       style={style}
     >
       <TableHeader

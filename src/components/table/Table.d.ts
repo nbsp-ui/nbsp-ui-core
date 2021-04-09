@@ -1,10 +1,7 @@
-// @ts-ignore
-import React from "react"
-import { CompatIndent } from "../../utils/CompatIndent"
+import { FunctionComponent, h } from 'preact'
+import { BaseProps } from '../types'
 
-export interface TableProps {
-    padding?: CompatIndent
-    margin?: CompatIndent
+export interface TableProps extends BaseProps {
     columns?: TableColumn[]
     data?: {}[]
 
@@ -30,4 +27,4 @@ export interface TableColumn {
     _headerElement: HTMLElement
 }
 
-export const Table: React.FunctionComponent<TableProps>
+export const Table: FunctionComponent<TableProps>

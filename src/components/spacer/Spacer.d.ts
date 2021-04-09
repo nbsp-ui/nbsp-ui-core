@@ -1,9 +1,8 @@
-// @ts-ignore
-import * as React from "react";
+import { FunctionComponent } from 'preact'
 
 export interface SpacerProps {
     vertical?: boolean
     size?: number
 }
 
-export const Spacer: React.FunctionComponent<SpacerProps>
+export const Spacer: FunctionComponent<SpacerProps>

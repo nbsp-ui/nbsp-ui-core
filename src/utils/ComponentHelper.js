@@ -1,4 +1,3 @@
-import React from 'react'
 import { CompatAlign } from './CompatAlign'
 
 export const ComponentHelper = {
@@ -33,7 +32,7 @@ export const ComponentHelper = {
   /**
    * @param {{}} props
    * @param {{}} [mappers]
-   * @return {React.CSSProperties}
+   * @return {CSSProperties}
    */
   composeStyle: function(props, mappers) {
     const combination = {

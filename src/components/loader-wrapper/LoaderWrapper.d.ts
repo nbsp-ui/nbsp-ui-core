@@ -1,5 +1,4 @@
-// @ts-ignore
-import React from "react"
+import { FunctionComponent } from 'preact'
 import { BaseProps, Containable } from '../types'
 
 export interface LoaderWrapperProps extends BaseProps, Containable {
@@ -7,4 +6,4 @@ export interface LoaderWrapperProps extends BaseProps, Containable {
     size?: number
 }
 
-export const LoaderWrapper: React.FunctionComponent<LoaderWrapperProps>
+export const LoaderWrapper: FunctionComponent<LoaderWrapperProps>

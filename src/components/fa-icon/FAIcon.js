@@ -1,4 +1,4 @@
-import React from 'react'
+import { h } from 'preact'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './FAIcon.scss'
 
@@ -10,7 +10,7 @@ import './FAIcon.scss'
 export const FAIcon = props => {
   const { icon, onClick } = props
 
-  const className = ComponentHelper.composeClass('nbsp-ui-icon', 'nbsp-ui-fa-icon', props.className)
+  const className = ComponentHelper.composeClass('nbsp-ui-fa-icon', props.className)
   const style = ComponentHelper.composeStyle(props)
 
   return (
