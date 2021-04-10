@@ -95,12 +95,16 @@ Menu.defaultProps = {
 export const SubMenu = props => {
   const { id } = props
 
-  const className = ComponentHelper.composeClass('nbsp-ui-submenu', props.className)
-  const style = ComponentHelper.composeStyle(props)
-
-  const subMenuContentColors = ['#FAFAFA', '#F5F5F5', '#EEEEEE', '#E0E0E0', '#ECEFF1', '#CFD8DC', '#B0BEC5', '#90A4AE', '#78909C', '#EFEBE9']
-  const getSubMenuContentColor = () => subMenuContentColors[String(props._subMenuLevel).charAt(String(props._subMenuLevel).length - 1)]
+  const getLevelNumber = () => String(props._subMenuLevel).charAt(String(props._subMenuLevel).length - 1)
   const getDisplay = () => props._menuCollapsed ? (props._collapsedShow.includes(id) ? 'block' : 'none') : 'block'
+
+  const className = ComponentHelper.composeClass('nbsp-ui-submenu', props.className)
+  const classNameSubMenu = ComponentHelper.composeClass(
+    'submenu-content',
+    `submenu-content-level-${getLevelNumber()}`,
+    { use: 'submenu-content-expanded', if: props.expanded }
+  )
+  const style = ComponentHelper.composeStyle(props)
 
   return (
     <div
@@ -130,18 +134,9 @@ export const SubMenu = props => {
         </Box>
         <FAIcon className={'expand-icon'} icon={'fas fa-chevron-right'} />
       </MenuItem>
-      <div
-        className={'submenu-content'}
-        style={{
-          maxHeight: props.expanded ? '500px' : '0px',
-          opacity: props.expanded ? 1 : 0,
-          backgroundColor: getSubMenuContentColor()
-        }}
-      >
+      <div className={classNameSubMenu}>
         {
-          Children.map(props.children, child => cloneElement(child, {
-            paddingLeft: `${props._subMenuLevel * 10}px`
-          }))
+          Children.map(props.children, child => cloneElement(child, { paddingLeft: `${props._subMenuLevel * 10}px` }))
         }
       </div>
     </div>
