@@ -1,10 +1,10 @@
 {
-  "name": "@alexander-welshtein/react-ui-library",
-  "version": "0.1.16",
+  "name": "@nbsp-ui/nbsp-ui",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "license": "ISC",
   "repository": {
-    "url": "git://github.com/alexander-welshtein/react-ui-library.git"
+    "url": "git://github.com/nbsp-ui/nbsp-ui.git"
   },
   "scripts": {
     "build-dev": "webpack --mode development",
