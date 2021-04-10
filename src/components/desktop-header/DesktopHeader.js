@@ -2,7 +2,7 @@ import { h } from 'preact'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { Box } from '../box/Box'
 import { Button, CompatButtonType } from '../button/Button'
-import { FAIcon } from '../fa-icon/FAIcon'
+import { FAIcon } from '../icon-fa/FAIcon'
 import { Label } from '../label/Label'
 import './DesktopHeader.scss'
 

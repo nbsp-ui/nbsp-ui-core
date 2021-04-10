@@ -3,7 +3,7 @@ import { useState } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { CompatUtils } from '../../utils/CompatUtils'
 import './Tabs.scss'
-import { SVGIcon } from '../svg-icon/SVGIcon'
+import { SVGIcon } from '../icon-svg/SVGIcon'
 import CrossIcon from '../../icons/cross.svg'
 
 /**

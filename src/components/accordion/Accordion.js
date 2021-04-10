@@ -2,7 +2,7 @@ import { h } from 'preact'
 import { useState } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { Box } from '../box/Box'
-import { FAIcon } from '../fa-icon/FAIcon'
+import { FAIcon } from '../icon-fa/FAIcon'
 import { CompatAlign } from '../../utils/CompatAlign'
 import './Accordion.scss'
 

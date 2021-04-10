@@ -3,7 +3,7 @@ import { Children } from 'preact/compat'
 import { useState } from 'preact/hooks'
 import { ComponentHelper } from "../../utils/ComponentHelper"
 import { CompatAlign } from "../../utils/CompatAlign"
-import { FAIcon } from "../fa-icon/FAIcon"
+import { FAIcon } from "../icon-fa/FAIcon"
 import { Box } from "../box/Box"
 import './Menu.scss'
 
