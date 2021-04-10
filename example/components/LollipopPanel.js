@@ -34,12 +34,19 @@ export const LollipopPanel = () => {
     onClick: () => console.log('dismissed')
   })
 
+  const lollipopIndefinite = () => lollipop({
+    title: "Indefinite",
+    description: 'This is the indefinite notification',
+    indefinite: true
+  })
+
   return (
     <Box padding={8}>
       <Button margin={{ right: 8 }} type={CompatButtonType.Outline} label="Default" onClick={() => lollipopDefault()}/>
       <Button margin={{ right: 8 }} type={CompatButtonType.Outline} label="Warning" onClick={() => lollipopWarning()}/>
       <Button margin={{ right: 8 }} type={CompatButtonType.Outline} label="Error" onClick={() => lollipopError()}/>
       <Button margin={{ right: 8 }} type={CompatButtonType.Outline} label="Success" onClick={() => lollipopSuccess()}/>
+      <Button margin={{ right: 8 }} type={CompatButtonType.Outline} label="Indefinite" onClick={() => lollipopIndefinite()}/>
     </Box>
   )
 }

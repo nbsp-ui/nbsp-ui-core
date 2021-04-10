@@ -56,16 +56,17 @@ export const Lollipop = props => {
   }
 
   const onMouseLeave = (e) => {
-    start()
+    !props.indefinite && start()
     props.onMouseLeave && props.onMouseLeave(e)
   }
 
   useEffect(() => indicatorWidth === 100 && dismiss(), [indicatorWidth])
-  useEffect(() => start(), [])
+  useEffect(() => !props.indefinite && start(), [])
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-lollipop',
     { use: 'nbsp-ui-lollipop-dismissed', if: dismissed },
+    { use: 'nbsp-ui-lollipop-indefinite', if: props.indefinite },
     { use: 'nbsp-ui-lollipop-default', if: type === LollipopType.Default },
     { use: 'nbsp-ui-lollipop-warning', if: type === LollipopType.Warning },
     { use: 'nbsp-ui-lollipop-error', if: type === LollipopType.Error },
@@ -78,7 +79,7 @@ export const Lollipop = props => {
     <div className={className} style={style} onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       {props.title && <Box vAlign={CompatAlign.Center}><span>{props.title}</span></Box>}
       {props.description && <div><p>{props.description}</p></div>}
-      {props.indicated && <div style={{ width: `${indicatorWidth}%` }} />}
+      {props.indicated && <div style={props.indefinite ? {} : { width: `${indicatorWidth}%` }} />}
     </div>
   )
 }

@@ -63,6 +63,12 @@
     }
   }
 
+  &-indefinite {
+    & > div:nth-child(3) {
+      width: 100%;
+    }
+  }
+
 }
 
 .lollipop-wrapper {

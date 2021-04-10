@@ -13,6 +13,7 @@ export interface LollipopProps extends BaseProps {
     description?: string
     duration?: string
     indicated?: boolean
+    indefinite?: boolean
 
     onClick: (event: MouseEvent) => void
     onMouseEnter: (event: MouseEvent) => void
