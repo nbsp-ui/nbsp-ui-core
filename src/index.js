@@ -23,7 +23,7 @@ export { Progress } from './components/progress/Progress'
 export { Tabs } from './components/tabs/Tabs'
 export { Accordion } from './components/accordion/Accordion'
 export { Image } from './components/image/Image'
-export { Upload } from './components/upload/Upload'
+export { Uploader } from './components/uploader/Uploader'
 export { Menu, SubMenu, MenuItem } from './components/menu/Menu'
 export { Lollipop } from './components/lollipop/Lollipop'
 

@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'preact'
 import { BaseProps } from '../types'
 
-export interface UploadProps extends BaseProps {
+export interface UploaderProps extends BaseProps {
     multiple?: boolean
     accept?: string
 
@@ -10,4 +10,4 @@ export interface UploadProps extends BaseProps {
     onItemRemoved?: (file: File) => void
 }
 
-export const Upload: FunctionComponent<UploadProps>
+export const Uploader: FunctionComponent<UploaderProps>

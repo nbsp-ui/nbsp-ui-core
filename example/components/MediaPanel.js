@@ -1,6 +1,6 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
-import { Box, FAIcon, Image, Input, Upload } from '../../src'
+import { Box, FAIcon, Image, Input, Uploader } from '../../src'
 
 export const MediaPanel = () => {
   const [imageInput, setImageInput] = useState('https://cdn.pixabay.com/photo/2015/04/23/17/41/javascript-736400_1280.png')
@@ -22,7 +22,7 @@ export const MediaPanel = () => {
         {imageSource && <Image src={imageSource} margin={{ top: 8 }} width={400} height={400}/>}
       </Box>
       <Box margin={{ bottom: 8 }}>
-        <Upload
+        <Uploader
           margin={{ bottom: 8 }}
           width={400}
           onClick={(e) => console.log(e)}

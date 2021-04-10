@@ -4,20 +4,20 @@ import { ComponentHelper } from '../../utils/ComponentHelper'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { Button, CompatButtonType, FAIcon, Box, Spacer, List } from '../..'
-import './Upload.scss'
+import './Uploader.scss'
 
 /**
- * @param {UploadProps} props
+ * @param {UploaderProps} props
  * @return {JSX.Element}
  * @constructor
  */
-export const Upload = props => {
+export const Uploader = props => {
   const { id } = props
 
   const element = useRef()
   const [files, setFiles] = useState([])
 
-  const className = ComponentHelper.composeClass('nbsp-ui-upload', props.className)
+  const className = ComponentHelper.composeClass('nbsp-ui-uploader', props.className)
   const style = ComponentHelper.composeStyle(props)
 
   return (
