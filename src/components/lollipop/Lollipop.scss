@@ -2,20 +2,72 @@
 
 .nbsp-ui-lollipop {
   font-family: "Roboto", sans-serif;
-  box-shadow: $grey-400 0 0 10px 2px;
+  box-shadow: $grey-400 0 0 5px 1px;
+  background-color: white;
   border-radius: 4px;
   margin: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: .2s linear;
+  animation: fade-in .2s;
+  animation-fill-mode: forwards; // Experimental
 
   & > div:first-child {
+    color: $light-text-color;
+    padding: 15px 0 0 15px;
   }
 
-  & > div:last-child {
+  & > div:nth-child(2) {
+    color: $light-text-color;
+    padding: 0 0 0 20px;
+    font-size: 10pt;
   }
+
+  & > div:nth-child(3) {
+    height: 10px;
+    background-color: $grey-200;
+  }
+
+  &-dismissed {
+    animation: fade-out .2s;
+    animation-fill-mode: forwards; // Experimental
+  }
+
+  &-warning {
+    & > div:first-child {
+      color: $orange-600;
+    }
+
+    & > div:nth-child(3){
+      background-color: $orange-200;
+    }
+  }
+
+  &-error {
+    & > div:first-child {
+      color: $red-600;
+    }
+
+    & > div:nth-child(3) {
+      background-color: $red-200;
+    }
+  }
+
+  &-success {
+    & > div:first-child {
+      color: $green-600;
+    }
+
+    & > div:nth-child(3) {
+      background-color: $green-200;
+    }
+  }
+
 }
 
-.nbsp-ui-lollipop-container {
-  right: 0;
-  position: absolute;
-  max-width: 25vw;
-  min-width: 300px;
+.lollipop-wrapper {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 25vw;
 }

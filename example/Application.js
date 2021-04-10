@@ -3,6 +3,7 @@ import { Box, VDivider } from '../src/index'
 import './Application.scss'
 import { AccordionPanel } from './components/AccordionPanel'
 import { ButtonsPanel } from './components/ButtonsPanel'
+import { LollipopPanel } from "./components/LollipopPanel"
 import { FieldsPanel } from './components/FieldsPanel'
 import { Header } from './components/Header'
 import { MediaPanel } from './components/MediaPanel'
@@ -17,6 +18,7 @@ export const Application = () =>
   <Box vertical>
     <Header/>
     <ButtonsPanel/>
+    <LollipopPanel/>
     <VDivider/>
     <TagsPanel/>
     <FieldsPanel/>
