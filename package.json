@@ -1,10 +1,10 @@
 {
-  "name": "@nbsp-ui/nbsp-ui",
-  "version": "1.0.0",
+  "name": "@nbsp-ui/nbsp-ui-core",
+  "version": "1.0.2",
   "main": "lib/index.js",
   "license": "ISC",
   "repository": {
-    "url": "git://github.com/nbsp-ui/nbsp-ui.git"
+    "url": "git://github.com/nbsp-ui/nbsp-ui-core.git"
   },
   "scripts": {
     "build-dev": "webpack --mode development",
