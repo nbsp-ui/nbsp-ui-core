@@ -3,11 +3,7 @@ import { useRef, useState } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { CompatUtils } from '../../utils/CompatUtils'
-import { Button, CompatButtonType } from '../button/Button'
-import { FAIcon } from '../fa-icon/FAIcon'
-import { Box } from '../box/Box'
-import { Spacer } from '../spacer/Spacer'
-import { List } from '../list/List'
+import { Button, CompatButtonType, FAIcon, Box, Spacer, List } from '../..'
 import './Upload.scss'
 
 /**
@@ -32,7 +28,7 @@ export const Upload = props => {
         accept={props.accept}
         multiple={props.multiple}
         onChange={(e) => {
-          setFiles([...e.target.files])
+          e.target.files.length > 0 && setFiles([...e.target.files])
           props.onSelectedFiles && props.onSelectedFiles([...e.target.files])
         }}
       />
