@@ -23,6 +23,16 @@
   }
 }
 
+@keyframes fade-in-half {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
 @keyframes fade-out {
   from {
     opacity: 1;
@@ -30,5 +40,15 @@
 
   to {
     opacity: 0;
+  }
+}
+
+@keyframes scale-0-1 {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
   }
 }
