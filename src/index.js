@@ -26,6 +26,7 @@ export { Image } from './components/image/Image'
 export { Uploader } from './components/uploader/Uploader'
 export { Menu, SubMenu, MenuItem } from './components/menu/Menu'
 export { Lollipop } from './components/lollipop/Lollipop'
+export { Dialog } from './components/dialog/Dialog'
 
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'

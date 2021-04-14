@@ -4,6 +4,7 @@ import './Application.scss'
 import { AccordionPanel } from './components/AccordionPanel'
 import { ButtonsPanel } from './components/ButtonsPanel'
 import { LollipopPanel } from "./components/LollipopPanel"
+import { DialogPanel } from "./components/DialogPanel"
 import { FieldsPanel } from './components/FieldsPanel'
 import { Header } from './components/Header'
 import { MediaPanel } from './components/MediaPanel'
@@ -19,6 +20,7 @@ export const Application = () =>
     <Header/>
     <ButtonsPanel/>
     <LollipopPanel/>
+    <DialogPanel/>
     <VDivider/>
     <TagsPanel/>
     <FieldsPanel/>

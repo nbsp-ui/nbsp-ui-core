@@ -1,0 +1,36 @@
+@import "../colors", "../animations";
+
+.nbsp-ui-dialog {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    padding: 16px;
+    box-shadow: $grey-400 0 0 5px 1px;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: white;
+    font-family: "Roboto", sans-serif;
+    animation: scale-0-1 .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+
+  .overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: $grey-100;
+    opacity: 0.5;
+    animation: fade-in-half .2s linear;
+  }
+
+}
