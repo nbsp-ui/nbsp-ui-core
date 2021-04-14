@@ -17,6 +17,7 @@ jobs:
           node-version: 15
       - run: npm install
       - run: npm run build-lib
+      - run: ls
 
   publish-gpr:
     needs: build
@@ -27,6 +28,7 @@ jobs:
         with:
           node-version: 15
           registry-url: https://npm.pkg.github.com/
+      - run: ls
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
