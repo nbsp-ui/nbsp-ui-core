@@ -8,6 +8,7 @@ import { DialogPanel } from "./components/DialogPanel"
 import { FieldsPanel } from './components/FieldsPanel'
 import { Header } from './components/Header'
 import { MediaPanel } from './components/MediaPanel'
+import { PivotPanel } from './components/PivotPanel'
 import { ProgressPanel } from './components/ProgressPanel'
 import { SwitchesPanel } from './components/SwitchesPanel'
 import { TablePanel } from './components/TablePanel'
@@ -31,4 +32,5 @@ export const Application = () =>
     <MediaPanel/>
     <ProgressPanel/>
     <MenuPanel/>
+    <PivotPanel/>
   </Box>

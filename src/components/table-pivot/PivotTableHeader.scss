@@ -1,0 +1,20 @@
+.nbsp-ui-pivot-table-header {
+  display: flex;
+
+  .offset {
+    display: flex;
+
+    .fixed-offset {
+      padding: 8px 9px 8px 8px;
+
+      div {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .stretched-offset {
+      padding: 8px;
+    }
+  }
+}

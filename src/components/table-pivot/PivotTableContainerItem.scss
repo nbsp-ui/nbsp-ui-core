@@ -1,0 +1,83 @@
+@import "../colors";
+
+
+.nbsp-ui-pivot-table-container-item {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  p {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+  }
+
+  .row {
+    $border-color: scale-color($border-color, $lightness: 70%);
+
+    display: flex;
+    border-bottom: 1px solid $border-color;
+
+    .base-cell {
+      display: flex;
+      flex: 1 0 0;
+      border-right: 1px solid $border-color;
+
+      .opener {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+        cursor: pointer;
+      }
+
+      .opener-replacement {
+        padding: 8px;
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+
+        div {
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      .offset {
+        padding: 8px 9px 8px 8px;
+
+        div {
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      .content {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+      }
+    }
+
+    .cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: 0;
+      padding: 8px;
+      overflow: hidden;
+
+      &:not(:last-child) {
+        border-right: 1px solid $border-color;
+      }
+    }
+  }
+
+  .children {
+    display: flex;
+    flex-direction: column;
+  }
+}

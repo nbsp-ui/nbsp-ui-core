@@ -1,3 +1,6 @@
+// noinspection SpellCheckingInspection
+import products from './products.json'
+
 export const MainStorage = {
 
   countries: [
@@ -56,5 +59,12 @@ export const MainStorage = {
    */
   getPersons: function() {
     return this.persons
+  },
+
+  /**
+   * @return {*[]}
+   */
+  getProducts: function() {
+    return products
   }
 }
