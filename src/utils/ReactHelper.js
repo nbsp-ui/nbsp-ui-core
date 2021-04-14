@@ -25,6 +25,16 @@ export const ReactHelper = {
     return () => setValue(value => value + 1)
   },
 
+  useFirstRender: () => {
+    const firstRender = useRef(true)
+
+    useEffect(() => {
+      firstRender.current = false
+    }, [])
+
+    return firstRender.current
+  },
+
   registerGlobalMouseEventListener: (event, listener) => {
     ReactHelper._registerGlobalEventListener(event, listener)
   },
