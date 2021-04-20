@@ -1,0 +1,93 @@
+@import "../colors";
+
+.nbsp-ui-slider {
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: "tnum";
+  padding-top: 10px;
+  height: 40px;
+  user-select: none;
+
+  &:hover > .rail {
+    background-color: $default-hover-color;
+    cursor: pointer;
+  }
+
+  .rail {
+    position: absolute;
+    height: 4px;
+    border-radius: 2px;
+    transition: background-color .3s;
+    width: 100%;
+    background-color: #f5f5f5;
+  }
+
+  .track {
+    position: absolute;
+    height: 4px;
+    border-radius: 2px;
+    transition: background-color .3s;
+    background-color: $accent-color;
+    right: auto;
+  }
+
+  .thumb {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    right: auto;
+    margin-top: -7px;
+    background-color: #fff;
+    border: 2px solid $accent-color;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color .3s, box-shadow .6s, transform .3s cubic-bezier(.18,.89,.32,1.28);
+    transform: translateX(-50%);
+  }
+
+  .dot-group {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: 0 0;
+
+    .dot {
+      position: absolute;
+      top: -4px;
+      width: 8px;
+      height: 8px;
+      background-color: white;
+      border: 2px solid #f0f0f0;
+      border-radius: 50%;
+      cursor: pointer;
+      transform: translateX(-50%);
+
+      &-active {
+        border: 2px solid $accent-color;
+      }
+    }
+  }
+
+  .mark-group {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+
+    .mark {
+      position: absolute;
+      display: inline-block;
+      color: $light-text-color;
+      text-align: center;
+      word-break: keep-all;
+      cursor: pointer;
+      user-select: none;
+      transform: translateX(-50%);
+    }
+  }
+
+}

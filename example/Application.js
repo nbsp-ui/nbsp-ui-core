@@ -10,6 +10,7 @@ import { Header } from './components/Header'
 import { MediaPanel } from './components/MediaPanel'
 import { PivotPanel } from './components/PivotPanel'
 import { ProgressPanel } from './components/ProgressPanel'
+import { SliderPanel } from './components/SliderPanel'
 import { SwitchesPanel } from './components/SwitchesPanel'
 import { TablePanel } from './components/TablePanel'
 import { TabsPanel } from './components/TabsPanel'
@@ -31,6 +32,7 @@ export const Application = () =>
     <AccordionPanel/>
     <MediaPanel/>
     <ProgressPanel/>
+    <SliderPanel/>
     <MenuPanel/>
     <PivotPanel/>
   </Box>
