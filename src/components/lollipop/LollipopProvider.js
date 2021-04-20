@@ -1,8 +1,7 @@
-import { h } from 'preact'
+import { h, createContext } from 'preact'
 import { Lollipop } from "./Lollipop"
 import { CompatUtils } from "../../utils/CompatUtils"
 import { useContext, useReducer } from "preact/hooks"
-import { createContext } from "preact/compat"
 import "./Lollipop.scss"
 
 const LollipopContext = createContext(null)

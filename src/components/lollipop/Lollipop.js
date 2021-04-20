@@ -1,6 +1,5 @@
 import { h } from 'preact'
-import { useState } from "preact/compat"
-import { useEffect } from "preact/hooks"
+import { useState, useEffect } from "preact/hooks"
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { Box } from '../..'
