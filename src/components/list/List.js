@@ -37,7 +37,7 @@ export const List = props => {
   }, [props.data])
 
   const className = ComponentHelper.composeClass('nbsp-ui-list', props.className)
-  const style = ComponentHelper.composeStyle(props)
+  const style = ComponentHelper.composeStyle(props, props.style)
 
   return (
     <div className={className} style={style}>

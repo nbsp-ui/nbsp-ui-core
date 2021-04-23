@@ -94,54 +94,58 @@ export const Select = props => {
           refresh()
         }}
       >
-        <Box className='toolbar' vAlign={CompatAlign.Center} padding={8}>
-          {
-            props.search
-            &&
-            <Input
-              className='search'
-              placeholder='Search...'
-              value={searchValue.current}
-              onChange={event => {
-                searchValue.current = event.currentTarget.value
-                applyItems(items.current)
-                refresh()
-              }}
-            />
-          }
-          {props.search && props.allSelectable && <Spacer size={8}/>}
-          {
-            props.allSelectable
-            &&
-            <Button
-              type={CompatButtonType.Icon}
-              icon={
-                <FAIcon
-                  icon={buildIcon(items.current)}
-                  className='selectAllIcon'
-                  color='#616161'
-                />
-              }
-              onClick={() => {
-                const count = appliedItems.current.length
-                const selectedCount = appliedItems.current.reduce((count, item) => item._selected ? ++count : 1, 0)
+        {
+          (props.search || props.allSelectable)
+          &&
+          <Box className='toolbar' vAlign={CompatAlign.Center} padding={8}>
+            {
+              props.search
+              &&
+              <Input
+                className='search'
+                placeholder='Search...'
+                value={searchValue.current}
+                onChange={event => {
+                  searchValue.current = event.currentTarget.value
+                  applyItems(items.current)
+                  refresh()
+                }}
+              />
+            }
+            {props.search && props.allSelectable && <Spacer size={8}/>}
+            {
+              props.allSelectable
+              &&
+              <Button
+                type={CompatButtonType.Icon}
+                icon={
+                  <FAIcon
+                    icon={buildIcon(items.current)}
+                    className='selectAllIcon'
+                    color='#616161'
+                  />
+                }
+                onClick={() => {
+                  const count = appliedItems.current.length
+                  const selectedCount = appliedItems.current.reduce((count, item) => item._selected ? ++count : 1, 0)
 
-                match(true, {
-                  [selectedCount < count || selectedCount === 0]: () => appliedItems.current.forEach(item => item._selected = true),
-                  [selectedCount === count]: () => appliedItems.current.forEach(item => item._selected = false),
-                })()
+                  match(true, {
+                    [selectedCount < count || selectedCount === 0]: () => appliedItems.current.forEach(item => item._selected = true),
+                    [selectedCount === count]: () => appliedItems.current.forEach(item => item._selected = false),
+                  })()
 
-                refresh()
-              }}
-            />
-          }
-        </Box>
+                  refresh()
+                }}
+              />
+            }
+          </Box>
+        }
         {(props.search || props.allSelectable) && <VDivider/>}
         {props.header && props.header(appliedItems.current)}
         {props.header && <VDivider/>}
         <List
           width={(props.width - (props.labelWidth || 0) - 7) || 300}
-          height={300}
+          height={props.popupHeight}
           divided
           multiselect={props.multiselect}
           data={appliedItems.current}
@@ -158,4 +162,8 @@ export const Select = props => {
       </Popup>
     </div>
   )
+}
+
+Select.defaultProps = {
+  popupHeight: 300
 }

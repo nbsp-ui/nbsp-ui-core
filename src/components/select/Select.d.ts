@@ -10,6 +10,7 @@ export interface SelectProps extends BaseProps {
     fontSize?: number
     multiselect?: boolean
     allSelectable?: boolean
+    popupHeight?: number | string
 
     filter?: (item: ListItem) => boolean
     search?: (item: ListItem, search: string) => boolean,
