@@ -1,0 +1,5 @@
+@import "../colors";
+
+$accent-color: $accent-color;
+
+$border-color: scale-color($border-color, $lightness: 70%);

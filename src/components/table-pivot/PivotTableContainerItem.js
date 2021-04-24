@@ -41,11 +41,14 @@ export const PivotTableContainerItem = ({ unit, rows, columns, level = 0 }) => {
             <p>{unit.value}</p>
           </div>
         </div>
-        {columns.map(column => (
-          <div className="cell">
-            <p>{unit.aggregations[column.key]}</p>
-          </div>
-        ))}
+        {columns.reduce((result, { key, as }) => [
+          ...result,
+          ...as.map(method => (
+            <div className="cell">
+              <p>{unit.aggregations[key][method]}</p>
+            </div>
+          ))
+        ], [])}
       </div>
       {opened && unit.children && (
         <div className="children">

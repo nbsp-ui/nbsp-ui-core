@@ -4,4 +4,11 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+
+  &-editable {
+    p {
+      user-select: none;
+      -webkit-user-select: none;
+    }
+  }
 }

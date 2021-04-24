@@ -1,20 +1,51 @@
+@import "../colors";
+
+$border-color: scale-color($border-color, $lightness: 70%);
+
 .nbsp-ui-pivot-table-header {
   display: flex;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
 
-  .offset {
+  p {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    color: $light-text-color;
+  }
+
+  path {
+    stroke: $light-text-color;
+  }
+
+  .base-cell {
     display: flex;
+    flex: 1 0 0;
+    border-right: 1px solid $border-color;
 
-    .fixed-offset {
-      padding: 8px 9px 8px 8px;
+    .edit {
+      padding: 7px 7px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color .2s, border-color .2s;
 
-      div {
-        width: 18px;
-        height: 18px;
+      path {
+        transition: stroke .2s;
+      }
+
+      &-on {
+        border-color: scale-color($accent-color, $lightness: 60%);
+        background-color: scale-color($accent-color, $lightness: 90%);
+
+        path {
+          stroke: $accent-color;
+        }
       }
     }
+  }
 
-    .stretched-offset {
-      padding: 8px;
-    }
+  &-editable {
+    user-select: none;
+    -webkit-user-select: none;
   }
 }

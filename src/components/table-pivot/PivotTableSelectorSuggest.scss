@@ -1,0 +1,35 @@
+@import "../colors";
+
+$border-color: scale-color($border-color, $lightness: 80%);
+$accent-color: scale-color($accent-color, $lightness: 20%);
+
+.nbsp-ui-pivot-table-selector-suggest {
+  display: flex;
+  padding: 8px;
+  border: 1px solid $border-color;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+  cursor: pointer;
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  p {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 10px;
+    color: $light-text-color;
+  }
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  &-selected {
+    background-color: $accent-color;
+
+    p {
+      color: $dark-text-color;
+    }
+  }
+}

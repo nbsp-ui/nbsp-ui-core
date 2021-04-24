@@ -16,7 +16,7 @@ export const List = props => {
   const refresh = ReactHelper.useRefresh()
 
   /**
-   * @type {MutableRefObject<ListItem[]>}
+   * @type {Ref<ListItem[]>}
    */
   const items = useRef(props.data)
 

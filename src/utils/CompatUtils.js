@@ -15,6 +15,32 @@ export const CompatUtils = {
     append: (string, substring, separator = ' ') => string.concat(separator).concat(substring)
   },
 
+  array: {
+    /**
+     * @param {*|*[]} value
+     * @returns {*[]}
+     */
+    from: value => Array.isArray(value) ? value : [value],
+
+    /**
+     * @param {*[]} items
+     * @param {number} index
+     * @returns {boolean}
+     */
+    isInRange: (items, index) => index > 0 || index < items.length,
+
+    /**
+     * @param {*[]} items
+     * @param {number} from
+     * @param {number} to
+     * @returns {*[]}
+     */
+    move: (items, from, to) => {
+      items.splice(to, 0, items.splice(from, 1)[0])
+      return items
+    }
+  },
+
   math: {
     /**
      * Получить признак принадлежности позиции к ограничевающей форме элемента
@@ -55,6 +81,27 @@ export const CompatUtils = {
      * @returns {number}
      */
     pointsDistance: (ax, ay, bx, by) => Math.hypot(ax - bx, ay - by)
+  },
+
+  intersects: {
+    /**
+     * @param {number} x
+     * @param {number} y
+     * @param {number} rectX
+     * @param {number} rectY
+     * @param {number} rectWidth
+     * @param {number} rectHeight
+     * @returns {boolean}
+     */
+    pointToRect: (x, y, rectX, rectY, rectWidth, rectHeight) => x >= rectX && x <= rectX + rectWidth && y >= rectY && y <= rectY + rectHeight,
+  },
+
+  other: {
+    /**
+     * @param {*} value
+     * @returns {boolean}
+     */
+    isNumber: value => !isNaN(parseFloat(value)) && isFinite(value)
   },
 
   /**
@@ -114,7 +161,7 @@ export const CompatUtils = {
 window['match'] = (value, contracts) => {
   value = String(value)
 
-  // Исключение неопрделенного порядка свойств
+  // Исключение неопределенного порядка свойств
   const keys = Object.keys(contracts).sort((a) => a.includes('..') || a.includes('|') ? -1 : 1)
 
   for (let contract of keys) {

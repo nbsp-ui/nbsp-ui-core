@@ -13,13 +13,13 @@ const mappers = {
 
 /**
  * @param {SVGIconProps} props
- * @return {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const SVGIcon = props => {
   const { icon } = props
 
-  const className = ComponentHelper.composeClass('nbsp-ui-svg-icon')
+  const className = ComponentHelper.composeClass('nbsp-ui-svg-icon', props.className)
   const style = ComponentHelper.composeStyle(props, mappers)
 
   return (

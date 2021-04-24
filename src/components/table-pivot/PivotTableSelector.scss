@@ -1,0 +1,9 @@
+@import '../colors';
+
+$border-color: scale-color($border-color, $lightness: 70%);
+
+.nbsp-ui-pivot-table-selector {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid $border-color;
+}

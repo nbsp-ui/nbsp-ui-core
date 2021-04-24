@@ -1,5 +1,5 @@
 import { CompatUtils } from '../../utils/CompatUtils'
-import { ColumnAggregation } from './ColumnAggregation'
+import { PivotTableMethod } from './PivotTableMethod'
 
 export const PivotTableHelper = {
 
@@ -14,10 +14,27 @@ export const PivotTableHelper = {
   })),
 
   /**
+   * @param {PivotTableField[]} fields
+   * @return {PivotTableField[]}
+   */
+  toFields: fields => fields,
+
+  /**
    * @param {(string | PivotTableColumnField)[]} columns
+   * @param {PivotTableField[]} fields
    * @return {PivotTableColumnField[]}
    */
-  toColumnFields: columns => columns.map(column => typeof column === 'string' ? { key: column } : column),
+  toColumnFields: (columns, fields) => columns
+    .map(column => typeof column === 'string' ? { key: column } : column)
+    .map(({ key, as }) => ({
+      key,
+      label: PivotTableHelper.describeKey(key, fields),
+      as: CompatUtils.array.from(as || [PivotTableMethod.Count])
+    }))
+    .map((column, position) => ({
+      ...column,
+      position
+    })),
 
   /**
    * @param {(string | PivotTableRowField)[]} rows
@@ -91,16 +108,28 @@ export const PivotTableHelper = {
      * @param {PivotTableColumnField[]} columns
      * @return {{}}
      */
-    const aggregate = (items, columns) => columns.reduce((injection, { key, as }) => ({
-      ...injection,
-      [key]: items.reduce((result, item) => match(as, {
-        [ColumnAggregation.Count]: result + 1,
-        [ColumnAggregation.Sum]: result + Number(item[key])
-      }), match(as, {
-        [ColumnAggregation.Count]: 0,
-        [ColumnAggregation.Sum]: 0
-      }))
-    }), {})
+    const aggregate = (items, columns) => {
+      return columns.reduce((result, { key, as }) => ({
+        ...result,
+        [key]: as.reduce((result, method) => {
+          const initial = match(method, {
+            _: 0
+          })
+
+          const operate = match(method, {
+            [PivotTableMethod.Count]: result => result + 1,
+            [PivotTableMethod.Sum]: (result, value) => result + (Number(value) || 0),
+            [PivotTableMethod.Max]: (result, value) => Math.max(Number(value) || Number.NEGATIVE_INFINITY, result),
+            [PivotTableMethod.Min]: (result, value) => Math.min(Number(value) || Number.POSITIVE_INFINITY, result)
+          })
+
+          return {
+            ...result,
+            [method]: items.reduce((result, item) => operate(result, item[key]), initial)
+          }
+        }, {})
+      }), {})
+    }
 
     /**
      * @param {PivotTableContainerUnit} unit
@@ -128,26 +157,32 @@ export const PivotTableHelper = {
   },
 
   /**
-   * Построить древовидное представление иерархической связи
-   * @param {{}} param - Конфигурация построения
-   * @param {{}[]} param.items - Линейное представление иерархической связи
-   * @param {string} param.reference_key - Ключ определяющий идентификацию элемента
-   * @param {string} param.parent_reference_key - Ключ определяющий идентификацию родительского элемента
-   * @param {string} param.children_key - Ключ определяющий массив выделенных в ходе обработки дочерних элементов
-   * @returns {[]} - Древовидное представление иерархической связи
+   * @param {{}[]} items
+   * @returns {{}}
    */
-  build_tree({ items, reference_key, parent_reference_key, children_key }) {
-    const map = Object.create(null)
-    items.forEach(item => {
-      // TODO: Maybe optimise section
-      map[item[reference_key]] = { ...item }
-      map[item[reference_key]][children_key] = []
-      return map[item[reference_key]]
-    })
-    const tree = []
-    items.forEach(item => item[parent_reference_key]
-      ? map[item[parent_reference_key]][children_key].push(map[item[reference_key]])
-      : tree.push(map[item[reference_key]]))
-    return tree
-  }
+  selectItemsKeys: items => items.reduce((result, item) => ({
+    ...result,
+    ...Object.keys(item).reduce((result, key) => ({
+      ...result,
+      [key]: true
+    }), {})
+  }), {}),
+
+  /**
+   * @param {string} key
+   * @param {PivotTableField[]} fields
+   * @returns {string}
+   */
+  describeKey: (key, fields) => fields.find(each => each.key === key)?.label || 'Неизвестное значение',
+
+  /**
+   * @param {number} method
+   * @returns {string}
+   */
+  methodToLabel: method => match(method, {
+    [PivotTableMethod.Count]: 'Кол-во',
+    [PivotTableMethod.Sum]: 'Сумма',
+    [PivotTableMethod.Max]: 'Макс',
+    [PivotTableMethod.Min]: 'Мин'
+  })
 }

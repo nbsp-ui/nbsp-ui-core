@@ -1,0 +1,53 @@
+@import "../colors";
+
+$border-color: scale-color($border-color, $lightness: 80%);
+$accent-color: scale-color($accent-color, $lightness: 20%);
+
+.nbsp-ui-pivot-table-function-selector {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(2, 60px);
+  grid-template-rows: repeat(2, 60px);
+  z-index: 1;
+  background-color: #ffffff;
+  box-shadow: 0 4px 16px 0 #0000001A;
+  transform: translateY(-50%);
+
+  p {
+    font-size: 12px;
+  }
+
+  path {
+    stroke: $light-text-color;
+  }
+
+  .method {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    cursor: pointer;
+
+    .icon {
+      margin-bottom: 4px;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &-selected {
+      background-color: $accent-color;
+
+      p {
+        color: $dark-text-color;
+      }
+
+      path {
+        stroke: $dark-text-color;
+      }
+    }
+  }
+}

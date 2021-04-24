@@ -16,7 +16,7 @@ export const Popup = props => {
   const showCompleted = useRef(false)
 
   /**
-   * @type {MutableRefObject<HTMLElement>}
+   * @type {Ref<HTMLElement>}
    */
   const element = useRef()
 

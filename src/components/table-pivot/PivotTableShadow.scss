@@ -1,0 +1,18 @@
+@import "../colors";
+
+.nbsp-ui-pivot-table-shadow {
+  position: absolute;
+  display: flex;
+  z-index: 1;
+  border-left: 2px solid $accent-color;
+  background-color: #FFFFFF;
+  box-shadow: 0 8px 8px 0 #00000014;
+  cursor: grabbing;
+  pointer-events: none;
+
+  p {
+    cursor: grabbing;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}

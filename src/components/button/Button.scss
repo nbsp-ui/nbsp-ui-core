@@ -38,11 +38,11 @@
     background-color: $accent-color;
 
     &:hover {
-      background-color: $accent-color-dark-0;
+      background-color: scale-color($accent-color, $lightness: 10%);
     }
 
     &:active {
-      background-color: $accent-color-dark-1;
+      background-color: scale-color($accent-color, $lightness: -10%);
     }
 
     & > p {

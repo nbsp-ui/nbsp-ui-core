@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { Box } from '../../src'
-import { ColumnAggregation } from '../../src/components/table-pivot/ColumnAggregation'
 import { PivotTable } from '../../src/components/table-pivot/PivotTable'
+import { PivotTableMethod } from '../../src/components/table-pivot/PivotTableMethod'
 import { MainStorage } from '../storage/MainStorage'
 
 export const PivotPanel = () => {
@@ -12,7 +12,26 @@ export const PivotPanel = () => {
         fields={{
           rows: ['h', 'i', 'f'],
           columns: [
-            { key: 'u', label: 'Фактический остаток на дату (кол-во)', as: ColumnAggregation.Sum }
+            { key: 'a', as: [PivotTableMethod.Count] }
+          ],
+          all: [
+            { key: 'a', label: 'Филиал' },
+            { key: 'b', label: 'Наименование товара' },
+            { key: 'e', label: 'Юр. лицо' },
+            { key: 'f', label: 'Поставщик' },
+            { key: 'g', label: '№ приходного документа' },
+            { key: 'h', label: 'Интернет заказ' },
+            { key: 'i', label: 'Бренды' },
+            { key: 'j', label: 'Дата документа' },
+            { key: 'l', label: 'Тип документа' },
+            { key: 'r', label: 'Код товара' },
+            { key: 's', label: 'Производитель' },
+            { key: 'z', label: 'Штрихкод' },
+            { key: 'q', label: 'ИНН' },
+            { key: 'x', label: 'CIP-цена' },
+
+            { key: 'u', label: 'Фактический остаток на дату (кол-во)' },
+            { key: 'ua', label: 'Фактический остаток на дату (опт с НДС)' }
           ]
         }}
       />

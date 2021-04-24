@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'preact/compat'
+import { FunctionComponent } from 'preact'
 import { BaseProps } from '../types'
 
 export interface PivotTableProps extends BaseProps {
@@ -6,17 +6,21 @@ export interface PivotTableProps extends BaseProps {
     fields?: {
         columns?: (string | PivotTableColumnField)[]
         rows?: (string | PivotTableRowField)[]
+        all?: PivotTableField[]
     }
 }
 
-export interface PivotTableColumnField {
+export interface PivotTableField {
     key?: string
     label?: string
-    as?: ColumnAggregation
 }
 
-export interface PivotTableRowField {
-    key?: string
+export interface PivotTableColumnField extends PivotTableField{
+    as?: PivotTableMethod | PivotTableMethod[]
+    position?: number
+}
+
+export interface PivotTableRowField extends PivotTableField {
 }
 
 export interface PivotTableUnit<T> {
@@ -33,9 +37,11 @@ export interface PivotTableContainerUnit {
     aggregations?: {}
 }
 
-export enum ColumnAggregation {
+export enum PivotTableMethod {
     Count,
-    Sum
+    Sum,
+    Max,
+    Min
 }
 
 export const PivotTable: FunctionComponent<PivotTableProps>
