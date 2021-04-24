@@ -20,27 +20,31 @@ export const PivotTableHelper = {
   toFields: fields => fields,
 
   /**
+   * @param {(string | PivotTableRowField)[]} rows
+   * @param {PivotTableField[]} fields
+   * @returns {PivotTableRowField[]}
+   */
+  toRowFields: (rows, fields) => rows
+    .map(row => typeof row === 'string' ? { key: row } : row)
+    .map(({ key }, position) => ({
+      key,
+      label: PivotTableHelper.describeKey(key, fields),
+      position
+    })),
+
+  /**
    * @param {(string | PivotTableColumnField)[]} columns
    * @param {PivotTableField[]} fields
    * @returns {PivotTableColumnField[]}
    */
   toColumnFields: (columns, fields) => columns
     .map(column => typeof column === 'string' ? { key: column } : column)
-    .map(({ key, as }) => ({
+    .map(({ key, as }, position) => ({
       key,
       label: PivotTableHelper.describeKey(key, fields),
-      as: CompatUtils.array.from(as || [PivotTableMethod.Count])
-    }))
-    .map((column, position) => ({
-      ...column,
+      as: CompatUtils.array.from(as || [PivotTableMethod.Count]),
       position
     })),
-
-  /**
-   * @param {(string | PivotTableRowField)[]} rows
-   * @returns {PivotTableRowField[]}
-   */
-  toRowFields: rows => rows.map(row => typeof row === 'string' ? { key: row } : row),
 
   /**
    * @param a

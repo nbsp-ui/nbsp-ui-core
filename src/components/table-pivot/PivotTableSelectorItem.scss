@@ -1,0 +1,83 @@
+@import "../colors";
+
+$border-color: scale-color($border-color, $lightness: 70%);
+
+.nbsp-ui-pivot-table-selector-item {
+  border: 1px solid $border-color;
+  background-color: #FFFFFF;
+  cursor: default;
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  p {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 10px;
+    color: $light-text-color;
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+
+    path {
+      stroke: $light-text-color;
+    }
+
+    .drag {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 4px;
+      cursor: grab;
+    }
+
+    .label {
+      padding: 8px 8px 8px 0;
+    }
+
+    .method {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 6px;
+      border-left: 1px solid $border-color;
+      cursor: pointer;
+    }
+
+    .overlay {
+      position: absolute;
+      display: none;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border: 1px solid transparent;
+      background-color: rgba(#FFFFFF, .6);
+    }
+  }
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  &-dragged {
+    .content {
+      .overlay {
+        background-color: #FFFFFF;
+        display: block;
+      }
+    }
+  }
+
+  &-dropped {
+    .content {
+      .overlay {
+        display: block;
+        border-color: $accent-color;
+        background-color: rgba($accent-color, .1);
+      }
+    }
+  }
+}

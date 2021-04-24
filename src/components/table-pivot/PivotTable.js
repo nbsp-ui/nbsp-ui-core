@@ -1,5 +1,6 @@
 import { h } from 'preact'
-import { useState } from 'preact/hooks'
+import { useRef, useState } from 'preact/hooks'
+import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './PivotTable.scss'
 import { PivotTableContainer } from './PivotTableContainer'
@@ -15,7 +16,7 @@ import { PivotTableSelector } from './PivotTableSelector'
 export const PivotTable = props => {
   const [{ fields, rows, columns, items, tree, editable }, setState] = useState(() => {
     const fields = PivotTableHelper.toFields(props.fields.all || [])
-    const rows = PivotTableHelper.toRowFields(props.fields.rows || [])
+    const rows = PivotTableHelper.toRowFields(props.fields.rows || [], fields)
     const columns = PivotTableHelper.toColumnFields(props.fields.columns || [], fields)
     const items = props.data
 
@@ -29,6 +30,12 @@ export const PivotTable = props => {
       editable: true
     }
   })
+
+  const updateRows = rows => setState(prev => ({
+    ...prev,
+    rows,
+    tree: PivotTableHelper.toRowUnits(items, rows, columns)
+  }))
 
   const updateColumns = columns => setState(prev => ({
     ...prev,
@@ -52,9 +59,10 @@ export const PivotTable = props => {
       {editable && (
         <PivotTableSelector
           fields={fields}
+          rows={rows}
           columns={columns}
-          items={items}
-          onChange={updateColumns}
+          onRowsChange={rows => updateRows(rows)}
+          onColumnsChange={columns => updateColumns(columns)}
         />
       )}
       <PivotTableContainer

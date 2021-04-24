@@ -6,4 +6,64 @@ $border-color: scale-color($border-color, $lightness: 70%);
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid $border-color;
+
+  .set {
+    display: flex;
+    border-bottom: 1px solid $border-color;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    path {
+      stroke: $light-text-color;
+    }
+
+    & > .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      width: 33px;
+      border-right: 1px solid $border-color;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+
+      .control {
+        flex-shrink: 0;
+        padding: 5px;
+        border: 1px solid $border-color;
+        background-color: transparent;
+        cursor: pointer;
+        transition: border-color .2s, background-color .2s;
+
+        &-confirmable {
+          border-color: scale-color($accent-color, $lightness: 60%);
+          background-color: scale-color($accent-color, $lightness: 90%);
+
+          path {
+            stroke: $accent-color;
+            transition: stroke .2s;
+          }
+        }
+      }
+    }
+
+    & > .content {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      padding: 8px;
+      background-color: #FAFAFA;
+      overflow-x: scroll;
+
+      & > div {
+        flex-shrink: 0;
+      }
+    }
+  }
 }

@@ -1,0 +1,6 @@
+@import "../colors";
+
+$border-color: scale-color($border-color, $lightness: 70%);
+
+.nbsp-ui-pivot-table-selector-row {
+}
