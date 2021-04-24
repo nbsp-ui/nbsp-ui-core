@@ -9,7 +9,7 @@ import { PivotTableSelector } from './PivotTableSelector'
 
 /**
  * @param {PivotTableProps} props
- * @return {*}
+ * @returns {*}
  * @constructor
  */
 export const PivotTable = props => {

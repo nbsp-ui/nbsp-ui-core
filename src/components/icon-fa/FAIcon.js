@@ -4,7 +4,7 @@ import './FAIcon.scss'
 
 /**
  * @param {FAIconProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const FAIcon = props => {

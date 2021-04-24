@@ -5,7 +5,7 @@ import './Progress.scss'
 
 /**
  * @param {ProgressProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Progress = props => {

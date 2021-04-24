@@ -16,7 +16,7 @@ import './Select.scss'
 
 /**
  * @param {ListItem[]} items
- * @return {string}
+ * @returns {string}
  */
 const buildValue = items => {
   const selectedItems = items.filter(item => item._selected)
@@ -25,7 +25,7 @@ const buildValue = items => {
 
 /**
  * @param {ListItem[]} items
- * @return {string}
+ * @returns {string}
  */
 const buildIcon = items => {
   const selectedItems = items.filter(item => item._selected)
@@ -38,7 +38,7 @@ const buildIcon = items => {
 
 /**
  * @param {SelectProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Select = props => {

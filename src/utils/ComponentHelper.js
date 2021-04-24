@@ -10,7 +10,7 @@ export const ComponentHelper = {
 
   /**
    * @param {string | ClassContract | (string | ClassContract)[]} properties
-   * @return {string}
+   * @returns {string}
    */
   composeClass: (...properties) => properties.map(property => !property || typeof property === 'string' ? property : property.if && property.use).filter(value => value).join(' '),
 
@@ -32,7 +32,7 @@ export const ComponentHelper = {
   /**
    * @param {{}} props
    * @param {{}} [mappers]
-   * @return {CSSProperties}
+   * @returns {CSSProperties}
    */
   composeStyle: function(props, mappers) {
     const combination = {

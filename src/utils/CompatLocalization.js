@@ -17,7 +17,7 @@ export const CompatLocalization = {
 
   /**
    * @param {number} month
-   * @return {string}
+   * @returns {string}
    */
   month_full: month => ({
     0: ['Январь'],
@@ -35,14 +35,14 @@ export const CompatLocalization = {
   })[month][CompatLocalization._locale_number],
 
   /**
-   * @return {string[]}
+   * @returns {string[]}
    */
   week_days: () => ({
     0: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресение']
   })[CompatLocalization._locale_number],
 
   /**
-   * @return {string[]}
+   * @returns {string[]}
    */
   week_short_days: () => ({
     [CompatLocalization.locales['ru']]: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
@@ -51,7 +51,7 @@ export const CompatLocalization = {
   /**
    * @param {number} month
    * @param {number} year
-   * @return {number}
+   * @returns {number}
    */
   days_in_month: (year, month) => new Date(year, month + 1, 0).getDate(),
 
@@ -59,7 +59,7 @@ export const CompatLocalization = {
    * @param {number} year
    * @param {number} month
    * @param {number} date
-   * @return {number}
+   * @returns {number}
    */
   week_day_raw: (year, month, date) => new Date(year, month, date).getDay(),
 
@@ -67,14 +67,14 @@ export const CompatLocalization = {
    * @param {number} month
    * @param {number} year
    * @param {number} date
-   * @return {number}
+   * @returns {number}
    */
   week_day: (year, month, date) => ({
     [CompatLocalization.locales['ru']]: [6, 0, 1, 2, 3, 4, 5]
   })[CompatLocalization._locale_number][CompatLocalization.week_day_raw(year, month, date)],
 
   /**
-   * @return {number}
+   * @returns {number}
    */
   last_week_day: () => ({
     [CompatLocalization.locales['ru']]: 5
@@ -83,26 +83,26 @@ export const CompatLocalization = {
   /**
    * @param {number} year
    * @param {number} month
-   * @return {number}
+   * @returns {number}
    */
   prev_month_year: (year, month) => month === 0 ? year - 1 : year,
 
   /**
    * @param {number} year
    * @param {number} month
-   * @return {number}
+   * @returns {number}
    */
   next_month_year: (year, month) => month === 11 ? year + 1 : year,
 
   /**
    * @param {number} month
-   * @return {number}
+   * @returns {number}
    */
   prev_month: month => month === 0 ? 11 : month - 1,
 
   /**
    * @param {number} month
-   * @return {*}
+   * @returns {*}
    */
   next_month: month => month === 11 ? 0 : month + 1
 }

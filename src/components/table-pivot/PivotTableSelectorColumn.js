@@ -20,7 +20,7 @@ import { PivotTableShadow } from './PivotTableShadow'
  * @param {Function} props.onDragEnd
  * @param {Function} props.onDropLeftReady
  * @param {Function} props.onDropRightReady
- * @return {*}
+ * @returns {*}
  * @constructor
  */
 export const PivotTableSelectorColumn = ({

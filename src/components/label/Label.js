@@ -5,7 +5,7 @@ import './Label.scss'
 /**
  * @param {{}} state
  * @param {function} setState
- * @return {LabelLever}
+ * @returns {LabelLever}
  */
 const toLever = (state, setState) => ({
   define: (key, value) => state[key] = value,
@@ -18,7 +18,7 @@ const toLever = (state, setState) => ({
 
 /**
  * @param {LabelProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Label = props => {

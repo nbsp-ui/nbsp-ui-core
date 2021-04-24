@@ -11,7 +11,7 @@ export const CompatButtonType = {
 
 /**
  * @param {ButtonProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Button = props => {

@@ -8,7 +8,7 @@ import { PivotTableHelper } from './PivotTableHelper'
  * @param {{}} props.tree
  * @param {PivotTableRowField[]} props.rows
  * @param {PivotTableColumnField[]} props.columns
- * @return {*}
+ * @returns {*}
  * @constructor
  */
 export const PivotTableContainer = ({ tree, rows, columns }) => {

@@ -8,7 +8,7 @@ import './DesktopHeader.scss'
 
 /**
  * @param {DesktopHeaderProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const DesktopHeader = ({ title, subtitle }) =>

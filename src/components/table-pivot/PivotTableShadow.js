@@ -10,7 +10,7 @@ import './PivotTableShadow.scss'
  * @param {number} props.width
  * @param {number} props.height
  * @param {Function} props.onUp
- * @return {*}
+ * @returns {*}
  * @constructor
  */
 export const PivotTableShadow = ({ children, x, y, width, height, onUp }) => {

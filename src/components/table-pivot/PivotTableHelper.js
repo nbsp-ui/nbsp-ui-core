@@ -5,7 +5,7 @@ export const PivotTableHelper = {
 
   /**
    * @param {{}[]} items
-   * @return {PivotTableItem[]}
+   * @returns {PivotTableItem[]}
    */
   toItems: items => items.map(item => ({
     ...item,
@@ -15,14 +15,14 @@ export const PivotTableHelper = {
 
   /**
    * @param {PivotTableField[]} fields
-   * @return {PivotTableField[]}
+   * @returns {PivotTableField[]}
    */
   toFields: fields => fields,
 
   /**
    * @param {(string | PivotTableColumnField)[]} columns
    * @param {PivotTableField[]} fields
-   * @return {PivotTableColumnField[]}
+   * @returns {PivotTableColumnField[]}
    */
   toColumnFields: (columns, fields) => columns
     .map(column => typeof column === 'string' ? { key: column } : column)
@@ -38,14 +38,14 @@ export const PivotTableHelper = {
 
   /**
    * @param {(string | PivotTableRowField)[]} rows
-   * @return {PivotTableRowField[]}
+   * @returns {PivotTableRowField[]}
    */
   toRowFields: rows => rows.map(row => typeof row === 'string' ? { key: row } : row),
 
   /**
    * @param a
    * @param b
-   * @return {boolean}
+   * @returns {boolean}
    */
   isHasIntersectedKey: (a, b) => {
     for (const key in a) {
@@ -58,7 +58,7 @@ export const PivotTableHelper = {
   /**
    * @param {{}[]} items
    * @param {PivotTableColumnField[]} columns
-   * @return {{}[]}
+   * @returns {{}[]}
    */
   filterItemsByColumns: (items, columns) => {
     const keys = columns.map((result, column) => ({ ...result, [column.key]: true }), {})
@@ -68,7 +68,7 @@ export const PivotTableHelper = {
   /**
    * @param {{}[]} items
    * @param {PivotTableColumnField[]} columns
-   * @return {PivotTableUnit[]}
+   * @returns {PivotTableUnit[]}
    */
   toColumnUnits: (items, columns) => {
     const fieldsByKey = columns.reduce((result, column) => ({ ...result, [column.key]: column }), {})
@@ -83,7 +83,7 @@ export const PivotTableHelper = {
    * @param {{}[]} items
    * @param {PivotTableRowField[]} rows
    * @param {PivotTableColumnField[]} columns
-   * @return {PivotTableContainerUnit[]}
+   * @returns {PivotTableContainerUnit[]}
    */
   toRowUnits: (items, rows, columns) => {
     const itemsByRowAndValue = rows.reduce((result, field) => ({
@@ -106,7 +106,7 @@ export const PivotTableHelper = {
     /**
      * @param {{}[]} items
      * @param {PivotTableColumnField[]} columns
-     * @return {{}}
+     * @returns {{}}
      */
     const aggregate = (items, columns) => {
       return columns.reduce((result, { key, as }) => ({

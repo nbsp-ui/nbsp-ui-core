@@ -16,7 +16,7 @@ import { PivotTableSelectorSuggest } from './PivotTableSelectorSuggest'
  * @param {PivotTableField[]} props.fields
  * @param {PivotTableColumnField[]} props.columns
  * @param {Function} props.onChange
- * @return {*}
+ * @returns {*}
  * @constructor
  */
 export const PivotTableSelectorSet = ({ fields, columns, onChange }) => {

@@ -7,7 +7,7 @@ import './Popup.scss'
 
 /**
  * @param {PopupProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Popup = props => {

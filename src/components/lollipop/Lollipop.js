@@ -14,7 +14,7 @@ export const LollipopType = {
 
 /**
  * @param {LollipopProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Lollipop = props => {

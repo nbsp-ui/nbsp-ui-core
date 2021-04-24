@@ -8,7 +8,7 @@ import CrossIcon from '../../icons/cross.svg'
 
 /**
  * @param {TabsProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Tabs = props => {

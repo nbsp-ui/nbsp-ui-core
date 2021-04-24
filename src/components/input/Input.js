@@ -5,7 +5,7 @@ import './Input.scss'
 
 /**
  * @param {InputProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Input = props => {

@@ -57,7 +57,7 @@ export const CompatUtils = {
      * @param {number} y
      * @param {DOMRect} rect
      * @param {number} indent
-     * @return {boolean}
+     * @returns {boolean}
      */
     isBelongToElementRectWithIndent: (x, y, rect, indent) => x >= rect.x - indent && x <= rect.x + rect.width + indent && y >= rect.y - indent && y <= rect.y + rect.height + indent,
 
@@ -113,7 +113,7 @@ export const CompatUtils = {
   _uid: 0,
 
   /**
-   * @return {string}
+   * @returns {string}
    */
   uid: () => String(CompatUtils._uid++),
 
@@ -126,7 +126,7 @@ export const CompatUtils = {
 
   /**
    * @param {string} id
-   * @return {HTMLElement}
+   * @returns {HTMLElement}
    */
   $$: id => window.document.getElementById(id),
 
@@ -141,7 +141,7 @@ export const CompatUtils = {
    * Получить размер файла по числу байтов
    * @param {number} a
    * @param {number} b
-   * @return {string}
+   * @returns {string}
    */
   getSizeFromBytes: (a, b = 2) => {
     if (0 === a) return "0 Bytes"

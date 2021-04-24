@@ -39,7 +39,7 @@ export const MainStorage = {
   ],
 
   /**
-   * @return {{}[]}
+   * @returns {{}[]}
    */
   getCountries: function() {
     return this.countries
@@ -55,14 +55,14 @@ export const MainStorage = {
   ],
 
   /**
-   * @return {{}[]}
+   * @returns {{}[]}
    */
   getPersons: function() {
     return this.persons
   },
 
   /**
-   * @return {*[]}
+   * @returns {*[]}
    */
   getProducts: function() {
     return products

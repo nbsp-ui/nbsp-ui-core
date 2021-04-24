@@ -11,7 +11,7 @@ import { PivotTableHelper } from './PivotTableHelper'
  * @param {PivotTableColumnField[]} props.columns
  * @param {boolean} props.editable
  * @param {Function} props.onEditingRequest
- * @return {*}
+ * @returns {*}
  * @constructor
  */
 export const PivotTableHeader = ({ columns, editable, onEditingRequest }) => {

@@ -9,7 +9,7 @@ import './Menu.scss'
 
 /**
  * @param {MenuProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Menu = props => {
@@ -89,7 +89,7 @@ Menu.defaultProps = {
 
 /**
  * @param {SubMenuProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const SubMenu = props => {
@@ -149,7 +149,7 @@ SubMenu.defaultProps = {
 
 /**
  * @param {MenuItemProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const MenuItem = props => {

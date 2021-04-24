@@ -8,7 +8,7 @@ import './Uploader.scss'
 
 /**
  * @param {UploaderProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Uploader = props => {

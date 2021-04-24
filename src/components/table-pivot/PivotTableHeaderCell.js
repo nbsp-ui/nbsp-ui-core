@@ -6,7 +6,7 @@ import './PivotTableHeaderCell.scss'
 /**
  * @param props
  * @param {string} props.label
- * @return {*}
+ * @returns {*}
  * @constructor
  */
 export const PivotTableHeaderCell = ({ label }) => {

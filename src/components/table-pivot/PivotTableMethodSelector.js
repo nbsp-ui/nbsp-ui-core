@@ -16,7 +16,7 @@ import './PivotTableMethodSelector.scss'
  * @param {number[]} props.methods
  * @param {Function} props.onChange
  * @param {Function} props.onBlur
- * @return {*}
+ * @returns {*}
  * @constructor
  */
 export const PivotTableMethodSelector = ({ parent, methods, onChange, onBlur }) => {

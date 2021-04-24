@@ -7,7 +7,7 @@ import './Dialog.scss'
 
 /**
  * @param {DialogProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const Dialog = props => {

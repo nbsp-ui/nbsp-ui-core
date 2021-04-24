@@ -6,7 +6,7 @@ import './PivotTableSelectorSuggest.scss'
  * @param props
  * @param {string} props.label
  * @param {boolean} props.selected
- * @return {*}
+ * @returns {*}
  * @constructor
  */
 export const PivotTableSelectorSuggest = ({ label, selected, onClick }) => {

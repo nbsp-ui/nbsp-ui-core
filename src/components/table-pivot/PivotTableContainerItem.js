@@ -11,7 +11,7 @@ import ChevronDown from '../../icons/chevron-down.svg'
  * @param {PivotTableRowField[]} props.rows
  * @param {PivotTableColumnField[]} props.columns
  * @param {number} props.level
- * @return {*}
+ * @returns {*}
  * @constructor
  */
 export const PivotTableContainerItem = ({ unit, rows, columns, level = 0 }) => {

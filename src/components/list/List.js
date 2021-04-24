@@ -7,7 +7,7 @@ import './List.scss'
 
 /**
  * @param {ListProps} props
- * @return {JSX.Element}
+ * @returns {JSX.Element}
  * @constructor
  */
 export const List = props => {
