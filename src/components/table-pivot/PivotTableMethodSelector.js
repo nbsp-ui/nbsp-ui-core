@@ -32,7 +32,7 @@ export const PivotTableMethodSelector = ({ parent, methods, onChange, onBlur }) 
       className="nbsp-ui-pivot-table-function-selector"
       style={{
         left: parentRect.x,
-        top: parentRect.y + parentRect.height / 2
+        top: parentRect.y + parentRect.height / 2 + window.scrollY
       }}
       ref={element}
       onMouseLeave={() => onBlur()}

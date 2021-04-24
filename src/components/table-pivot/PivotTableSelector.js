@@ -34,7 +34,7 @@ export const PivotTableSelector = ({ fields, rows, columns, onColumnsChange, onR
     onColumnsChange([
       ...columns,
       { key, label, as: [PivotTableMethod.Count] }
-    ].map((column, position) => ({ ...column, position })))
+    ])
 
   const removeColumnByField = field =>
     onColumnsChange(Immutable.array.removeItem(columns, column => column.key === field.key))
@@ -48,7 +48,7 @@ export const PivotTableSelector = ({ fields, rows, columns, onColumnsChange, onR
     onRowsChange([
       ...rows,
       { key, label }
-    ].map((row, position) => ({ ...row, position })))
+    ])
 
   const removeRowByField = field =>
     onRowsChange(Immutable.array.removeItem(rows, row => row.key === field.key))

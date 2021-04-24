@@ -4,16 +4,6 @@ import { PivotTableMethod } from './PivotTableMethod'
 export const PivotTableHelper = {
 
   /**
-   * @param {{}[]} items
-   * @returns {PivotTableItem[]}
-   */
-  toItems: items => items.map(item => ({
-    ...item,
-    _id: CompatUtils.uid(),
-    _opened: true
-  })),
-
-  /**
    * @param {PivotTableField[]} fields
    * @returns {PivotTableField[]}
    */
@@ -26,10 +16,9 @@ export const PivotTableHelper = {
    */
   toRowFields: (rows, fields) => rows
     .map(row => typeof row === 'string' ? { key: row } : row)
-    .map(({ key }, position) => ({
+    .map(({ key }) => ({
       key,
-      label: PivotTableHelper.describeKey(key, fields),
-      position
+      label: PivotTableHelper.describeKey(key, fields)
     })),
 
   /**
@@ -39,11 +28,10 @@ export const PivotTableHelper = {
    */
   toColumnFields: (columns, fields) => columns
     .map(column => typeof column === 'string' ? { key: column } : column)
-    .map(({ key, as }, position) => ({
+    .map(({ key, as }) => ({
       key,
       label: PivotTableHelper.describeKey(key, fields),
-      as: CompatUtils.array.from(as || [PivotTableMethod.Count]),
-      position
+      as: CompatUtils.array.from(as || [PivotTableMethod.Count])
     })),
 
   /**
