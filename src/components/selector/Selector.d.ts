@@ -18,7 +18,7 @@ export interface SelectorProps extends BaseProps {
     data?: ListItem[] | {}[]
 
     header?: (items?: ListItem[]) => any
-    row?: (item?) => any
+    row?: (item?: ListItem) => any
     footer?: (items?: ListItem[]) => any
 
     onItemsSelected?: (selected: ListItem[], all: ListItem[]) => void

@@ -24,7 +24,7 @@ export const Table = props => {
 
   const items = useRef()
 
-  props.data !== items.current && (items.current = props.data)
+  items.current !== props.data && (items.current = props.data)
 
   const className = ComponentHelper.composeClass('nbsp-ui-table', props.className)
   const style = ComponentHelper.composeStyle(props)

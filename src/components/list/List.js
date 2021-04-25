@@ -18,7 +18,9 @@ export const List = props => {
   /**
    * @type {Ref<ListItem[]>}
    */
-  const items = useRef(props.data)
+  const items = useRef()
+
+  items.current !== props.data && (items.current = props.data)
 
   /**
    * @param {ListItem | {}} item
@@ -29,12 +31,6 @@ export const List = props => {
     props.onSelectItems && props.onSelectItems(items.current.filter(item => item._selected), items.current)
     refresh()
   }
-
-  // TODO: Excessive refresh
-  useEffect(() => {
-    items.current = props.data
-    refresh()
-  }, [props.data])
 
   const className = ComponentHelper.composeClass('nbsp-ui-list', props.className)
   const style = ComponentHelper.composeStyle(props, props.style)

@@ -46,7 +46,9 @@ export const Selector = props => {
 
   const refresh = ReactHelper.useRefresh()
 
-  const items = useRef(props.data.map(item => ({
+  const items = useRef()
+
+  items.current !== props.data && (items.current = props.data.map(item => ({
     ...item,
     _id: CompatUtils.uid(),
     _selected: item._selected || false,
