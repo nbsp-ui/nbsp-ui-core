@@ -47,26 +47,23 @@ export const Selector = props => {
   const refresh = ReactHelper.useRefresh()
 
   const items = useRef()
-
-  items.current !== props.data && (items.current = props.data.map(item => ({
-    ...item,
-    _id: CompatUtils.uid(),
-    _selected: item._selected || false,
-    _hidden: item._hidden || false
-  })))
-
-  const appliedItems = useRef(items.current)
-
+  const appliedItems = useRef([])
   const pickerDisplayed = useRef(false)
-
   const searchValue = useRef('')
+
+  const element = useRef()
 
   const filter = items => props.filter ? items.filter(props.filter) : items
   const search = items => props.search && searchValue.current.length ? items.filter(item => props.search(item, searchValue.current)) : items
 
   const applyItems = items => appliedItems.current = items |> filter |> search
 
-  const element = useRef()
+  items.current !== props.data && applyItems(items.current = props.data.map(item => ({
+    ...item,
+    _id: CompatUtils.uid(),
+    _selected: item._selected || false,
+    _hidden: item._hidden || false
+  })))
 
   const className = ComponentHelper.composeClass('nbsp-ui-selector', props.className)
   const style = ComponentHelper.composeStyle(props)
