@@ -80,11 +80,11 @@ export const Progress = props => {
         {
           props.trackStrokeWidth > 0 && (
             <circle
+              className={'track'}
               cx={width / 2}
               cy={width / 2}
               r={radius}
               fill="none"
-              stroke={props.trackStrokeColor}
               strokeWidth={props.trackStrokeWidth}
               strokeDasharray={getTrackStrokeDashArray(strokeLength, circumference)}
               strokeLinecap={props.trackStrokeLinecap}
@@ -95,11 +95,11 @@ export const Progress = props => {
         {
           props.strokeWidth > 0 && (
             <circle
+              className={'stroke'}
               cx={width / 2}
               cy={width / 2}
               r={radius}
               fill={props.fillColor}
-              stroke={props.strokeColor}
               strokeWidth={props.strokeWidth}
               strokeDasharray={getStrokeDashArray(strokeLength, circumference)}
               strokeDashoffset={getStrokeDashoffset(strokeLength)}
@@ -120,12 +120,10 @@ Progress.defaultProps = {
   rotate: -90,
 
   strokeWidth: 10,
-  strokeColor: '#4371ff',
   fillColor: 'none',
   strokeLinecap: 'round',
   transition: '.3s ease',
 
-  trackStrokeColor: '#E8EAF6',
   trackStrokeWidth: 10,
   trackStrokeLinecap: 'round',
   trackTransition: '.3s ease',

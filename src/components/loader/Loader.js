@@ -35,7 +35,6 @@ export const Loader = props => {
             cy={50}
             r="20"
             fill="none"
-            stroke={props.color}
             strokeWidth={props.strokeWidth}
             strokeLinecap={props.strokeLinecap}
           />
@@ -47,7 +46,6 @@ export const Loader = props => {
 
 Loader.defaultProps = {
   size: 24,
-  color: '#4371ff',
   strokeWidth: 2,
   strokeLinecap: 'round'
 }
