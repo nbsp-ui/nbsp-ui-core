@@ -3,6 +3,7 @@ import { useEffect, useState } from 'preact/hooks'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Lollipop.scss'
+import { HBox } from '../box-h/HBox'
 
 export const LollipopType = {
   Default: 0,
