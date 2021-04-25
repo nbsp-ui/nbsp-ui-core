@@ -13,8 +13,8 @@ export interface ButtonProps {
     type?: CompatButtonType
     disabled?: boolean
     label?: string
-    icon?: *,
-    padding?: CompatIndent,
+    icon?: any
+    padding?: CompatIndent
     margin?: CompatIndent
 }
 

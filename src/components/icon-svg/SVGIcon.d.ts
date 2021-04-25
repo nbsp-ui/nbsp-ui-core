@@ -2,7 +2,7 @@ import { FunctionComponent, JSX } from 'preact'
 import { BaseProps } from '../types'
 
 export interface SVGIconProps extends BaseProps {
-    icon?: *
+    icon?: any
     size?: number
 }
 

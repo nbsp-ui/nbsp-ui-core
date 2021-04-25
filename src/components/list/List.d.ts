@@ -16,7 +16,7 @@ export interface ListProps extends BaseProps {
     divided?: boolean
     data?: ListItem[] | {}[]
 
-    row: (item?: ListItem | {}) => *
+    row: (item?: ListItem | {}) => any
 
     onSelectItems?: (selected: ListItem[], all: ListItem[]) => void
 }

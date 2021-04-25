@@ -8,8 +8,8 @@ export interface InputProps extends BaseProps {
     placeholder?: string
     readOnly?: boolean
     rule?: (value: any) => boolean
-    before?: *
-    after?: *
+    before?: any
+    after?: any
     beforeOnClick?: (event: MouseEvent) => void
     afterOnClick?: (event: MouseEvent) => void
     onChange?: (event: MouseEvent) => void
