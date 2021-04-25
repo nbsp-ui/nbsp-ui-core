@@ -47,7 +47,7 @@ export const Loader = props => {
 
 Loader.defaultProps = {
   size: 24,
-  color: '#1E88E5',
+  color: '#4371ff',
   strokeWidth: 2,
   strokeLinecap: 'round'
 }

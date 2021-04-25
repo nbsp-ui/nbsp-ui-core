@@ -120,12 +120,12 @@ Progress.defaultProps = {
   rotate: -90,
 
   strokeWidth: 10,
-  strokeColor: '#1E88E5',
+  strokeColor: '#4371ff',
   fillColor: 'none',
   strokeLinecap: 'round',
   transition: '.3s ease',
 
-  trackStrokeColor: '#E3F2FD',
+  trackStrokeColor: '#E8EAF6',
   trackStrokeWidth: 10,
   trackStrokeLinecap: 'round',
   trackTransition: '.3s ease',
