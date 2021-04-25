@@ -1,8 +1,8 @@
 {
   "name": "@nbsp-ui/nbsp-ui-core",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "lib/index.js",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "url": "git://github.com/nbsp-ui/nbsp-ui-core.git"
   },
