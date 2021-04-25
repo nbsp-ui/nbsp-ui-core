@@ -1,4 +1,5 @@
-export { Box } from './components/box/Box'
+export { HBox } from './components/box-h/HBox'
+export { VBox } from './components/box-v/VBox'
 export { Button, CompatButtonType } from './components/button/Button'
 export { Calendar } from './components/calendar/Calendar'
 export { DatePicker } from './components/date-picker/DatePicker'

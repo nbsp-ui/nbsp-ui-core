@@ -17,5 +17,5 @@ export interface BaseProps {
 }
 
 export interface Containable {
-    children?: JSX.Element | JSX.Element[]
+    children?: * | *[]
 }

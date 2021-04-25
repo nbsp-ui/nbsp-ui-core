@@ -1,18 +1,18 @@
 import { h } from 'preact'
 import { CompatAlign } from '../../utils/CompatAlign'
-import { Box } from '../box/Box'
+import { HBox } from '../box-h/HBox'
 
 /**
  * @param props
  * @param {TableColumn} props.column
  * @param {{}[]} props.items
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const TableColumnFooter = ({ column, items }) =>
-  <Box
+  <HBox
     vAlign={CompatAlign.Center}
     width={column.width}
   >
     {column.footer && column.footer(items)}
-  </Box>
+  </HBox>

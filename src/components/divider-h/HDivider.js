@@ -4,7 +4,7 @@ import './HDivider.scss'
 
 /**
  * @param {HDividerProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const HDivider = props =>

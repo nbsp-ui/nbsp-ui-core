@@ -4,7 +4,7 @@ import './Tag.scss'
 
 /**
  * @param {TagProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Tag = props => {

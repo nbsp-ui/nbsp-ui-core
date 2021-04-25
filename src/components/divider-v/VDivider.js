@@ -4,7 +4,7 @@ import './VDivider.scss'
 
 /**
  * @param {VDividerProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const VDivider = props =>

@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { Box, VDivider } from '../src/index'
+import { Box, VBox, VDivider } from '../src/index'
 import './Application.scss'
 import { AccordionPanel } from './components/AccordionPanel'
 import { ButtonsPanel } from './components/ButtonsPanel'
@@ -18,7 +18,7 @@ import { TagsPanel } from './components/TagsPanel'
 import { MenuPanel } from './components/MenuPanel'
 
 export const Application = () =>
-  <Box vertical>
+  <VBox>
     <Header/>
     <ButtonsPanel/>
     <LollipopPanel/>
@@ -35,4 +35,4 @@ export const Application = () =>
     <SliderPanel/>
     <MenuPanel/>
     <PivotPanel/>
-  </Box>
+  </VBox>

@@ -15,7 +15,7 @@ const ids = {
 
 /**
  * @param {DatePickerProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const DatePicker = props => {

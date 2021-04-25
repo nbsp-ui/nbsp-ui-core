@@ -8,7 +8,7 @@ import { ReactHelper } from '../../utils/ReactHelper'
  * @param {TableColumn} props.column
  * @param {function(): void} props.onDragStart
  * @param {function(width: number): void} props.onDragEnd
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const TableColumnResizer = ({ column, onDragStart, onDragEnd }) => {

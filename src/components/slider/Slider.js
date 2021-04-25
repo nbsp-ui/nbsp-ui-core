@@ -7,7 +7,7 @@ import './Slider.scss'
 // noinspection JSValidateJSDoc
 /** TODO SIMPLIFY!
  * @param {SliderProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Slider = props => {

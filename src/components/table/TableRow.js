@@ -1,22 +1,22 @@
 import { h } from 'preact'
 import { CompatAlign } from '../../utils/CompatAlign'
-import { Box } from '../box/Box'
+import { HBox } from '../box-h/HBox'
 
 /**
  * @param {TableColumn[]} columns
  * @param {{}} item
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const TableRow = ({ columns, item }) =>
-  <Box>
+  <HBox>
     {
       columns.map(({ cell, width }, index) =>
-        <Box
+        <HBox
           key={index}
           vAlign={CompatAlign.Center}
           width={width}
-        >{cell(item)}</Box>
+        >{cell(item)}</HBox>
       )
     }
-  </Box>
+  </HBox>

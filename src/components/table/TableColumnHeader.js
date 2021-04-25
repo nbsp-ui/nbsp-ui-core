@@ -3,7 +3,7 @@ import { useRef, useState } from 'preact/hooks'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
-import { Box } from '../box/Box'
+import { HBox } from '../box-h/HBox'
 
 /**
  * @param props
@@ -15,7 +15,7 @@ import { Box } from '../box/Box'
  * @param {function(): void} props.onEnter
  * @param {function(): void} props.onLeave
  * @param {function(): void} props.onDragStart
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const TableColumnHeader = ({
@@ -39,7 +39,7 @@ export const TableColumnHeader = ({
   const elementRef = useRef()
 
   return (
-    <Box
+    <HBox
       className={
         ComponentHelper.composeClass(
           { use: 'clickable', if: column.sort },
@@ -82,6 +82,6 @@ export const TableColumnHeader = ({
       }}
     >
       {column.header(items)}
-    </Box>
+    </HBox>
   )
 }

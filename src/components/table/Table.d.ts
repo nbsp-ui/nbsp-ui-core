@@ -10,9 +10,9 @@ export interface TableProps extends BaseProps {
 }
 
 export interface TableColumn {
-    header?: (items?: {}[]) => JSX.Element
-    cell?: (item?: {}) => JSX.Element
-    footer?: (item?: {}) => JSX.Element
+    header?: (items?: {}[]) => *
+    cell?: (item?: {}) => *
+    footer?: (item?: {}) => *
 
     width: number
     sort: (a: {}, b: {}) => number

@@ -18,7 +18,7 @@ const toLever = (state, setState) => ({
 
 /**
  * @param {LabelProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Label = props => {

@@ -1,14 +1,14 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
-import { ComponentHelper } from '../../utils/ComponentHelper'
-import { Box } from '../box/Box'
-import { FAIcon } from '../icon-fa/FAIcon'
 import { CompatAlign } from '../../utils/CompatAlign'
+import { ComponentHelper } from '../../utils/ComponentHelper'
+import { HBox } from '../box-h/HBox'
+import { FAIcon } from '../icon-fa/FAIcon'
 import './Accordion.scss'
 
 /**
  * @param {AccordionProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Accordion = props => {
@@ -25,14 +25,14 @@ export const Accordion = props => {
 
   return (
     <div id={id} className={className} style={style}>
-      <Box
+      <HBox
         className={ComponentHelper.composeClass('header', { use: 'header-collapsed', if: collapsed })}
         vAlign={CompatAlign.Center}
         onClick={() => headerClick()}
       >
         <FAIcon className={'icon'} icon={'fas fa-chevron-right'}/>
         <span>{header}</span>
-      </Box>
+      </HBox>
       <div
         className={ComponentHelper.composeClass('content', { use: 'content-collapsed', if: collapsed })}
         style={{ height: collapsed ? 0 : props.contentHeight }}

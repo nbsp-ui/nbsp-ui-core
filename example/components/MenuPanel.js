@@ -1,13 +1,13 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
-import { Box, Menu, SubMenu, MenuItem, FAIcon, Switch } from '../../src'
+import { FAIcon, HBox, Menu, MenuItem, SubMenu, Switch, VBox } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 
 export const MenuPanel = () => {
   const [collapsed, setCollapsed] = useState(false)
 
   return (
-    <Box vertical padding={8}>
+    <VBox padding={8}>
       <Switch
         width={400}
         label="Collapse"
@@ -17,21 +17,21 @@ export const MenuPanel = () => {
       />
       <Menu vertical collapsed={collapsed} width={400} collapsedShow={['10022', '10023', '10024']}>
         <MenuItem id={'10022'}>
-          <Box vAlign={CompatAlign.Center}>
+          <HBox vAlign={CompatAlign.Center}>
             <div style={{ width: '40px', textAlign: 'center' }}>
               <FAIcon icon="fa fa-home"/>
             </div>
             <span>Home</span>
-          </Box>
+          </HBox>
         </MenuItem>
         <MenuItem id={'10049'}>Sites</MenuItem>
         <MenuItem id={'10023'}>
-          <Box vAlign={CompatAlign.Center}>
+          <HBox vAlign={CompatAlign.Center}>
             <div style={{ width: '40px', textAlign: 'center' }}>
               <FAIcon icon="fa fa-user"/>
             </div>
             <span>User</span>
-          </Box>
+          </HBox>
         </MenuItem>
         <SubMenu id={'10024'} title="CEO" icon="fas fa-sitemap">
           <SubMenu id={'10025'} title="CTO">
@@ -78,6 +78,6 @@ export const MenuPanel = () => {
         <MenuItem id={'10051'}>Tests</MenuItem>
         <MenuItem id={'10052'}>Reports</MenuItem>
       </Menu>
-    </Box>
+    </VBox>
   )
 }

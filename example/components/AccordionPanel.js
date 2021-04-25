@@ -1,9 +1,9 @@
 import { h } from 'preact'
-import { Accordion, Box, Switch, Tag } from '../../src'
+import { Accordion, Switch, Tag, VBox } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 
 export const AccordionPanel = () =>
-  <Box vertical padding={{ x: 8 }}>
+  <VBox vertical padding={{ x: 8 }}>
     <Accordion collapsed width={400} contentHeight={150} margin={{ bottom: 8 }} header={'First'}>
       <div style={{ color: '#9E9E9E', fontSize: '0.95em' }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -25,11 +25,11 @@ export const AccordionPanel = () =>
     <Accordion collapsed width={400} contentHeight={150} margin={{ bottom: 8 }} header={'Third'}>
       <Switch
         width={400}
-        label='Third switch'
+        label="Third switch"
         align={CompatAlign.Justify}
         margin={{ bottom: 8 }}
         onChange={(checked) => setListLoading(checked)}
       />
-      <Tag value='Third tag' color='#1E88E5' width={50}/>
+      <Tag value="Third tag" color="#1E88E5" width={50}/>
     </Accordion>
-  </Box>
+  </VBox>

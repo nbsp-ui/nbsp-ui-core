@@ -10,7 +10,7 @@ import { CalendarYearMonthPicker } from './CalendarYearMonthPicker'
 
 /**
  * @param {CalendarProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Calendar = props => {

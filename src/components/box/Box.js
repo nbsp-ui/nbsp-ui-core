@@ -4,7 +4,7 @@ import './Box.scss'
 
 /**
  * @param {BoxProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Box = props => {

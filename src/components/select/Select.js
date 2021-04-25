@@ -4,7 +4,7 @@ import { CompatAlign } from '../../utils/CompatAlign'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
-import { Box } from '../box/Box'
+import { HBox } from '../box-h/HBox'
 import { Button, CompatButtonType } from '../button/Button'
 import { VDivider } from '../divider-v/VDivider'
 import { FAIcon } from '../icon-fa/FAIcon'
@@ -38,7 +38,7 @@ const buildIcon = items => {
 
 /**
  * @param {SelectProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Select = props => {
@@ -79,7 +79,8 @@ export const Select = props => {
         value={buildValue(items.current)}
         fit={fit}
         placeholder={placeholder}
-        after={<FAIcon margin={{ top: 3 }} icon={pickerDisplayed.current ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}/>}
+        after={<FAIcon margin={{ top: 3 }}
+                       icon={pickerDisplayed.current ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}/>}
         afterOnClick={() => {
           pickerDisplayed.current = true
           refresh()
@@ -97,13 +98,13 @@ export const Select = props => {
         {
           (props.search || props.allSelectable)
           &&
-          <Box className='toolbar' vAlign={CompatAlign.Center} padding={8}>
+          <HBox className="toolbar" vAlign={CompatAlign.Center} padding={8}>
             {
               props.search
               &&
               <Input
-                className='search'
-                placeholder='Search...'
+                className="search"
+                placeholder="Search..."
                 value={searchValue.current}
                 onChange={event => {
                   searchValue.current = event.currentTarget.value
@@ -121,8 +122,8 @@ export const Select = props => {
                 icon={
                   <FAIcon
                     icon={buildIcon(items.current)}
-                    className='selectAllIcon'
-                    color='#616161'
+                    className="selectAllIcon"
+                    color="#616161"
                   />
                 }
                 onClick={() => {
@@ -131,14 +132,14 @@ export const Select = props => {
 
                   match(true, {
                     [selectedCount < count || selectedCount === 0]: () => appliedItems.current.forEach(item => item._selected = true),
-                    [selectedCount === count]: () => appliedItems.current.forEach(item => item._selected = false),
+                    [selectedCount === count]: () => appliedItems.current.forEach(item => item._selected = false)
                   })()
 
                   refresh()
                 }}
               />
             }
-          </Box>
+          </HBox>
         }
         {(props.search || props.allSelectable) && <VDivider/>}
         {props.header && props.header(appliedItems.current)}

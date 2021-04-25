@@ -1,4 +1,5 @@
-export { Box, BoxProps } from './components/box/Box'
+export { HBox, HBoxProps } from './components/box-h/HBox'
+export { VBox, VBoxProps } from './components/box-v/VBox'
 export { Button, ButtonProps, CompatButtonType } from './components/button/Button'
 export { Calendar, CalendarProps } from './components/calendar/Calendar'
 export { DatePicker, DatePickerProps } from './components/date-picker/DatePicker'

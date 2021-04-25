@@ -4,7 +4,7 @@ import './Image.scss'
 
 /**
  * @param {ImageProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Image = props => {

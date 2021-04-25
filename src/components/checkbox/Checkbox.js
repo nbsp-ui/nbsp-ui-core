@@ -5,7 +5,7 @@ import './Checkbox.scss'
 
 /**
  * @param {CheckboxProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Checkbox = props => {

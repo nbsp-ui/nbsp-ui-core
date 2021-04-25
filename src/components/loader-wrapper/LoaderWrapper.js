@@ -5,7 +5,7 @@ import './LoaderWrapper.scss'
 
 /**
  * @param {LoaderWrapperProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const LoaderWrapper = props => {

@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { Box } from '../box/Box'
+import { HBox } from '../box-h/HBox'
 import { TableColumnFooter } from './TableColumnFooter'
 
 /**
@@ -7,11 +7,11 @@ import { TableColumnFooter } from './TableColumnFooter'
  * @param {TableColumn[]} columns
  * @param {{}[]} items
  * @param {number} footerHeight
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
-export const TableFooter = ({ columns, items, footerHeight}) =>
-  <Box className='footer' height={footerHeight}>
+export const TableFooter = ({ columns, items, footerHeight }) =>
+  <HBox className="footer" height={footerHeight}>
     {
       columns.map((column, index) =>
         <TableColumnFooter
@@ -21,4 +21,4 @@ export const TableFooter = ({ columns, items, footerHeight}) =>
         />
       )
     }
-  </Box>
+  </HBox>

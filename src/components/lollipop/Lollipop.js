@@ -1,8 +1,7 @@
 import { h } from 'preact'
-import { useState, useEffect } from "preact/hooks"
-import { ComponentHelper } from '../../utils/ComponentHelper'
+import { useEffect, useState } from 'preact/hooks'
 import { CompatAlign } from '../../utils/CompatAlign'
-import { Box } from '../..'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Lollipop.scss'
 
 export const LollipopType = {
@@ -14,7 +13,7 @@ export const LollipopType = {
 
 /**
  * @param {LollipopProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Lollipop = props => {
@@ -41,7 +40,7 @@ export const Lollipop = props => {
   const dismiss = () => {
     pause()
     setDismissed(true)
-    setTimeout(() => props.dispatch({ type: "REMOVE", id: props.id }), 400)
+    setTimeout(() => props.dispatch({ type: 'REMOVE', id: props.id }), 400)
   }
 
   const onClick = (e) => {
@@ -76,9 +75,9 @@ export const Lollipop = props => {
 
   return (
     <div className={className} style={style} onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      {props.title && <Box vAlign={CompatAlign.Center}><span>{props.title}</span></Box>}
+      {props.title && <HBox vAlign={CompatAlign.Center}><span>{props.title}</span></HBox>}
       {props.description && <div><p>{props.description}</p></div>}
-      {props.indicated && <div style={props.indefinite ? {} : { width: `${indicatorWidth}%` }} />}
+      {props.indicated && <div style={props.indefinite ? {} : { width: `${indicatorWidth}%` }}/>}
     </div>
   )
 }

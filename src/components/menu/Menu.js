@@ -1,15 +1,16 @@
 import { cloneElement, h } from 'preact'
 import { Children } from 'preact/compat'
 import { useState } from 'preact/hooks'
-import { ComponentHelper } from "../../utils/ComponentHelper"
-import { CompatAlign } from "../../utils/CompatAlign"
-import { FAIcon } from "../icon-fa/FAIcon"
-import { Box } from "../box/Box"
+import { CompatAlign } from '../../utils/CompatAlign'
+import { ComponentHelper } from '../../utils/ComponentHelper'
+import { HBox } from '../box-h/HBox'
+import { VBox } from '../box-v/VBox'
+import { FAIcon } from '../icon-fa/FAIcon'
 import './Menu.scss'
 
 /**
  * @param {MenuProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Menu = props => {
@@ -68,14 +69,23 @@ export const Menu = props => {
   const [childrenProperties, setChildrenProperties] = useState(collectChildren(props.children))
 
   return (
-    <Box
-      vertical={props.vertical}
-      id={id}
-      className={className}
-      style={{...style, width: getMenuWidth(), height: getMenuHeight()}}
-    >
-      {childrenMap(props.children)}
-    </Box>
+    props.vertical
+      ?
+      <VBox
+        id={id}
+        className={className}
+        style={{ ...style, width: getMenuWidth(), height: getMenuHeight() }}
+      >
+        {childrenMap(props.children)}
+      </VBox>
+      :
+      <HBox
+        id={id}
+        className={className}
+        style={{ ...style, width: getMenuWidth(), height: getMenuHeight() }}
+      >
+        {childrenMap(props.children)}
+      </HBox>
   )
 }
 
@@ -89,7 +99,7 @@ Menu.defaultProps = {
 
 /**
  * @param {SubMenuProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const SubMenu = props => {
@@ -111,7 +121,7 @@ export const SubMenu = props => {
       id={id}
       key={id}
       className={className}
-      style={{...style, display: getDisplay()}}
+      style={{ ...style, display: getDisplay() }}
       onClick={(e) => {
         props.onClick && props.onClick(e)
       }}
@@ -122,17 +132,17 @@ export const SubMenu = props => {
         expandItem={props.expandItem}
         paddingLeft={props._menuCollapsed ? 0 : `${(props._subMenuLevel - 1) * 10 || 5}px`}
       >
-        <Box vAlign={CompatAlign.Center}>
+        <HBox vAlign={CompatAlign.Center}>
           {
             props.icon
             &&
-            <div style={{width: '40px', textAlign: 'center'}}>
+            <div style={{ width: '40px', textAlign: 'center' }}>
               <FAIcon icon={props.icon}/>
             </div>
           }
           <span>{props.title}</span>
-        </Box>
-        <FAIcon className={'expand-icon'} icon={'fas fa-chevron-right'} />
+        </HBox>
+        <FAIcon className={'expand-icon'} icon={'fas fa-chevron-right'}/>
       </MenuItem>
       <div className={classNameSubMenu}>
         {
@@ -149,7 +159,7 @@ SubMenu.defaultProps = {
 
 /**
  * @param {MenuItemProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const MenuItem = props => {
@@ -169,7 +179,7 @@ export const MenuItem = props => {
       id={id}
       key={id}
       className={className}
-      style={{paddingLeft: getPaddingLeft(), display: getDisplay(), ...style}}
+      style={{ paddingLeft: getPaddingLeft(), display: getDisplay(), ...style }}
       onClick={(e) => {
         props.selectItem && props.selectItem(id)
         props.expandItem && props.expandItem(id)

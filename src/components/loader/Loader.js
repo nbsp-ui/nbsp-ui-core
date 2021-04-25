@@ -16,7 +16,7 @@ const mappers = {
 
 /**
  * @param {LoaderProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Loader = props => {

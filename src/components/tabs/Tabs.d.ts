@@ -3,7 +3,7 @@ import { BaseProps } from "../types"
 
 export interface TabsItem {
     label?: string
-    icon?: JSX.Element
+    icon?: *
     closable?: boolean
 
     _id?: number | string

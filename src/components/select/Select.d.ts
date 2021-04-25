@@ -17,9 +17,9 @@ export interface SelectProps extends BaseProps {
 
     data?: ListItem[] | {}[]
 
-    header?: (items?: ListItem[]) => JSX.Element
-    row?: () => JSX.Element
-    footer?: (items?: ListItem[]) => JSX.Element
+    header?: (items?: ListItem[]) => *
+    row?: () => *
+    footer?: (items?: ListItem[]) => *
 
     onItemsSelected?: (selected: ListItem[], all: ListItem[]) => void
 }

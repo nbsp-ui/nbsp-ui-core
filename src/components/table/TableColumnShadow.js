@@ -2,13 +2,13 @@ import { h } from 'preact'
 import { useRef } from 'preact/hooks'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { ReactHelper } from '../../utils/ReactHelper'
-import { Box } from '../box/Box'
+import { HBox } from '../box-h/HBox'
 
 /**
  * @param {TableColumn} column
  * @param {{}[]} items
  * @param {function(): void} onDragEnd
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const TableColumnShadow = ({ column, items, onDragEnd }) => {
@@ -30,8 +30,8 @@ export const TableColumnShadow = ({ column, items, onDragEnd }) => {
   const rect = column?._headerElement.getBoundingClientRect()
 
   return (
-    <Box
-      className='shadow'
+    <HBox
+      className="shadow"
       style={
         {
           display: column ? 'flex' : 'none',
@@ -46,6 +46,6 @@ export const TableColumnShadow = ({ column, items, onDragEnd }) => {
       vAlign={CompatAlign.Center}
     >
       {column?.header(items)}
-    </Box>
+    </HBox>
   )
 }

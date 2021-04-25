@@ -2,7 +2,7 @@ import { h } from 'preact'
 
 /**
  * @param {SpacerProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Spacer = props => {

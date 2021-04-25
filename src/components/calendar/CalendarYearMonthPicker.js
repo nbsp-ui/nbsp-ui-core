@@ -11,7 +11,7 @@ import { ComponentHelper } from '../../utils/ComponentHelper'
  * @param {Date} selectedDate
  * @param {function(month: number): void} onMonthClick
  * @param {function(month: number): void} onYearClick
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const CalendarYearMonthPicker = ({ visible, currentDate, viewedDate, selectedDate, onMonthClick, onYearClick }) => {

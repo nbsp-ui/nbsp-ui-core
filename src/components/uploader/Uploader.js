@@ -3,12 +3,12 @@ import { useRef, useState } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { CompatAlign } from '../../utils/CompatAlign'
 import { CompatUtils } from '../../utils/CompatUtils'
-import { Button, CompatButtonType, FAIcon, Box, Spacer, List } from '../..'
+import { Button, CompatButtonType, FAIcon, Box, Spacer, List, HBox } from '../..'
 import './Uploader.scss'
 
 /**
  * @param {UploaderProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Uploader = props => {
@@ -33,14 +33,14 @@ export const Uploader = props => {
         }}
       />
       <label htmlFor={element}>
-        <Box>
+        <HBox>
           <Button
             type={CompatButtonType.Outline}
             label="Upload"
             icon={<FAIcon icon="fas fa-upload"/>}
             onClick={props.onClick}
           />
-        </Box>
+        </HBox>
       </label>
       <List
         width={400}
@@ -48,13 +48,13 @@ export const Uploader = props => {
         fontSize={14}
         row={
           (item) =>
-            <Box key={CompatUtils.uid()} className={'item'} style={{ justifyContent: 'space-between' }}>
-              <Box vAlign={CompatAlign.Center} fontSize={'10pt'}>
+            <HBox key={CompatUtils.uid()} className={'item'} style={{ justifyContent: 'space-between' }}>
+              <HBox vAlign={CompatAlign.Center} fontSize={'10pt'}>
                 <FAIcon icon={'fas fa-paperclip'} fontSize={14}/>
                 <span>{item.name}</span>
                 <Spacer size={20}/>
                 <span>{CompatUtils.getSizeFromBytes(item.size)}</span>
-              </Box>
+              </HBox>
               <FAIcon
                 icon={'fas fa-trash'}
                 onClick={() => {
@@ -62,7 +62,7 @@ export const Uploader = props => {
                   props.onItemRemoved && props.onItemRemoved(item)
                 }}
               />
-            </Box>
+            </HBox>
         }
         data={files}
       />

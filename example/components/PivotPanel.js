@@ -1,12 +1,12 @@
 import { h } from 'preact'
-import { Box } from '../../src'
+import { VBox } from '../../src'
 import { PivotTable } from '../../src/components/table-pivot/PivotTable'
 import { PivotTableMethod } from '../../src/components/table-pivot/PivotTableMethod'
 import { MainStorage } from '../storage/MainStorage'
 
 export const PivotPanel = () => {
   return (
-    <Box vertical>
+    <VBox>
       <PivotTable
         data={MainStorage.getProducts()}
         fields={{
@@ -35,6 +35,6 @@ export const PivotPanel = () => {
           ]
         }}
       />
-    </Box>
+    </VBox>
   )
 }

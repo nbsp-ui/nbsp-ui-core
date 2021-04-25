@@ -10,7 +10,7 @@ import { TableHeader } from './TableHeader'
 
 /**
  * @param {TableProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Table = props => {

@@ -1,17 +1,19 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
 import {
-  Box,
   Button,
   CompatButtonType,
   FAIcon,
+  HBox,
   Input,
   Label,
   List,
   Loader,
   LoaderWrapper,
   Progress,
-  Switch, Table
+  Switch,
+  Table,
+  VBox
 } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 import { MainStorage } from '../storage/MainStorage'
@@ -21,16 +23,16 @@ export const ProgressPanel = () => {
   const [listLoading, setListLoading] = useState(false)
 
   return (
-    <Box vertical padding={{ x: 8 }} hAlign={CompatAlign.Left}>
-      <Box margin={{ bottom: 8 }} vAlign={CompatAlign.Center}>
-        <Label width={140} value='Loader' color='#757575'/>
-        <Box width={430} hAlign={CompatAlign.Center} vAlign={CompatAlign.Center}>
+    <VBox padding={{ x: 8 }} hAlign={CompatAlign.Left}>
+      <HBox margin={{ bottom: 8 }} vAlign={CompatAlign.Center}>
+        <Label width={140} value="Loader" color="#757575"/>
+        <HBox width={430} hAlign={CompatAlign.Center} vAlign={CompatAlign.Center}>
           <Loader size={25} strokeWidth={5}/>
-        </Box>
-      </Box>
-      <Box vertical>
+        </HBox>
+      </HBox>
+      <VBox>
         <Input
-          label='Percentage'
+          label="Percentage"
           labelWidth={140}
           width={400}
           margin={{ bottom: 8, right: 8 }}
@@ -38,31 +40,31 @@ export const ProgressPanel = () => {
           rule={(value) => Number(value) <= 100}
           onChange={(e) => setProgressValue(e.target.value)}
         />
-        <Box width={400}>
-          <Box width={300} vertical>
-            <Box vAlign={CompatAlign.Center}>
-              <Button type={CompatButtonType.Outline} label='20%' margin={{ right: 8 }}
+        <HBox width={400}>
+          <HBox width={300} vertical>
+            <HBox vAlign={CompatAlign.Center}>
+              <Button type={CompatButtonType.Outline} label="20%" margin={{ right: 8 }}
                       onClick={() => setProgressValue(20)}/>
-              <Button type={CompatButtonType.Outline} label='40%' margin={{ right: 8 }}
+              <Button type={CompatButtonType.Outline} label="40%" margin={{ right: 8 }}
                       onClick={() => setProgressValue(40)}/>
-              <Button type={CompatButtonType.Outline} label='60%' margin={{ right: 8 }}
+              <Button type={CompatButtonType.Outline} label="60%" margin={{ right: 8 }}
                       onClick={() => setProgressValue(60)}/>
-            </Box>
-            <Box vAlign={CompatAlign.Center}>
-              <Button type={CompatButtonType.Outline} label='80%' margin={{ right: 8 }}
+            </HBox>
+            <HBox vAlign={CompatAlign.Center}>
+              <Button type={CompatButtonType.Outline} label="80%" margin={{ right: 8 }}
                       onClick={() => setProgressValue(80)}/>
-              <Button type={CompatButtonType.Outline} label='100%' margin={{ right: 8 }}
+              <Button type={CompatButtonType.Outline} label="100%" margin={{ right: 8 }}
                       onClick={() => setProgressValue(100)}/>
-              <Button type={CompatButtonType.Outline} label='120%' margin={{ right: 8 }}
+              <Button type={CompatButtonType.Outline} label="120%" margin={{ right: 8 }}
                       onClick={() => setProgressValue(120)}/>
-            </Box>
-          </Box>
+            </HBox>
+          </HBox>
           <Progress progress={progressValue} radius={40} valueDisplay/>
-        </Box>
-      </Box>
+        </HBox>
+      </VBox>
       <Switch
         width={400}
-        label='Turn loading'
+        label="Turn loading"
         align={CompatAlign.Justify}
         margin={{ y: 8 }}
         onChange={(checked) => setListLoading(checked)}
@@ -75,19 +77,18 @@ export const ProgressPanel = () => {
           divided
           row={
             (item) =>
-              <Box vAlign={CompatAlign.Center} margin={{ top: 7, bottom: 7 }} height={20}>
+              <HBox vAlign={CompatAlign.Center} margin={{ top: 7, bottom: 7 }} height={20}>
                 {
                   (item.value.length > 7 || item.value.length < 7)
                     ?
-                    <Box width={30}>
-                      <FAIcon icon='far fa-star'/>
-                    </Box>
+                    <HBox width={30}>
+                      <FAIcon icon="far fa-star"/>
+                    </HBox>
                     :
-                    <Box width={30}>
-                    </Box>
+                    <HBox width={30}/>
                 }
                 <span>{item.value}</span>
-              </Box>
+              </HBox>
           }
           data={MainStorage.getCountries().slice(0, 6)}
         />
@@ -101,34 +102,35 @@ export const ProgressPanel = () => {
           columns={[
             {
               width: 40,
-              header: () => <Box hAlign={CompatAlign.Center}><Label value='ID'/></Box>,
-              cell: item => <Box hAlign={CompatAlign.Center}><Label value={item['id']}/></Box>,
+              header: () => <HBox hAlign={CompatAlign.Center}><Label value="ID"/></HBox>,
+              cell: item => <HBox hAlign={CompatAlign.Center}><Label value={item['id']}/></HBox>,
               sort: (a, b) => a['id'] - b['id']
             },
             {
-              header: () => <Box padding={{ x: 8 }}><Label value='Person'/></Box>,
-              cell: item => <Box padding={{ x: 8 }}><Label value={item['person']}/></Box>,
+              header: () => <HBox padding={{ x: 8 }}><Label value="Person"/></HBox>,
+              cell: item => <HBox padding={{ x: 8 }}><Label value={item['person']}/></HBox>,
               sort: (a, b) => a['person'].localeCompare(b['person'])
             },
             {
               width: 120,
-              header: () => <Box padding={{ x: 8 }}><Label value='Account'/></Box>,
-              cell: item => <Box padding={{ x: 8 }}><Label value={item['account']}/></Box>,
+              header: () => <HBox padding={{ x: 8 }}><Label value="Account"/></HBox>,
+              cell: item => <HBox padding={{ x: 8 }}><Label value={item['account']}/></HBox>,
               sort: (a, b) => a['account'] - b['account'],
-              footer: items => <Box padding={{ left: 8 }}><Label value={items.reduce((result, item) => result + item['account'], 0)}/></Box>
+              footer: items => <HBox padding={{ left: 8 }}><Label
+                value={items.reduce((result, item) => result + item['account'], 0)}/></HBox>
             },
             {
               width: 80,
-              header: () => <Box hAlign={CompatAlign.Center}><Label value='Remove'/></Box>,
+              header: () => <HBox hAlign={CompatAlign.Center}><Label value="Remove"/></HBox>,
               cell: () =>
-                <Box hAlign={CompatAlign.Center}>
-                  <Button type={CompatButtonType.Icon} icon={<FAIcon icon='far fa-trash-alt'/>}/>
-                </Box>
+                <HBox hAlign={CompatAlign.Center}>
+                  <Button type={CompatButtonType.Icon} icon={<FAIcon icon="far fa-trash-alt"/>}/>
+                </HBox>
             }
           ]}
           data={MainStorage.getPersons()}
         />
       </LoaderWrapper>
-    </Box>
+    </VBox>
   )
 }

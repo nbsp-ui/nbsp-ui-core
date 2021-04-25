@@ -1,6 +1,6 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
-import { Box, Input, Slider } from '../../src'
+import { HBox, Input, Slider, VBox } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 
 export const SliderPanel = () => {
@@ -15,28 +15,29 @@ export const SliderPanel = () => {
   const [rangeSecondValue, setRangeSecondValue] = useState(90)
 
   return (
-    <Box vertical width={400} margin={{ top: 16, left: 8 }} padding={{ x: 8 }} hAlign={CompatAlign.Center} vAlign={CompatAlign.Center}>
-      <Box vertical margin={{ bottom: 8 }}>
-        <Box>
+    <VBox width={400} margin={{ top: 16, left: 8 }} padding={{ x: 8 }} hAlign={CompatAlign.Center}
+          vAlign={CompatAlign.Center}>
+      <VBox margin={{ bottom: 8 }}>
+        <HBox>
           <Input
             margin={{ right: 8, bottom: 8 }} label="Value" labelWidth={40} value={simpleSliderValue}
-            onChange={({ target }) => setSimpleSliderValue(target.value)} />
+            onChange={({ target }) => setSimpleSliderValue(target.value)}/>
           <Input margin={{ right: 8, bottom: 8 }} label="Step" labelWidth={40} value={simpleSliderStep}
-                 onChange={({ target }) => setSimpleSliderStep(target.value)} />
-        </Box>
-        <Box>
+                 onChange={({ target }) => setSimpleSliderStep(target.value)}/>
+        </HBox>
+        <HBox>
           <Input margin={{ right: 8, bottom: 8 }} label="Dots" labelWidth={40} value={simpleSliderDots}
-                 onChange={({ target }) => setSimpleSliderDots(target.value.split(','))} />
+                 onChange={({ target }) => setSimpleSliderDots(target.value.split(','))}/>
           <Input margin={{ right: 8, bottom: 8 }} label="Marks" labelWidth={40} value={simpleSliderMarks}
-                 onChange={({ target }) => setSimpleSliderMarks(target.value.split(','))} />
-        </Box>
-        <Box>
+                 onChange={({ target }) => setSimpleSliderMarks(target.value.split(','))}/>
+        </HBox>
+        <HBox>
           <Input margin={{ right: 8, bottom: 8 }} label="Min" labelWidth={40} value={simpleSliderMin}
-                 onChange={({ target }) => setSimpleSliderMin(target.value)} />
+                 onChange={({ target }) => setSimpleSliderMin(target.value)}/>
           <Input margin={{ right: 8, bottom: 8 }} label="Max" labelWidth={40} value={simpleSliderMax}
-                 onChange={({ target }) => setSimpleSliderMax(target.value)} />
-        </Box>
-      </Box>
+                 onChange={({ target }) => setSimpleSliderMax(target.value)}/>
+        </HBox>
+      </VBox>
       <Slider
         width={300}
         margin={{ left: -8, bottom: 16 }}
@@ -48,12 +49,12 @@ export const SliderPanel = () => {
         marks={simpleSliderMarks}
         onChange={(value) => setSimpleSliderValue(value)}
       />
-      <Box margin={{ bottom: 16 }}>
+      <HBox margin={{ bottom: 16 }}>
         <Input margin={{ right: 8 }} label="x1" value={rangeFirstValue}
-               onChange={({ target }) => setRangeFirstValue(target.value)} />
+               onChange={({ target }) => setRangeFirstValue(target.value)}/>
         <Input margin={{ right: 8 }} label="x2" value={rangeSecondValue}
-               onChange={({ target }) => setRangeSecondValue(target.value)} />
-      </Box>
+               onChange={({ target }) => setRangeSecondValue(target.value)}/>
+      </HBox>
       <Slider
         width={300}
         margin={{ left: -8 }}
@@ -65,6 +66,6 @@ export const SliderPanel = () => {
         onChange={(value) => setRangeFirstValue(Math.round(value))}
         onSecondChange={(value) => setRangeSecondValue(Math.round(value))}
       />
-    </Box>
+    </VBox>
   )
 }

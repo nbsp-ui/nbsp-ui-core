@@ -6,7 +6,7 @@ import { CompatLocalization } from '../../utils/CompatLocalization'
  * @param {Date} viewedDate
  * @param {function(): void} onPrevMonthClick
  * @param {function(): void} onNextMonthClick
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const CalendarHeader = ({ viewedDate, onPrevMonthClick, onNextMonthClick, onTitleClick }) => {

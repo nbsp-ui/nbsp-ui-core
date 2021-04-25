@@ -2,12 +2,12 @@ import { h } from 'preact'
 import { useEffect, useRef } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
-import { Box } from '../box/Box'
 import './List.scss'
+import { HBox } from '../box-h/HBox'
 
 /**
  * @param {ListProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const List = props => {
@@ -45,14 +45,14 @@ export const List = props => {
         items.current.map((item, index) =>
           !item._hidden
           &&
-          <Box
+          <HBox
             key={index}
             className={ComponentHelper.composeClass({ use: 'selected', if: item._selected })}
             style={{ borderBottom: props.divided ? '1px solid #EEEEEE' : '' }}
             onClick={() => selectItem(item)}
           >
             {props.row(item)}
-          </Box>
+          </HBox>
         )
       }
     </div>

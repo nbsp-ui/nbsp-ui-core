@@ -5,7 +5,7 @@ import './Switch.scss'
 
 /**
  * @param {SwitchProps} props
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const Switch = props => {

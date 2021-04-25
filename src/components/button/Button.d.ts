@@ -13,7 +13,7 @@ export interface ButtonProps {
     type?: CompatButtonType
     disabled?: boolean
     label?: string
-    icon?: JSX.Element,
+    icon?: *,
     padding?: CompatIndent,
     margin?: CompatIndent
 }

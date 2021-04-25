@@ -2,7 +2,7 @@ import { h } from 'preact'
 import { useRef } from 'preact/hooks'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ReactHelper } from '../../utils/ReactHelper'
-import { Box } from '../box/Box'
+import { HBox } from '../box-h/HBox'
 import { TableColumnHeader } from './TableColumnHeader'
 import { TableColumnResizer } from './TableColumnResizer'
 import { TableColumnShadow } from './TableColumnShadow'
@@ -14,7 +14,7 @@ import { TableColumnShadow } from './TableColumnShadow'
  * @param {number} props.headerHeight
  * @param {function(): void} props.onRefreshRequest
  * @param {function(column: TableColumn): void} props.onSortRequest
- * @returns {JSX.Element}
+ * @returns {*}
  * @constructor
  */
 export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, onSortRequest }) => {
@@ -64,11 +64,11 @@ export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, on
 
   return (
     <div
-      className='header'
+      className="header"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <Box className='container' height={headerHeight}>
+      <HBox className="container" height={headerHeight}>
         {
           columns.map((column, index) =>
             <TableColumnHeader
@@ -89,7 +89,7 @@ export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, on
             />
           )
         }
-      </Box>
+      </HBox>
       <TableColumnResizer
         column={resizableColumn.current || resizingColumn.current}
         onDragStart={() => resizingColumn.current = resizableColumn.current}
