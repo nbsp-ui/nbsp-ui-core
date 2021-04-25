@@ -1,5 +1,4 @@
 export const CompatUtils = {
-
   string: {
     /**
      * @param {string} string
@@ -116,13 +115,6 @@ export const CompatUtils = {
    * @returns {string}
    */
   uid: () => String(CompatUtils._uid++),
-
-  _zIndex: 1,
-
-  /**
-   * @returns {number}
-   */
-  zIndex: () => CompatUtils._zIndex++,
 
   /**
    * @param {string} id

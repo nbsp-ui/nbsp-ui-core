@@ -29,3 +29,5 @@ export { Menu, MenuProps, SubMenu, SubMenuProps, MenuItem, MenuItemProps } from 
 export { Lollipop, LollipopProps, LollipopType, LollipopProvider, LollipopProviderProps } from './components/lollipop/Lollipop'
 export { Dialog, DialogProps } from './components/dialog/Dialog'
 export { Slider, SliderProps } from './components/slider/Slider'
+
+export { Environment } from './systems/Environment'

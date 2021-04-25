@@ -1,5 +1,6 @@
 import { h } from 'preact'
 import { useEffect, useRef } from 'preact/hooks'
+import { Environment } from '../../systems/Environment'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
@@ -44,7 +45,7 @@ export const Popup = props => {
       top: `${rect.height}px`,
       left: `${rect.width}px`,
       transform: `translateX(${props.translateX || '-50%'})`,
-      zIndex: CompatUtils.zIndex()
+      zIndex: Environment.getDepth()
     } : {}),
     ...ComponentHelper.composeStyle(props)
   }

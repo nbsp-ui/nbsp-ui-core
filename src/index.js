@@ -30,6 +30,7 @@ export { Lollipop } from './components/lollipop/Lollipop'
 export { Dialog } from './components/dialog/Dialog'
 export { Slider } from './components/slider/Slider'
 
+export { Environment } from './systems/Environment'
 export { CompatAlign } from './utils/CompatAlign'
 export { CompatAnimation } from './utils/CompatAnimation'
 export { CompatLocalization } from './utils/CompatLocalization'

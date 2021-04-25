@@ -1,8 +1,9 @@
 import { h } from 'preact'
-import { useEffect } from "preact/hooks"
+import { useEffect } from 'preact/hooks'
+import { Environment } from '../../systems/Environment'
+import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
-import { CompatUtils } from "../.."
-import { ReactHelper } from "../../utils/ReactHelper"
+import { ReactHelper } from '../../utils/ReactHelper'
 import './Dialog.scss'
 
 /**
@@ -21,7 +22,7 @@ export const Dialog = props => {
 
   const className = ComponentHelper.composeClass('nbsp-ui-dialog', props.className)
   const style = ComponentHelper.composeStyle(props)
-  
+
   document.body.style.overflow = props.opened ? 'hidden' : 'auto'
 
   return (
@@ -32,9 +33,9 @@ export const Dialog = props => {
       width: '100vw',
       maxWidth: '100vw',
       display: props.opened ? 'block' : 'none',
-      zIndex: CompatUtils.zIndex()
+      zIndex: Environment.getDepth()
     }}>
-      <div className={'overlay'} onClick={props.onOverlayClick}> </div>
+      <div className={'overlay'} onClick={props.onOverlayClick}/>
       <div className={'content'} style={{ width: props.width, height: props.height }}>{props.children}</div>
     </div>
   )
