@@ -22,13 +22,16 @@ export const Table = props => {
     _position: index
   })))
 
-  const items = useRef(props.data)
+  const items = useRef()
 
+  props.data !== items.current && (items.current = props.data)
+
+  const className = ComponentHelper.composeClass('nbsp-ui-table', props.className)
   const style = ComponentHelper.composeStyle(props)
 
   return (
     <div
-      className="nbsp-ui-table"
+      className={className}
       style={style}
     >
       <TableHeader

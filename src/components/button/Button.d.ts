@@ -1,5 +1,6 @@
 import { FunctionComponent, JSX } from 'preact'
 import { CompatIndent } from "../../utils/CompatIndent";
+import { BaseProps } from '../types'
 
 export enum CompatButtonType {
     Primary,
@@ -8,14 +9,10 @@ export enum CompatButtonType {
     Icon
 }
 
-export interface ButtonProps {
-    className?: string
+export interface ButtonProps extends BaseProps {
     type?: CompatButtonType
-    disabled?: boolean
     label?: string
     icon?: any
-    padding?: CompatIndent
-    margin?: CompatIndent
 }
 
 export const Button: FunctionComponent<ButtonProps>
