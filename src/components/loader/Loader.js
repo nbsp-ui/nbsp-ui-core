@@ -37,6 +37,7 @@ export const Loader = props => {
             fill="none"
             strokeWidth={props.strokeWidth}
             strokeLinecap={props.strokeLinecap}
+            style={{ ...(props.color && { stroke: props.color }) }}
           />
         </svg>
       </div>

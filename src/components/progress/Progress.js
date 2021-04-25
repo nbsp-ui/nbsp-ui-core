@@ -88,7 +88,7 @@ export const Progress = props => {
               strokeWidth={props.trackStrokeWidth}
               strokeDasharray={getTrackStrokeDashArray(strokeLength, circumference)}
               strokeLinecap={props.trackStrokeLinecap}
-              style={{ transition: props.trackTransition }}
+              style={{ transition: props.trackTransition, ...(props.trackStrokeColor && { stroke: props.trackStrokeColor }) }}
           />
           )
         }
@@ -104,7 +104,7 @@ export const Progress = props => {
               strokeDasharray={getStrokeDashArray(strokeLength, circumference)}
               strokeDashoffset={getStrokeDashoffset(strokeLength)}
               strokeLinecap={props.strokeLinecap}
-              style={{ transition: props.transition }}
+              style={{ transition: props.transition, ...(props.strokeColor && { stroke: props.strokeColor }) }}
             />)
         }
       </svg>

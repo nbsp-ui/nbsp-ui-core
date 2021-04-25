@@ -9,10 +9,12 @@ export interface ProgressProps extends BaseProps {
     rotate?: number
 
     strokeWidth?: number
+    strokeColor?: string
     fillColor?: string
     strokeLinecap?: 'butt' | 'round' | 'square'
     transition?: string
 
+    trackStrokeColor?: string
     trackStrokeWidth?: number
     trackStrokeLinecap?: 'butt' | 'round' | 'square'
     trackTransition?: string
