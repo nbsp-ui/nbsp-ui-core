@@ -12,7 +12,7 @@ import { Input } from '../input/Input'
 import { List } from '../list/List'
 import { Popup } from '../popup/Popup'
 import { Spacer } from '../spacer/Spacer'
-import './Select.scss'
+import './Selector.scss'
 
 /**
  * @param {ListItem[]} items
@@ -37,11 +37,11 @@ const buildIcon = items => {
 }
 
 /**
- * @param {SelectProps} props
+ * @param {SelectorProps} props
  * @returns {*}
  * @constructor
  */
-export const Select = props => {
+export const Selector = props => {
   const { id, label, labelWidth, fit, placeholder } = props
 
   const refresh = ReactHelper.useRefresh()
@@ -66,7 +66,7 @@ export const Select = props => {
 
   const element = useRef()
 
-  const className = ComponentHelper.composeClass('nbsp-ui-select', props.className)
+  const className = ComponentHelper.composeClass('nbsp-ui-selector', props.className)
   const style = ComponentHelper.composeStyle(props)
 
   return (
@@ -165,6 +165,6 @@ export const Select = props => {
   )
 }
 
-Select.defaultProps = {
+Selector.defaultProps = {
   popupHeight: 300
 }

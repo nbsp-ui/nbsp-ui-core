@@ -2,7 +2,7 @@ import { FunctionComponent, JSX } from 'preact'
 import { BaseProps } from "../types"
 import { ListItem } from "../list/List";
 
-export interface SelectProps extends BaseProps {
+export interface SelectorProps extends BaseProps {
     label?: string
     labelWidth?: number
     value?: any
@@ -18,10 +18,10 @@ export interface SelectProps extends BaseProps {
     data?: ListItem[] | {}[]
 
     header?: (items?: ListItem[]) => any
-    row?: () => any
+    row?: (item?) => any
     footer?: (items?: ListItem[]) => any
 
     onItemsSelected?: (selected: ListItem[], all: ListItem[]) => void
 }
 
-export const Select: FunctionComponent<SelectProps>
+export const Selector: FunctionComponent<SelectorProps>

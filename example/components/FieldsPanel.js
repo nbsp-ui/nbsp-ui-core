@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { DatePicker, FAIcon, HBox, Input, Label, Select, Spacer, VBox } from '../../src'
+import { DatePicker, FAIcon, HBox, Input, Label, Selector, Spacer, VBox } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 import { MainStorage } from '../storage/MainStorage'
 
@@ -12,7 +12,7 @@ export const FieldsPanel = () =>
     <Input label="Phone" labelWidth={140} placeholder="Phone" width={400} margin={{ bottom: 8 }} before={'+7'}/>
     <Input label="Website" labelWidth={140} placeholder="Website" width={400} margin={{ bottom: 8 }} after={'.com'}/>
     <DatePicker label="Date" labelWidth={140} placeholder="Date" width={400} margin={{ bottom: 8 }}/>
-    <Select
+    <Selector
       width={400}
       margin={{ bottom: 8 }}
       label={'Country'}
