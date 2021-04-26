@@ -46,7 +46,7 @@ export const Selector = props => {
 
   const refresh = ReactHelper.useRefresh()
 
-  const items = useRef()
+  const items = useRef([])
   const appliedItems = useRef([])
   const pickerDisplayed = useRef(false)
   const searchValue = useRef('')
@@ -58,12 +58,12 @@ export const Selector = props => {
 
   const applyItems = items => appliedItems.current = items |> filter |> search
 
-  items.current !== props.data && applyItems(items.current = props.data.map(item => ({
+  ReactHelper.useDifference(() => applyItems(items.current = props.data.map(item => ({
     ...item,
     _id: CompatUtils.uid(),
     _selected: item._selected || false,
     _hidden: item._hidden || false
-  })))
+  }))), props.data)
 
   const className = ComponentHelper.composeClass('nbsp-ui-selector', props.className)
   const style = ComponentHelper.composeStyle(props)
@@ -150,9 +150,9 @@ export const Selector = props => {
           multiselect={props.multiselect}
           data={appliedItems.current}
           row={props.row}
-          onSelectItems={(selected, all) => {
+          onItemsSelect={(selected, all) => {
             applyItems(all)
-            props.onItemsSelected && props.onItemsSelected(selected, all)
+            props.onItemsSelect && props.onItemsSelect(selected, all)
             !props.multiselect && (pickerDisplayed.current = false)
             refresh()
           }}

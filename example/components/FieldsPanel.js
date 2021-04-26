@@ -45,7 +45,7 @@ export const FieldsPanel = () => {
               <span>{item.value}</span>
             </HBox>
         }
-        onItemsSelected={items => console.log(items)}
+        onItemsSelect={items => console.log(items)}
         multiselect
         allSelectable
         search={(item, value) => item.value.toLowerCase().includes(value.toLowerCase())}

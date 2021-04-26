@@ -9,6 +9,8 @@ export namespace ReactHelper {
 
     function useRefEventListener(listener: EventListener): RefObject<EventListener>
 
+    function useDifference(callback: () => any, value: any): void
+
     function registerGlobalMouseEventListener<E extends keyof DocumentEventMap>(event: E, listener: (event: MouseEvent) => any): void
 
     function useRefresh(): () => void

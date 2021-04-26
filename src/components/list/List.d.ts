@@ -18,7 +18,7 @@ export interface ListProps extends BaseProps {
 
     row: (item?: ListItem | {}) => any
 
-    onSelectItems?: (selected: ListItem[], all: ListItem[]) => void
+    onItemsSelect?: (selected: ListItem[], all: ListItem[]) => void
 }
 
 export const List: FunctionComponent<ListProps>

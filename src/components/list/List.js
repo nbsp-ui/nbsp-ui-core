@@ -11,16 +11,16 @@ import { HBox } from '../box-h/HBox'
  * @constructor
  */
 export const List = props => {
-  const { multiselect } = props
+  const { multiselect, onItemsSelect } = props
 
   const refresh = ReactHelper.useRefresh()
 
-  /**
+  /**x
    * @type {Ref<ListItem[]>}
    */
-  const items = useRef()
+  const items = useRef([])
 
-  items.current !== props.data && (items.current = props.data)
+  ReactHelper.useDifference(() => items.current = props.data, props.data)
 
   /**
    * @param {ListItem | {}} item
@@ -28,7 +28,7 @@ export const List = props => {
   const selectItem = item => {
     !multiselect && items.current.forEach(item => item._selected = false)
     item._selected = !item._selected
-    props.onSelectItems && props.onSelectItems(items.current.filter(item => item._selected), items.current)
+    onItemsSelect && onItemsSelect(items.current.filter(item => item._selected), items.current)
     refresh()
   }
 

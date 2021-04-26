@@ -22,9 +22,9 @@ export const Table = props => {
     _position: index
   })))
 
-  const items = useRef()
+  const items = useRef([])
 
-  items.current !== props.data && (items.current = props.data)
+  ReactHelper.useDifference(() => items.current = props.data, props.data)
 
   const className = ComponentHelper.composeClass('nbsp-ui-table', props.className)
   const style = ComponentHelper.composeStyle(props)

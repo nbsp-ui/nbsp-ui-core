@@ -35,6 +35,14 @@ export const ReactHelper = {
     return firstRender.current
   },
 
+  useDifference: (callback, value) => {
+    const ref = useRef()
+    if (ref.current !== value) {
+      ref.current = value
+      callback()
+    }
+  },
+
   registerGlobalMouseEventListener: (event, listener) => {
     ReactHelper._registerGlobalEventListener(event, listener)
   },
