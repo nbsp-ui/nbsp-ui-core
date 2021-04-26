@@ -6,6 +6,8 @@ export interface DatePickerProps extends BaseProps {
     label?: string
     labelWidth?: string
     labelHeight?: string
+
+    onChange?: (date: Date) => any
 }
 
 export const DatePicker: FunctionComponent<DatePickerProps>

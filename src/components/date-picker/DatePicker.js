@@ -3,6 +3,7 @@ import { h } from 'preact'
 import { useRef, useState } from 'preact/hooks'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
+import { ReactHelper } from '../../utils/ReactHelper'
 import { Calendar } from '../calendar/Calendar'
 import { FAIcon } from '../icon-fa/FAIcon'
 import { Input } from '../input/Input'
@@ -19,14 +20,27 @@ const ids = {
  * @constructor
  */
 export const DatePicker = props => {
-  const { value, fit, disabled, label, labelWidth, placeholder } = props
+  const { value = new Date(), fit, disabled, label, labelWidth, placeholder, onChange } = props
 
-  const [pickerDisplayed, setPickerDisplayed] = useState(false)
-  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [{ selectedDate, selecting }, patchState] = ReactHelper.usePatchedState({
+    selectedDate: value,
+    selecting: false,
+  })
 
   const element = useRef()
 
-  const className = ComponentHelper.composeClass('nbsp-ui-date-picker')
+  const showSelection = () => patchState({ selecting: true })
+  const hideSelection = () => patchState({ selecting: false })
+  const toggleSelection = () => selecting ? hideSelection() : showSelection()
+  const selectDate = date => {
+    patchState({
+      selectedDate: date,
+      selecting: false
+    })
+    onChange && onChange(date)
+  }
+
+  const className = ComponentHelper.composeClass('nbsp-ui-date-picker', props.className)
   const style = ComponentHelper.composeStyle(props)
 
   return (
@@ -41,21 +55,18 @@ export const DatePicker = props => {
         readOnly
         disabled={disabled}
         after={<FAIcon icon="far fa-calendar"/>}
-        afterOnClick={() => setPickerDisplayed(!pickerDisplayed)}
+        afterOnClick={toggleSelection}
       />
       <Popup
         to={element}
-        showed={pickerDisplayed}
-        onBlur={() => setPickerDisplayed(false)}
+        showed={selecting}
+        onBlur={hideSelection}
       >
         <Calendar
           value={value}
           width={300}
           padding={16}
-          onChange={date => {
-            setSelectedDate(date)
-            setPickerDisplayed(false)
-          }}
+          onChange={selectDate}
         />
       </Popup>
     </div>

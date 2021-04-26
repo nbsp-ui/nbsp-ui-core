@@ -3,7 +3,7 @@ import { RefObject } from 'preact'
 export namespace ReactHelper {
     function useReferredState<T>(initialValue?: T): [state: T, setState: (value: T) => void, reference: { current: T }]
 
-    function usePatchedState<T>(initialValue?: T): [state: T, patchState: (value: T) => void]
+    function usePatchedState<T>(initialValue?: T): [state: T, patchState: (value: T | {}) => void]
 
     function useEffectGlobalEventListener(event: string, listener: EventListener): void
 

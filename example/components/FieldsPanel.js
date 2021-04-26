@@ -22,7 +22,14 @@ export const FieldsPanel = () => {
       <Input label="Password" labelWidth={140} placeholder="Password" width={400} margin={{ bottom: 8 }}/>
       <Input label="Phone" labelWidth={140} placeholder="Phone" width={400} margin={{ bottom: 8 }} before={'+7'}/>
       <Input label="Website" labelWidth={140} placeholder="Website" width={400} margin={{ bottom: 8 }} after={'.com'}/>
-      <DatePicker label="Date" labelWidth={140} placeholder="Date" width={400} margin={{ bottom: 8 }}/>
+      <DatePicker
+        label="Date"
+        labelWidth={140}
+        placeholder="Date"
+        width={400}
+        margin={{ bottom: 8 }}
+        onChange={date => console.log(date)}
+      />
       <Selector
         width={400}
         margin={{ bottom: 8 }}

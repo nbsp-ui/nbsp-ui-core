@@ -1,11 +1,11 @@
 import { h } from 'preact'
-import { useEffect, useState } from 'preact/hooks'
 import { CompatLocalization } from '../../utils/CompatLocalization'
 import { ComponentHelper } from '../../utils/ComponentHelper'
+import { ReactHelper } from '../../utils/ReactHelper'
 import '../behavior.scss'
 import './Calendar.scss'
-import { CalendarHeader } from './CalendarHeader'
 import { CalendarDatePicker } from './CalendarDatePicker'
+import { CalendarHeader } from './CalendarHeader'
 import { CalendarYearMonthPicker } from './CalendarYearMonthPicker'
 
 /**
@@ -14,13 +14,22 @@ import { CalendarYearMonthPicker } from './CalendarYearMonthPicker'
  * @constructor
  */
 export const Calendar = props => {
-  const { value = new Date } = props
+  const { className: inClassName, value = new Date } = props
 
-  const [viewedDate, setViewedDate] = useState(new Date(value.getFullYear(), value.getMonth()))
-  const [selectedDate, setSelectedDate] = useState(new Date(value.getFullYear(), value.getMonth(), value.getDate()))
-  const [yearMonthPickerVisible, setYearMonthPickerVisible] = useState(false)
+  const [{ viewedDate, selectedDate, yearMonthPickerVisible }, patchState] = ReactHelper.usePatchedState({
+    viewedDate: new Date(value.getFullYear(), value.getMonth()),
+    selectedDate: new Date(value.getFullYear(), value.getMonth(), value.getDate()),
+    yearMonthPickerVisible: false
+  })
 
-  const className = ComponentHelper.composeClass('nbsp-ui-calendar')
+  const viewDate = viewedDate => patchState({ viewedDate })
+  const selectDate = selectedDate => {
+    patchState({ selectedDate })
+    props.onChange?.(selectedDate)
+  }
+  const toggleYearMonthPickerVisibility = () => patchState({ yearMonthPickerVisible: !yearMonthPickerVisible })
+
+  const className = ComponentHelper.composeClass('nbsp-ui-calendar', inClassName)
   const style = ComponentHelper.composeStyle(props)
 
   const currentDate = new Date()
@@ -40,37 +49,35 @@ export const Calendar = props => {
 
   const displayNextMonth = () => displayMonth(nextMonthYear, nextMonth)
 
-  useEffect(() => props.onChange && props.onChange(selectedDate), [selectedDate])
-
   return (
     <div className={className} style={style}>
       <CalendarHeader
         viewedDate={viewedDate}
         onPrevMonthClick={displayPrevMonth}
         onNextMonthClick={displayNextMonth}
-        onTitleClick={() => setYearMonthPickerVisible(!yearMonthPickerVisible)}
+        onTitleClick={toggleYearMonthPickerVisibility}
       />
       <CalendarYearMonthPicker
         visible={yearMonthPickerVisible}
         currentDate={currentDate}
         viewedDate={viewedDate}
         selectedDate={selectedDate}
-        onMonthClick={month => setViewedDate(new Date(year, month))}
-        onYearClick={year => setViewedDate(new Date(year, month))}
+        onMonthClick={month => viewDate(new Date(year, month))}
+        onYearClick={year => viewDate(new Date(year, month))}
       />
       <CalendarDatePicker
         currentDate={currentDate}
         viewedDate={viewedDate}
         selectedDate={selectedDate}
         onDateClick={date => {
-          setSelectedDate(new Date(year, month, date))
+          selectDate(new Date(year, month, date))
         }}
         onPrevMonthDateClick={date => {
-          setSelectedDate(new Date(prevMonthYear, prevMonth, date))
+          selectDate(new Date(prevMonthYear, prevMonth, date))
           displayPrevMonth()
         }}
         onNextMonthDateClick={date => {
-          setSelectedDate(new Date(nextMonthYear, nextMonth, date))
+          selectDate(new Date(nextMonthYear, nextMonth, date))
           displayNextMonth()
         }}
       />
