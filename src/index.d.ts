@@ -31,3 +31,5 @@ export { Dialog, DialogProps } from './components/dialog/Dialog'
 export { Slider, SliderProps } from './components/slider/Slider'
 
 export { Environment } from './systems/Environment'
+
+export { BaseProps, Containable } from './components/types'
