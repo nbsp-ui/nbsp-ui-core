@@ -5,11 +5,12 @@ import { TableRow } from './TableRow'
 /**
  * @param props
  * @param {TableColumn[]} columns
- * @param {{}[]} items
+ * @param {TableItem[] | {}[]} items
+ * @param {function(item: TableItem): void} onItemClick
  * @returns {*}
  * @constructor
  */
-export const TableContainer = ({ columns, items }) =>
+export const TableContainer = ({ columns, items, onItemClick }) =>
   <HBox className="rows" vertical>
     {
       items.map((item, index) =>
@@ -17,6 +18,7 @@ export const TableContainer = ({ columns, items }) =>
           key={index}
           columns={columns}
           item={item}
+          onItemClick={onItemClick}
         />
       )
     }

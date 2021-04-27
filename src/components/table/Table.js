@@ -24,7 +24,18 @@ export const Table = props => {
 
   const items = useRef([])
 
-  ReactHelper.useDifference(() => items.current = props.data, props.data)
+  const selectItem = item => {
+    !props.multiselect && items.current.forEach(item => item._selected = false)
+    item._selected = !item._selected
+    props.onItemsSelect && props.onItemsSelect(items.current.filter(item => item._selected), items.current)
+    refresh()
+  }
+
+  ReactHelper.useDifference(() => items.current = props.data.map(item => ({
+    ...item,
+    _id: CompatUtils.uid(),
+    _selected: item._selected || false
+  })), props.data)
 
   const className = ComponentHelper.composeClass('nbsp-ui-table', props.className)
   const style = ComponentHelper.composeStyle(props)
@@ -58,6 +69,7 @@ export const Table = props => {
       <TableContainer
         columns={columns.current}
         items={items.current}
+        onItemClick={selectItem}
       />
       {
         columns.current.find(column => column.footer)

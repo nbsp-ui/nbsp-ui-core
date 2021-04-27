@@ -72,21 +72,34 @@
   }
 
   & > .rows {
-    & > div:not(:last-child) > div {
+    & > .row:not(:last-child) > div {
       border-bottom: 1px solid #EEEEEE;
     }
 
-    & > div > div:first-child {
+    & > .row > div:first-child {
       border-left: 1px solid $border-color;
     }
 
-    & > div > div:last-child {
+    & > .row > div:last-child {
       border-right: 1px solid $border-color;
     }
 
-    & > div > div:not(:last-child) {
+    & > .row > div:not(:last-child) {
       border-right: 1px solid #EEEEEE;
     }
+
+    & > .row-selected > div {
+      background-color: #F5F5F5;
+    }
+
+    & > .row-selected > div:first-child {
+      border-left: 1px solid $accent-color;
+    }
+
+    & > .row-selected > div:last-child {
+      border-right: 1px solid $accent-color;
+    }
+
   }
 
   & > .footer {

@@ -3,9 +3,12 @@ import { useState } from 'preact/hooks'
 import { Button, CompatButtonType, FAIcon, HBox, Label, Table, VBox } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 import { MainStorage } from '../storage/MainStorage'
+import { LollipopType } from '../../src/components/lollipop/Lollipop'
+import { useLollipop } from '../../src/components/lollipop/LollipopProvider'
 
 export const TablePanel = () => {
   const [persons, setPersons] = useState(MainStorage.getPersons())
+  const lollipop = useLollipop()
 
   return (
     <VBox padding={8}>
@@ -20,6 +23,12 @@ export const TablePanel = () => {
         headerHeight={32}
         footerHeight={32}
         margin={{ bottom: 8 }}
+        onItemsSelect={((selected) => lollipop({
+          type: LollipopType.Success,
+          title: 'Person selected',
+          description: `You have selected the user ${selected[0].person}`,
+          indicated: true
+        }))}
         columns={[
           {
             width: 40,
