@@ -31,5 +31,7 @@ export { Dialog, DialogProps } from './components/dialog/Dialog'
 export { Slider, SliderProps } from './components/slider/Slider'
 
 export { Environment } from './systems/Environment'
+export { ComponentHelper } from './utils/ComponentHelper'
+export { ReactHelper } from './utils/ReactHelper'
 
 export { BaseProps, Containable } from './components/types'

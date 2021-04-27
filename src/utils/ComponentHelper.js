@@ -1,39 +1,10 @@
+// noinspection JSUnusedGlobalSymbols
+
 import { CompatAlign } from './CompatAlign'
 
 export const ComponentHelper = {
-  /**
-   * @typedef ClassContract
-   * @property {string} use
-   * @property {*} if
-   * @param properties
-   */
-
-  /**
-   * @param {string | ClassContract | (string | ClassContract)[]} properties
-   * @returns {string}
-   */
   composeClass: (...properties) => properties.map(property => !property || typeof property === 'string' ? property : property.if && property.use).filter(value => value).join(' '),
 
-  /**
-   * @param {{}} hook
-   * @param {{}} lever
-   */
-  generateHook: (hook, lever) => hook && Object.assign(hook, lever),
-
-  /**
-   * @param {{}} props
-   * @returns {{}}
-   */
-  extractListeners: props => Object.keys(props).filter(key => key.startsWith('on')).reduce((result, key) => ({
-    ...result,
-    [key]: props[key]
-  }), {}),
-
-  /**
-   * @param {{}} props
-   * @param {{}} [mappers]
-   * @returns {CSSProperties}
-   */
   composeStyle: function(props, mappers) {
     const combination = {
       ...this.mappers,
@@ -45,6 +16,11 @@ export const ComponentHelper = {
       .map(key => combination[key])
       .reduce((style, mapper) => ({ ...style, ...mapper(props) }), {})
   },
+
+  extractListeners: props => Object.keys(props).filter(key => key.startsWith('on')).reduce((result, key) => ({
+    ...result,
+    [key]: props[key]
+  }), {}),
 
   mappers: {
     'vertical': ({ vertical }) => ({ flexDirection: vertical ? 'column' : 'row' }),
