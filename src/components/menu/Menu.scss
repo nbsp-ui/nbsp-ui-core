@@ -21,8 +21,8 @@
 
     &-selected {
       color: $accent-color;
-      background-color: $blue-50;
-      box-shadow: 0 0 2px #90CAF9 inset;
+      background-color: lighten($accent-color, 30%);
+      box-shadow: 0 0 2px lighten($accent-color, 20%) inset;
     }
 
     .expand-icon {
