@@ -37,6 +37,8 @@ export const ComponentHelper = {
       flexBasis: width || height ? 'auto' : 0
     }),
 
+    'maxWidth': ({ maxWidth }) => ({ ...(maxWidth ? { maxWidth } : {}) }),
+
     'height': ({ width, height }) => ({
       ...height && {
         height: `${height}px`,
@@ -44,6 +46,8 @@ export const ComponentHelper = {
       },
       flexBasis: width || height ? 'auto' : 0
     }),
+
+    'maxHeight': ({ maxHeight }) => ({ ...(maxHeight ? { maxHeight } : {}) }),
 
     'fit': ({ fit }) => ({ ...(fit ? { flexShrink: 0, flexGrow: 0 } : { flexShrink: 1, flexGrow: 1 }) }),
 
