@@ -30,8 +30,14 @@
     }
   }
 
-  .selected {
-    border-left-color: $accent-color;
-    background-color: #F5F5F5;
+  .item {
+    padding: 0 8px 0 8px;
+    align-items: center;
+
+    &-selected {
+      border-left-color: $accent-color;
+      background-color: #F5F5F5;
+    }
   }
+
 }

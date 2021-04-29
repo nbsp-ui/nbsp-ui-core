@@ -41,14 +41,14 @@ export const List = props => {
         items.current.map((item, index) =>
           !item._hidden
           &&
-          <HBox
+          <div
             key={index}
-            className={ComponentHelper.composeClass({ use: 'selected', if: item._selected })}
+            className={ComponentHelper.composeClass('item', { use: 'item-selected', if: item._selected })}
             style={{ borderBottom: props.divided ? '1px solid #EEEEEE' : '' }}
             onClick={() => selectItem(item)}
           >
             {props.row(item)}
-          </HBox>
+          </div>
         )
       }
     </div>
