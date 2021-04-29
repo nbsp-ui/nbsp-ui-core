@@ -87,6 +87,7 @@ export const Selector = props => {
       />
       <Popup
         to={element}
+        height={props.popupHeight}
         translateX={'-100%'}
         showed={pickerDisplayed.current}
         onBlur={() => {
@@ -145,7 +146,8 @@ export const Selector = props => {
         {props.header && <VDivider/>}
         <List
           width={(props.width - (props.labelWidth || 0) - 7) || 300}
-          height={props.popupHeight}
+          height={props.listHeight}
+          maxHeight={props.listHeight || 300}
           divided
           multiselect={props.multiselect}
           data={appliedItems.current}
@@ -162,8 +164,4 @@ export const Selector = props => {
       </Popup>
     </div>
   )
-}
-
-Selector.defaultProps = {
-  popupHeight: 300
 }
