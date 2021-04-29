@@ -19,7 +19,8 @@ export const Input = props => {
     { use: 'nbsp-ui-input-disabled', if: props.disabled },
     { use: 'nbsp-ui-input-validation-error', if: !valid },
     { use: 'nbsp-ui-input-before', if: props.before },
-    { use: 'nbsp-ui-input-after', if: props.after }
+    { use: 'nbsp-ui-input-after', if: props.after },
+    props.className
   )
   const style = ComponentHelper.composeStyle(props)
 
