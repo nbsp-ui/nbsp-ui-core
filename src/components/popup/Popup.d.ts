@@ -5,6 +5,7 @@ export interface PopupProps extends BaseProps, Containable {
     translateX?: string
     to?: RefObject<HTMLElement>
     showed?: boolean
+    left?: number
 
     onBlur?: () => void
 }

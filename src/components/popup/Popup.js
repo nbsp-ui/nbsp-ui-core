@@ -43,8 +43,8 @@ export const Popup = props => {
     display: showed ? 'block' : 'none',
     ...(showed ? {
       top: `${rect.height}px`,
-      left: `${rect.width}px`,
-      transform: `translateX(${props.translateX || '-50%'})`,
+      left: `${props.left ?? rect.width}px`,
+      transform: `translateX(${props.translateX ?? '-50%'})`,
       zIndex: Environment.getDepth()
     } : {}),
     ...ComponentHelper.composeStyle(props)
