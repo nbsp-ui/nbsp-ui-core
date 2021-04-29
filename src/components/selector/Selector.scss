@@ -3,6 +3,7 @@
 .nbsp-ui-selector {
   font-family: "Roboto", sans-serif;
   position: relative;
+  user-select: none;
 
   & > .nbsp-ui-popup > .content > .toolbar {
     .selectAllIcon {

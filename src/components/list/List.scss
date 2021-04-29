@@ -3,6 +3,7 @@
 .nbsp-ui-list {
   font-family: "Roboto", sans-serif;
   overflow-y: auto;
+  user-select: none;
 
   &::-webkit-scrollbar {
     width: 0.5em;
