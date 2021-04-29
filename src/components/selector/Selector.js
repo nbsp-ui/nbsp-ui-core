@@ -77,6 +77,7 @@ export const Selector = props => {
         width={props.width || 300}
         value={buildValue(items.current)}
         fit={fit}
+        readOnly
         placeholder={placeholder}
         after={<FAIcon margin={{ top: 3 }}
                        icon={pickerDisplayed.current ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}/>}
