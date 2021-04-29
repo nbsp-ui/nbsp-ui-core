@@ -11,6 +11,7 @@ import {
   Loader,
   LoaderWrapper,
   Progress,
+  Spacer,
   Switch,
   Table,
   VBox
@@ -71,26 +72,26 @@ export const ProgressPanel = () => {
       />
       <LoaderWrapper active={listLoading}>
         <List
-          width={400}
           margin={{ bottom: 8 }}
+          height={300}
           fontSize={14}
           divided
           row={
-            (item) =>
-              <HBox vAlign={CompatAlign.Center} margin={{ top: 7, bottom: 7 }} height={20}>
+            item =>
+              <HBox vAlign={CompatAlign.Center} height={20}>
                 {
                   (item.value.length > 7 || item.value.length < 7)
                     ?
-                    <HBox width={30}>
+                    <HBox width={30} hAlign={CompatAlign.Center}>
                       <FAIcon icon="far fa-star"/>
                     </HBox>
                     :
-                    <HBox width={30}/>
+                    <Spacer size={30}/>
                 }
                 <span>{item.value}</span>
               </HBox>
           }
-          data={MainStorage.getCountries().slice(0, 6)}
+          data={MainStorage.getCountries()}
         />
       </LoaderWrapper>
       <LoaderWrapper active={listLoading}>

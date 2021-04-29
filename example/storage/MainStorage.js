@@ -33,8 +33,8 @@ export const MainStorage = {
     { id: 27, value: 'Cambodia' },
     { id: 28, value: 'Cameroon' },
     { id: 29, value: 'Canada' },
-    { id: 30, value: 'Cape Verde' },
-    { id: 31, value: 'Central African Republic' },
+    { id: 30, value: 'Cape Verde Central African Republic Central African Republic Central African Republic Central African Republic' },
+    { id: 31, value: 'Central African Republic Central African Republic Central African Republic Central African Republic Central African Republic' },
     { id: 32, value: 'Chad' }
   ],
 

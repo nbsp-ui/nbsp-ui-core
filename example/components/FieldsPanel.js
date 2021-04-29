@@ -31,15 +31,15 @@ export const FieldsPanel = () => {
         onChange={date => console.log(date)}
       />
       <Selector
-        width={400}
         margin={{ bottom: 8 }}
+        width={400}
         label={'Country'}
         labelWidth={140}
         placeholder={'Country'}
         fontSize={14}
         row={
           item =>
-            <HBox vAlign={CompatAlign.Center} height={36}>
+            <HBox vAlign={CompatAlign.Center} height={28}>
               {
                 (item.value.length > 7 || item.value.length < 7)
                   ?
@@ -56,6 +56,18 @@ export const FieldsPanel = () => {
         multiselect
         allSelectable
         search={(item, value) => item.value.toLowerCase().includes(value.toLowerCase())}
+        data={countries}
+      />
+      <Selector
+        margin={{ bottom: 8 }}
+        width={400}
+        label={'Country (only list)'}
+        labelWidth={140}
+        placeholder={'Country'}
+        fontSize={14}
+        popupWidth={800}
+        row={item => <span>{item.value}</span>}
+        onItemsSelect={items => console.log(items)}
         data={countries}
       />
       <Label

@@ -1,4 +1,4 @@
-import { FunctionComponent, JSX } from 'preact'
+import { FunctionComponent } from 'preact'
 import { BaseProps } from "../types"
 import { ListItem } from "../list/List";
 
@@ -11,6 +11,7 @@ export interface SelectorProps extends BaseProps {
     multiselect?: boolean
     allSelectable?: boolean
     popupHeight?: number | string
+    popupWidth?: number | string
     listHeight?: number | string
 
     filter?: (item: ListItem) => boolean

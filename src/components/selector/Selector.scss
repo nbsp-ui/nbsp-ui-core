@@ -1,13 +1,72 @@
-@import "../colors";
+@import "../colors", "../animations";
 
 .nbsp-ui-selector {
   font-family: "Roboto", sans-serif;
   position: relative;
   user-select: none;
 
+  .nbsp-ui-input {
+    & > input {
+      border-radius: 4px 0 0 4px;
+      border: none;
+      background-color: #F5F5F5;
+      cursor: pointer;
+      transition: .2s border-radius;
+    }
+
+    & > .after {
+      border-radius: 0 4px 4px 0;
+      border: none;
+      background-color: #F5F5F5;
+      transition: .2s border-radius;
+    }
+  }
+
   & > .nbsp-ui-popup > .content > .toolbar {
     .selectAllIcon {
       font-size: 16pt;
     }
+  }
+
+  &-picker-displayed {
+
+    .nbsp-ui-input {
+      & > input {
+        border-radius: 4px 0 0 0;
+        transition: .2s border-radius;
+      }
+
+      & > .after {
+        border-radius: 0 4px 0 0;
+        transition: .2s border-radius;
+      }
+    }
+
+    .nbsp-ui-popup {
+      border-radius: 0 0 4px 4px;
+      border-top: 1px solid darken(#F5F5F5, 10%);
+      background-color: #F5F5F5;
+      box-shadow: 0 0 15px 2px #F5F5F5;
+      animation: fade-in .2s;
+
+      & > div {
+        background-color: #F5F5F5;
+
+        & > .toolbar {
+          border-bottom: 1px solid darken(#F5F5F5, 10%);
+
+          & > .search > input {
+            background-color: darken(#F5F5F5, 5%);
+            border-radius: 4px;
+            cursor: text;
+          }
+        }
+
+        & > .nbsp-ui-list > .item-selected {
+          background-color: darken(#F5F5F5, 5%);
+        }
+      }
+    }
+
   }
 }

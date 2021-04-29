@@ -65,7 +65,11 @@ export const Selector = props => {
     _hidden: item._hidden || false
   }))), props.data)
 
-  const className = ComponentHelper.composeClass('nbsp-ui-selector', props.className)
+  const className = ComponentHelper.composeClass(
+    'nbsp-ui-selector',
+    { use: 'nbsp-ui-selector-picker-displayed', if: pickerDisplayed.current },
+    props.className
+  )
   const style = ComponentHelper.composeStyle(props)
 
   return (
@@ -74,7 +78,7 @@ export const Selector = props => {
         reference={element}
         label={label}
         labelWidth={labelWidth}
-        width={props.width || 300}
+        width={props.width}
         value={buildValue(items.current)}
         fit={fit}
         readOnly
@@ -88,8 +92,10 @@ export const Selector = props => {
       />
       <Popup
         to={element}
+        left={props.labelWidth + 8 || 0}
+        translateX={0}
         height={props.popupHeight}
-        translateX={'-100%'}
+        width={props.popupWidth}
         showed={pickerDisplayed.current}
         onBlur={() => {
           pickerDisplayed.current = false
@@ -142,11 +148,8 @@ export const Selector = props => {
             }
           </HBox>
         }
-        {(props.search || props.allSelectable) && <VDivider/>}
         {props.header && props.header(appliedItems.current)}
-        {props.header && <VDivider/>}
         <List
-          width={(props.width - (props.labelWidth || 0) - 7) || 300}
           height={props.listHeight}
           maxHeight={props.listHeight || 300}
           divided
