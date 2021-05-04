@@ -1,9 +1,8 @@
 import { h } from 'preact'
-import { useEffect, useRef } from 'preact/hooks'
+import { useRef } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
 import './List.scss'
-import { HBox } from '../box-h/HBox'
 
 /**
  * @param {ListProps} props
@@ -31,6 +30,12 @@ export const List = props => {
     onItemsSelect && onItemsSelect(items.current.filter(item => item._selected), items.current)
     refresh()
   }
+
+  ReactHelper.useDifference(() => {
+    items.current.forEach(item => item._selected = false)
+    props.selectedValues && items.current.forEach(item => props.selectedValues.includes(item.value) && selectItem(item))
+    onItemsSelect && onItemsSelect(items.current.filter(item => item._selected), items.current)
+  }, props.selectedValues)
 
   const className = ComponentHelper.composeClass('nbsp-ui-list', props.className)
   const style = ComponentHelper.composeStyle(props, props.style)

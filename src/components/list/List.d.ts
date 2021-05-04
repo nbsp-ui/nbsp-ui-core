@@ -1,4 +1,4 @@
-import { FunctionComponent, JSX } from 'preact'
+import { FunctionComponent } from 'preact'
 import { BaseProps } from '../types'
 
 export interface ListItem {
@@ -15,6 +15,7 @@ export interface ListProps extends BaseProps {
     multiselect?: boolean
     divided?: boolean
     data?: ListItem[] | {}[]
+    selectedValues?: any[]
 
     row: (item?: ListItem | {}) => any
 

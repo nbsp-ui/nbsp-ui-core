@@ -22,6 +22,7 @@ import { MainStorage } from '../storage/MainStorage'
 export const ProgressPanel = () => {
   const [progressValue, setProgressValue] = useState(50)
   const [listLoading, setListLoading] = useState(false)
+  const [listDefaultValue, setListDefaultValue] = useState(['Angola', 'Austria', 'Antigua and Barbuda'])
 
   return (
     <VBox padding={{ x: 8 }} hAlign={CompatAlign.Left}>
@@ -70,6 +71,8 @@ export const ProgressPanel = () => {
         margin={{ y: 8 }}
         onChange={(checked) => setListLoading(checked)}
       />
+      <Button type={CompatButtonType.Outline} label="Set selected values" margin={{ right: 8 }}
+              onClick={() => setListDefaultValue(["Andorra", "Belarus"])}/>
       <LoaderWrapper active={listLoading}>
         <List
           margin={{ bottom: 8 }}
@@ -92,6 +95,9 @@ export const ProgressPanel = () => {
               </HBox>
           }
           data={MainStorage.getCountries()}
+          selectedValues={listDefaultValue}
+          onItemsSelect={(a, b) => console.log({a, b})}
+          multiselect
         />
       </LoaderWrapper>
       <LoaderWrapper active={listLoading}>
