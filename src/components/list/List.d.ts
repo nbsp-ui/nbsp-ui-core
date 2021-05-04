@@ -14,10 +14,10 @@ export interface ListProps extends BaseProps {
     fontSize?: number
     multiselect?: boolean
     divided?: boolean
-    data?: ListItem[] | {}[]
+    data?: ListItem[]
     selectedValues?: any[]
 
-    row: (item?: ListItem | {}) => any
+    row: (item?: ListItem) => any
 
     onItemsSelect?: (selected: ListItem[], all: ListItem[]) => void
 }

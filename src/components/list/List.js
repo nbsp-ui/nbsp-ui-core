@@ -22,7 +22,7 @@ export const List = props => {
   ReactHelper.useDifference(() => items.current = props.data, props.data)
 
   /**
-   * @param {ListItem | {}} item
+   * @param {ListItem} item
    */
   const selectItem = item => {
     !multiselect && items.current.forEach(item => item._selected = false)
