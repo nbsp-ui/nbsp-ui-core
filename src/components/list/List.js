@@ -33,7 +33,7 @@ export const List = props => {
 
   ReactHelper.useDifference(() => {
     items.current.forEach(item => item._selected = false)
-    props.selectedValues && items.current.forEach(item => props.selectedValues.includes(item.value) && selectItem(item))
+    props.selectedValues && items.current.forEach(item => props.selectedValues.includes(item.value) && (item._selected = true))
     onItemsSelect && onItemsSelect(items.current.filter(item => item._selected), items.current)
   }, props.selectedValues)
 

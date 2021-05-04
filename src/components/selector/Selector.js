@@ -156,6 +156,7 @@ export const Selector = props => {
           multiselect={props.multiselect}
           data={appliedItems.current}
           row={props.row}
+          selectedValues={props.selectedValues}
           onItemsSelect={(selected, all) => {
             applyItems(all)
             props.onItemsSelect && props.onItemsSelect(selected, all)

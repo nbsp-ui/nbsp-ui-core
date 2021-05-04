@@ -8,6 +8,7 @@ window['testHook'] = {}
 
 export const FieldsPanel = () => {
   const [countries, setCountries] = useState(MainStorage.getCountries())
+  const [selectedCountries, setSelectedCountries] = useState(['Angola'])
 
   return (
     <VBox padding={{ left: 8, right: 8, bottom: 8 }} hAlign={CompatAlign.Left}>
@@ -57,6 +58,7 @@ export const FieldsPanel = () => {
         allSelectable
         search={(item, value) => item.value.toLowerCase().includes(value.toLowerCase())}
         data={countries}
+        selectedValues={selectedCountries}
       />
       <Selector
         margin={{ bottom: 8 }}

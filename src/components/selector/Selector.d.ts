@@ -18,6 +18,7 @@ export interface SelectorProps extends BaseProps {
     search?: (item: ListItem, search: string) => boolean,
 
     data?: ListItem[] | {}[]
+    selectedValues?: any[]
 
     header?: (items?: ListItem[]) => any
     row?: (item?: ListItem) => any
