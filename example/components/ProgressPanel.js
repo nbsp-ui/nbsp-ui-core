@@ -71,8 +71,6 @@ export const ProgressPanel = () => {
         margin={{ y: 8 }}
         onChange={(checked) => setListLoading(checked)}
       />
-      <Button type={CompatButtonType.Outline} label="Set selected values" margin={{ right: 8 }}
-              onClick={() => setListDefaultValue(["Andorra", "Belarus"])}/>
       <LoaderWrapper active={listLoading}>
         <List
           margin={{ bottom: 8 }}
@@ -100,6 +98,8 @@ export const ProgressPanel = () => {
           multiselect
         />
       </LoaderWrapper>
+      <Button type={CompatButtonType.Outline} label="Set selected values" margin={{ bottom: 8 }}
+              onClick={() => setListDefaultValue(["Andorra", "Belarus"])}/>
       <LoaderWrapper active={listLoading}>
         <Table
           width={400}
