@@ -24,7 +24,7 @@ export interface SelectorProps extends BaseProps {
     row?: (item?: ListItem) => any
     footer?: (items?: ListItem[]) => any
 
-    onItemsSelect?: (selected: ListItem[], all: ListItem[]) => void
+    onItemsSelect?: (items: { selected: ListItem[], all: ListItem[] }) => void
 }
 
 export const Selector: FunctionComponent<SelectorProps>

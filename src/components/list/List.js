@@ -27,14 +27,14 @@ export const List = props => {
   const selectItem = item => {
     !multiselect && items.current.forEach(item => item._selected = false)
     item._selected = !item._selected
-    onItemsSelect && onItemsSelect(items.current.filter(item => item._selected), items.current)
+    onItemsSelect && onItemsSelect({ selected: items.current.filter(item => item._selected), all: items.current })
     refresh()
   }
 
   ReactHelper.useDifference(() => {
     items.current.forEach(item => item._selected = false)
     props.selectedValues && items.current.forEach(item => props.selectedValues.includes(item.value) && (item._selected = true))
-    onItemsSelect && onItemsSelect(items.current.filter(item => item._selected), items.current)
+    onItemsSelect && onItemsSelect({ selected: items.current.filter(item => item._selected), all: items.current })
   }, props.selectedValues)
 
   const className = ComponentHelper.composeClass('nbsp-ui-list', props.className)

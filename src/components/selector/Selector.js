@@ -157,9 +157,9 @@ export const Selector = props => {
           data={appliedItems.current}
           row={props.row}
           selectedValues={props.selectedValues}
-          onItemsSelect={(selected, all) => {
+          onItemsSelect={({ selected, all }) => {
             applyItems(all)
-            props.onItemsSelect && props.onItemsSelect(selected, all)
+            props.onItemsSelect && props.onItemsSelect({ selected, all })
             !props.multiselect && (pickerDisplayed.current = false)
             refresh()
           }}
