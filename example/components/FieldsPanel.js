@@ -67,7 +67,6 @@ export const FieldsPanel = () => {
         labelWidth={140}
         placeholder={'Country'}
         fontSize={14}
-        popupWidth={800}
         row={item => <span>{item.value}</span>}
         onItemsSelect={items => console.log(items)}
         data={countries}

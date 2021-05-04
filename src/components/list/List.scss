@@ -4,6 +4,7 @@
   font-family: "Roboto", sans-serif;
   overflow-y: auto;
   user-select: none;
+  width: max-content;
 
   &::-webkit-scrollbar {
     width: 0.5em;
