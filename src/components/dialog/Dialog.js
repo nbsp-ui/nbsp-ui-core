@@ -17,7 +17,7 @@ export const Dialog = props => {
   const firstRender = ReactHelper.useFirstRender()
 
   useEffect(() => {
-    !firstRender && (props.opened ? props.onOpen() : props.onClose())
+    !firstRender && (props.opened ? props.onOpen && props.onOpen() : props.onClose && props.onClose())
   }, [props.opened])
 
   const className = ComponentHelper.composeClass('nbsp-ui-dialog', props.className)
