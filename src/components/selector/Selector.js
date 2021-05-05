@@ -152,6 +152,7 @@ export const Selector = props => {
         <List
           height={props.listHeight}
           maxHeight={props.listHeight || 300}
+          width={props.popupWidth}
           divided
           multiselect={props.multiselect}
           data={appliedItems.current}
