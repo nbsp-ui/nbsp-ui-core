@@ -1,6 +1,7 @@
 import { h, createContext } from 'preact'
 import { Lollipop } from "./Lollipop"
 import { CompatUtils } from "../../utils/CompatUtils"
+import { Environment } from '../../systems/Environment'
 import { useContext, useReducer } from "preact/hooks"
 import "./Lollipop.scss"
 
@@ -15,7 +16,7 @@ export const LollipopProvider = props => {
 
   return(
     <LollipopContext.Provider value={dispatch}>
-      <div className={"lollipop-wrapper"}>
+      <div className={"lollipop-wrapper"} style={{ zIndex: Environment.getDepth() }}>
         {state.map((lollipop) => <Lollipop dispatch={dispatch} key={lollipop.id} {...lollipop} />)}
       </div>
       {props.children}
