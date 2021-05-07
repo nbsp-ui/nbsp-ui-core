@@ -9,8 +9,8 @@
   "scripts": {
     "playground": "npx webpack s --mode development",
     "playground:puff-window": "npm --prefix ./packages/puff-window/ run playground",
-    "compile": "npm run lib && npm run lib:puff-window",
-    "lib": "npx babel src --out-dir lib --copy-files",
+    "lib": "npm run lib:core && npm run lib:puff-window",
+    "lib:core": "npx babel src --out-dir lib --copy-files",
     "lib:puff-window": "npm --prefix ./packages/puff-window/ run lib"
   },
   "peerDependencies": {

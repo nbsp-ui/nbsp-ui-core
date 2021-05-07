@@ -3,7 +3,7 @@ import { useState } from 'preact/hooks'
 import { Button, CompatButtonType, FAIcon, HBox, Label, Table, VBox } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 import { MainStorage } from '../storage/MainStorage'
-import { LollipopType } from '../../src/components/lollipop/Lollipop'
+import { LollipopType } from '../../src'
 import { useLollipop } from '../../src/components/lollipop/LollipopProvider'
 
 export const TablePanel = () => {

@@ -8,7 +8,7 @@ window['testHook'] = {}
 
 export const FieldsPanel = () => {
   const [countries, setCountries] = useState(MainStorage.getCountries())
-  const [selectedCountries, setSelectedCountries] = useState(['Angola'])
+  const [selectedCountries] = useState(['Angola'])
 
   return (
     <VBox padding={{ left: 8, right: 8, bottom: 8 }} hAlign={CompatAlign.Left}>

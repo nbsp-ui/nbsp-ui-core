@@ -1,6 +1,6 @@
 import { h } from 'preact'
 import { Button, CompatButtonType, HBox } from '../../src'
-import { LollipopType } from '../../src/components/lollipop/Lollipop'
+import { LollipopType } from '../../src'
 import { useLollipop } from '../../src/components/lollipop/LollipopProvider'
 
 export const LollipopPanel = () => {
