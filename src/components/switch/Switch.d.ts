@@ -10,7 +10,7 @@ export interface SwitchProps {
     align?: CompatAlign
     reversed?: boolean
 
-    onChange: (value: boolean) => void
+    onChange?: (value: boolean) => void
 }
 
 export const Switch: FunctionComponent<SwitchProps>

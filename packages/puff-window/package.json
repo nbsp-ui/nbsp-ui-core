@@ -1,20 +1,10 @@
 {
-  "name": "@nbsp-ui/nbsp-ui-core",
-  "version": "1.0.20",
-  "main": "lib/index.js",
+  "name": "puff-window",
+  "version": "0.0.1",
   "license": "MIT",
-  "repository": {
-    "url": "git://github.com/nbsp-ui/nbsp-ui-core.git"
-  },
   "scripts": {
     "playground": "npx webpack s --mode development",
-    "playground:puff-window": "npm --prefix ./packages/puff-window/ run playground",
-    "compile": "npm run lib && npm run lib:puff-window",
-    "lib": "npx babel src --out-dir lib --copy-files",
-    "lib:puff-window": "npm --prefix ./packages/puff-window/ run lib"
-  },
-  "peerDependencies": {
-    "preact": "10.x"
+    "lib": "npx babel src --out-dir lib --copy-files"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
@@ -22,6 +12,7 @@
     "@babel/plugin-proposal-pipeline-operator": "^7.12.13",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@babel/preset-env": "^7.14.0",
+    "@nbsp-ui/nbsp-ui-core": "1.0.20",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.4",
     "file-loader": "^6.2.0",
@@ -37,7 +28,6 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "date-fns": "^2.21.1",
-    "preact": "10.x"
+    "preact": "^10.5.13"
   }
 }

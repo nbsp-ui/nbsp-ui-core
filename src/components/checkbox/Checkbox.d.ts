@@ -1,5 +1,4 @@
 import { FunctionComponent } from 'preact'
-import { CompatAlign } from "../../utils/CompatAlign";
 import { BaseProps } from '../types'
 
 export interface CheckboxProps extends BaseProps {
@@ -7,7 +6,7 @@ export interface CheckboxProps extends BaseProps {
     label?: string
     reversed?: boolean
 
-    onChange: (value: boolean) => void
+    onChange?: (value: boolean) => void
 }
 
 export const Checkbox: FunctionComponent<CheckboxProps>

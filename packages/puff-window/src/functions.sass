@@ -1,0 +1,7 @@
+@function lighten-by-tone($color, $tone)
+  $adjust: 16*$tone
+  @return adjust-color($color, $red: $adjust, $green: $adjust, $blue: $adjust)
+
+@function darken-by-tone($color, $tone)
+  $adjust: -16*$tone
+  @return adjust-color($color, $red: $adjust, $green: $adjust, $blue: $adjust)

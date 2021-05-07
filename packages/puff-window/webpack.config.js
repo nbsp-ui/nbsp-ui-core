@@ -1,4 +1,4 @@
-const base = require('./webpack.config.base')
+const base = require('../../webpack.config.base')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -10,10 +10,7 @@ module.exports = [
       path: path.resolve(__dirname, './playground/dist'),
       filename: 'bundle.js'
     },
-    plugins: [new HtmlWebpackPlugin({
-      template: './playground/index.html',
-      minify: true
-    })],
+    plugins: [new HtmlWebpackPlugin()],
     devServer: {
       contentBase: path.join(__dirname, './playground/dist'),
       compress: true,
