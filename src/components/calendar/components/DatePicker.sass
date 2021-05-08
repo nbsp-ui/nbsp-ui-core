@@ -1,0 +1,28 @@
+@import src/components/colors
+
+.date-picker
+  display: grid
+  grid-template-columns: repeat(7, 1fr)
+  grid-template-rows: repeat(6, 40px)
+
+  p
+    text-align: center
+    line-height: 40px
+
+  .day
+    color: $light-contrast-text-color
+
+  .date
+    border: 1px solid transparent
+
+    &-out
+      color: $light-secondary-text-color
+
+    &-current
+      border-color: $accent-color
+      color: $accent-color
+
+    &-selected
+      background-color: $accent-color
+      border-color: $accent-color
+      color: $dark-text-color

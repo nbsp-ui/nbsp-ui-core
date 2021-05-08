@@ -1,0 +1,53 @@
+@import src/components/colors
+
+.year-month-picker
+  margin-bottom: 8px
+
+  .years
+    overflow: hidden
+    border-top: 1px solid #E0E0E0
+    border-bottom: 1px solid #E0E0E0
+
+    .content
+      display: flex
+      transition: transform .2s
+
+      p
+        width: 60px
+        min-width: 60px
+        height: 40px
+        text-align: center
+        line-height: 40px
+        box-sizing: border-box
+
+      .current
+        color: $accent-color
+
+      .viewed
+        background-color: $accent-color
+        border-color: $accent-color
+        color: $dark-text-color
+
+  .months
+    display: grid
+
+    p
+      text-align: center
+      line-height: 40px
+      border: 1px solid transparent
+
+    .current
+      color: $accent-color
+
+    .viewed
+      background-color: $accent-color
+      border-color: $accent-color
+      color: $dark-text-color
+
+  .months-up
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-rows: repeat(2, 40px)
+
+  .months-down
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-rows: repeat(2, 40px)

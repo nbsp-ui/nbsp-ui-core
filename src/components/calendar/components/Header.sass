@@ -1,0 +1,37 @@
+@import src/components/colors
+
+.header
+  margin-bottom: 8px
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+  .title
+    cursor: pointer
+
+    p
+      display: inline-block
+      font-size: 16px
+      transition: color .2s
+
+    p:not(:last-child)
+      margin-right: 8px
+
+    .month-number
+      color: $light-secondary-text-color
+
+    &:hover
+      p
+        color: $light-contrast-text-color
+
+    &:active
+      p
+        color: $light-text-color
+
+  .prev-month, .next-month
+    width: 24px
+    height: 24px
+    line-height: 24px
+    text-align: center
+    border-radius: 50%
+    font-size: 16px

@@ -3,10 +3,10 @@ import { CompatLocalization } from '../../utils/CompatLocalization'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
 import '../behavior.scss'
-import './Calendar.scss'
-import { CalendarDatePicker } from './CalendarDatePicker'
-import { CalendarHeader } from './CalendarHeader'
-import { CalendarYearMonthPicker } from './CalendarYearMonthPicker'
+import './Calendar.sass'
+import { DatePicker } from './components/DatePicker'
+import { Header } from './components/Header'
+import { YearMonthPicker } from './components/YearMonthPicker'
 
 /**
  * @param {CalendarProps} props
@@ -43,7 +43,7 @@ export const Calendar = props => {
   const prevMonthYear = CompatLocalization.prev_month_year(year, month)
   const nextMonthYear = CompatLocalization.next_month_year(year, month)
 
-  const displayMonth = (year, month) => setViewedDate(new Date(year, month))
+  const displayMonth = (year, month) => viewDate(new Date(year, month))
 
   const displayPrevMonth = () => displayMonth(prevMonthYear, prevMonth)
 
@@ -51,21 +51,20 @@ export const Calendar = props => {
 
   return (
     <div className={className} style={style}>
-      <CalendarHeader
+      <Header
         viewedDate={viewedDate}
         onPrevMonthClick={displayPrevMonth}
         onNextMonthClick={displayNextMonth}
         onTitleClick={toggleYearMonthPickerVisibility}
       />
-      <CalendarYearMonthPicker
+      <YearMonthPicker
         visible={yearMonthPickerVisible}
         currentDate={currentDate}
         viewedDate={viewedDate}
-        selectedDate={selectedDate}
         onMonthClick={month => viewDate(new Date(year, month))}
         onYearClick={year => viewDate(new Date(year, month))}
       />
-      <CalendarDatePicker
+      <DatePicker
         currentDate={currentDate}
         viewedDate={viewedDate}
         selectedDate={selectedDate}

@@ -1,7 +1,8 @@
 import { h } from 'preact'
-import { CompatLocalization } from '../../utils/CompatLocalization'
-import { CompatUtils } from '../../utils/CompatUtils'
-import { ComponentHelper } from '../../utils/ComponentHelper'
+import { CompatLocalization } from '../../../utils/CompatLocalization'
+import { CompatUtils } from '../../../utils/CompatUtils'
+import { ComponentHelper } from '../../../utils/ComponentHelper'
+import './DatePicker.sass'
 
 /**
  * @param props
@@ -14,7 +15,14 @@ import { ComponentHelper } from '../../utils/ComponentHelper'
  * @returns {*}
  * @constructor
  */
-export const CalendarDatePicker = ({ currentDate, viewedDate, selectedDate, onDateClick, onPrevMonthDateClick, onNextMonthDateClick }) => {
+export const DatePicker = ({
+                                  currentDate,
+                                  viewedDate,
+                                  selectedDate,
+                                  onDateClick,
+                                  onPrevMonthDateClick,
+                                  onNextMonthDateClick
+                                }) => {
   const year = viewedDate.getFullYear()
   const month = viewedDate.getMonth()
 
@@ -32,12 +40,12 @@ export const CalendarDatePicker = ({ currentDate, viewedDate, selectedDate, onDa
   const daysInPrevMonth = CompatLocalization.days_in_month(prevMonthYear, prevMonth)
 
   return (
-    <div className='container'>
-      {CompatLocalization.week_short_days().map((day, index) => (<p className='day' key={index}>{day}</p>))}
+    <div className="date-picker">
+      {CompatLocalization.week_short_days().map((day, index) => (<p className="day" key={index}>{day}</p>))}
       {
         (firstWeekDay === 0 ? CompatUtils.range(0, 6) : CompatUtils.range(0, firstWeekDay - 1)).map((date, index, dates) => daysInPrevMonth - dates[dates.length - 1 - index]).map(date =>
           <p
-            className='date date-out clickable clickable-no-animated'
+            className="date date-out clickable clickable-no-animated"
             onClick={() => onPrevMonthDateClick(date)}
             key={'prev-' + date}
           >{date}</p>
@@ -69,7 +77,7 @@ export const CalendarDatePicker = ({ currentDate, viewedDate, selectedDate, onDa
       {
         (lastWeekDay === 6 ? CompatUtils.range(0, 6) : CompatUtils.range(0, 6 - lastWeekDayRaw)).map(date => date + 1).map(date =>
           <p
-            className='date date-out clickable clickable-no-animated'
+            className="date date-out clickable clickable-no-animated"
             onClick={() => onNextMonthDateClick(date)}
             key={'next-' + date}
           >{date}</p>)
