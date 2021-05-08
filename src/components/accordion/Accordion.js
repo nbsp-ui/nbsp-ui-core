@@ -26,7 +26,7 @@ export const Accordion = props => {
   return (
     <div id={id} className={className} style={style}>
       <HBox
-        className={ComponentHelper.composeClass('header', { use: 'header-collapsed', if: collapsed })}
+        className={ComponentHelper.composeClass('header', collapsed && 'header-collapsed')}
         vAlign={CompatAlign.Center}
         onClick={() => headerClick()}
       >
@@ -34,7 +34,7 @@ export const Accordion = props => {
         <span>{header}</span>
       </HBox>
       <div
-        className={ComponentHelper.composeClass('content', { use: 'content-collapsed', if: collapsed })}
+        className={ComponentHelper.composeClass('content', collapsed && 'content-collapsed')}
         style={{ height: collapsed ? 0 : props.contentHeight }}
       >
         {props.children}

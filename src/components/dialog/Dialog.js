@@ -21,6 +21,7 @@ export const Dialog = props => {
   }, [props.opened])
 
   const className = ComponentHelper.composeClass('nbsp-ui-dialog', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
   document.body.style.overflow = props.opened ? 'hidden' : 'auto'

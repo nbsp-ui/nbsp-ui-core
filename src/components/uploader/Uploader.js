@@ -18,6 +18,7 @@ export const Uploader = props => {
   const [files, setFiles] = useState([])
 
   const className = ComponentHelper.composeClass('nbsp-ui-uploader', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
   return (

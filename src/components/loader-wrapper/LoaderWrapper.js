@@ -10,6 +10,7 @@ import './LoaderWrapper.scss'
  */
 export const LoaderWrapper = props => {
   const className = ComponentHelper.composeClass('nbsp-ui-loader-wrapper', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
   return (

@@ -13,8 +13,9 @@ export const Switch = props => {
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-switch',
-    { use: 'nbsp-ui-switch-checked', if: checked }
+    checked && 'nbsp-ui-switch-checked'
   )
+
   const style = ComponentHelper.composeStyle(props)
 
   return (

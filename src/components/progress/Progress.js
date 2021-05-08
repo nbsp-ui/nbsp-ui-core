@@ -18,6 +18,7 @@ export const Progress = props => {
   } = props
 
   const className = ComponentHelper.composeClass('nbsp-ui-progress', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
   const [animationInited, setAnimationInited] = useState(false)

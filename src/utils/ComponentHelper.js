@@ -3,7 +3,7 @@
 import { CompatAlign } from './CompatAlign'
 
 export const ComponentHelper = {
-  composeClass: (...properties) => properties.map(property => !property || typeof property === 'string' ? property : property.if && property.use).filter(value => value).join(' '),
+  composeClass: (...items) => items.filter(item => item).join(' '),
 
   composeStyle: function(props, mappers) {
     const combination = {

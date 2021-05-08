@@ -42,10 +42,10 @@ export const TableColumnHeader = ({
     <HBox
       className={
         ComponentHelper.composeClass(
-          { use: 'clickable', if: column.sort },
-          { use: 'hovered', if: hovered },
-          { use: 'sorted-by-asc', if: column._sortedByAsc },
-          { use: 'sorted-by-desc', if: column._sortedByDesc }
+          column.sort && 'clickable',
+          hovered && 'hovered',
+          column._sortedByAsc && 'sorted-by-asc',
+          column._sortedByDesc && 'sorted-by-desc'
         )
       }
       reference={element => {

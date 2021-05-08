@@ -107,7 +107,7 @@ export const PivotTableSelectorItem = ({
     <div
       className={ComponentHelper.composeClass(
         'nbsp-ui-pivot-table-selector-item',
-        { use: 'nbsp-ui-pivot-table-selector-item-dragged', if: dragged },
+        dragged && 'nbsp-ui-pivot-table-selector-item-dragged',
         className
       )}
       ref={element}

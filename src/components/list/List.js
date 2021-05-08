@@ -38,6 +38,7 @@ export const List = props => {
   }, props.selectedValues)
 
   const className = ComponentHelper.composeClass('nbsp-ui-list', props.className)
+
   const style = ComponentHelper.composeStyle(props, props.style)
 
   return (
@@ -48,7 +49,7 @@ export const List = props => {
           &&
           <div
             key={index}
-            className={ComponentHelper.composeClass('item', { use: 'item-selected', if: item._selected })}
+            className={ComponentHelper.composeClass('item', item._selected && 'item-selected')}
             style={{ borderBottom: props.divided ? '1px solid #EEEEEE' : '' }}
             onClick={() => selectItem(item)}
           >

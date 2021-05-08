@@ -46,7 +46,7 @@ export const PivotTable = props => {
   return (
     <div className={ComponentHelper.composeClass(
       'nbsp-ui-pivot-table',
-      { use: 'nbsp-ui-pivot-table-editable', if: editable }
+      editable && 'nbsp-ui-pivot-table-editable'
     )}>
       <PivotTableHeader
         fields={fields}

@@ -17,6 +17,7 @@ export const Menu = props => {
   const { id } = props
 
   const className = ComponentHelper.composeClass('nbsp-ui-menu', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
   const getMenuWidth = () => props.collapsed ? props.collapsedWidth : props.height
@@ -109,10 +110,11 @@ export const SubMenu = props => {
   const getDisplay = () => props._menuCollapsed ? (props._collapsedShow.includes(id) ? 'block' : 'none') : 'block'
 
   const className = ComponentHelper.composeClass('nbsp-ui-submenu', props.className)
+
   const classNameSubMenu = ComponentHelper.composeClass(
     'submenu-content',
     `submenu-content-level-${getLevelNumber()}`,
-    { use: 'submenu-content-expanded', if: props.expanded }
+    props.expanded && 'submenu-content-expanded'
   )
   const style = ComponentHelper.composeStyle(props)
 
@@ -128,7 +130,7 @@ export const SubMenu = props => {
     >
       <MenuItem
         id={id}
-        className={ComponentHelper.composeClass({ use: 'nbsp-ui-menu-item-expanded', if: props.expanded })}
+        className={ComponentHelper.composeClass(props.expanded && 'nbsp-ui-menu-item-expanded')}
         expandItem={props.expandItem}
         paddingLeft={props._menuCollapsed ? 0 : `${(props._subMenuLevel - 1) * 10 || 5}px`}
       >
@@ -165,10 +167,12 @@ SubMenu.defaultProps = {
 export const MenuItem = props => {
   const { id } = props
 
-  const className = ComponentHelper.composeClass('nbsp-ui-menu-item',
-    { use: 'nbsp-ui-menu-item-selected', if: props.selected },
+  const className = ComponentHelper.composeClass(
+    'nbsp-ui-menu-item',
+    props.selected && 'nbsp-ui-menu-item-selected',
     props.className
   )
+
   const style = ComponentHelper.composeStyle(props, props.style)
 
   const getDisplay = () => props._menuCollapsed ? (props._collapsedShow.includes(id) ? 'flex' : 'none') : 'flex'

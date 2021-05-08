@@ -18,13 +18,13 @@ export const PivotTableHeader = ({ columns, editable, onEditingRequest }) => {
   return (
     <div className={ComponentHelper.composeClass(
       'nbsp-ui-pivot-table-header',
-      { use: 'nbsp-ui-pivot-table-header-editable', if: editable }
+      editable && 'nbsp-ui-pivot-table-header-editable'
     )}>
       <div className="base-cell">
         <div
           className={ComponentHelper.composeClass(
             'edit',
-            { use: 'edit-on', if: editable }
+            editable && 'edit-on'
           )}
           onClick={() => onEditingRequest()}
         >

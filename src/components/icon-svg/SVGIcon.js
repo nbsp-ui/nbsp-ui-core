@@ -20,6 +20,7 @@ export const SVGIcon = props => {
   const { icon } = props
 
   const className = ComponentHelper.composeClass('nbsp-ui-svg-icon', props.className)
+
   const style = ComponentHelper.composeStyle(props, mappers)
 
   return (

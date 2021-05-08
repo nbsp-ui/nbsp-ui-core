@@ -68,7 +68,7 @@ export const PivotTableSelector = ({ fields, rows, columns, onColumnsChange, onR
           <div
             className={ComponentHelper.composeClass(
               'control',
-              { use: 'control-confirmable', if: columnsSuggested }
+              columnsSuggested && 'control-confirmable'
             )}
             onClick={() => setColumnsSuggested(!columnsSuggested)}
           >
@@ -121,7 +121,7 @@ export const PivotTableSelector = ({ fields, rows, columns, onColumnsChange, onR
           <div
             className={ComponentHelper.composeClass(
               'control',
-              { use: 'control-confirmable', if: rowsSuggested }
+              rowsSuggested && 'control-confirmable'
             )}
             onClick={() => setRowsSuggested(!rowsSuggested)}
           >

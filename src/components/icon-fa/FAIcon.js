@@ -11,6 +11,7 @@ export const FAIcon = props => {
   const { icon, onClick } = props
 
   const className = ComponentHelper.composeClass('nbsp-ui-fa-icon', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
   return (

@@ -19,13 +19,14 @@ export const Button = props => {
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-button',
-    { use: 'nbsp-ui-button-disabled', if: disabled },
-    { use: 'nbsp-ui-button-ghost', if: type === CompatButtonType.Ghost },
-    { use: 'nbsp-ui-button-primary', if: type === CompatButtonType.Primary },
-    { use: 'nbsp-ui-button-outline', if: type === CompatButtonType.Outline },
-    { use: 'nbsp-ui-button-icon', if: type === CompatButtonType.Icon },
+    disabled && 'nbsp-ui-button-disabled',
+    type === CompatButtonType.Ghost && 'nbsp-ui-button-ghost',
+    type === CompatButtonType.Primary && 'nbsp-ui-button-primary',
+    type === CompatButtonType.Outline && 'nbsp-ui-button-outline',
+    type === CompatButtonType.Icon && 'nbsp-ui-button-icon',
     props.className
   )
+
   const style = ComponentHelper.composeStyle(props)
 
   return (

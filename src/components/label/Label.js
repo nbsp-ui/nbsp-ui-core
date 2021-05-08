@@ -3,26 +3,13 @@ import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Label.scss'
 
 /**
- * @param {{}} state
- * @param {function} setState
- * @returns {LabelLever}
- */
-const toLever = (state, setState) => ({
-  define: (key, value) => state[key] = value,
-  refresh: () => setState(state),
-  setValue: value => setState(state = { ...state, value }),
-  getValue: () => state.value,
-  setColor: color => setState(state = { ...state, color }),
-  getColor: () => state.color
-})
-
-/**
  * @param {LabelProps} props
  * @returns {*}
  * @constructor
  */
 export const Label = props => {
   const className = ComponentHelper.composeClass('nbsp-ui-label', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
   return (

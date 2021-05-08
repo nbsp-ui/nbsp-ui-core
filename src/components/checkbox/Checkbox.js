@@ -15,8 +15,10 @@ export const Checkbox = props => {
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-checkbox',
-    { use: 'nbsp-ui-checkbox-checked', if: checked }
+    checked && 'nbsp-ui-checkbox-checked',
+    props.className
   )
+
   const style = ComponentHelper.composeStyle(props)
 
   return (
@@ -28,10 +30,10 @@ export const Checkbox = props => {
         setChecked(!checked)
       }}
     >
-      {label && <div className='label'>{label}</div>}
-      {label && <div className='spacer'/>}
-      <div className='control'>
-        <div className='shape'>
+      {label && <div className="label">{label}</div>}
+      {label && <div className="spacer"/>}
+      <div className="control">
+        <div className="shape">
           <div/>
           <div/>
         </div>

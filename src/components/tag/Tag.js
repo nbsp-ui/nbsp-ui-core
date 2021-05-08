@@ -12,9 +12,10 @@ export const Tag = props => {
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-tag',
-    { use: 'nbsp-ui-tag-clickable', if: onClick },
+    onClick && 'nbsp-ui-tag-clickable',
     props.className
   )
+
   const style = ComponentHelper.composeStyle(props)
 
   return (
@@ -24,8 +25,8 @@ export const Tag = props => {
       onClick={() => onClick && onClick()}
     >
       <span>{value}</span>
-      {onClose && <div className='spacer'/>}
-      {onClose && <div className='close' onClick={() => onClose()}><i className="fas fa-times"/></div>}
+      {onClose && <div className="spacer"/>}
+      {onClose && <div className="close" onClick={() => onClose()}><i className="fas fa-times"/></div>}
     </div>
   )
 }

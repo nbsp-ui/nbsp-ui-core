@@ -22,7 +22,7 @@ export const Lollipop = props => {
 
   const [dismissed, setDismissed] = useState(false)
   const [indicatorWidth, setIndicatorWidth] = useState(0)
-  const [intervalID, setIntervalID] = useState(null)
+  const [intervalID, setIntervalID] = useState(0)
 
   const start = () => {
     const id = setInterval(() => {
@@ -64,12 +64,12 @@ export const Lollipop = props => {
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-lollipop',
-    { use: 'nbsp-ui-lollipop-dismissed', if: dismissed },
-    { use: 'nbsp-ui-lollipop-indefinite', if: props.indefinite },
-    { use: 'nbsp-ui-lollipop-default', if: type === LollipopType.Default },
-    { use: 'nbsp-ui-lollipop-warning', if: type === LollipopType.Warning },
-    { use: 'nbsp-ui-lollipop-error', if: type === LollipopType.Error },
-    { use: 'nbsp-ui-lollipop-success', if: type === LollipopType.Success },
+    dismissed && 'nbsp-ui-lollipop-dismissed',
+    props.indefinite && 'nbsp-ui-lollipop-indefinite',
+    type === LollipopType.Default && 'nbsp-ui-lollipop-default',
+    type === LollipopType.Warning && 'nbsp-ui-lollipop-warning',
+    type === LollipopType.Error && 'nbsp-ui-lollipop-error',
+    type === LollipopType.Success && 'nbsp-ui-lollipop-success',
     props.className
   )
   const style = ComponentHelper.composeStyle(props)

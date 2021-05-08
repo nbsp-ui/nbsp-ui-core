@@ -67,7 +67,7 @@ export const Selector = props => {
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-selector',
-    { use: 'nbsp-ui-selector-picker-displayed', if: pickerDisplayed.current },
+    pickerDisplayed.current && 'nbsp-ui-selector-picker-displayed',
     props.className
   )
   const style = ComponentHelper.composeStyle(props)

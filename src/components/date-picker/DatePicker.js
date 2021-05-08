@@ -41,6 +41,7 @@ export const DatePicker = props => {
   }
 
   const className = ComponentHelper.composeClass('nbsp-ui-date-picker', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
   return (

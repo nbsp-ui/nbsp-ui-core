@@ -2,7 +2,7 @@ import { JSXInternal } from 'preact/src/jsx'
 import CSSProperties = JSXInternal.CSSProperties
 
 export namespace ComponentHelper {
-    function composeClass(...properties: (string | Contract)[]): string
+    function composeClass(...items: string[]): string
 
     function composeStyle(props: {}, mappers?: {}): CSSProperties
 

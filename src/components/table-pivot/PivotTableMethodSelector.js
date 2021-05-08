@@ -44,7 +44,7 @@ export const PivotTableMethodSelector = ({ parent, methods, onChange, onBlur }) 
           <div
             className={ComponentHelper.composeClass(
               'method',
-              { use: 'method-selected', if: selected }
+              selected && 'method-selected'
             )}
             onClick={() => onChange(selected ? methods.filter(each => each !== method) : [...methods, method])}
           >

@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { CompatAlign } from '../../utils/CompatAlign'
+import { ComponentHelper } from '../../utils/ComponentHelper'
 import { HBox } from '../box-h/HBox'
-import {ComponentHelper} from "../../utils/ComponentHelper";
 
 /**
  * @param {TableColumn[]} columns
@@ -12,7 +12,7 @@ import {ComponentHelper} from "../../utils/ComponentHelper";
  */
 export const TableRow = ({ columns, item, onItemClick }) =>
   <HBox
-    className={ComponentHelper.composeClass('row', { use: 'row-selected', if: item._selected })}
+    className={ComponentHelper.composeClass('row', item._selected && 'row-selected')}
     onClick={() => onItemClick(item)}
   >
     {

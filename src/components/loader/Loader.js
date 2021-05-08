@@ -23,6 +23,7 @@ export const Loader = props => {
   const { id } = props
 
   const className = ComponentHelper.composeClass('nbsp-ui-loader', props.className)
+
   const style = ComponentHelper.composeStyle(props, mappers)
 
   return (

@@ -21,11 +21,8 @@ export const YearMonthPicker = ({ visible, currentDate, viewedDate, onMonthClick
     <p
       className={ComponentHelper.composeClass(
         'clickable clickable-no-animated',
-        {
-          use: 'current',
-          if: month === currentDate.getMonth() && viewedDate.getFullYear() === currentDate.getFullYear()
-        },
-        { use: 'viewed', if: month === viewedDate.getMonth() }
+        month === currentDate.getMonth() && viewedDate.getFullYear() === currentDate.getFullYear() && 'current',
+        month === viewedDate.getMonth() && 'viewed'
       )}
       key={index}
       onClick={() => onMonthClick(month)}
@@ -49,8 +46,8 @@ export const YearMonthPicker = ({ visible, currentDate, viewedDate, onMonthClick
             <p
               className={ComponentHelper.composeClass(
                 'clickable clickable-no-animated',
-                { use: 'current', if: year === currentDate.getFullYear() },
-                { use: 'viewed', if: year === viewedDate.getFullYear() }
+                year === currentDate.getFullYear() && 'current',
+                year === viewedDate.getFullYear() && 'viewed'
               )}
               key={index}
               onClick={() => onYearClick(year)}

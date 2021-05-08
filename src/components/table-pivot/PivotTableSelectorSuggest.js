@@ -14,8 +14,7 @@ export const PivotTableSelectorSuggest = ({ label, selected, onClick }) => {
     <div
       className={ComponentHelper.composeClass(
         'nbsp-ui-pivot-table-selector-suggest',
-        { use: 'nbsp-ui-pivot-table-selector-suggest-selectable' },
-        { use: 'nbsp-ui-pivot-table-selector-suggest-selected', if: selected }
+        selected && 'nbsp-ui-pivot-table-selector-suggest-selected'
       )}
       onClick={onClick}
     >

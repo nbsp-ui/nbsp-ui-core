@@ -1,7 +1,7 @@
 import { h } from 'preact'
-import { useRef, useState } from "preact/hooks"
+import { useRef, useState } from 'preact/hooks'
+import { CompatUtils } from '../..'
 import { ComponentHelper } from '../../utils/ComponentHelper'
-import { CompatUtils } from "../.."
 import './Slider.scss'
 
 // noinspection JSValidateJSDoc
@@ -14,6 +14,7 @@ export const Slider = props => {
   const { id = CompatUtils.uid() } = props
 
   const className = ComponentHelper.composeClass('nbsp-ui-slider', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
   const getPercentByValue = value => value / props.max * 100
@@ -27,7 +28,7 @@ export const Slider = props => {
   const deltaSecondary = useRef(0)
 
   const [trackParameters, setTrackParameters] = useState({
-    width: props.range ? Math.abs(getPercentByValue(props.values[0]) - getPercentByValue(props.values[1]))  : getPercentByValue(props.values[0]),
+    width: props.range ? Math.abs(getPercentByValue(props.values[0]) - getPercentByValue(props.values[1])) : getPercentByValue(props.values[0]),
     left: props.range ? Math.min(getPercentByValue(props.values[0]), getPercentByValue(props.values[1])) : 0
   })
 
@@ -69,8 +70,14 @@ export const Slider = props => {
 
   return (
     <div id={id} className={className} style={style}>
-      <div className="rail"> </div>
-      <div className="track" style={{ left: `${trackParameters.left}%`, width: `${trackParameters.width}%` }}> </div>
+      <div className="rail"/>
+      <div
+        className="track"
+        style={{
+          left: `${trackParameters.left}%`,
+          width: `${trackParameters.width}%`
+        }}
+      />
       {
         props.dots
         &&
@@ -79,12 +86,11 @@ export const Slider = props => {
             props.dots.map(
               dot =>
                 <span
-                  className={ComponentHelper.composeClass('dot', {
-                    use: 'dot-active',
-                    if: props.range
+                  className={ComponentHelper.composeClass('dot',
+                    props.range
                       ? dot > Math.min(props.values[0], props.values[1]) && dot < Math.max(props.values[0], props.values[1])
-                      : props.values[0] > dot
-                  })}
+                      : props.values[0] > dot && 'dot-active'
+                  )}
                   style={{ left: `${getPercentByValue(dot)}%` }}
                   onClick={() => setThumb(getPercentByValue(dot), thumbPrimary)} // TODO Hm
                 >

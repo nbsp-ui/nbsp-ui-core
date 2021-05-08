@@ -2,21 +2,8 @@ import { FunctionComponent } from 'preact'
 import { BaseProps } from '../types'
 
 export interface LabelProps extends BaseProps {
-    value?: string
-    color?: string
-    hook?: LabelLever
-}
-
-interface BaseLever {
-    define: (key: string, value: any) => void
-    refresh?: () => void
-}
-
-export interface LabelLever extends BaseLever {
-    setValue: (value: string) => void
-    getValue: () => string
-    setColor: (color: string) => void
-    getColor: () => string
+  value?: string
+  color?: string
 }
 
 export const Label: FunctionComponent<LabelProps>

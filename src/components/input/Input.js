@@ -16,12 +16,13 @@ export const Input = props => {
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-input',
-    { use: 'nbsp-ui-input-disabled', if: props.disabled },
-    { use: 'nbsp-ui-input-validation-error', if: !valid },
-    { use: 'nbsp-ui-input-before', if: props.before },
-    { use: 'nbsp-ui-input-after', if: props.after },
+    props.disabled && 'nbsp-ui-input-disabled',
+    !valid && 'nbsp-ui-input-validation-error',
+    props.before && 'nbsp-ui-input-before',
+    props.after && 'nbsp-ui-input-after',
     props.className
   )
+
   const style = ComponentHelper.composeStyle(props)
 
   return (
@@ -31,7 +32,7 @@ export const Input = props => {
       style={style}
       ref={reference}
     >
-      {label && <p className='label' style={{ width: props.labelWidth || 'auto' }}>{label}</p>}
+      {label && <p className="label" style={{ width: props.labelWidth || 'auto' }}>{label}</p>}
 
       {
         before
@@ -40,7 +41,7 @@ export const Input = props => {
           className={
             ComponentHelper.composeClass(
               'before',
-              { use: 'before-clickable', if: props.beforeOnClick }
+              props.beforeOnClick && 'before-clickable'
             )
           }
           onClick={props.beforeOnClick}>{before}
@@ -48,7 +49,7 @@ export const Input = props => {
       }
 
       <input
-        type='text'
+        type="text"
         placeholder={props.placeholder}
         readOnly={readOnly}
         value={value}
@@ -63,7 +64,7 @@ export const Input = props => {
           className={
             ComponentHelper.composeClass(
               'after',
-              { use: 'after-clickable', if: props.afterOnClick }
+              props.afterOnClick && 'after-clickable'
             )
           }
           onClick={props.afterOnClick}>{after}</div>

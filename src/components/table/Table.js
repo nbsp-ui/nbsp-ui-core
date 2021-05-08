@@ -38,6 +38,7 @@ export const Table = props => {
   })), props.data)
 
   const className = ComponentHelper.composeClass('nbsp-ui-table', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
   return (

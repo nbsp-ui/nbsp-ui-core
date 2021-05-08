@@ -14,7 +14,7 @@ import { YearMonthPicker } from './components/YearMonthPicker'
  * @constructor
  */
 export const Calendar = props => {
-  const { className: inClassName, value = new Date } = props
+  const { value = new Date } = props
 
   const [{ viewedDate, selectedDate, yearMonthPickerVisible }, patchState] = ReactHelper.usePatchedState({
     viewedDate: new Date(value.getFullYear(), value.getMonth()),
@@ -29,7 +29,7 @@ export const Calendar = props => {
   }
   const toggleYearMonthPickerVisibility = () => patchState({ yearMonthPickerVisible: !yearMonthPickerVisible })
 
-  const className = ComponentHelper.composeClass('nbsp-ui-calendar', inClassName)
+  const className = ComponentHelper.composeClass('nbsp-ui-calendar', props.className)
   const style = ComponentHelper.composeStyle(props)
 
   const currentDate = new Date()
