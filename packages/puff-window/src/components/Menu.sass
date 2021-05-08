@@ -1,0 +1,44 @@
+@import src/values
+
+.nbsp-ui-pw-menu
+  position: relative
+  overflow: hidden
+  transition: margin $duration-bar-expand
+
+  & > .👆
+    position: absolute
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: $size-bar-tile
+    height: $size-bar-tile
+    pointer-events: none
+
+    & > div:nth-child(1)
+      flex-grow: 1
+
+    & > div:nth-child(2)
+      width: calc(#{$size-bar-tile} - 1em)
+      height: .2em
+      background-color: $color-accent
+
+  & > .🌶
+    display: flex
+    border-radius: $border-radius
+
+    & > div:nth-child(2)
+      flex-grow: 1
+
+    & > div:not(:nth-child(2))
+      width: $size-bar-tile
+      height: $size-bar-tile
+      flex-shrink: 0
+      display: flex
+      justify-content: center
+      align-items: center
+      color: hsl(0, 0%, 100%)
+      cursor: pointer
+
+  &-expanded
+    margin: 0 1em 1em
+    background-color: hsla(0, 0%, 0%, .24)

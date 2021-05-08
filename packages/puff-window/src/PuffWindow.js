@@ -1,7 +1,7 @@
 import { ComponentHelper } from '@nbsp-ui/nbsp-ui-core'
 import { h } from 'preact'
 import './PuffWindow.sass'
-import { PuffWindowBar } from './PuffWindowBar'
+import { Bar } from './components/Bar'
 
 /**
  * @param {PuffWindowProps} props
@@ -9,8 +9,10 @@ import { PuffWindowBar } from './PuffWindowBar'
  * @constructor
  */
 export const PuffWindow = props => {
+  const { title, icon, notifications } = props
+
   const className = ComponentHelper.composeClass(
-    'ui-puff-window'
+    'nbsp-ui-pw'
   )
 
   const style = {
@@ -23,9 +25,10 @@ export const PuffWindow = props => {
       className={className}
       style={style}
     >
-      <PuffWindowBar
-        title={props.title}
-        icon={props.icon}
+      <Bar
+        title={title}
+        icon={icon}
+        notifications={notifications}
       />
       <div className="content">
 

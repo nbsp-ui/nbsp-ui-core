@@ -1,0 +1,26 @@
+@import src/values
+
+.nbsp-ui-pw-pager
+  flex-grow: .6
+  opacity: 0
+  overflow: hidden
+  transition: flex-grow $duration-bar-expand, opacity $duration-bar-expand
+
+  & > .🌶
+    width: $width-bar-expand
+    height: 100%
+    display: flex
+    transition: transform $duration-bar-expand
+
+    & > div
+      display: flex
+      flex-direction: column
+      width: $width-bar-expand
+      height: 100%
+      padding: 1em
+      flex-shrink: 0
+      box-sizing: border-box
+
+  &-expanded
+    flex-grow: 1
+    opacity: 1
