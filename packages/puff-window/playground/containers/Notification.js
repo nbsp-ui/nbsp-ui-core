@@ -3,18 +3,20 @@ import './Notification.sass'
 
 /**
  * @param props
- * @param {PuffWindowNotification} props.notification
+ * @param {WindowNotification} props.notification
  * @returns {*}
  * @constructor
  */
 export const Notification = ({ notification }) => {
+  const { title, message } = notification
+
   return (
-    <div className="nbsp-ui-pw-notification">
+    <div className="ui-window-notification">
       <p className="title">
-        {notification.title}
+        {title}
       </p>
       <p className="message">
-        {notification.message}
+        {message}
       </p>
     </div>
   )

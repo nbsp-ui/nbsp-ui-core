@@ -5,20 +5,19 @@ import './Bar.sass'
 import { Control } from './Control'
 import { Header } from './Header'
 import { Menu } from './Menu'
-import { MenuSelection } from './MenuSelection'
 import { Pager } from './Pager'
 
 /**
  * @param props
  * @param {string} props.title
  * @param {string} props.icon
- * @param {PuffWindowNotification[]} props.notifications
+ * @param {Page[]} props.pages
  * @returns {*}
  * @constructor
  */
-export const Bar = ({ title, icon, notifications }) => {
+export const Bar = ({ title, icon, pages }) => {
   const [expanded, setExpanded] = useState(false)
-  const [selection, setSelection] = useState(MenuSelection.Information)
+  const [selection, setSelection] = useState(0)
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-pw-bar',
@@ -36,13 +35,14 @@ export const Bar = ({ title, icon, notifications }) => {
         />
         <Menu
           expanded={expanded}
+          pages={pages}
           selection={selection}
           onSelectionChange={setSelection}
         />
         <Pager
           expanded={expanded}
+          pages={pages}
           selection={selection}
-          notifications={notifications}
         />
         <Control
           expanded={expanded}

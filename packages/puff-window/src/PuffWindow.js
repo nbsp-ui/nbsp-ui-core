@@ -9,7 +9,7 @@ import { Bar } from './components/Bar'
  * @constructor
  */
 export const PuffWindow = props => {
-  const { title, icon, notifications } = props
+  const { title, icon, pages } = props
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-pw'
@@ -28,7 +28,7 @@ export const PuffWindow = props => {
       <Bar
         title={title}
         icon={icon}
-        notifications={notifications}
+        pages={pages}
       />
       <div className="content">
 

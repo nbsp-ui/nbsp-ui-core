@@ -5,7 +5,12 @@ export interface PuffWindowProps extends BaseProps, Containable {
   title?: string
   icon?: string
 
-  notifications?: PuffWindowNotification[]
+  pages?: Page[]
+}
+
+export interface Page {
+  icon?: any
+  content?: any
 }
 
 export interface PuffWindowNotification {

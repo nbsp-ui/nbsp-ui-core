@@ -1,27 +1,21 @@
-import { ComponentHelper, FAIcon } from '@nbsp-ui/nbsp-ui-core'
+import { ComponentHelper } from '@nbsp-ui/nbsp-ui-core'
 import { h } from 'preact'
 import './Menu.sass'
-import { MenuSelection } from './MenuSelection'
 
-const composeLeftOffset = selection => ({
-  left: 0,
+const composeOffset = selection => ({
   transform: `translateX(${selection * 100}%)`
-})
-
-const composeRightOffset = selection => ({
-  right: 0,
-  transform: `translateX(-${(2 - selection) * 100}%)`
 })
 
 /**
  * @param props
  * @param {boolean} props.expanded
+ * @param {Page[]} props.pages
  * @param {number} props.selection
  * @param {Function} props.onSelectionChange
  * @returns {*}
  * @constructor
  */
-export const Menu = ({ expanded, selection, onSelectionChange }) => {
+export const Menu = ({ expanded, pages, selection, onSelectionChange }) => {
   const className = ComponentHelper.composeClass(
     'nbsp-ui-pw-menu',
     { use: 'nbsp-ui-pw-menu-expanded', if: expanded }
@@ -32,29 +26,20 @@ export const Menu = ({ expanded, selection, onSelectionChange }) => {
       <div
         className="👆"
         style={{
-          ...selection === 0 ? composeLeftOffset(selection) : composeRightOffset(selection)
+          ...composeOffset(selection)
         }}
       >
         <div/>
         <div/>
       </div>
       <div className="🌶">
-        <div
-          onClick={() => onSelectionChange(MenuSelection.Notifications)}
-        >
-          <FAIcon icon="far fa-bell"/>
-        </div>
-        <div/>
-        <div
-          onClick={() => onSelectionChange(MenuSelection.Settings)}
-        >
-          <FAIcon icon="fas fa-cog"/>
-        </div>
-        <div
-          onClick={() => onSelectionChange(MenuSelection.Information)}
-        >
-          <FAIcon icon="fas fa-info"/>
-        </div>
+        {pages.map((page, index) => (
+          <div
+            onClick={() => onSelectionChange(index)}
+          >
+            {page.icon}
+          </div>
+        ))}
       </div>
     </div>
   )
