@@ -1,9 +1,7 @@
 import { h } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
-import { CompatAlign } from '../../utils/CompatAlign'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import './Lollipop.scss'
-import { HBox } from '../box-h/HBox'
 
 export const LollipopType = {
   Default: 0,
@@ -76,7 +74,7 @@ export const Lollipop = props => {
 
   return (
     <div className={className} style={style} onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      {props.title && <HBox vAlign={CompatAlign.Center}><span>{props.title}</span></HBox>}
+      {props.title && <div><span>{props.title}</span></div>}
       {props.description && <div><p>{props.description}</p></div>}
       {props.indicated && <div style={props.indefinite ? {} : { width: `${indicatorWidth}%` }}/>}
     </div>
