@@ -5,3 +5,4 @@ packages
 .babelrc
 .gitignore
 webpack.config.js
+webpack.config.base.js
