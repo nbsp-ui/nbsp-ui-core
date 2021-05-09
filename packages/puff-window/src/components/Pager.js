@@ -17,7 +17,7 @@ const composeOffset = selection => ({
 export const Pager = ({ expanded, selection, pages }) => {
   const className = ComponentHelper.composeClass(
     'nbsp-ui-pw-pager',
-    { use: 'nbsp-ui-pw-pager-expanded', if: expanded }
+    expanded && 'nbsp-ui-pw-pager-expanded'
   )
 
   return (

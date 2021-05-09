@@ -1,6 +1,5 @@
-import { ComponentHelper } from '@nbsp-ui/nbsp-ui-core'
+import { ComponentHelper, ReactHelper } from '@nbsp-ui/nbsp-ui-core'
 import { h } from 'preact'
-import { useState } from 'preact/hooks'
 import './Bar.sass'
 import { Control } from './Control'
 import { Header } from './Header'
@@ -12,32 +11,44 @@ import { Pager } from './Pager'
  * @param {string} props.title
  * @param {string} props.icon
  * @param {Page[]} props.pages
+ * @param {Function} props.onCloseClick
+ * @param {Function} props.onOrientClick
+ * @param {Function} props.onMouseDown
  * @returns {*}
  * @constructor
  */
-export const Bar = ({ title, icon, pages }) => {
-  const [expanded, setExpanded] = useState(false)
-  const [selection, setSelection] = useState(0)
+export const Bar = ({ title, icon, pages, onCloseClick, onOrientClick, onMouseDown }) => {
+  const [{ expanded, selection }, patchState] = ReactHelper.usePatchedState({
+    expanded: false,
+    selection: 0,
+  })
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-pw-bar',
-    { use: 'nbsp-ui-pw-bar-expanded', if: expanded }
+    expanded && 'nbsp-ui-pw-bar-expanded'
   )
 
   return (
-    <div className={className}>
+    <div
+      className={className}
+      onMouseDown={onMouseDown}
+    >
       <div className="☂">
         <Header
           title={title}
           icon={icon}
           expanded={expanded}
-          onClick={() => setExpanded(!expanded)}
+          onClick={() => patchState({
+            expanded: !expanded
+          })}
         />
         <Menu
           expanded={expanded}
           pages={pages}
           selection={selection}
-          onSelectionChange={setSelection}
+          onSelectionChange={selection => patchState({
+            selection
+          })}
         />
         <Pager
           expanded={expanded}
@@ -46,6 +57,8 @@ export const Bar = ({ title, icon, pages }) => {
         />
         <Control
           expanded={expanded}
+          onCloseClick={onCloseClick}
+          onOrientClick={onOrientClick}
         />
         <div className="⬅"/>
       </div>

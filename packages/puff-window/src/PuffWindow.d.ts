@@ -6,17 +6,14 @@ export interface PuffWindowProps extends BaseProps, Containable {
   icon?: string
 
   pages?: Page[]
+
+  onClose?: () => any
+  onOrient?: () => any
 }
 
 export interface Page {
   icon?: any
   content?: any
-}
-
-export interface PuffWindowNotification {
-  id?: string
-  title?: string
-  message?: string
 }
 
 export const PuffWindow: FunctionComponent<PuffWindowProps>

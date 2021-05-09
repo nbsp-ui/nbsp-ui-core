@@ -3,7 +3,13 @@
   left: 0
   top: 0
   display: flex
+  opacity: 1
   background-color: hsl(0, 0%, 100%)
+  transition: opacity .2s
 
   & > .content
     flex-grow: 1
+
+  &-closed
+    opacity: 0
+    pointer-events: none

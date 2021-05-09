@@ -18,7 +18,7 @@ const composeOffset = selection => ({
 export const Menu = ({ expanded, pages, selection, onSelectionChange }) => {
   const className = ComponentHelper.composeClass(
     'nbsp-ui-pw-menu',
-    { use: 'nbsp-ui-pw-menu-expanded', if: expanded }
+    expanded && 'nbsp-ui-pw-menu-expanded'
   )
 
   return (

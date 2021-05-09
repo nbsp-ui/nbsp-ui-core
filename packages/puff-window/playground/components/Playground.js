@@ -3,6 +3,7 @@ import { h } from 'preact'
 import { useState } from 'preact/hooks'
 import { PuffWindow } from '../../src/PuffWindow'
 import { NotificationPage } from '../containers/NotificationPage'
+import './Playground.sass'
 
 export const Playground = () => {
   const [notifications] = useState([

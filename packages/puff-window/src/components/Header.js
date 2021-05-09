@@ -14,7 +14,7 @@ import './Header.sass'
 export const Header = ({ title, icon, expanded, onClick }) => {
   const className = ComponentHelper.composeClass(
     'nbsp-ui-pw-header',
-    { use: 'nbsp-ui-pw-header-expanded', if: expanded }
+    expanded && 'nbsp-ui-pw-header-expanded'
   )
 
   return (
