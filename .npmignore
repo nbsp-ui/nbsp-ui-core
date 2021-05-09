@@ -1,6 +1,7 @@
 .github
 src
-example
+playground
+packages
 .babelrc
 .gitignore
 webpack.config.js
