@@ -1,4 +1,4 @@
-import { FunctionComponent, h, JSX } from 'preact'
+import { FunctionComponent } from 'preact'
 import { BaseProps } from '../types'
 
 export interface TableItem {
@@ -8,9 +8,9 @@ export interface TableItem {
 
 export interface TableProps extends BaseProps {
     columns?: TableColumn[]
-    data?: TableItem[] | {}[]
+    data?: TableItem[]
     multiselect?: boolean
-    onItemsSelect?: (selected: TableItem[], all: TableItem[]) => void
+    onItemsSelect?: (items: { selected: TableItem[], all: TableItem[] }) => void
 
     headerHeight?: number
     footerHeight?: number

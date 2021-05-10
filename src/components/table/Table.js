@@ -27,7 +27,7 @@ export const Table = props => {
   const selectItem = item => {
     !props.multiselect && items.current.forEach(item => item._selected = false)
     item._selected = !item._selected
-    props.onItemsSelect && props.onItemsSelect(items.current.filter(item => item._selected), items.current)
+    props.onItemsSelect && props.onItemsSelect({ selected: items.current.filter(item => item._selected), all: items.current})
     refresh()
   }
 
