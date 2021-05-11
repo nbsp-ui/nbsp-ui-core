@@ -98,7 +98,7 @@ export const PuffWindow = props => {
         }}
       />
       <div className="content">
-
+        {props.children}
       </div>
     </div>
   )
