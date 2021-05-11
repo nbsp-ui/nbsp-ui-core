@@ -39,6 +39,7 @@ export const TablePanel = () => {
       <Table
         headerHeight={32}
         footerHeight={32}
+        height={300}
         margin={{ bottom: 8 }}
         onItemsSelect={({ selected }) => personSelectedLollipop(selected[0].person)}
         columns={[

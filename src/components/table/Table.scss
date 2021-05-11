@@ -72,6 +72,23 @@
   }
 
   & > .rows {
+    &::-webkit-scrollbar {
+      width: 0.3em;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $border-color;
+      border-radius: $border-radius;
+
+      &:hover {
+        background-color: darken($border-color, 10%);
+      }
+    }
+
     & > .row:not(:last-child) > div {
       border-bottom: 1px solid #EEEEEE;
     }

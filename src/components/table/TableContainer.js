@@ -10,8 +10,8 @@ import { TableRow } from './TableRow'
  * @returns {*}
  * @constructor
  */
-export const TableContainer = ({ columns, items, onItemClick }) =>
-  <HBox className="rows" vertical>
+export const TableContainer = ({ columns, items, style, onItemClick }) =>
+  <HBox className="rows" style={style} vertical>
     {
       items.map((item, index) =>
         <TableRow
