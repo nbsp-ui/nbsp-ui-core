@@ -1,7 +1,7 @@
 import { FAIcon } from '@nbsp-ui/nbsp-ui-core'
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
-import { PuffWindow } from '../../src/PuffWindow'
+import { PuffWindow } from '../../src'
 import { NotificationPage } from '../containers/NotificationPage'
 import './Playground.sass'
 
