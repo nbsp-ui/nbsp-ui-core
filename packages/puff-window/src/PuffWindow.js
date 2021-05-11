@@ -16,7 +16,7 @@ const Orientations = {
  * @constructor
  */
 export const PuffWindow = props => {
-  const { width, height, title, icon, pages } = props
+  const { width, height, title, icon, pages = [] } = props
 
   const [{ closed, orientation }, patch] = ReactHelper.usePatchedState({
     closed: false,

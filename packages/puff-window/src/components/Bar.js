@@ -20,7 +20,7 @@ import { Pager } from './Pager'
 export const Bar = ({ title, icon, pages, onCloseClick, onOrientClick, onMouseDown }) => {
   const [{ expanded, selection }, patchState] = ReactHelper.usePatchedState({
     expanded: false,
-    selection: 0,
+    selection: 0
   })
 
   const className = ComponentHelper.composeClass(
@@ -33,7 +33,7 @@ export const Bar = ({ title, icon, pages, onCloseClick, onOrientClick, onMouseDo
       className={className}
       onMouseDown={onMouseDown}
     >
-      <div className="☂">
+      <div className="☂️">
         <Header
           title={title}
           icon={icon}
@@ -42,25 +42,32 @@ export const Bar = ({ title, icon, pages, onCloseClick, onOrientClick, onMouseDo
             expanded: !expanded
           })}
         />
-        <Menu
-          expanded={expanded}
-          pages={pages}
-          selection={selection}
-          onSelectionChange={selection => patchState({
-            selection
-          })}
-        />
-        <Pager
-          expanded={expanded}
-          pages={pages}
-          selection={selection}
-        />
+        {!!pages.length && (
+          <Menu
+            expanded={expanded}
+            pages={pages}
+            selection={selection}
+            onSelectionChange={selection => patchState({
+              selection
+            })}
+          />
+        )}
+        {!!pages.length && (
+          <Pager
+            expanded={expanded}
+            pages={pages}
+            selection={selection}
+          />
+        )}
+        {!pages.length && (
+          <div className="➡️"/>
+        )}
         <Control
           expanded={expanded}
           onCloseClick={onCloseClick}
           onOrientClick={onOrientClick}
         />
-        <div className="⬅"/>
+        <div className="⬅️"/>
       </div>
     </div>
   )
