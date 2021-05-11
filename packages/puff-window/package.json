@@ -1,5 +1,5 @@
 {
-  "name": "puff-window",
+  "name": "@nbsp-ui/nbsp-ui-puff-window",
   "version": "0.0.1",
   "main": "lib/index.js",
   "license": "MIT",
