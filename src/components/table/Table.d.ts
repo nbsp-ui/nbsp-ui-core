@@ -10,7 +10,11 @@ export interface TableProps extends BaseProps {
     columns?: TableColumn[]
     data?: TableItem[]
     multiselect?: boolean
+
+    filter?: (item: TableItem) => boolean
+
     onItemsSelect?: (items: { selected: TableItem[], all: TableItem[] }) => void
+    onItemClick?: (item: TableItem) => void
 
     headerHeight?: number
     footerHeight?: number

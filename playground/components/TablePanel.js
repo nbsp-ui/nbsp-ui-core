@@ -1,14 +1,31 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
-import { Button, CompatButtonType, FAIcon, HBox, Label, Table, VBox } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 import { MainStorage } from '../storage/MainStorage'
-import { LollipopType } from '../../src'
 import { useLollipop } from '../../src/components/lollipop/LollipopProvider'
+import {
+  Button,
+  CompatButtonType,
+  LollipopType,
+  FAIcon,
+  HBox,
+  Input,
+  Label,
+  Table,
+  VBox
+} from '../../src'
 
 export const TablePanel = () => {
   const [persons, setPersons] = useState(MainStorage.getPersons())
+  const [searchValue, setSearchValue] = useState('')
+
   const lollipop = useLollipop()
+  const personSelectedLollipop = person => lollipop({
+    type: LollipopType.Success,
+    title: 'Person selected',
+    description: `You have selected the user ${person}`,
+    indicated: true
+  })
 
   return (
     <VBox padding={8}>
@@ -23,12 +40,7 @@ export const TablePanel = () => {
         headerHeight={32}
         footerHeight={32}
         margin={{ bottom: 8 }}
-        onItemsSelect={((selected) => lollipop({
-          type: LollipopType.Success,
-          title: 'Person selected',
-          description: `You have selected the user ${selected[0].person}`,
-          indicated: true
-        }))}
+        onItemsSelect={({ selected }) => personSelectedLollipop(selected[0].person)}
         columns={[
           {
             width: 40,
@@ -59,7 +71,18 @@ export const TablePanel = () => {
           }
         ]}
         data={persons}
+        filter={item => item.person.includes(searchValue)}
       />
+      <HBox padding={8}>
+        <Input
+          placeholder="Search for person"
+          width={200}
+          margin={{ right: 4 }}
+          after={<FAIcon icon={'fas fa-search'} fontSize={16} color='#757575' />}
+          value={searchValue}
+          onChange={({ currentTarget }) => setSearchValue(currentTarget.value)}
+        />
+      </HBox>
     </VBox>
   )
 }

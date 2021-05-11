@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { useRef } from 'preact/hooks'
+import { useEffect, useRef } from 'preact/hooks'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
@@ -23,6 +23,10 @@ export const Table = props => {
   })))
 
   const items = useRef([])
+  const appliedItems = useRef([])
+
+  const filter = items => props.filter ? items.filter(props.filter) : items
+  const applyItems = items => appliedItems.current = filter(items)
 
   const selectItem = item => {
     !props.multiselect && items.current.forEach(item => item._selected = false)
@@ -31,11 +35,16 @@ export const Table = props => {
     refresh()
   }
 
-  ReactHelper.useDifference(() => items.current = props.data.map(item => ({
+  useEffect(() => {
+    applyItems(items.current)
+    refresh()
+  }, [props.filter, items.current])
+
+  ReactHelper.useDifference(() => applyItems(items.current = props.data.map(item => ({
     ...item,
     _id: CompatUtils.uid(),
     _selected: item._selected || false
-  })), props.data)
+  }))), props.data)
 
   const className = ComponentHelper.composeClass('nbsp-ui-table', props.className)
 
@@ -48,7 +57,7 @@ export const Table = props => {
     >
       <TableHeader
         columns={columns.current}
-        items={items.current}
+        items={appliedItems.current}
         headerHeight={props.headerHeight}
         onRefreshRequest={() => {
           refresh()
@@ -62,22 +71,25 @@ export const Table = props => {
             _: () => column._sortedByAsc = true
           })()
 
-          column && items.current.sort((a, b) => column._sortedByAsc ? column.sort(a, b) : -column.sort(a, b))
+          column && appliedItems.current.sort((a, b) => column._sortedByAsc ? column.sort(a, b) : -column.sort(a, b))
 
           refresh()
         }}
       />
       <TableContainer
         columns={columns.current}
-        items={items.current}
-        onItemClick={selectItem}
+        items={appliedItems.current}
+        onItemClick={item => {
+          selectItem(item)
+          props.onItemClick && props.onItemClick(item)
+        }}
       />
       {
         columns.current.find(column => column.footer)
         &&
         <TableFooter
           columns={columns.current}
-          items={items.current}
+          items={appliedItems.current}
           footerHeight={props.footerHeight}
         />
       }
