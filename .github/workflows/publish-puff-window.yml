@@ -1,4 +1,4 @@
-name: publish-core
+name: publish-puff-window
 
 on: workflow_dispatch
 
@@ -12,7 +12,8 @@ jobs:
           node-version: 15
           registry-url: https://npm.pkg.github.com/
       - run: npm install
-      - run: npm run lib:core
+      - run: npm run lib:puff-window
+      - run: cd packages/puff-window
       - run: ls
       - run: npm publish
         env:
