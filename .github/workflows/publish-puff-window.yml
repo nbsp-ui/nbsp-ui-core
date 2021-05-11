@@ -5,19 +5,18 @@ on: workflow_dispatch
 jobs:
   main:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./packages-puff-window
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 15
           registry-url: https://npm.pkg.github.com/
-      - run: |
-          npm install
-          npm run lib:puff-window
-      - name: Publish sub-package
-        working-directory: ./packages/puff-window
-        run: |
-          ls
-          npm publish
+      - run: npm install
+      - run: npm run lib
+      - run: ls
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
