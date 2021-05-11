@@ -17,6 +17,7 @@ jobs:
       - run: npm install
       - run: npm run lib
       - run: ls
+      - run: rm .npmrc
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
