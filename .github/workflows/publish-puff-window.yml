@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./packages-puff-window
+        working-directory: ./packages/puff-window
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
