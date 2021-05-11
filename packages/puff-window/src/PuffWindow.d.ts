@@ -2,6 +2,7 @@ import { BaseProps, Containable } from '@nbsp-ui/nbsp-ui-core'
 import { FunctionComponent } from 'preact'
 
 export interface PuffWindowProps extends BaseProps, Containable {
+  depth?: number
   title?: string
   icon?: string
 

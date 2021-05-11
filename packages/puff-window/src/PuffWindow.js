@@ -1,4 +1,4 @@
-import { ComponentHelper, ReactHelper } from '@nbsp-ui/nbsp-ui-core'
+import { ComponentHelper, Environment, ReactHelper } from '@nbsp-ui/nbsp-ui-core'
 import { h } from 'preact'
 import { useRef } from 'preact/hooks'
 import { Bar } from './components/Bar'
@@ -16,7 +16,7 @@ const Orientations = {
  * @constructor
  */
 export const PuffWindow = props => {
-  const { width, height, title, icon, pages = [] } = props
+  const { id, width, height, depth, title, icon, pages = [] } = props
 
   const [{ closed, orientation }, patch] = ReactHelper.usePatchedState({
     closed: false,
@@ -48,7 +48,8 @@ export const PuffWindow = props => {
     })}`,
     top: `${match(orientation, {
       [Orientations.Max]: 0
-    })}px`
+    })}px`,
+    zIndex: depth || Environment.getDepth()
   }
 
   const handleMouseDown = event => {
@@ -75,6 +76,7 @@ export const PuffWindow = props => {
     <div
       ref={element}
       className={className}
+      id={id}
       style={style}
     >
       <Bar
