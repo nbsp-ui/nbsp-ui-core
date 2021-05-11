@@ -1,10 +1,17 @@
 {
   "name": "puff-window",
   "version": "0.0.1",
+  "main": "lib/index.js",
   "license": "MIT",
+  "repository": {
+    "url": "git://github.com/nbsp-ui/nbsp-ui-core.git"
+  },
   "scripts": {
     "playground": "npx webpack s --mode development",
     "lib": "npx babel src --out-dir lib --copy-files"
+  },
+  "peerDependencies": {
+    "preact": "10.x"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
