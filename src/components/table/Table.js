@@ -79,7 +79,6 @@ export const Table = props => {
       <TableContainer
         columns={columns.current}
         items={appliedItems.current}
-        style={{ ...(props.height ? { overflowY: 'overlay' } : {}), ...(props.width ? { overflowX: 'overlay' } : {}) }}
         onItemClick={item => {
           selectItem(item)
           props.onItemClick && props.onItemClick(item)
