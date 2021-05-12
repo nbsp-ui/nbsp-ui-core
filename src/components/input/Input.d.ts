@@ -14,6 +14,7 @@ export interface InputProps extends BaseProps {
     afterOnClick?: (event: MouseEvent) => void
     onChange?: (event: MouseEvent) => void
     onBlur?: (event: FocusEvent) => void
+    onInputClick?: (event: MouseEvent) => void
 }
 
 export const Input: FunctionComponent<InputProps>

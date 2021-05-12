@@ -55,6 +55,7 @@ export const Input = props => {
         value={value}
         onChange={props.onChange}
         onBlur={props.onBlur}
+        onClick={props.onInputClick}
       />
 
       {

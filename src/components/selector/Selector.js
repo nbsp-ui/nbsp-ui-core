@@ -83,6 +83,10 @@ export const Selector = props => {
         fit={fit}
         readOnly
         placeholder={placeholder}
+        onInputClick={() => {
+          pickerDisplayed.current = true
+          refresh()
+        }}
         after={<FAIcon margin={{ top: 3 }}
                        icon={pickerDisplayed.current ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}/>}
         afterOnClick={() => {
