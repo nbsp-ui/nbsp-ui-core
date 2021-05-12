@@ -18,6 +18,7 @@ export interface TableProps extends BaseProps {
 
     headerHeight?: number
     footerHeight?: number
+    rowHeight?: number
 }
 
 export interface TableColumn {
