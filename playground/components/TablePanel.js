@@ -39,7 +39,7 @@ export const TablePanel = () => {
       <Table
         headerHeight={32}
         footerHeight={32}
-        height={300}
+        height={600}
         margin={{ bottom: 8 }}
         onItemsSelect={({ selected }) => personSelectedLollipop(selected[0].person)}
         columns={[
@@ -72,6 +72,7 @@ export const TablePanel = () => {
           }
         ]}
         data={persons}
+        selectedIds={['1', '2', '8', '9', '12', '18', '24', '36', '40']}
         filter={item => item.person.includes(searchValue)}
       />
       <HBox padding={8}>

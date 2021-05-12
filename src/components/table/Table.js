@@ -46,6 +46,12 @@ export const Table = props => {
     _selected: item._selected || false
   }))), props.data)
 
+  ReactHelper.useDifference(() => {
+    items.current.forEach(item => item._selected = false)
+    props.selectedIds && items.current.forEach(item => props.selectedIds.includes(item.id) && (item._selected = true))
+    props.onItemsSelect && props.onItemsSelect({ selected: items.current.filter(item => item._selected), all: items.current})
+  }, props.selectedIds)
+
   const className = ComponentHelper.composeClass('nbsp-ui-table', props.className)
 
   const style = ComponentHelper.composeStyle(props)

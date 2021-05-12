@@ -9,6 +9,7 @@ export interface TableItem {
 export interface TableProps extends BaseProps {
     columns?: TableColumn[]
     data?: TableItem[]
+    selectedIds?: string[]
     multiselect?: boolean
 
     filter?: (item: TableItem) => boolean
