@@ -37,12 +37,9 @@ export const Dialog = props => {
       zIndex: Environment.getDepth()
     }}>
       <div className={'overlay'} onClick={props.onOverlayClick}/>
-      <div className={'content'} style={{ width: props.width, height: props.height }}>{props.children}</div>
+      <div className={'content'} style={{ ...(props.width ? { width: props.width } : {}), ...(props.height ? { height: props.height } : {}) }}>
+        {props.children}
+      </div>
     </div>
   )
-}
-
-Dialog.defaultProps = {
-  width: '25%',
-  height: '25%'
 }
