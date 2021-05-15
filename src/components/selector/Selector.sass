@@ -1,0 +1,88 @@
+@import ../colors
+@import ../animations
+@import ../values
+@import ../atomic
+
+$height: 2.5em
+
+.nbsp-ui-selector
+  display: flex
+  align-items: center
+  position: relative
+  height: $height
+  font-family: "Roboto", sans-serif
+  user-select: none
+  cursor: pointer
+
+  .divider
+    flex-shrink: 0
+    width: 100%
+    height: 1px
+    background-color: #E0E0E0
+
+  & > input
+    width: 100%
+    height: 100%
+    padding: .2em .8em
+    border: none
+    outline: none
+    border-top-left-radius: $border-radius
+    border-bottom-left-radius: $border-radius
+    box-sizing: border-box
+    font-size: 1.1em
+    color: $light-text-color
+    background-color: $background-smooth
+    cursor: pointer
+
+    &::placeholder
+      color: $placeholder-light
+
+  & > .icon
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 4em
+    height: 100%
+    border-top-right-radius: $border-radius
+    border-bottom-right-radius: $border-radius
+    background-color: $background-smooth
+
+    svg
+      width: 1.2em
+      height: 1.2em
+
+      path
+        stroke: $text-light
+
+  & > .popup
+    +shadow-light
+    display: none
+    position: absolute
+    top: calc(#{$height} + .4em)
+    width: 100%
+    height: 16em
+    background-color: $background-light
+
+    & > .header
+      +layout-toolbar
+
+    & > .content
+      +layout-container-v
+      +with-selectable-rows
+
+    &-showed
+      +layout-flex-column
+
+  &-opened
+    & > input
+      +background-color-accent
+      color: $text-dark
+
+      &::placeholder
+        color: $placeholder-dark
+
+    & > .icon
+      +background-color-accent
+
+      svg path
+        stroke: $text-dark

@@ -9,7 +9,6 @@ export interface SelectorProps extends BaseProps {
     placeholder?: string
     fontSize?: number
     multiselect?: boolean
-    allSelectable?: boolean
     popupHeight?: number | string
     popupWidth?: number | string
     listHeight?: number | string

@@ -4,8 +4,6 @@ import { Button, CompatButtonType, DatePicker, FAIcon, HBox, Input, Label, Selec
 import { CompatAlign } from '../../src/utils/CompatAlign'
 import { MainStorage } from '../storage/MainStorage'
 
-window['testHook'] = {}
-
 export const FieldsPanel = () => {
   const [countries, setCountries] = useState(MainStorage.getCountries())
   const [selectedCountries] = useState(['Angola'])
@@ -55,7 +53,6 @@ export const FieldsPanel = () => {
         }
         onItemsSelect={items => console.log(items)}
         multiselect
-        allSelectable
         search={(item, value) => item.value.toLowerCase().includes(value.toLowerCase())}
         data={countries}
         selectedValues={selectedCountries}
@@ -73,7 +70,6 @@ export const FieldsPanel = () => {
       />
       <Label
         value="Invalid request"
-        hook={window['testHook']}
       />
     </VBox>
   )

@@ -12,6 +12,11 @@ export const ReactHelper = {
     return [state, value => setState({ ...state, ...value })]
   },
 
+  useDispatchedState: (reducer, initialValue) => {
+    const [state, setState] = useState(initialValue)
+    return [state, (action, data) => setState({ ...state, ...action(state, data) })]
+  },
+
   useEffectGlobalEventListener: (event, listener) => useEffect(() => (document.addEventListener(event, listener) || true) && (() => document.removeEventListener(event, listener)), []),
 
   useRefEventListener: listener => {
@@ -52,5 +57,5 @@ export const ReactHelper = {
     ReactHelper.useEffectGlobalEventListener(event, event => ref.current(event))
   },
 
-  expose: () => console.log("I'm gonna kick your ass!")
+  expose: () => console.log('I\'m gonna kick your ass!')
 }

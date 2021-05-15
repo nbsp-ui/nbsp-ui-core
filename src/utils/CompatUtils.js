@@ -92,7 +92,36 @@ export const CompatUtils = {
      * @param {number} rectHeight
      * @returns {boolean}
      */
-    pointToRect: (x, y, rectX, rectY, rectWidth, rectHeight) => x >= rectX && x <= rectX + rectWidth && y >= rectY && y <= rectY + rectHeight,
+    pointToRect: (x, y, rectX, rectY, rectWidth, rectHeight) =>
+      x >= rectX
+      && x <= rectX + rectWidth
+      && y >= rectY
+      && y <= rectY + rectHeight,
+
+    /**
+     * @param {number} x
+     * @param {number} y
+     * @param {DOMRect} rect
+     * @param {number} indent
+     * @returns {boolean}
+     */
+    pointToElementRectWithIndent: (x, y, rect, indent) =>
+      x >= rect.x - indent
+      && x <= rect.x + rect.width + indent
+      && y >= rect.y - indent
+      && y <= rect.y + rect.height + indent,
+
+    /**
+     * @param {number} x
+     * @param {number} y
+     * @param {DOMRect} rect
+     * @returns {boolean}
+     */
+    pointToElementRect: (x, y, rect) =>
+      x >= rect.x
+      && x <= rect.x + rect.width
+      && y >= rect.y
+      && y <= rect.y + rect.height
   },
 
   other: {
@@ -136,10 +165,12 @@ export const CompatUtils = {
    * @returns {string}
    */
   getSizeFromBytes: (a, b = 2) => {
-    if (0 === a) return "0 Bytes"
+    if (0 === a) return '0 Bytes'
     const c = 0 > b ? 0 : b, d = Math.floor(Math.log(a) / Math.log(1024))
-    return parseFloat((a / Math.pow(1024,d)).toFixed(c)) + " " + ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"][d]
-  }
+    return parseFloat((a / Math.pow(1024, d)).toFixed(c)) + ' ' + ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][d]
+  },
+
+  empx: value => parseFloat(getComputedStyle(document.body).fontSize) * value
 }
 
 /**

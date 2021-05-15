@@ -1,6 +1,7 @@
 // noinspection JSUnusedGlobalSymbols
 
 import { CompatAlign } from './CompatAlign'
+import { ReactHelper } from './ReactHelper'
 
 export const ComponentHelper = {
   composeClass: (...items) => items.filter(item => item).join(' '),

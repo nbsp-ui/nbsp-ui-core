@@ -1,0 +1,58 @@
+@import colors
+
+/* Sizes */
+
+@mixin h-3
+  height: 3em
+
+/* Colors */
+
+@mixin background-color-accent
+  background-color: $background-accent
+
+@mixin shadow-light
+  box-shadow: 0 .2em .8em 0 $shadow-light
+
+/* Layouts */
+
+@mixin flex
+  display: flex
+
+@mixin flex-v-center
+  align-items: center
+
+/* High level layouts */
+
+@mixin layout-flex-row
+  display: flex
+  flex-direction: row
+  align-items: center
+
+@mixin layout-flex-column
+  display: flex
+  flex-direction: column
+
+@mixin layout-toolbar
+  display: flex
+  flex-direction: row
+  align-items: center
+  padding: .6em
+
+@mixin layout-container-v
+  display: flex
+  flex-direction: column
+  overflow-y: auto
+
+/* Behaviours */
+
+@mixin with-selectable-rows
+  & > div
+    border-left: 2px solid transparent
+    cursor: pointer
+
+    &:hover
+      background-color: $background-hover-light
+
+  & > .selected
+    border-left-color: $accent
+    background-color: $background-select-light

@@ -1,40 +1,17 @@
 import { h } from 'preact'
 import { useRef } from 'preact/hooks'
-import { CompatAlign } from '../../utils/CompatAlign'
+import ChevronDownIcon from '../../icons/chevron-down.svg'
+import ChevronUpIcon from '../../icons/chevron-up.svg'
+import { Environment } from '../../systems/Environment'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
-import { HBox } from '../box-h/HBox'
 import { Button, CompatButtonType } from '../button/Button'
-import { VDivider } from '../divider-v/VDivider'
 import { FAIcon } from '../icon-fa/FAIcon'
 import { Input } from '../input/Input'
-import { List } from '../list/List'
-import { Popup } from '../popup/Popup'
 import { Spacer } from '../spacer/Spacer'
-import './Selector.scss'
-
-/**
- * @param {ListItem[]} items
- * @returns {string}
- */
-const buildValue = items => {
-  const selectedItems = items.filter(item => item._selected)
-  return selectedItems.length === 1 ? selectedItems[0]?.value : `${selectedItems.length} items selected`
-}
-
-/**
- * @param {ListItem[]} items
- * @returns {string}
- */
-const buildIcon = items => {
-  const selectedItems = items.filter(item => item._selected)
-  return match(true, {
-    [selectedItems.length === items.length]: 'far fa-check-square',
-    [selectedItems.length < items.length]: 'far fa-minus-square',
-    [selectedItems.length === 0]: 'far fa-square'
-  })
-}
+import { Actions } from './Model'
+import './Selector.sass'
 
 /**
  * @param {SelectorProps} props
@@ -42,136 +19,140 @@ const buildIcon = items => {
  * @constructor
  */
 export const Selector = props => {
-  const { id, label, labelWidth, fit, placeholder } = props
-
-  const refresh = ReactHelper.useRefresh()
-
-  const items = useRef([])
-  const appliedItems = useRef([])
-  const pickerDisplayed = useRef(false)
-  const searchValue = useRef('')
+  const [state, dispatch] = ReactHelper.useDispatchedState(Actions, {
+    items: [],
+    appliedItems: [],
+    opened: false,
+    query: '',
+    selection: {},
+    label: '',
+    icon: ''
+  })
 
   const element = useRef()
+  const popupElement = useRef()
 
-  const filter = items => props.filter ? items.filter(props.filter) : items
-  const search = items => props.search && searchValue.current.length ? items.filter(item => props.search(item, searchValue.current)) : items
+  ReactHelper.useDifference(() =>
+    dispatch(Actions.Set, { items: props.data.map(item => ({ ...item, _id: CompatUtils.uid() })) }), props.data)
 
-  const applyItems = items => appliedItems.current = items |> filter |> search
+  ReactHelper.registerGlobalMouseEventListener('mousemove', event =>
+    state.opened
+    && !CompatUtils.intersects.pointToElementRectWithIndent(
+    event.clientX,
+    event.clientY,
+    element.current.getBoundingClientRect(),
+    CompatUtils.empx(2))
+    && !CompatUtils.intersects.pointToElementRectWithIndent(
+    event.clientX,
+    event.clientY,
+    popupElement.current.getBoundingClientRect(),
+    CompatUtils.empx(2))
+    && dispatch(Actions.Close)
+  )
 
-  ReactHelper.useDifference(() => applyItems(items.current = props.data.map(item => ({
-    ...item,
-    _id: CompatUtils.uid(),
-    _selected: item._selected || false,
-    _hidden: item._hidden || false
-  }))), props.data)
+  ReactHelper.registerGlobalMouseEventListener('click', event =>
+    state.opened
+    && !CompatUtils.intersects.pointToElementRect(
+    event.clientX,
+    event.clientY,
+    element.current.getBoundingClientRect())
+    && !CompatUtils.intersects.pointToElementRect(
+    event.clientX,
+    event.clientY,
+    popupElement.current.getBoundingClientRect())
+    && dispatch(Actions.Close)
+  )
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-selector',
-    pickerDisplayed.current && 'nbsp-ui-selector-picker-displayed',
+    state.opened && 'nbsp-ui-selector-opened',
     props.className
   )
+
   const style = ComponentHelper.composeStyle(props)
 
   return (
-    <div id={id} className={className} style={style}>
-      <Input
-        reference={element}
-        label={label}
-        labelWidth={labelWidth}
-        width={props.width}
-        value={buildValue(items.current)}
-        fit={fit}
+    <div
+      ref={element}
+      id={props.id}
+      className={className}
+      style={style}
+    >
+      <input
+        type="text"
         readOnly
-        placeholder={placeholder}
-        onInputClick={() => {
-          pickerDisplayed.current = true
-          refresh()
-        }}
-        after={<FAIcon margin={{ top: 3 }}
-                       icon={pickerDisplayed.current ? 'fas fa-chevron-up' : 'fas fa-chevron-down'}/>}
-        afterOnClick={() => {
-          pickerDisplayed.current = true
-          refresh()
-        }}
+        placeholder={props.placeholder}
+        value={state.label}
+        onClick={() => dispatch(Actions.Toggle)}
       />
-      <Popup
-        to={element}
-        left={props.labelWidth + 8 || 0}
-        translateX={0}
-        height={props.popupHeight}
-        width={props.popupWidth}
-        showed={pickerDisplayed.current}
-        onBlur={() => {
-          pickerDisplayed.current = false
-          refresh()
+      <div
+        className="icon"
+        onClick={() => dispatch(Actions.Toggle)}
+      >
+        {state.opened ? <ChevronUpIcon/> : <ChevronDownIcon/>}
+      </div>
+      <div
+        ref={popupElement}
+        className={ComponentHelper.composeClass(
+          'popup',
+          state.opened && 'popup-showed'
+        )}
+        style={{
+          zIndex: Environment.getDepth()
         }}
       >
         {
-          (props.search || props.allSelectable)
-          &&
-          <HBox className="toolbar" vAlign={CompatAlign.Center} padding={8}>
-            {
-              props.search
-              &&
-              <Input
-                className="search"
-                placeholder="Search..."
-                value={searchValue.current}
-                onChange={event => {
-                  searchValue.current = event.currentTarget.value
-                  applyItems(items.current)
-                  refresh()
-                }}
-              />
-            }
-            {props.search && props.allSelectable && <Spacer size={8}/>}
-            {
-              props.allSelectable
-              &&
-              <Button
-                type={CompatButtonType.Icon}
-                icon={
-                  <FAIcon
-                    icon={buildIcon(items.current)}
-                    className="selectAllIcon"
-                    color="#616161"
-                  />
-                }
-                onClick={() => {
-                  const count = appliedItems.current.length
-                  const selectedCount = appliedItems.current.reduce((count, item) => item._selected ? ++count : 1, 0)
-
-                  match(true, {
-                    [selectedCount < count || selectedCount === 0]: () => appliedItems.current.forEach(item => item._selected = true),
-                    [selectedCount === count]: () => appliedItems.current.forEach(item => item._selected = false)
-                  })()
-
-                  refresh()
-                }}
-              />
-            }
-          </HBox>
-        }
-        {props.header && props.header(appliedItems.current)}
-        <List
-          height={props.listHeight}
-          maxHeight={props.listHeight || 300}
-          width={props.popupWidth}
-          divided
-          multiselect={props.multiselect}
-          data={appliedItems.current}
-          row={props.row}
-          selectedValues={props.selectedValues}
-          onItemsSelect={({ selected, all }) => {
-            applyItems(all)
-            props.onItemsSelect && props.onItemsSelect({ selected, all })
-            !props.multiselect && (pickerDisplayed.current = false)
-            refresh()
-          }}
-        />
-        {props.footer && <VDivider/>}
-        {props.footer && props.footer(appliedItems.current)}
-      </Popup>
+          (props.search || props.multiselect) && (
+            <div
+              className="header"
+            >
+              {props.search && (
+                <Input
+                  className="search"
+                  placeholder="Search..."
+                  value={state.query}
+                  onChange={event =>
+                    dispatch(Actions.Search, {
+                      query: event.currentTarget.value,
+                      search: props.search,
+                      filter: props.filter
+                    })
+                  }
+                />
+              )}
+              {props.search && props.multiselect && <Spacer size={8}/>}
+              {props.multiselect && (
+                <Button
+                  type={CompatButtonType.Icon}
+                  icon={
+                    <FAIcon
+                      icon={state.icon}
+                      color="#616161"
+                    />
+                  }
+                  onClick={() => dispatch(Actions.ToggleEntire)}
+                />
+              )}
+            </div>
+          )}
+        {(props.search || props.multiselect) && <div className="divider"/>}
+        {props.header && props.header(state.appliedItems)}
+        {props.header && <div className="divider"/>}
+        <div className="content">
+          {state.appliedItems.map(item => (
+            <div
+              className={ComponentHelper.composeClass(
+                state.selection[item._id] && 'selected'
+              )}
+              onClick={() => dispatch(Actions.ToggleItem, { item, multiselect: props.multiselect })}
+            >
+              {props.row(item)}
+            </div>
+          ))}
+        </div>
+        {props.footer && <div className="divider"/>}
+        {props.footer && props.footer(state.appliedItems)}
+      </div>
     </div>
   )
 }
