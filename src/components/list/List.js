@@ -45,16 +45,16 @@ export const List = props => {
     <div className={className} style={style}>
       {
         items.current.map((item, index) =>
-          !item._hidden
-          &&
-          <div
-            key={index}
-            className={ComponentHelper.composeClass('item', item._selected && 'item-selected')}
-            style={{ borderBottom: props.divided ? '1px solid #EEEEEE' : '' }}
-            onClick={() => selectItem(item)}
-          >
-            {props.row(item)}
-          </div>
+          !item._hidden && (
+            <div
+              key={index}
+              className={ComponentHelper.composeClass('item', item._selected && 'item-selected')}
+              style={{ borderBottom: props.divided ? '1px solid #EEEEEE' : '' }}
+              onClick={() => selectItem(item)}
+            >
+              {props.row(item)}
+            </div>
+          )
         )
       }
     </div>

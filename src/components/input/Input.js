@@ -32,11 +32,17 @@ export const Input = props => {
       style={style}
       ref={reference}
     >
-      {label && <p className="label" style={{ width: props.labelWidth || 'auto' }}>{label}</p>}
-
-      {
-        before
-        &&
+      {label && (
+        <p
+          className="label"
+          style={{
+            width: props.labelWidth || 'auto'
+          }}
+        >
+          {label}
+        </p>
+      )}
+      {before && (
         <div
           className={
             ComponentHelper.composeClass(
@@ -46,8 +52,7 @@ export const Input = props => {
           }
           onClick={props.beforeOnClick}>{before}
         </div>
-      }
-
+      )}
       <input
         type="text"
         placeholder={props.placeholder}
@@ -57,10 +62,7 @@ export const Input = props => {
         onBlur={props.onBlur}
         onClick={props.onInputClick}
       />
-
-      {
-        after
-        &&
+      {after && (
         <div
           className={
             ComponentHelper.composeClass(
@@ -69,7 +71,7 @@ export const Input = props => {
             )
           }
           onClick={props.afterOnClick}>{after}</div>
-      }
+      )}
     </div>
   )
 }
