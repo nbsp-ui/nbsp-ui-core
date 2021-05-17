@@ -34,7 +34,7 @@ export const DatePicker = props => {
       <Input
         reference={element}
         value={format(state.selectedDate, 'dd.MM.yyyy')}
-        label={label}
+        label={props.label}
         labelWidth={props.labelWidth}
         fit={props.fit}
         placeholder={props.placeholder}
