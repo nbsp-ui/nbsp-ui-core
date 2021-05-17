@@ -5,7 +5,6 @@ import { AccordionPanel } from './components/AccordionPanel'
 import { ButtonsPanel } from './components/ButtonsPanel'
 import { DialogPanel } from './components/DialogPanel'
 import { FieldsPanel } from './components/FieldsPanel'
-import { Header } from './components/Header'
 import { LollipopPanel } from './components/LollipopPanel'
 import { MediaPanel } from './components/MediaPanel'
 import { MenuPanel } from './components/MenuPanel'
@@ -19,7 +18,6 @@ import { TagsPanel } from './components/TagsPanel'
 
 export const Application = () =>
   <VBox>
-    <Header/>
     <ButtonsPanel/>
     <LollipopPanel/>
     <DialogPanel/>

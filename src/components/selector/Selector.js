@@ -10,7 +10,7 @@ import { Button, CompatButtonType } from '../button/Button'
 import { FAIcon } from '../icon-fa/FAIcon'
 import { Input } from '../input/Input'
 import { Spacer } from '../spacer/Spacer'
-import { Actions } from './Model'
+import { Actions } from './Actions'
 import './Selector.sass'
 
 /**

@@ -8,7 +8,7 @@ import { FAIcon } from '../icon-fa/FAIcon'
 import { Input } from '../input/Input'
 import { Popup } from '../popup/Popup'
 import './DatePicker.scss'
-import { Actions } from './Model'
+import { Actions } from './Actions'
 
 /**
  * @param {DatePickerProps} props
