@@ -12,7 +12,7 @@ export const ReactHelper = {
     return [state, value => setState({ ...state, ...value })]
   },
 
-  useDispatchedState: (reducer, initialValue) => {
+  useDispatchedState: initialValue => {
     const [state, setState] = useState(initialValue)
     return [state, (action, data) => setState({ ...state, ...action(state, data) })]
   },

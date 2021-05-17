@@ -19,7 +19,7 @@ import './Selector.sass'
  * @constructor
  */
 export const Selector = props => {
-  const [state, dispatch] = ReactHelper.useDispatchedState(Actions, {
+  const [state, dispatch] = ReactHelper.useDispatchedState({
     items: [],
     appliedItems: [],
     opened: false,

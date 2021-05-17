@@ -5,7 +5,7 @@ export namespace ReactHelper {
 
     function usePatchedState<T>(initialValue?: T): [state: T, patchState: (value: T | {}) => any]
 
-    function useDispatchedState<T>(reducer: {}, initialValue?: T): [state: T, dispatch: (action: any, data?: any) => any]
+    function useDispatchedState<T>(initialValue?: T): [state: T, dispatch: (action: any, data?: any) => any]
 
     function useEffectGlobalEventListener(event: string, listener: EventListener): void
 
