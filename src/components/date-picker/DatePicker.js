@@ -1,7 +1,6 @@
 import { format } from 'date-fns'
 import { h } from 'preact'
-import { useRef, useState } from 'preact/hooks'
-import { CompatUtils } from '../../utils/CompatUtils'
+import { useRef } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
 import { Calendar } from '../calendar/Calendar'
@@ -9,10 +8,7 @@ import { FAIcon } from '../icon-fa/FAIcon'
 import { Input } from '../input/Input'
 import { Popup } from '../popup/Popup'
 import './DatePicker.scss'
-
-const ids = {
-  input: CompatUtils.uid()
-}
+import { Actions } from './Model'
 
 /**
  * @param {DatePickerProps} props
@@ -20,25 +16,14 @@ const ids = {
  * @constructor
  */
 export const DatePicker = props => {
-  const { value = new Date(), fit, disabled, label, labelWidth, placeholder, onChange } = props
+  const { value = new Date() } = props
 
-  const [{ selectedDate, selecting }, patchState] = ReactHelper.usePatchedState({
+  const [state, dispatch] = ReactHelper.useDispatchedState({
     selectedDate: value,
-    selecting: false,
+    opened: false
   })
 
   const element = useRef()
-
-  const showSelection = () => patchState({ selecting: true })
-  const hideSelection = () => patchState({ selecting: false })
-  const toggleSelection = () => selecting ? hideSelection() : showSelection()
-  const selectDate = date => {
-    patchState({
-      selectedDate: date,
-      selecting: false
-    })
-    onChange && onChange(date)
-  }
 
   const className = ComponentHelper.composeClass('nbsp-ui-date-picker', props.className)
 
@@ -48,26 +33,29 @@ export const DatePicker = props => {
     <div className={className} style={style}>
       <Input
         reference={element}
-        value={format(selectedDate, 'dd.MM.yyyy')}
+        value={format(state.selectedDate, 'dd.MM.yyyy')}
         label={label}
-        labelWidth={labelWidth}
-        fit={fit}
-        placeholder={placeholder}
+        labelWidth={props.labelWidth}
+        fit={props.fit}
+        placeholder={props.placeholder}
         readOnly
-        disabled={disabled}
+        disabled={props.disabled}
         after={<FAIcon icon="far fa-calendar"/>}
-        afterOnClick={toggleSelection}
+        afterOnClick={() => dispatch(Actions.Toggle)}
       />
       <Popup
         to={element}
-        showed={selecting}
-        onBlur={hideSelection}
+        showed={state.opened}
+        onBlur={() => dispatch(Actions.Close)}
       >
         <Calendar
           value={value}
           width={300}
           padding={16}
-          onChange={selectDate}
+          onChange={date => {
+            dispatch(Actions.Select, { date })
+            props.onChange && props.onChange(date)
+          }}
         />
       </Popup>
     </div>
