@@ -78,6 +78,16 @@ export const Selector = props => {
       className={className}
       style={style}
     >
+      {props.label && (
+        <p
+          className="label"
+          style={{
+            width: props.labelWidth || 'auto'
+          }}
+        >
+          {props.label}
+        </p>
+      )}
       <input
         type="text"
         readOnly

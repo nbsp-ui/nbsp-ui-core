@@ -20,6 +20,13 @@ $height: 2.5em
     height: 1px
     background-color: #E0E0E0
 
+  & > .label
+    margin: 0
+    color: $text-light
+    font-size: 1em
+    padding-right: .4em
+    flex-shrink: 0
+
   & > input
     width: 100%
     height: 100%
@@ -29,19 +36,21 @@ $height: 2.5em
     border-top-left-radius: $border-radius
     border-bottom-left-radius: $border-radius
     box-sizing: border-box
-    font-size: 1.1em
+    font-size: 1em
     color: $light-text-color
     background-color: $background-smooth
     cursor: pointer
+    user-select: none
 
     &::placeholder
       color: $placeholder-light
 
   & > .icon
+    flex-shrink: 0
     display: flex
     justify-content: center
     align-items: center
-    width: 4em
+    width: 3em
     height: 100%
     border-top-right-radius: $border-radius
     border-bottom-right-radius: $border-radius
@@ -74,6 +83,9 @@ $height: 2.5em
       +layout-flex-column
 
   &-opened
+    & > .label
+      color: $accent
+
     & > input
       +background-color-accent
       color: $text-dark

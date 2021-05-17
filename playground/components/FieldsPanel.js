@@ -32,9 +32,9 @@ export const FieldsPanel = () => {
       <Selector
         margin={{ bottom: 8 }}
         width={400}
-        label={'Country'}
+        label="Country"
         labelWidth={140}
-        placeholder={'Country'}
+        placeholder="Country"
         fontSize={14}
         row={
           item =>
@@ -60,9 +60,9 @@ export const FieldsPanel = () => {
       <Selector
         margin={{ bottom: 8 }}
         width={400}
-        label={'Country (only list)'}
+        label="Country (only list)"
         labelWidth={140}
-        placeholder={'Country'}
+        placeholder="Country"
         fontSize={14}
         row={item => <span>{item.value}</span>}
         onItemsSelect={items => console.log(items)}
