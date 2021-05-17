@@ -35,7 +35,6 @@ export const FieldsPanel = () => {
         label="Country"
         labelWidth={140}
         placeholder="Country"
-        fontSize={14}
         row={
           item =>
             <HBox vAlign={CompatAlign.Center} height={28}>
@@ -63,7 +62,6 @@ export const FieldsPanel = () => {
         label="Country (only list)"
         labelWidth={140}
         placeholder="Country"
-        fontSize={14}
         row={item => <span>{item.value}</span>}
         onItemsSelect={items => console.log(items)}
         data={countries}

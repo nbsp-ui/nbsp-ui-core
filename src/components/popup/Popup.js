@@ -4,7 +4,7 @@ import { Environment } from '../../systems/Environment'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
-import './Popup.scss'
+import './Popup.sass'
 
 /**
  * @param {PopupProps} props

@@ -1,14 +1,14 @@
 import { format } from 'date-fns'
 import { h } from 'preact'
 import { useRef } from 'preact/hooks'
+import CalendarIcon from '../../icons/calendar.svg'
+import { Environment } from '../../systems/Environment'
+import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
 import { Calendar } from '../calendar/Calendar'
-import { FAIcon } from '../icon-fa/FAIcon'
-import { Input } from '../input/Input'
-import { Popup } from '../popup/Popup'
-import './DatePicker.scss'
 import { Actions } from './Actions'
+import './DatePicker.sass'
 
 /**
  * @param {DatePickerProps} props
@@ -24,29 +24,82 @@ export const DatePicker = props => {
   })
 
   const element = useRef()
+  const popupElement = useRef()
 
-  const className = ComponentHelper.composeClass('nbsp-ui-date-picker', props.className)
+  ReactHelper.registerGlobalMouseEventListener('mousemove', event =>
+    state.opened
+    && !CompatUtils.intersects.pointToElementRectWithIndent(
+    event.clientX,
+    event.clientY,
+    element.current.getBoundingClientRect(),
+    CompatUtils.empx(2))
+    && !CompatUtils.intersects.pointToElementRectWithIndent(
+    event.clientX,
+    event.clientY,
+    popupElement.current.getBoundingClientRect(),
+    CompatUtils.empx(2))
+    && dispatch(Actions.Close)
+  )
+
+  ReactHelper.registerGlobalMouseEventListener('click', event =>
+    state.opened
+    && !CompatUtils.intersects.pointToElementRect(
+    event.clientX,
+    event.clientY,
+    element.current.getBoundingClientRect())
+    && !CompatUtils.intersects.pointToElementRect(
+    event.clientX,
+    event.clientY,
+    popupElement.current.getBoundingClientRect())
+    && dispatch(Actions.Close)
+  )
+
+  const className = ComponentHelper.composeClass(
+    'nbsp-ui-date-picker',
+    state.opened && 'nbsp-ui-date-picker-opened',
+    props.className
+  )
 
   const style = ComponentHelper.composeStyle(props)
 
   return (
-    <div className={className} style={style}>
-      <Input
-        reference={element}
-        value={format(state.selectedDate, 'dd.MM.yyyy')}
-        label={props.label}
-        labelWidth={props.labelWidth}
-        fit={props.fit}
-        placeholder={props.placeholder}
+    <div
+      ref={element}
+      className={className}
+      style={style}
+    >
+      {props.label && (
+        <p
+          className="label"
+          style={{
+            width: props.labelWidth || 'auto'
+          }}
+        >
+          {props.label}
+        </p>
+      )}
+      <input
+        type="text"
         readOnly
-        disabled={props.disabled}
-        after={<FAIcon icon="far fa-calendar"/>}
-        afterOnClick={() => dispatch(Actions.Toggle)}
+        placeholder={props.placeholder}
+        value={format(state.selectedDate, 'dd.MM.yyyy')}
+        onClick={() => dispatch(Actions.Toggle)}
       />
-      <Popup
-        to={element}
-        showed={state.opened}
-        onBlur={() => dispatch(Actions.Close)}
+      <div
+        className="icon"
+        onClick={() => dispatch(Actions.Toggle)}
+      >
+        <CalendarIcon/>
+      </div>
+      <div
+        ref={popupElement}
+        className={ComponentHelper.composeClass(
+          'popup',
+          state.opened && 'popup-showed'
+        )}
+        style={{
+          zIndex: Environment.getDepth()
+        }}
       >
         <Calendar
           value={value}
@@ -57,7 +110,7 @@ export const DatePicker = props => {
             props.onChange && props.onChange(date)
           }}
         />
-      </Popup>
+      </div>
     </div>
   )
 }

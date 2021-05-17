@@ -1,25 +1,83 @@
 @import colors
+@import values
+
+/* Basic */
+
+@mixin font-default
+  font-family: "Roboto", sans-serif
 
 /* Sizes */
 
 @mixin h-3
   height: 3em
 
-/* Colors */
+/* Modifiers */
 
-@mixin background-color-accent
+@mixin rounded-default
+  border-radius: $border-radius
+
+@mixin rounded-left-default
+  border-top-left-radius: $border-radius
+  border-bottom-left-radius: $border-radius
+
+@mixin rounded-right-default
+  border-top-right-radius: $border-radius
+  border-bottom-right-radius: $border-radius
+
+/* Shades */
+
+@mixin text-accent
+  color: $accent
+
+@mixin text-light
+  color: $text-light
+
+@mixin text-dark
+  color: $text-dark
+
+@mixin background-accent
   background-color: $background-accent
+
+@mixin background-light
+  background-color: $background-light
+
+@mixin background-smooth
+  background-color: $background-smooth
 
 @mixin shadow-light
   box-shadow: 0 .2em .8em 0 $shadow-light
+
+@mixin placeholder-light
+  &::placeholder
+    color: $placeholder-light
+
+@mixin placeholder-dark
+  &::placeholder
+    color: $placeholder-dark
 
 /* Layouts */
 
 @mixin flex
   display: flex
 
-@mixin flex-v-center
+@mixin flex-center
+  display: flex
   align-items: center
+  justify-content: center
+
+@mixin flex-center-v
+  display: flex
+  align-items: center
+
+@mixin flex-center-h
+  display: flex
+  justify-content: center
+
+@mixin not-shrink
+  flex-shrink: 0
+
+@mixin not-grow
+  flex-grow: 0
 
 /* High level layouts */
 
@@ -42,6 +100,21 @@
   display: flex
   flex-direction: column
   overflow-y: auto
+
+@mixin icon-accent
+  svg
+    path
+      stroke: $accent
+
+@mixin icon-light
+  svg
+    path
+      stroke: $text-light
+
+@mixin icon-dark
+  svg
+    path
+      stroke: $text-dark
 
 /* Extensions */
 
