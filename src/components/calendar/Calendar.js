@@ -1,8 +1,9 @@
 import { h } from 'preact'
-import { CompatLocalization } from '../../utils/CompatLocalization'
+import { useEffect } from 'preact/hooks'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
 import '../behavior.sass'
+import { Actions } from './Actions'
 import './Calendar.sass'
 import { DatePicker } from './components/DatePicker'
 import { Header } from './components/Header'
@@ -16,69 +17,38 @@ import { YearMonthPicker } from './components/YearMonthPicker'
 export const Calendar = props => {
   const { value = new Date } = props
 
-  const [{ viewedDate, selectedDate, yearMonthPickerVisible }, patchState] = ReactHelper.usePatchedState({
+  const [state, dispatch] = ReactHelper.useDispatchedState({
     viewedDate: new Date(value.getFullYear(), value.getMonth()),
     selectedDate: new Date(value.getFullYear(), value.getMonth(), value.getDate()),
-    yearMonthPickerVisible: false
+    extended: false
   })
 
-  const viewDate = viewedDate => patchState({ viewedDate })
-  const selectDate = selectedDate => {
-    patchState({ selectedDate })
-    props.onChange?.(selectedDate)
-  }
-  const toggleYearMonthPickerVisibility = () => patchState({ yearMonthPickerVisible: !yearMonthPickerVisible })
-
   const className = ComponentHelper.composeClass('nbsp-ui-calendar', props.className)
+
   const style = ComponentHelper.composeStyle(props)
 
-  const currentDate = new Date()
-
-  const year = viewedDate.getFullYear()
-  const month = viewedDate.getMonth()
-
-  const prevMonth = CompatLocalization.prev_month(month)
-  const nextMonth = CompatLocalization.next_month(month)
-
-  const prevMonthYear = CompatLocalization.prev_month_year(year, month)
-  const nextMonthYear = CompatLocalization.next_month_year(year, month)
-
-  const displayMonth = (year, month) => viewDate(new Date(year, month))
-
-  const displayPrevMonth = () => displayMonth(prevMonthYear, prevMonth)
-
-  const displayNextMonth = () => displayMonth(nextMonthYear, nextMonth)
+  useEffect(() => props.onChange?.(state.selectedDate), [state.selectedDate])
 
   return (
     <div className={className} style={style}>
       <Header
-        viewedDate={viewedDate}
-        onPrevMonthClick={displayPrevMonth}
-        onNextMonthClick={displayNextMonth}
-        onTitleClick={toggleYearMonthPickerVisibility}
+        viewedDate={state.viewedDate}
+        onPrevMonthClick={() => dispatch(Actions.ViewPrevMonth)}
+        onNextMonthClick={() => dispatch(Actions.ViewNextMonth)}
+        onTitleClick={() => dispatch(Actions.ToggleExtendedSelection)}
       />
       <YearMonthPicker
-        visible={yearMonthPickerVisible}
-        currentDate={currentDate}
-        viewedDate={viewedDate}
-        onMonthClick={month => viewDate(new Date(year, month))}
-        onYearClick={year => viewDate(new Date(year, month))}
+        visible={state.extended}
+        viewedDate={state.viewedDate}
+        onMonthClick={month => dispatch(Actions.ViewDate, { date: new Date(state.viewedDate.getFullYear(), month) })}
+        onYearClick={year => dispatch(Actions.ViewDate, { date: new Date(year, state.viewedDate.getMonth()) })}
       />
       <DatePicker
-        currentDate={currentDate}
-        viewedDate={viewedDate}
-        selectedDate={selectedDate}
-        onDateClick={date => {
-          selectDate(new Date(year, month, date))
-        }}
-        onPrevMonthDateClick={date => {
-          selectDate(new Date(prevMonthYear, prevMonth, date))
-          displayPrevMonth()
-        }}
-        onNextMonthDateClick={date => {
-          selectDate(new Date(nextMonthYear, nextMonth, date))
-          displayNextMonth()
-        }}
+        viewedDate={state.viewedDate}
+        selectedDate={state.selectedDate}
+        onDateClick={date => dispatch(Actions.SelectDate, { date })}
+        onPrevMonthDateClick={date => dispatch(Actions.SelectPrevMonthDate, { date })}
+        onNextMonthDateClick={date => dispatch(Actions.SelectNextMonthDate, { date })}
       />
     </div>
   )

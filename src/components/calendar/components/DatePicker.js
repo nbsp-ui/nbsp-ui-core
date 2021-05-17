@@ -6,7 +6,6 @@ import './DatePicker.sass'
 
 /**
  * @param props
- * @param {Date} currentDate
  * @param {Date} viewedDate
  * @param {Date} selectedDate
  * @param {function(date: number): void} onDateClick
@@ -16,7 +15,6 @@ import './DatePicker.sass'
  * @constructor
  */
 export const DatePicker = ({
-                             currentDate,
                              viewedDate,
                              selectedDate,
                              onDateClick,
@@ -38,6 +36,8 @@ export const DatePicker = ({
   const prevMonthYear = CompatLocalization.prev_month_year(year, month)
 
   const daysInPrevMonth = CompatLocalization.days_in_month(prevMonthYear, prevMonth)
+
+  const currentDate = new Date()
 
   return (
     <div className="date-picker">

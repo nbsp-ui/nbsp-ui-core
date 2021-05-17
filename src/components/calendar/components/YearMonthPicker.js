@@ -7,15 +7,16 @@ import './YearMonthPicker.sass'
 /**
  * @param props
  * @param {boolean} visible
- * @param {Date} currentDate
  * @param {Date} viewedDate
  * @param {function(month: number): void} onMonthClick
  * @param {function(month: number): void} onYearClick
  * @returns {*}
  * @constructor
  */
-export const YearMonthPicker = ({ visible, currentDate, viewedDate, onMonthClick, onYearClick }) => {
+export const YearMonthPicker = ({ visible, viewedDate, onMonthClick, onYearClick }) => {
   const years = CompatUtils.range(1980, 2080)
+
+  const currentDate = new Date()
 
   const renderMonth = (month, index) =>
     <p
