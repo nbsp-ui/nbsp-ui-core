@@ -32,5 +32,6 @@ export { Slider, SliderProps } from './components/slider/Slider'
 export { Environment } from './systems/Environment'
 export { ComponentHelper } from './utils/ComponentHelper'
 export { ReactHelper } from './utils/ReactHelper'
+export { Immutable } from './utils/Immutable'
 
 export { BaseProps, Containable } from './components/types'

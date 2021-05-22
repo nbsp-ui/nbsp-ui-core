@@ -37,7 +37,7 @@ export const PivotTableSelector = ({ fields, rows, columns, onColumnsChange, onR
     ])
 
   const removeColumnByField = field =>
-    onColumnsChange(Immutable.array.removeItem(columns, column => column.key === field.key))
+    onColumnsChange(Immutable.array.exclude(columns, column => column.key === field.key))
 
   const toggleColumnByField = field =>
     columns.find(column => column.key === field.key)
@@ -51,7 +51,7 @@ export const PivotTableSelector = ({ fields, rows, columns, onColumnsChange, onR
     ])
 
   const removeRowByField = field =>
-    onRowsChange(Immutable.array.removeItem(rows, row => row.key === field.key))
+    onRowsChange(Immutable.array.exclude(rows, row => row.key === field.key))
 
   const toggleRowByField = field =>
     rows.find(row => row.key === field.key)
@@ -90,7 +90,7 @@ export const PivotTableSelector = ({ fields, rows, columns, onColumnsChange, onR
                 dragged={column.key === draggedColumn?.key}
                 droppable={draggedColumn && column.key !== draggedColumn.key}
                 onColumnChange={
-                  column => onColumnsChange(Immutable.array.patchItem(
+                  column => onColumnsChange(Immutable.array.patch(
                     columns,
                     item => item.key === column.key,
                     item => ({ ...item, ...column })
