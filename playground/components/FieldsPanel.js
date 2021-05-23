@@ -1,6 +1,6 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
-import { Button, CompatButtonType, DatePicker, FAIcon, HBox, Input, Label, Selector, Spacer, VBox } from '../../src'
+import { Button, CompatButtonType, DateSelector, FAIcon, HBox, Input, Label, ValueSelector, Spacer, VBox } from '../../src'
 import { CompatAlign } from '../../src/utils/CompatAlign'
 import { MainStorage } from '../storage/MainStorage'
 
@@ -21,19 +21,19 @@ export const FieldsPanel = () => {
       <Input label="Password" labelWidth={140} placeholder="Password" width={400} margin={{ bottom: 8 }}/>
       <Input label="Phone" labelWidth={140} placeholder="Phone" width={400} margin={{ bottom: 8 }} before={'+7'}/>
       <Input label="Website" labelWidth={140} placeholder="Website" width={400} margin={{ bottom: 8 }} after={'.com'}/>
-      <DatePicker
+      <DateSelector
         label="Date"
-        labelWidth={140}
+        labelWidth={10}
         placeholder="Date"
         width={400}
         margin={{ bottom: 8 }}
         onChange={date => console.log(date)}
       />
-      <Selector
+      <ValueSelector
         margin={{ bottom: 8 }}
         width={400}
         label="Country"
-        labelWidth={140}
+        labelWidth={10}
         placeholder="Country"
         row={
           item =>
@@ -56,11 +56,11 @@ export const FieldsPanel = () => {
         data={countries}
         selectedValues={selectedCountries}
       />
-      <Selector
+      <ValueSelector
         margin={{ bottom: 8 }}
         width={400}
         label="Country (only list)"
-        labelWidth={140}
+        labelWidth={10}
         placeholder="Country"
         row={item => <span>{item.value}</span>}
         onItemsSelect={items => console.log(items)}

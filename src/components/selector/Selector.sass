@@ -1,5 +1,4 @@
 @import ../colors
-@import ../animations
 @import ../values
 @import ../atomic
 
@@ -25,6 +24,7 @@ $height: 2em
     margin: 0
     font-size: 1em
     padding-right: .4em
+    box-sizing: border-box
 
   & > input
     +rounded-left-default
@@ -63,15 +63,6 @@ $height: 2em
     display: none
     position: absolute
     top: calc(#{$height} + .4em)
-    width: 100%
-    height: 16em
-
-    & > .header
-      +layout-toolbar
-
-    & > .content
-      +layout-container-v
-      +with-selectable-rows
 
     &-showed
       +layout-flex-column

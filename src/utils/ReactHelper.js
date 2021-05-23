@@ -1,20 +1,29 @@
 import { useEffect, useRef, useState } from 'preact/hooks'
 
 export const ReactHelper = {
-  useReferredState: initialValue => {
-    const [state, setState] = useState(initialValue)
+  useReferredState: initial => {
+    const [state, setState] = useState(initial)
     const reference = useRef(state)
     return [state, value => setState(reference.current = value), reference]
   },
 
-  usePatchedState: initialValue => {
-    const [state, setState] = useState(initialValue)
+  usePatchedState: initial => {
+    const [state, setState] = useState(initial)
     return [state, value => setState({ ...state, ...value })]
   },
 
-  useDispatchedState: initialValue => {
-    const [state, setState] = useState(initialValue)
-    return [state, (action, data) => setState({ ...state, ...action(state, data) })]
+  useDispatchedState: (initial, ...binds) => {
+    const state = useRef(initial)
+    const refresh = ReactHelper.useRefresh()
+
+    const apply = (action, data) => state.current = { ...state.current, ...action(state.current, data) }
+
+    binds?.forEach(([value, action, data]) => ReactHelper.useDifference(() => apply(action, data), value))
+
+    return [state.current, (action, data) => {
+      apply(action, data)
+      refresh()
+    }]
   },
 
   useEffectGlobalEventListener: (event, listener) => useEffect(() => (document.addEventListener(event, listener) || true) && (() => document.removeEventListener(event, listener)), []),

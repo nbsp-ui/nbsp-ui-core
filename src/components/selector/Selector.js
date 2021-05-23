@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 import { h } from 'preact'
 import { useRef } from 'preact/hooks'
 import ChevronDownIcon from '../../icons/chevron-down.svg'
@@ -6,10 +8,6 @@ import { Environment } from '../../systems/Environment'
 import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
-import { Button, CompatButtonType } from '../button/Button'
-import { FAIcon } from '../icon-fa/FAIcon'
-import { Input } from '../input/Input'
-import { Spacer } from '../spacer/Spacer'
 import { Actions } from './Actions'
 import './Selector.sass'
 
@@ -20,20 +18,11 @@ import './Selector.sass'
  */
 export const Selector = props => {
   const [state, dispatch] = ReactHelper.useDispatchedState({
-    items: [],
-    appliedItems: [],
-    opened: false,
-    query: '',
-    selection: {},
-    label: '',
-    icon: ''
-  })
+    opened: false
+  }, [props.opened, Actions.Set, { opened: props.opened }])
 
   const element = useRef()
   const popupElement = useRef()
-
-  ReactHelper.useDifference(() =>
-    dispatch(Actions.Set, { items: props.data.map(item => ({ ...item, _id: CompatUtils.uid() })) }), props.data)
 
   ReactHelper.registerGlobalMouseEventListener('mousemove', event =>
     state.opened
@@ -82,7 +71,7 @@ export const Selector = props => {
         <p
           className="label"
           style={{
-            width: props.labelWidth || 'auto'
+            width: `${props.labelWidth}em` || 'auto'
           }}
         >
           {props.label}
@@ -92,7 +81,7 @@ export const Selector = props => {
         type="text"
         readOnly
         placeholder={props.placeholder}
-        value={state.label}
+        value={props.value}
         onClick={() => dispatch(Actions.Toggle)}
       />
       <div
@@ -111,57 +100,7 @@ export const Selector = props => {
           zIndex: Environment.getDepth()
         }}
       >
-        {
-          (props.search || props.multiselect) && (
-            <div
-              className="header"
-            >
-              {props.search && (
-                <Input
-                  className="search"
-                  placeholder="Search..."
-                  value={state.query}
-                  onChange={event =>
-                    dispatch(Actions.Search, {
-                      query: event.currentTarget.value,
-                      search: props.search,
-                      filter: props.filter
-                    })
-                  }
-                />
-              )}
-              {props.search && props.multiselect && <Spacer size={8}/>}
-              {props.multiselect && (
-                <Button
-                  type={CompatButtonType.Icon}
-                  icon={
-                    <FAIcon
-                      icon={state.icon}
-                      color="#616161"
-                    />
-                  }
-                  onClick={() => dispatch(Actions.ToggleEntire)}
-                />
-              )}
-            </div>
-          )}
-        {(props.search || props.multiselect) && <div className="divider"/>}
-        {props.header && props.header(state.appliedItems)}
-        {props.header && <div className="divider"/>}
-        <div className="content">
-          {state.appliedItems.map(item => (
-            <div
-              className={ComponentHelper.composeClass(
-                state.selection[item._id] && 'selected'
-              )}
-              onClick={() => dispatch(Actions.ToggleItem, { item, multiselect: props.multiselect })}
-            >
-              {props.row(item)}
-            </div>
-          ))}
-        </div>
-        {props.footer && <div className="divider"/>}
-        {props.footer && props.footer(state.appliedItems)}
+        {props.children}
       </div>
     </div>
   )

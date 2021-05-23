@@ -1,29 +1,16 @@
 import { FunctionComponent } from 'preact'
-import { BaseProps } from "../types"
-import { ListItem } from "../list/List";
+import { BaseProps, Containable } from '../types'
 
-export interface SelectorProps extends BaseProps {
-    label?: string
-    labelWidth?: number
-    value?: any
-    placeholder?: string
-    fontSize?: number
-    multiselect?: boolean
-    popupHeight?: number | string
-    popupWidth?: number | string
-    listHeight?: number | string
+export interface SelectorProps extends BaseProps, Containable {
+  label?: string
+  labelWidth?: string
+  placeholder?: string
+  icon?: string
 
-    filter?: (item: ListItem) => boolean
-    search?: (item: ListItem, search: string) => boolean,
+  value?: number | string
+  opened?: boolean
 
-    data?: ListItem[]
-    selectedValues?: any[]
-
-    header?: (items?: ListItem[]) => any
-    row?: (item?: ListItem) => any
-    footer?: (items?: ListItem[]) => any
-
-    onItemsSelect?: (items: { selected: ListItem[], all: ListItem[] }) => void
+  onBlur?: () => any
 }
 
 export const Selector: FunctionComponent<SelectorProps>

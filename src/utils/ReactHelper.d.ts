@@ -1,11 +1,11 @@
 import { RefObject } from 'preact'
 
 export namespace ReactHelper {
-    function useReferredState<T>(initialValue?: T): [state: T, setState: (value: T) => void, reference: { current: T }]
+    function useReferredState<T>(initial?: T): [state: T, setState: (value: T) => void, reference: { current: T }]
 
-    function usePatchedState<T>(initialValue?: T): [state: T, patchState: (value: T | {}) => any]
+    function usePatchedState<T>(initial?: T): [state: T, patchState: (value: T | {}) => any]
 
-    function useDispatchedState<T>(initialValue?: T): [state: T, dispatch: (action: any, data?: any) => any]
+    function useDispatchedState<T>(initial?: T, ...binds: [any, any, T][]): [state: T, dispatch: (action: any, data?: any) => any]
 
     function useEffectGlobalEventListener(event: string, listener: EventListener): void
 
