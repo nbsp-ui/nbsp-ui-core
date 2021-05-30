@@ -1,0 +1,13 @@
+@import ../../atomic
+
+.nbsp-ui-table-footer
+  border-top: 1px solid $border-color
+
+  & > div:first-child
+    +bordered-left
+
+  & > div:last-child
+    +bordered-right
+
+  & > div:not(:last-child)
+    border-right: 1px solid #EEEEEE

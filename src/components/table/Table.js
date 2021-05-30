@@ -1,12 +1,11 @@
 import { h } from 'preact'
-import { useEffect, useRef } from 'preact/hooks'
-import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
-import './Table.scss'
-import { TableContainer } from './TableContainer'
-import { TableFooter } from './TableFooter'
-import { TableHeader } from './TableHeader'
+import { Actions } from './Actions'
+import { Container } from './components/Container'
+import { Footer } from './components/Footer'
+import { Header } from './components/Header'
+import './Table.sass'
 
 /**
  * @param {TableProps} props
@@ -14,43 +13,30 @@ import { TableHeader } from './TableHeader'
  * @constructor
  */
 export const Table = props => {
-  const refresh = ReactHelper.useRefresh()
-
-  const columns = useRef(props.columns.map((column, index) => ({
-    ...column,
-    _id: CompatUtils.uid(),
-    _position: index
-  })))
-
-  const items = useRef([])
-  const appliedItems = useRef([])
-
-  const filter = items => props.filter ? items.filter(props.filter) : items
-  const applyItems = items => appliedItems.current = filter(items)
-
-  const selectItem = item => {
-    !props.multiselect && items.current.forEach(item => item._selected = false)
-    item._selected = !item._selected
-    props.onItemsSelect && props.onItemsSelect({ selected: items.current.filter(item => item._selected), all: items.current})
-    refresh()
-  }
-
-  useEffect(() => {
-    applyItems(items.current)
-    refresh()
-  }, [props.filter, items.current])
-
-  ReactHelper.useDifference(() => applyItems(items.current = props.data.map(item => ({
-    ...item,
-    _id: CompatUtils.uid(),
-    _selected: item._selected || false
-  }))), props.data)
-
-  ReactHelper.useDifference(() => {
-    items.current.forEach(item => item._selected = false)
-    props.selectedIds && items.current.forEach(item => props.selectedIds.includes(item.id) && (item._selected = true))
-    props.onItemsSelect && props.onItemsSelect({ selected: items.current.filter(item => item._selected), all: items.current})
-  }, props.selectedIds)
+  const [state, dispatch] = ReactHelper.useDispatchedState({
+      items: [],
+      appliedItems: [],
+      selection: {},
+      columns: []
+    },
+    {
+      at: [
+        [[props.data], Actions.SetItems, { items: props.data, filter: props.filter }],
+        [[props.columns], Actions.SetColumns, { columns: props.columns }],
+        [[props.filter], Actions.FilterItems, { filter: props.filter }],
+        [[props.selection], Actions.SelectItems, { selection: props.selection }]
+      ],
+      on: [
+        [
+          [Actions.SelectItems, Actions.ToggleItem],
+          ({ items, selection }) => props.onItemsSelect && props.onItemsSelect({
+            selected: items.filter(({ _id }) => selection[_id]),
+            all: items
+          })
+        ]
+      ]
+    }
+  )
 
   const className = ComponentHelper.composeClass('nbsp-ui-table', props.className)
 
@@ -61,45 +47,31 @@ export const Table = props => {
       className={className}
       style={style}
     >
-      <TableHeader
-        columns={columns.current}
-        items={appliedItems.current}
+      <Header
+        columns={state.columns}
+        items={state.appliedItems}
         headerHeight={props.headerHeight}
-        onRefreshRequest={() => {
-          refresh()
-        }}
-        onSortRequest={column => {
-          columns.current.filter(each => each._id !== column._id).forEach(another => another._sortedByAsc = another._sortedByDesc = false)
-
-          match(true, {
-            [column._sortedByAsc]: () => column._sortedByAsc = !(column._sortedByDesc = true),
-            [column._sortedByDesc]: () => column._sortedByDesc = !(column._sortedByAsc = true),
-            _: () => column._sortedByAsc = true
-          })()
-
-          column && appliedItems.current.sort((a, b) => column._sortedByAsc ? column.sort(a, b) : -column.sort(a, b))
-
-          refresh()
-        }}
+        onRefreshRequest={() => dispatch(Actions.Refresh)}
+        onSortRequest={column => dispatch(Actions.SortColumn, { column })}
       />
-      <TableContainer
-        columns={columns.current}
-        items={appliedItems.current}
+      <Container
+        columns={state.columns}
+        items={state.appliedItems}
+        selection={state.selection}
         rowHeight={props.rowHeight}
         onItemClick={item => {
-          selectItem(item)
+          dispatch(Actions.ToggleItem, { item, multiselect: props.multiselect })
           props.onItemClick && props.onItemClick(item)
         }}
       />
       {
-        columns.current.find(column => column.footer)
-        &&
-        <TableFooter
-          columns={columns.current}
-          items={appliedItems.current}
-          footerHeight={props.footerHeight}
-        />
-      }
+        state.columns.find(column => column.footer) && (
+          <Footer
+            columns={state.columns}
+            items={state.appliedItems}
+            footerHeight={props.footerHeight}
+          />
+        )}
     </div>
   )
 }

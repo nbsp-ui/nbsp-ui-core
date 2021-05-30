@@ -1,7 +1,8 @@
 import { h } from 'preact'
 import { useEffect, useRef } from 'preact/hooks'
-import { CompatUtils } from '../../utils/CompatUtils'
-import { ReactHelper } from '../../utils/ReactHelper'
+import { CompatUtils } from '../../../utils/CompatUtils'
+import { ReactHelper } from '../../../utils/ReactHelper'
+import './ColumnResizer.sass'
 
 /**
  * @param props
@@ -11,7 +12,7 @@ import { ReactHelper } from '../../utils/ReactHelper'
  * @returns {*}
  * @constructor
  */
-export const TableColumnResizer = ({ column, onDragStart, onDragEnd }) => {
+export const ColumnResizer = ({ column, onDragStart, onDragEnd }) => {
   const refresh = ReactHelper.useRefresh()
 
   const dragged = useRef(false)
@@ -52,7 +53,7 @@ export const TableColumnResizer = ({ column, onDragStart, onDragEnd }) => {
 
   return (
     <div
-      className='resizer'
+      className="nbsp-ui-table-column-resizer"
       style={{
         display: column ? 'block' : 'none',
         ...column && {

@@ -1,21 +1,16 @@
 import { FunctionComponent } from 'preact'
 import { BaseProps } from '../types'
 
-export interface TableItem {
-    _id: string
-    _selected: boolean
-}
-
 export interface TableProps extends BaseProps {
     columns?: TableColumn[]
-    data?: TableItem[]
-    selectedIds?: string[]
+    data?: {}[]
+    selection?: string[]
     multiselect?: boolean
 
-    filter?: (item: TableItem) => boolean
+    filter?: (item: {}) => boolean
 
-    onItemsSelect?: (items: { selected: TableItem[], all: TableItem[] }) => void
-    onItemClick?: (item: TableItem) => void
+    onItemsSelect?: (items: { selected: {}[], all: {}[] }) => void
+    onItemClick?: (item: {}) => void
 
     headerHeight?: number
     footerHeight?: number

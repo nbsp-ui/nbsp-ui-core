@@ -1,6 +1,6 @@
 import { h } from 'preact'
-import { CompatAlign } from '../../utils/CompatAlign'
-import { HBox } from '../box-h/HBox'
+import { CompatAlign } from '../../../utils/CompatAlign'
+import { HBox } from '../../box-h/HBox'
 
 /**
  * @param props
@@ -9,7 +9,7 @@ import { HBox } from '../box-h/HBox'
  * @returns {*}
  * @constructor
  */
-export const TableColumnFooter = ({ column, items }) =>
+export const ColumnFooter = ({ column, items }) =>
   <HBox
     vAlign={CompatAlign.Center}
     width={column.width}

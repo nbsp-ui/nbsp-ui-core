@@ -72,7 +72,7 @@ export const TablePanel = () => {
           }
         ]}
         data={persons}
-        selectedIds={['1', '2', '8', '9', '12', '18', '24', '36', '40']}
+        selection={['1', '2', '8', '9', '12', '18', '24', '36', '40']}
         filter={item => item.person.includes(searchValue)}
       />
       <HBox padding={8}>

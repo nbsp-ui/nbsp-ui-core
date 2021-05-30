@@ -1,0 +1,31 @@
+@import ../../atomic
+
+.nbsp-ui-table-container
+  +with-custom-scrollbar
+  overflow: overlay
+
+  & > .row
+    +flex
+    +not-grow
+
+  & > .row:not(:last-child) > div
+    border-bottom: 1px solid #EEEEEE
+
+  & > .row > div:first-child
+    +bordered-left
+
+  & > .row > div:last-child
+    +bordered-right
+
+  & > .row > div:not(:last-child)
+    border-right: 1px solid #EEEEEE
+
+  & > .row-selected > div
+    background-color: #F5F5F5
+
+  & > .row-selected > div:first-child
+    border-left: 1px solid $accent-color
+
+  & > .row-selected > div:last-child
+    border-right: 1px solid $accent-color
+

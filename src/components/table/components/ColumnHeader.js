@@ -1,9 +1,9 @@
 import { h } from 'preact'
 import { useRef, useState } from 'preact/hooks'
-import { CompatAlign } from '../../utils/CompatAlign'
-import { CompatUtils } from '../../utils/CompatUtils'
-import { ComponentHelper } from '../../utils/ComponentHelper'
-import { HBox } from '../box-h/HBox'
+import { CompatAlign } from '../../../utils/CompatAlign'
+import { CompatUtils } from '../../../utils/CompatUtils'
+import { ComponentHelper } from '../../../utils/ComponentHelper'
+import { HBox } from '../../box-h/HBox'
 
 /**
  * @param props
@@ -18,7 +18,7 @@ import { HBox } from '../box-h/HBox'
  * @returns {*}
  * @constructor
  */
-export const TableColumnHeader = ({
+export const ColumnHeader = ({
                                     reference,
                                     column,
                                     items,
@@ -26,8 +26,7 @@ export const TableColumnHeader = ({
                                     onClick,
                                     onEnter,
                                     onLeave,
-                                    onDragStart,
-                                    onEnterResizeArea
+                                    onDragStart
                                   }) => {
   const [hovered, setHovered] = useState(false)
   const mouseDownX = useRef(0)

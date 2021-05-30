@@ -1,0 +1,32 @@
+@import ../../atomic
+
+.nbsp-ui-table-header
+  & > .container
+    +with-clickable-children
+
+    & > div
+      +not-selectable
+      +bordered-v
+      +transition(background-color .2s, border-color .2s)
+      cursor: default
+
+    & > div:first-child
+      +bordered-left
+      border-top-left-radius: $default-border-radius
+
+    & > div:last-child
+      +bordered-right
+      border-top-right-radius: $default-border-radius
+
+    & > div:not(:last-child)
+      border-right: 1px solid #EEEEEE
+
+    .hovered
+      background-color: $default-hover-color
+
+    .sorted-by-asc
+      border-bottom-color: $accent-color
+
+    .sorted-by-desc
+      border-top-color: $accent-color
+

@@ -1,6 +1,7 @@
 import { h } from 'preact'
-import { HBox } from '../box-h/HBox'
-import { TableColumnFooter } from './TableColumnFooter'
+import { HBox } from '../../box-h/HBox'
+import { ColumnFooter } from './ColumnFooter'
+import './Footer.sass'
 
 /**
  * @param props
@@ -10,11 +11,11 @@ import { TableColumnFooter } from './TableColumnFooter'
  * @returns {*}
  * @constructor
  */
-export const TableFooter = ({ columns, items, footerHeight }) =>
-  <HBox className="footer" height={footerHeight}>
+export const Footer = ({ columns, items, footerHeight }) =>
+  <HBox className="nbsp-ui-table-footer" height={footerHeight}>
     {
       columns.map((column, index) =>
-        <TableColumnFooter
+        <ColumnFooter
           key={index}
           column={column}
           items={items}

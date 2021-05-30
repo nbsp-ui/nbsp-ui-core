@@ -1,11 +1,12 @@
 import { h } from 'preact'
 import { useRef } from 'preact/hooks'
-import { CompatUtils } from '../../utils/CompatUtils'
-import { ReactHelper } from '../../utils/ReactHelper'
-import { HBox } from '../box-h/HBox'
-import { TableColumnHeader } from './TableColumnHeader'
-import { TableColumnResizer } from './TableColumnResizer'
-import { TableColumnShadow } from './TableColumnShadow'
+import { CompatUtils } from '../../../utils/CompatUtils'
+import { ReactHelper } from '../../../utils/ReactHelper'
+import { HBox } from '../../box-h/HBox'
+import { ColumnHeader } from './ColumnHeader'
+import { ColumnResizer } from './ColumnResizer'
+import { ColumnShadow } from './ColumnShadow'
+import './Header.sass'
 
 /**
  * @param props
@@ -17,7 +18,7 @@ import { TableColumnShadow } from './TableColumnShadow'
  * @returns {*}
  * @constructor
  */
-export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, onSortRequest }) => {
+export const Header = ({ columns, items, headerHeight, onRefreshRequest, onSortRequest }) => {
   const refresh = ReactHelper.useRefresh()
 
   /**
@@ -64,14 +65,14 @@ export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, on
 
   return (
     <div
-      className="header"
+      className="nbsp-ui-table-header"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
       <HBox className="container" height={headerHeight}>
         {
           columns.map((column, index) =>
-            <TableColumnHeader
+            <ColumnHeader
               key={index}
               reference={element => column._headerElement = element}
               column={column}
@@ -90,11 +91,11 @@ export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, on
           )
         }
       </HBox>
-      <TableColumnResizer
+      <ColumnResizer
         column={resizableColumn.current || resizingColumn.current}
         onDragStart={() => resizingColumn.current = resizableColumn.current}
         onDragEnd={size => {
-          const { resizedColumn, adjacentColumn } = columns.reduce((result, each, index, columns) => {
+          const { resizedColumn, adjacentColumn } = columns.reduce((result, each, index) => {
             each._id === resizingColumn.current._id && (result.resizedColumn = each)
             each._id === resizingColumn.current._id && (result.index = index)
             index === result.index + 1 && each.width && (result.adjacentColumn = each)
@@ -111,7 +112,7 @@ export const TableHeader = ({ columns, items, headerHeight, onRefreshRequest, on
           onRefreshRequest()
         }}
       />
-      <TableColumnShadow
+      <ColumnShadow
         column={movingColumn.current}
         onDragEnd={() => {
           if (focusedColumn.current && movingColumn.current) {

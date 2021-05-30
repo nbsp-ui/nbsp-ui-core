@@ -1,8 +1,9 @@
 import { h } from 'preact'
 import { useRef } from 'preact/hooks'
-import { CompatAlign } from '../../utils/CompatAlign'
-import { ReactHelper } from '../../utils/ReactHelper'
-import { HBox } from '../box-h/HBox'
+import { CompatAlign } from '../../../utils/CompatAlign'
+import { ReactHelper } from '../../../utils/ReactHelper'
+import { HBox } from '../../box-h/HBox'
+import './ColumnShadow.sass'
 
 /**
  * @param {TableColumn} column
@@ -11,7 +12,7 @@ import { HBox } from '../box-h/HBox'
  * @returns {*}
  * @constructor
  */
-export const TableColumnShadow = ({ column, items, onDragEnd }) => {
+export const ColumnShadow = ({ column, items, onDragEnd }) => {
   const refresh = ReactHelper.useRefresh()
 
   const x = useRef(0)
@@ -31,7 +32,7 @@ export const TableColumnShadow = ({ column, items, onDragEnd }) => {
 
   return (
     <HBox
-      className="shadow"
+      className="nbsp-ui-table-column-shadow"
       style={
         {
           display: column ? 'flex' : 'none',
