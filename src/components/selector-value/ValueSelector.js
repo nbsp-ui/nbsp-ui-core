@@ -1,5 +1,4 @@
 import { h } from 'preact'
-import { CompatUtils } from '../../utils/CompatUtils'
 import { ComponentHelper } from '../../utils/ComponentHelper'
 import { ReactHelper } from '../../utils/ReactHelper'
 import { Button, CompatButtonType } from '../button/Button'
@@ -17,14 +16,20 @@ import './ValueSelector.sass'
  */
 export const ValueSelector = props => {
   const [state, dispatch] = ReactHelper.useDispatchedState({
-    items: [],
-    appliedItems: [],
-    opened: false,
-    query: '',
-    selection: {},
-    label: '',
-    icon: ''
-  }, [props.data, Actions.Set, { items: props.data.map(item => ({ ...item, _id: CompatUtils.uid() })) }])
+      items: [],
+      appliedItems: [],
+      opened: false,
+      query: '',
+      selection: {},
+      label: '',
+      icon: ''
+    },
+    {
+      at: [
+        [[props.data], Actions.Set, { items: props.data }]
+      ]
+    }
+  )
 
   const className = ComponentHelper.composeClass(
     'nbsp-ui-value-selector',

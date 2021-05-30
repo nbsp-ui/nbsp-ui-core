@@ -1,3 +1,5 @@
+import { CompatUtils } from '../../utils/CompatUtils'
+
 export const Actions = {
   'ToggleItem': ({ items, selection }, { item, multiselect }) => {
     const mutatedSelection = multiselect ? { ...selection, [item._id]: !selection[item._id] } : { [item._id]: true }
@@ -30,12 +32,16 @@ export const Actions = {
     query,
     appliedItems: applySearch(applyFilter(items, filter), search, query)
   }),
-  'Set': ({ selection, query }, { items, filter, search }) => ({
-    items,
-    appliedItems: applySearch(applyFilter(items, filter), search, query),
-    label: buildLabel(items, selection),
-    icon: buildIcon(items, selection)
-  })
+  'Set': ({ selection, query }, { items, filter, search }) => {
+    items = items.map(item => ({ ...item, _id: CompatUtils.uid() }))
+
+    return ({
+      items: items,
+      appliedItems: applySearch(applyFilter(items, filter), search, query),
+      label: buildLabel(items, selection),
+      icon: buildIcon(items, selection)
+    })
+  }
 }
 
 const applyFilter = (items, filter) =>
