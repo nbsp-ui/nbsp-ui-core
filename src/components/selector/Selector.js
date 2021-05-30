@@ -18,8 +18,14 @@ import './Selector.sass'
  */
 export const Selector = props => {
   const [state, dispatch] = ReactHelper.useDispatchedState({
-    opened: false
-  }, [props.opened, Actions.Set, { opened: props.opened }])
+      opened: false
+    },
+    {
+      at: [
+        [[props.opened], Actions.Set, { opened: props.opened }]
+      ]
+    }
+  )
 
   const element = useRef()
   const popupElement = useRef()
