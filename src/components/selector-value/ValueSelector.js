@@ -27,6 +27,12 @@ export const ValueSelector = props => {
     {
       at: [
         [[props.data], Actions.Set, { items: props.data }]
+      ],
+      on: [
+        [[Actions.ToggleItem, Actions.ToggleEntire], ({ items, selection }) => props.onItemsSelect?.({
+          selected: items.filter(({ _id }) => selection(_id)),
+          all: items
+        })]
       ]
     }
   )
