@@ -37,7 +37,14 @@ export const CompatUtils = {
     move: (items, from, to) => {
       items.splice(to, 0, items.splice(from, 1)[0])
       return items
-    }
+    },
+
+    /**
+     * @param {*[]} a
+     * @param {*[]} b
+     * @returns {*}
+     */
+    equals: (a, b) => a && b && a.length === b.length && !a.some((x, y) => x !== b[y])
   },
 
   math: {

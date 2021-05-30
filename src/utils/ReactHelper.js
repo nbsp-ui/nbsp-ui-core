@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks'
+import { CompatUtils } from './CompatUtils'
 
 export const ReactHelper = {
   useReferredState: initial => {
@@ -12,16 +13,17 @@ export const ReactHelper = {
     return [state, value => setState({ ...state, ...value })]
   },
 
-  useDispatchedState: (initial, ...binds) => {
+  useDispatchedState: (initial, { at, on }) => {
     const state = useRef(initial)
     const refresh = ReactHelper.useRefresh()
 
     const apply = (action, data) => state.current = { ...state.current, ...action(state.current, data) }
 
-    binds?.forEach(([value, action, data]) => ReactHelper.useDifference(() => apply(action, data), value))
+    at?.forEach(([value, action, data]) => ReactHelper.useDifference(() => apply(action, data), value))
 
     return [state.current, (action, data) => {
       apply(action, data)
+      on.find(([actions]) => actions.some(each => each === action))[1]?.(state.current)
       refresh()
     }]
   },
@@ -51,7 +53,7 @@ export const ReactHelper = {
 
   useDifference: (callback, value) => {
     const ref = useRef()
-    if (ref.current !== value) {
+    if (!CompatUtils.array.equals(ref.current, value)) {
       ref.current = value
       callback()
     }
