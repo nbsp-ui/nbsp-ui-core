@@ -3,8 +3,21 @@
 
 /* Basic */
 
+@mixin absolute
+  position: absolute
+
 @mixin font-default
   font-family: "Roboto", sans-serif
+
+@mixin not-selectable
+  user-select: none
+  -webkit-user-select: none
+
+@mixin transition($v...)
+  -webkit-transition: $v
+  -moz-transition: $v
+  -o-transition: $v
+  transition: $v
 
 /* Sizes */
 
@@ -23,6 +36,26 @@
 @mixin rounded-right-default
   border-top-right-radius: $border-radius
   border-bottom-right-radius: $border-radius
+
+@mixin bordered-v
+  border-top: 1px solid $border-color
+  border-bottom: 1px solid $border-color
+
+@mixin bordered-h
+  border-left: 1px solid $border-color
+  border-right: 1px solid $border-color
+
+@mixin bordered-top
+  border-top: 1px solid $border-color
+
+@mixin bordered-bottom
+  border-bottom: 1px solid $border-color
+
+@mixin bordered-left
+  border-left: 1px solid $border-color
+
+@mixin bordered-right
+  border-right: 1px right $border-color
 
 /* Shades */
 
@@ -118,7 +151,7 @@
 
 /* Extensions */
 
-@mixin with-selectable-rows
+@mixin with-selectable-row
   & > div
     border-left: 2px solid transparent
     cursor: pointer
@@ -129,3 +162,24 @@
   & > .selected
     border-left-color: $accent
     background-color: $background-select-light
+
+@mixin with-clickable-children
+  .clickable
+    cursor: pointer
+
+    &:active
+      background-color: $default-active-color
+
+@mixin with-custom-scrollbar
+  &::-webkit-scrollbar
+    width: .3em
+
+  &::-webkit-scrollbar-track
+    background-color: transparent
+
+  &::-webkit-scrollbar-thumb
+    background-color: $border-color
+    border-radius: $border-radius
+
+    &:hover
+      background-color: darken($border-color, 10%)
