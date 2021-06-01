@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'preact/hooks'
-import { CompatUtils } from './CompatUtils'
 
 export const ReactHelper = {
   useReferredState: initial => {
@@ -13,7 +12,7 @@ export const ReactHelper = {
     return [state, value => setState({ ...state, ...value })]
   },
 
-  useDispatchedState: (initial, { at, on }) => {
+  useDispatchedState: (initial, { at, on } = {}) => {
     const state = useRef(initial)
     const refresh = ReactHelper.useRefresh()
 
@@ -23,7 +22,7 @@ export const ReactHelper = {
 
     return [state.current, (action, data) => {
       apply(action, data)
-      on.find(([actions]) => actions.some(each => each === action))[1]?.(state.current)
+      on?.find(([actions]) => actions.some(each => each === action))[1]?.(state.current)
       refresh()
     }]
   },
@@ -52,12 +51,14 @@ export const ReactHelper = {
   },
 
   useDifference: (callback, value) => {
-    const ref = useRef()
-    if (!CompatUtils.array.equals(ref.current, value)) {
+    const ref = useRef([])
+    if (ReactHelper._isChanged(ref.current, value)) {
       ref.current = value
       callback()
     }
   },
+
+  _isChanged: (a, b) => a.length !== b.length || a.some((x, y) => x !== b[y]),
 
   registerGlobalMouseEventListener: (event, listener) => {
     ReactHelper._registerGlobalEventListener(event, listener)

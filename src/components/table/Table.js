@@ -24,7 +24,7 @@ export const Table = props => {
         [[props.data], Actions.SetItems, { items: props.data, filter: props.filter }],
         [[props.columns], Actions.SetColumns, { columns: props.columns }],
         [[props.filter], Actions.FilterItems, { filter: props.filter }],
-        [[props.selection], Actions.SelectItems, { selection: props.selection }]
+        [[props.select], Actions.SelectItems, { select: props.select }]
       ],
       on: [
         [

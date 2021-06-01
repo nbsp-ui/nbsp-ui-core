@@ -26,8 +26,8 @@ export const Actions = {
   'ToggleItem': ({ items, selection }, { item, multiselect }) => ({
     selection: multiselect ? { ...selection, [item._id]: !selection[item._id] } : { [item._id]: true }
   }),
-  'SelectItems': ({}, { selection }) => ({
-    selection: selection.reduce((result, id) => ({ ...result, [id]: true }))
+  'SelectItems': ({ items }, { select }) => ({
+    selection: items.reduce((result, item) => select(item) ? { ...result, [item._id]: true } : result, {})
   }),
   'SortColumn': ({ items, appearance }, { column }) => {
     const type = match(appearance[column._id] || 0, { 0: 1, 1: 2, 2: 0 })

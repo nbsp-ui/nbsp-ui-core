@@ -24,9 +24,8 @@ export const Row = ({ columns, item, selection, rowHeight, onItemClick }) => {
     style={{ height: rowHeight }}
   >
     {
-      columns.map(({ cell, width }, index) => (
+      columns.map(({ cell, width }) => (
           <HBox
-            key={index}
             vAlign={CompatAlign.Center}
             width={width}
           >{cell(item)}</HBox>

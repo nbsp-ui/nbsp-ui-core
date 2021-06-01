@@ -4,9 +4,9 @@ import { BaseProps } from '../types'
 export interface TableProps extends BaseProps {
     columns?: TableColumn[]
     data?: {}[]
-    selection?: string[]
     multiselect?: boolean
 
+    select?: (item: {}) => any
     filter?: (item: {}) => boolean
 
     onItemsSelect?: (items: { selected: {}[], all: {}[] }) => void
@@ -27,8 +27,6 @@ export interface TableColumn {
 
     _id: string
     _position: number
-    _sortedByAsc: boolean
-    _sortedByDesc: boolean
     _headerElement: HTMLElement
 }
 
